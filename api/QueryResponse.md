@@ -6,7 +6,7 @@ Query response
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**response** | **str** |  | [optional] 
+**response** | **str** | Response from LLM for the query. | [optional] 
 
 ## Example
 

@@ -8,10 +8,10 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **credentials** | [**Credentials**](Credentials.md) |  | 
 **data_store** | **str** | Name of the data store | 
-**input_type** | **str** | The location of the input file(s) | 
 **input_filter** | [**InputFilter**](InputFilter.md) |  | 
 **input_keys** | [**InputKeys**](InputKeys.md) |  | [optional] 
-**ingest_type** | **str** | The type of ingestion required | 
+**input_type** | [**InputTypes**](InputTypes.md) |  | 
+**ingest_type** | [**IngestTypes**](IngestTypes.md) |  | 
 **ingest_params** | [**IngestParams**](IngestParams.md) |  | [optional] 
 
 ## Example

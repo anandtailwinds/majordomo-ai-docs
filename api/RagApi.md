@@ -29,6 +29,7 @@ Create a data store
 
 ### Example
 
+* Bearer (JWT) Authentication (bearerAuth):
 
 ```python
 import openapi_client
@@ -43,6 +44,15 @@ configuration = openapi_client.Configuration(
     host = "http://20.40.53.225:25001"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (JWT): bearerAuth
+configuration = openapi_client.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with openapi_client.ApiClient(configuration) as api_client:
@@ -74,7 +84,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -99,6 +109,7 @@ Delete an existing data store.
 
 ### Example
 
+* Bearer (JWT) Authentication (bearerAuth):
 
 ```python
 import openapi_client
@@ -112,6 +123,15 @@ configuration = openapi_client.Configuration(
     host = "http://20.40.53.225:25001"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (JWT): bearerAuth
+configuration = openapi_client.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with openapi_client.ApiClient(configuration) as api_client:
@@ -141,7 +161,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -166,6 +186,7 @@ Get a list of existing data stores.
 
 ### Example
 
+* Bearer (JWT) Authentication (bearerAuth):
 
 ```python
 import openapi_client
@@ -180,6 +201,15 @@ configuration = openapi_client.Configuration(
     host = "http://20.40.53.225:25001"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (JWT): bearerAuth
+configuration = openapi_client.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with openapi_client.ApiClient(configuration) as api_client:
@@ -211,7 +241,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -236,6 +266,7 @@ Ingest files into any type of data store
 
 ### Example
 
+* Bearer (JWT) Authentication (bearerAuth):
 
 ```python
 import openapi_client
@@ -250,6 +281,15 @@ configuration = openapi_client.Configuration(
     host = "http://20.40.53.225:25001"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (JWT): bearerAuth
+configuration = openapi_client.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with openapi_client.ApiClient(configuration) as api_client:
@@ -281,7 +321,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -306,6 +346,7 @@ Query the contents of a data store
 
 ### Example
 
+* Bearer (JWT) Authentication (bearerAuth):
 
 ```python
 import openapi_client
@@ -320,6 +361,15 @@ configuration = openapi_client.Configuration(
     host = "http://20.40.53.225:25001"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (JWT): bearerAuth
+configuration = openapi_client.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with openapi_client.ApiClient(configuration) as api_client:
@@ -351,7 +401,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -376,6 +426,7 @@ Update an existing data store.
 
 ### Example
 
+* Bearer (JWT) Authentication (bearerAuth):
 
 ```python
 import openapi_client
@@ -389,6 +440,15 @@ configuration = openapi_client.Configuration(
     host = "http://20.40.53.225:25001"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (JWT): bearerAuth
+configuration = openapi_client.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with openapi_client.ApiClient(configuration) as api_client:
@@ -420,7 +480,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -445,6 +505,7 @@ Create a ingest pipeline
 
 ### Example
 
+* Bearer (JWT) Authentication (bearerAuth):
 
 ```python
 import openapi_client
@@ -459,6 +520,15 @@ configuration = openapi_client.Configuration(
     host = "http://20.40.53.225:25001"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (JWT): bearerAuth
+configuration = openapi_client.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with openapi_client.ApiClient(configuration) as api_client:
@@ -490,7 +560,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -515,6 +585,7 @@ Delete an existing ingest pipeline.
 
 ### Example
 
+* Bearer (JWT) Authentication (bearerAuth):
 
 ```python
 import openapi_client
@@ -528,6 +599,15 @@ configuration = openapi_client.Configuration(
     host = "http://20.40.53.225:25001"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (JWT): bearerAuth
+configuration = openapi_client.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with openapi_client.ApiClient(configuration) as api_client:
@@ -557,7 +637,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -582,6 +662,7 @@ Get a list of existing ingest pipelines.
 
 ### Example
 
+* Bearer (JWT) Authentication (bearerAuth):
 
 ```python
 import openapi_client
@@ -596,6 +677,15 @@ configuration = openapi_client.Configuration(
     host = "http://20.40.53.225:25001"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (JWT): bearerAuth
+configuration = openapi_client.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with openapi_client.ApiClient(configuration) as api_client:
@@ -627,7 +717,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -652,6 +742,7 @@ Update an existing ingest pipeline.
 
 ### Example
 
+* Bearer (JWT) Authentication (bearerAuth):
 
 ```python
 import openapi_client
@@ -666,6 +757,15 @@ configuration = openapi_client.Configuration(
     host = "http://20.40.53.225:25001"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (JWT): bearerAuth
+configuration = openapi_client.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with openapi_client.ApiClient(configuration) as api_client:
@@ -697,7 +797,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -722,6 +822,7 @@ Create a query pipeline
 
 ### Example
 
+* Bearer (JWT) Authentication (bearerAuth):
 
 ```python
 import openapi_client
@@ -736,6 +837,15 @@ configuration = openapi_client.Configuration(
     host = "http://20.40.53.225:25001"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (JWT): bearerAuth
+configuration = openapi_client.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with openapi_client.ApiClient(configuration) as api_client:
@@ -767,7 +877,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -792,6 +902,7 @@ Delete an existing query pipeline.
 
 ### Example
 
+* Bearer (JWT) Authentication (bearerAuth):
 
 ```python
 import openapi_client
@@ -805,6 +916,15 @@ configuration = openapi_client.Configuration(
     host = "http://20.40.53.225:25001"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (JWT): bearerAuth
+configuration = openapi_client.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with openapi_client.ApiClient(configuration) as api_client:
@@ -834,7 +954,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -859,6 +979,7 @@ Get a list of existing query pipelines.
 
 ### Example
 
+* Bearer (JWT) Authentication (bearerAuth):
 
 ```python
 import openapi_client
@@ -873,6 +994,15 @@ configuration = openapi_client.Configuration(
     host = "http://20.40.53.225:25001"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (JWT): bearerAuth
+configuration = openapi_client.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with openapi_client.ApiClient(configuration) as api_client:
@@ -904,7 +1034,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -929,6 +1059,7 @@ Update an existing query pipeline.
 
 ### Example
 
+* Bearer (JWT) Authentication (bearerAuth):
 
 ```python
 import openapi_client
@@ -943,6 +1074,15 @@ configuration = openapi_client.Configuration(
     host = "http://20.40.53.225:25001"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (JWT): bearerAuth
+configuration = openapi_client.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
 
 # Enter a context with an instance of the API client
 with openapi_client.ApiClient(configuration) as api_client:
@@ -974,7 +1114,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 

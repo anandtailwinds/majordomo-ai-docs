@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **credentials** | [**Credentials**](Credentials.md) |  | 
 **name** | **str** | Name of the data store. | 
-**type** | **str** | The type of data store. | 
+**type** | [**DataStoreTypes**](DataStoreTypes.md) |  | 
 **vectordb_profile** | **str** | Name of the Vector DB profile. | [optional] 
 **embedding_model** | **str** | The embedding model to be used while ingesting data (applies for vector DB only) | [optional] 
 **database_url** | **str** | The endpoint of the structure database such as SQL/MongoDB. | [optional] 

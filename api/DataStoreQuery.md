@@ -7,12 +7,12 @@ Data Store Query
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **credentials** | [**Credentials**](Credentials.md) |  | 
-**data_store** | **str** | Name of the data store | 
-**embedding_model** | **str** | The embedding model to be used | [default to 'text-embedding-3-large']
-**llm_model** | **str** | The LLM model to be used | [default to 'gpt-3.5-turbo']
+**data_store** | **str** | Name of the data store. | 
+**embedding_model** | **str** | The embedding model to be used. | [default to 'text-embedding-3-large']
+**llm_model** | **str** | The LLM model to be used. | [default to 'gpt-3.5-turbo']
 **var_query_params** | [**QueryParams**](QueryParams.md) |  | [optional] 
-**query_str** | **str** | The actual query string | 
-**query_type** | **int** |  | 
+**query_str** | **str** | The actual query string for which the user wants a response to. | 
+**query_type** | [**QueryTypes**](QueryTypes.md) |  | 
 
 ## Example
 

@@ -6,8 +6,8 @@ A data store query request
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**top_k** | **int** |  | [optional] [default to 2]
-**temperature** | **float** |  | [optional] 
+**top_k** | **int** | The number of vector db matches to consider for llm context | [optional] [default to 2]
+**temperature** | **float** | The temperature of the LLM processing, the higher the more creative the LLM is. | [optional] 
 **query_mode** | **str** |  | [optional] 
 
 ## Example
