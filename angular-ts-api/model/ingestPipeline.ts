@@ -15,7 +15,7 @@ import { InputTypes } from './inputTypes';
 
 
 /**
- * Ingest Pipeline
+ * Describes the configurable attributes of an ingest pipeline that is to be created or updated. The ingest pipeline is always a part of a parent data store.
  */
 export interface IngestPipeline { 
     /**
@@ -39,7 +39,13 @@ export interface IngestPipeline {
     input_type: InputTypes;
     ingest_type: IngestTypes;
     ingest_params?: IngestParams;
+    /**
+     * Turn on the ingestion timer, once the timer expires the specified ingestion action is performed.
+     */
     timer_on?: boolean;
+    /**
+     * Specify the timer interval for the ingestion action in minutes.
+     */
     timer_interval?: number;
 }
 export namespace IngestPipeline {

@@ -15,11 +15,11 @@ import { InputTypes } from './inputTypes';
 
 
 /**
- * Ingest Pipeline configuration and operation information.
+ * Ingest Pipeline configuration and operation information that is returned in GET requests.
  */
 export interface IngestPipelineInfo { 
     /**
-     * Workspce in which the data store is present.
+     * Workspace in which the data store is present.
      */
     workspace: string;
     /**

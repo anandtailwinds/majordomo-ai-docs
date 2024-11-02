@@ -5,8 +5,9 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | **string** | Name of the model profile. | 
-**ModelProvider** | [**ModelProviders**](ModelProviders.md) |  | 
+**Provider** | Pointer to [**ModelProviders**](ModelProviders.md) |  | [optional] 
 **AllowedModels** | Pointer to **[]string** | List of models allowed for a user who is associated to this profile. Incase list is empty all models available in the provider are allowed. | [optional] 
+**Endpoint** | Pointer to [**ModelEndpoints**](ModelEndpoints.md) |  | [optional] 
 **AccessKey** | **string** | Access Key for accessing the model | 
 **CreatedBy** | **string** | The username who created this model profile | 
 **CreatedAt** | **int64** | Timestamp of the model profile creation | 
@@ -16,7 +17,7 @@ Name | Type | Description | Notes
 
 ### NewModelProfileInfo
 
-`func NewModelProfileInfo(name string, modelProvider ModelProviders, accessKey string, createdBy string, createdAt int64, lastUpdate int64, ) *ModelProfileInfo`
+`func NewModelProfileInfo(name string, accessKey string, createdBy string, createdAt int64, lastUpdate int64, ) *ModelProfileInfo`
 
 NewModelProfileInfo instantiates a new ModelProfileInfo object
 This constructor will assign default values to properties that have it defined,
@@ -51,25 +52,30 @@ and a boolean to check if the value has been set.
 SetName sets Name field to given value.
 
 
-### GetModelProvider
+### GetProvider
 
-`func (o *ModelProfileInfo) GetModelProvider() ModelProviders`
+`func (o *ModelProfileInfo) GetProvider() ModelProviders`
 
-GetModelProvider returns the ModelProvider field if non-nil, zero value otherwise.
+GetProvider returns the Provider field if non-nil, zero value otherwise.
 
-### GetModelProviderOk
+### GetProviderOk
 
-`func (o *ModelProfileInfo) GetModelProviderOk() (*ModelProviders, bool)`
+`func (o *ModelProfileInfo) GetProviderOk() (*ModelProviders, bool)`
 
-GetModelProviderOk returns a tuple with the ModelProvider field if it's non-nil, zero value otherwise
+GetProviderOk returns a tuple with the Provider field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetModelProvider
+### SetProvider
 
-`func (o *ModelProfileInfo) SetModelProvider(v ModelProviders)`
+`func (o *ModelProfileInfo) SetProvider(v ModelProviders)`
 
-SetModelProvider sets ModelProvider field to given value.
+SetProvider sets Provider field to given value.
 
+### HasProvider
+
+`func (o *ModelProfileInfo) HasProvider() bool`
+
+HasProvider returns a boolean if a field has been set.
 
 ### GetAllowedModels
 
@@ -95,6 +101,31 @@ SetAllowedModels sets AllowedModels field to given value.
 `func (o *ModelProfileInfo) HasAllowedModels() bool`
 
 HasAllowedModels returns a boolean if a field has been set.
+
+### GetEndpoint
+
+`func (o *ModelProfileInfo) GetEndpoint() ModelEndpoints`
+
+GetEndpoint returns the Endpoint field if non-nil, zero value otherwise.
+
+### GetEndpointOk
+
+`func (o *ModelProfileInfo) GetEndpointOk() (*ModelEndpoints, bool)`
+
+GetEndpointOk returns a tuple with the Endpoint field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEndpoint
+
+`func (o *ModelProfileInfo) SetEndpoint(v ModelEndpoints)`
+
+SetEndpoint sets Endpoint field to given value.
+
+### HasEndpoint
+
+`func (o *ModelProfileInfo) HasEndpoint() bool`
+
+HasEndpoint returns a boolean if a field has been set.
 
 ### GetAccessKey
 

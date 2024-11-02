@@ -22,7 +22,7 @@ export interface LogInfo {
      * The user for which this log was generated.
      */
     user_name: string;
-    level: LogLevels;
+    log_level: LogLevels;
     /**
      * The topic of the log message.
      */

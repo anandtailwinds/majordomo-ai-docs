@@ -1,26 +1,21 @@
 # DataStore
 
-Data store
+This is the data store specification that is used for creating and updating a data store. Data stores can be of different types including a vector database. Some parameters are mandatory based on the type of database chosen and it will be indicated along with the parameter.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**workspace** | **str** | Workspce in which the data store is present. | 
-**user_name** | **str** | The user who created the data store. | 
+**workspace** | **str** | Workspace in which the data store is present. | 
 **name** | **str** | Name of the data store. | 
-**type** | [**DataStoreTypes**](DataStoreTypes.md) |  | 
-**sub_type** | [**DataStoreSubTypes**](DataStoreSubTypes.md) |  | [optional] 
-**vectordb_profile** | **str** | Name of the Vector DB profile. | [optional] 
-**vectordb_embedding** | **str** | The embedding model to be used while ingesting data (applies for vector DB only) | [optional] 
-**structdb_url** | **str** | The endpoint of the structure database such as SQL/MongoDB. | [optional] 
-**structdb_name** | **str** | The name of the database in the structured database. | [optional] 
-**structdb_table** | **str** | The name of the table in the structured database. | [optional] 
+**store_type** | [**DataStoreTypes**](DataStoreTypes.md) |  | 
+**vectordb_store** | [**VectordbStore**](VectordbStore.md) |  | [optional] 
+**structdb_store** | [**StructdbStore**](StructdbStore.md) |  | [optional] 
 
 ## Example
 
 ```python
-from majordomoai.models.data_store import DataStore
+from majordomo_ai.models.data_store import DataStore
 
 # TODO update the JSON string below
 json = "{}"

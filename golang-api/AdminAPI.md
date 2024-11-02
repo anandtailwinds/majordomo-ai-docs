@@ -5,29 +5,28 @@ All URIs are relative to *http://localhost:/25001*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CreateModelProfile**](AdminAPI.md#CreateModelProfile) | **Post** /model_profiles | Model Profile
-[**CreateMonitorProfile**](AdminAPI.md#CreateMonitorProfile) | **Post** /monitor_profiles | Monitor Profile
 [**CreateUserProfile**](AdminAPI.md#CreateUserProfile) | **Post** /user_profiles | User Profile
 [**CreateVectordbProfile**](AdminAPI.md#CreateVectordbProfile) | **Post** /vectordb_profiles | Vectordb Profile
 [**CreateWorkspace**](AdminAPI.md#CreateWorkspace) | **Post** /workspaces | Workspace
-[**DeleteModelProfile**](AdminAPI.md#DeleteModelProfile) | **Delete** /model_profiles | Model Profile
-[**DeleteMonitorProfiles**](AdminAPI.md#DeleteMonitorProfiles) | **Delete** /monitor_profiles | Monitor Profile
-[**DeleteVectordbProfile**](AdminAPI.md#DeleteVectordbProfile) | **Delete** /vectordb_profiles | Vectordb Profile
-[**DeleteWorker**](AdminAPI.md#DeleteWorker) | **Delete** /workers | Worker
+[**DeleteModelProfile**](AdminAPI.md#DeleteModelProfile) | **Delete** /model_profile/name/{name} | Model Profile Specific Delete.
+[**DeleteModelProfiles**](AdminAPI.md#DeleteModelProfiles) | **Delete** /model_profiles | Model Profile
+[**DeleteMonitorProfile**](AdminAPI.md#DeleteMonitorProfile) | **Delete** /monitor_profile/name/{name} | Monitor Profile Specific Delete.
+[**DeleteUserProfile**](AdminAPI.md#DeleteUserProfile) | **Delete** /user_profile/workspace/{workspace}/user/{user_name} | User Profile Specific DELETE.
+[**DeleteVectordbProfile**](AdminAPI.md#DeleteVectordbProfile) | **Delete** /vectordb_profile/name/{name} | Vectordb Profile Specific Delete.
+[**DeleteVectordbProfiles**](AdminAPI.md#DeleteVectordbProfiles) | **Delete** /vectordb_profiles | VectorDB Profile DELETE.
+[**DeleteWorkers**](AdminAPI.md#DeleteWorkers) | **Delete** /workers | Worker delete.
+[**DeleteWorkspace**](AdminAPI.md#DeleteWorkspace) | **Delete** /workspace/name/{name} | Workspace Specific Delete.
 [**DeleteWorkspaces**](AdminAPI.md#DeleteWorkspaces) | **Delete** /workspaces | Workspace
 [**GetModelProfiles**](AdminAPI.md#GetModelProfiles) | **Get** /model_profiles | Model profiles GET operation.
-[**GetMonitorProfiles**](AdminAPI.md#GetMonitorProfiles) | **Get** /monitor_profiles | Monitor profiles GET operation.
-[**GetTokenStats**](AdminAPI.md#GetTokenStats) | **Get** /token_stats | TokenStats
 [**GetUserProfiles**](AdminAPI.md#GetUserProfiles) | **Get** /user_profiles | User profiles GET operation.
 [**GetVectordbProfiles**](AdminAPI.md#GetVectordbProfiles) | **Get** /vectordb_profiles | Vectordb profiles GET operation.
 [**GetWorkers**](AdminAPI.md#GetWorkers) | **Get** /workers | Worker Get
 [**GetWorkspaces**](AdminAPI.md#GetWorkspaces) | **Get** /workspaces | Workspace GET operation.
-[**LogGet**](AdminAPI.md#LogGet) | **Get** /logs | Logs
 [**UpdateModelProfile**](AdminAPI.md#UpdateModelProfile) | **Put** /model_profiles | Model Profile
-[**UpdateMonitorProfile**](AdminAPI.md#UpdateMonitorProfile) | **Put** /monitor_profiles | Monitor Profile
 [**UpdateUserProfile**](AdminAPI.md#UpdateUserProfile) | **Put** /user_profiles | User Profile
 [**UpdateVectordbProfile**](AdminAPI.md#UpdateVectordbProfile) | **Put** /vectordb_profiles | Vectordb Profile
 [**UpdateWorkspace**](AdminAPI.md#UpdateWorkspace) | **Put** /workspaces | Workspace
-[**UserProfileDelete**](AdminAPI.md#UserProfileDelete) | **Delete** /user_profiles | User Profile
+[**UserProfileDelete**](AdminAPI.md#UserProfileDelete) | **Delete** /user_profiles | User Profile DELETE.
 [**WorkerCreate**](AdminAPI.md#WorkerCreate) | **Post** /workers | Worker
 
 
@@ -53,7 +52,7 @@ import (
 )
 
 func main() {
-	modelProfile := *openapiclient.NewModelProfile("Name_example", openapiclient.ModelProviders(1), "AccessKey_example") // ModelProfile | 
+	modelProfile := *openapiclient.NewModelProfile("{"name":"OpenAI-Dev"}", openapiclient.ModelProviders(1), "AccessKey_example") // ModelProfile | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -83,72 +82,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ModelProfile**](ModelProfile.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## CreateMonitorProfile
-
-> MonitorProfile CreateMonitorProfile(ctx).MonitorProfile(monitorProfile).Execute()
-
-Monitor Profile
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
-)
-
-func main() {
-	monitorProfile := *openapiclient.NewMonitorProfile("Name_example", openapiclient.MonitorProviders(1), "AccessKey_example", "Endpoint_example") // MonitorProfile | 
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.AdminAPI.CreateMonitorProfile(context.Background()).MonitorProfile(monitorProfile).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AdminAPI.CreateMonitorProfile``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `CreateMonitorProfile`: MonitorProfile
-	fmt.Fprintf(os.Stdout, "Response from `AdminAPI.CreateMonitorProfile`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiCreateMonitorProfileRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **monitorProfile** | [**MonitorProfile**](MonitorProfile.md) |  | 
-
-### Return type
-
-[**MonitorProfile**](MonitorProfile.md)
 
 ### Authorization
 
@@ -251,7 +184,7 @@ import (
 )
 
 func main() {
-	vectordbProfile := *openapiclient.NewVectordbProfile("Name_example", openapiclient.VectordbProviders(1), *openapiclient.NewVectordbEndpoint(), false) // VectordbProfile | 
+	vectordbProfile := *openapiclient.NewVectordbProfile("Name_example", openapiclient.VectordbProviders(1), *openapiclient.NewVectordbEndpoint()) // VectordbProfile | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -364,7 +297,77 @@ Name | Type | Description  | Notes
 
 ## DeleteModelProfile
 
-> DeleteModelProfile(ctx).ModelProfile(modelProfile).Execute()
+> DeleteResponse DeleteModelProfile(ctx, name).Execute()
+
+Model Profile Specific Delete.
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+)
+
+func main() {
+	name := "name_example" // string | The name of the model profile to delete.
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AdminAPI.DeleteModelProfile(context.Background(), name).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AdminAPI.DeleteModelProfile``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `DeleteModelProfile`: DeleteResponse
+	fmt.Fprintf(os.Stdout, "Response from `AdminAPI.DeleteModelProfile`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**name** | **string** | The name of the model profile to delete. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDeleteModelProfileRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**DeleteResponse**](DeleteResponse.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DeleteModelProfiles
+
+> DeleteResponse DeleteModelProfiles(ctx).Execute()
 
 Model Profile
 
@@ -383,34 +386,31 @@ import (
 )
 
 func main() {
-	modelProfile := *openapiclient.NewModelProfile("Name_example", openapiclient.ModelProviders(1), "AccessKey_example") // ModelProfile | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.AdminAPI.DeleteModelProfile(context.Background()).ModelProfile(modelProfile).Execute()
+	resp, r, err := apiClient.AdminAPI.DeleteModelProfiles(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AdminAPI.DeleteModelProfile``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `AdminAPI.DeleteModelProfiles``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
+	// response from `DeleteModelProfiles`: DeleteResponse
+	fmt.Fprintf(os.Stdout, "Response from `AdminAPI.DeleteModelProfiles`: %v\n", resp)
 }
 ```
 
 ### Path Parameters
 
-
+This endpoint does not need any parameter.
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiDeleteModelProfileRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiDeleteModelProfilesRequest struct via the builder pattern
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **modelProfile** | [**ModelProfile**](ModelProfile.md) |  | 
 
 ### Return type
 
- (empty response body)
+[**DeleteResponse**](DeleteResponse.md)
 
 ### Authorization
 
@@ -418,19 +418,19 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json
-- **Accept**: Not defined
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
 
-## DeleteMonitorProfiles
+## DeleteMonitorProfile
 
-> DeleteMonitorProfiles(ctx, name).Execute()
+> DeleteMonitorProfile(ctx, name).Execute()
 
-Monitor Profile
+Monitor Profile Specific Delete.
 
 
 
@@ -447,13 +447,13 @@ import (
 )
 
 func main() {
-	name := "name_example" // string | The name of the specific monitor profile to delete. If none is provided all monitor profiles belonging to the user are deleted.
+	name := "name_example" // string | The name of the monitor profile to delete.
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.AdminAPI.DeleteMonitorProfiles(context.Background(), name).Execute()
+	r, err := apiClient.AdminAPI.DeleteMonitorProfile(context.Background(), name).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AdminAPI.DeleteMonitorProfiles``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `AdminAPI.DeleteMonitorProfile``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 }
@@ -465,15 +465,86 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**name** | **string** | The name of the specific monitor profile to delete. If none is provided all monitor profiles belonging to the user are deleted. | 
+**name** | **string** | The name of the monitor profile to delete. | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiDeleteMonitorProfilesRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiDeleteMonitorProfileRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DeleteUserProfile
+
+> DeleteUserProfile(ctx, workspace, userName).Execute()
+
+User Profile Specific DELETE.
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+)
+
+func main() {
+	workspace := "workspace_example" // string | The name of the workspace associated with the user profile.
+	userName := "userName_example" // string | The name of the user associated with the user profile.
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.AdminAPI.DeleteUserProfile(context.Background(), workspace, userName).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AdminAPI.DeleteUserProfile``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**workspace** | **string** | The name of the workspace associated with the user profile. | 
+**userName** | **string** | The name of the user associated with the user profile. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDeleteUserProfileRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
 
 
 ### Return type
@@ -496,9 +567,9 @@ Name | Type | Description  | Notes
 
 ## DeleteVectordbProfile
 
-> DeleteVectordbProfile(ctx, name).Execute()
+> DeleteResponse DeleteVectordbProfile(ctx, name).Execute()
 
-Vectordb Profile
+Vectordb Profile Specific Delete.
 
 
 
@@ -519,11 +590,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.AdminAPI.DeleteVectordbProfile(context.Background(), name).Execute()
+	resp, r, err := apiClient.AdminAPI.DeleteVectordbProfile(context.Background(), name).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `AdminAPI.DeleteVectordbProfile``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
+	// response from `DeleteVectordbProfile`: DeleteResponse
+	fmt.Fprintf(os.Stdout, "Response from `AdminAPI.DeleteVectordbProfile`: %v\n", resp)
 }
 ```
 
@@ -546,7 +619,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+[**DeleteResponse**](DeleteResponse.md)
 
 ### Authorization
 
@@ -555,18 +628,18 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
 
-## DeleteWorker
+## DeleteVectordbProfiles
 
-> DeleteWorker(ctx, name).Execute()
+> DeleteResponse DeleteVectordbProfiles(ctx).Execute()
 
-Worker
+VectorDB Profile DELETE.
 
 
 
@@ -583,15 +656,139 @@ import (
 )
 
 func main() {
-	name := "name_example" // string | Name of the worker to delete.
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.AdminAPI.DeleteWorker(context.Background(), name).Execute()
+	resp, r, err := apiClient.AdminAPI.DeleteVectordbProfiles(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AdminAPI.DeleteWorker``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `AdminAPI.DeleteVectordbProfiles``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
+	// response from `DeleteVectordbProfiles`: DeleteResponse
+	fmt.Fprintf(os.Stdout, "Response from `AdminAPI.DeleteVectordbProfiles`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+This endpoint does not need any parameter.
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDeleteVectordbProfilesRequest struct via the builder pattern
+
+
+### Return type
+
+[**DeleteResponse**](DeleteResponse.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DeleteWorkers
+
+> DeleteResponse DeleteWorkers(ctx).Execute()
+
+Worker delete.
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+)
+
+func main() {
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AdminAPI.DeleteWorkers(context.Background()).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AdminAPI.DeleteWorkers``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `DeleteWorkers`: DeleteResponse
+	fmt.Fprintf(os.Stdout, "Response from `AdminAPI.DeleteWorkers`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+This endpoint does not need any parameter.
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDeleteWorkersRequest struct via the builder pattern
+
+
+### Return type
+
+[**DeleteResponse**](DeleteResponse.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DeleteWorkspace
+
+> DeleteResponse DeleteWorkspace(ctx, name).Execute()
+
+Workspace Specific Delete.
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+)
+
+func main() {
+	name := "name_example" // string | Name of the workspaces to delete. Any references to this workspace need to be deleted first before this operation can succeed.
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AdminAPI.DeleteWorkspace(context.Background(), name).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AdminAPI.DeleteWorkspace``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `DeleteWorkspace`: DeleteResponse
+	fmt.Fprintf(os.Stdout, "Response from `AdminAPI.DeleteWorkspace`: %v\n", resp)
 }
 ```
 
@@ -601,11 +798,11 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**name** | **string** | Name of the worker to delete. | 
+**name** | **string** | Name of the workspaces to delete. Any references to this workspace need to be deleted first before this operation can succeed. | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiDeleteWorkerRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiDeleteWorkspaceRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -614,7 +811,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+[**DeleteResponse**](DeleteResponse.md)
 
 ### Authorization
 
@@ -623,7 +820,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -632,7 +829,7 @@ Name | Type | Description  | Notes
 
 ## DeleteWorkspaces
 
-> DeleteWorkspaces(ctx, name).Execute()
+> DeleteResponse DeleteWorkspaces(ctx).Execute()
 
 Workspace
 
@@ -651,38 +848,31 @@ import (
 )
 
 func main() {
-	name := "name_example" // string | Name of the workspaces to delete. If none is provided all workspaces are deleted.
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.AdminAPI.DeleteWorkspaces(context.Background(), name).Execute()
+	resp, r, err := apiClient.AdminAPI.DeleteWorkspaces(context.Background()).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `AdminAPI.DeleteWorkspaces``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
+	// response from `DeleteWorkspaces`: DeleteResponse
+	fmt.Fprintf(os.Stdout, "Response from `AdminAPI.DeleteWorkspaces`: %v\n", resp)
 }
 ```
 
 ### Path Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**name** | **string** | Name of the workspaces to delete. If none is provided all workspaces are deleted. | 
+This endpoint does not need any parameter.
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiDeleteWorkspacesRequest struct via the builder pattern
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
 ### Return type
 
- (empty response body)
+[**DeleteResponse**](DeleteResponse.md)
 
 ### Authorization
 
@@ -691,7 +881,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -749,144 +939,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ModelProfiles**](ModelProfiles.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## GetMonitorProfiles
-
-> MonitorProfiles GetMonitorProfiles(ctx).Name(name).Execute()
-
-Monitor profiles GET operation.
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
-)
-
-func main() {
-	name := "name_example" // string | The name of the monitor profile to retrieve. If none is provided all monitor profiles are retrieved. (optional)
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.AdminAPI.GetMonitorProfiles(context.Background()).Name(name).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AdminAPI.GetMonitorProfiles``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `GetMonitorProfiles`: MonitorProfiles
-	fmt.Fprintf(os.Stdout, "Response from `AdminAPI.GetMonitorProfiles`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetMonitorProfilesRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **name** | **string** | The name of the monitor profile to retrieve. If none is provided all monitor profiles are retrieved. | 
-
-### Return type
-
-[**MonitorProfiles**](MonitorProfiles.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## GetTokenStats
-
-> TokenStats GetTokenStats(ctx).Workspace(workspace).UserName(userName).StartTime(startTime).EndTime(endTime).Execute()
-
-TokenStats
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
-)
-
-func main() {
-	workspace := "workspace_example" // string | Filter the logs based on the workspace. (optional)
-	userName := "userName_example" // string | Filter the logs based on the username. (optional)
-	startTime := int64(789) // int64 | Filter the logs starting at this time. (optional)
-	endTime := int64(789) // int64 | Filter the logs ending at this time. (optional)
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.AdminAPI.GetTokenStats(context.Background()).Workspace(workspace).UserName(userName).StartTime(startTime).EndTime(endTime).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AdminAPI.GetTokenStats``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `GetTokenStats`: TokenStats
-	fmt.Fprintf(os.Stdout, "Response from `AdminAPI.GetTokenStats`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetTokenStatsRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **workspace** | **string** | Filter the logs based on the workspace. | 
- **userName** | **string** | Filter the logs based on the username. | 
- **startTime** | **int64** | Filter the logs starting at this time. | 
- **endTime** | **int64** | Filter the logs ending at this time. | 
-
-### Return type
-
-[**TokenStats**](TokenStats.md)
 
 ### Authorization
 
@@ -970,7 +1022,7 @@ Name | Type | Description  | Notes
 
 ## GetVectordbProfiles
 
-> VectordbProfiles GetVectordbProfiles(ctx).Name(name).Execute()
+> VectordbProfiles GetVectordbProfiles(ctx).Body(body).Execute()
 
 Vectordb profiles GET operation.
 
@@ -989,11 +1041,11 @@ import (
 )
 
 func main() {
-	name := "name_example" // string | The name of the vectordb profile to retrieve. (optional)
+	body := map[string]interface{}{ ... } // map[string]interface{} | Delete all vectordb profiles created by the user.
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.AdminAPI.GetVectordbProfiles(context.Background()).Name(name).Execute()
+	resp, r, err := apiClient.AdminAPI.GetVectordbProfiles(context.Background()).Body(body).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `AdminAPI.GetVectordbProfiles``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1014,7 +1066,7 @@ Other parameters are passed through a pointer to a apiGetVectordbProfilesRequest
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **name** | **string** | The name of the vectordb profile to retrieve. | 
+ **body** | **map[string]interface{}** | Delete all vectordb profiles created by the user. | 
 
 ### Return type
 
@@ -1026,7 +1078,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -1121,7 +1173,7 @@ import (
 )
 
 func main() {
-	name := "name_example" // string | Name of the workspace
+	name := "name_example" // string | Name of the workspace (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -1166,82 +1218,6 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## LogGet
-
-> Logs LogGet(ctx).Workspace(workspace).UserName(userName).Topic(topic).LogLevel(logLevel).StartTime(startTime).EndTime(endTime).Execute()
-
-Logs
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
-)
-
-func main() {
-	workspace := "workspace_example" // string | Filter the logs based on the workspace. (optional)
-	userName := "userName_example" // string | Filter the logs based on the username. (optional)
-	topic := "topic_example" // string | Filter the logs based on the topic. (optional)
-	logLevel := openapiclient.LogLevels(1) // LogLevels | Filter the logs based on the log_level. (optional)
-	startTime := int64(789) // int64 | Filter the logs starting at this time. (optional)
-	endTime := int64(789) // int64 | Filter the logs ending at this time. (optional)
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.AdminAPI.LogGet(context.Background()).Workspace(workspace).UserName(userName).Topic(topic).LogLevel(logLevel).StartTime(startTime).EndTime(endTime).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AdminAPI.LogGet``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `LogGet`: Logs
-	fmt.Fprintf(os.Stdout, "Response from `AdminAPI.LogGet`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiLogGetRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **workspace** | **string** | Filter the logs based on the workspace. | 
- **userName** | **string** | Filter the logs based on the username. | 
- **topic** | **string** | Filter the logs based on the topic. | 
- **logLevel** | [**LogLevels**](LogLevels.md) | Filter the logs based on the log_level. | 
- **startTime** | **int64** | Filter the logs starting at this time. | 
- **endTime** | **int64** | Filter the logs ending at this time. | 
-
-### Return type
-
-[**Logs**](Logs.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
 ## UpdateModelProfile
 
 > ModelProfile UpdateModelProfile(ctx).ModelProfile(modelProfile).Execute()
@@ -1263,7 +1239,7 @@ import (
 )
 
 func main() {
-	modelProfile := *openapiclient.NewModelProfile("Name_example", openapiclient.ModelProviders(1), "AccessKey_example") // ModelProfile | 
+	modelProfile := *openapiclient.NewModelProfile("{"name":"OpenAI-Dev"}", openapiclient.ModelProviders(1), "AccessKey_example") // ModelProfile | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -1293,72 +1269,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ModelProfile**](ModelProfile.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/xml, application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## UpdateMonitorProfile
-
-> MonitorProfile UpdateMonitorProfile(ctx).MonitorProfile(monitorProfile).Execute()
-
-Monitor Profile
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
-)
-
-func main() {
-	monitorProfile := *openapiclient.NewMonitorProfile("Name_example", openapiclient.MonitorProviders(1), "AccessKey_example", "Endpoint_example") // MonitorProfile | 
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.AdminAPI.UpdateMonitorProfile(context.Background()).MonitorProfile(monitorProfile).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AdminAPI.UpdateMonitorProfile``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `UpdateMonitorProfile`: MonitorProfile
-	fmt.Fprintf(os.Stdout, "Response from `AdminAPI.UpdateMonitorProfile`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiUpdateMonitorProfileRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **monitorProfile** | [**MonitorProfile**](MonitorProfile.md) |  | 
-
-### Return type
-
-[**MonitorProfile**](MonitorProfile.md)
 
 ### Authorization
 
@@ -1461,7 +1371,7 @@ import (
 )
 
 func main() {
-	vectordbProfile := *openapiclient.NewVectordbProfile("Name_example", openapiclient.VectordbProviders(1), *openapiclient.NewVectordbEndpoint(), false) // VectordbProfile | 
+	vectordbProfile := *openapiclient.NewVectordbProfile("Name_example", openapiclient.VectordbProviders(1), *openapiclient.NewVectordbEndpoint()) // VectordbProfile | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -1574,9 +1484,9 @@ Name | Type | Description  | Notes
 
 ## UserProfileDelete
 
-> UserProfileDelete(ctx).UserProfile(userProfile).Execute()
+> DeleteResponse UserProfileDelete(ctx).Execute()
 
-User Profile
+User Profile DELETE.
 
 
 
@@ -1593,34 +1503,31 @@ import (
 )
 
 func main() {
-	userProfile := *openapiclient.NewUserProfile("Workspace_example", "UserName_example") // UserProfile | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.AdminAPI.UserProfileDelete(context.Background()).UserProfile(userProfile).Execute()
+	resp, r, err := apiClient.AdminAPI.UserProfileDelete(context.Background()).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `AdminAPI.UserProfileDelete``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
+	// response from `UserProfileDelete`: DeleteResponse
+	fmt.Fprintf(os.Stdout, "Response from `AdminAPI.UserProfileDelete`: %v\n", resp)
 }
 ```
 
 ### Path Parameters
 
-
+This endpoint does not need any parameter.
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiUserProfileDeleteRequest struct via the builder pattern
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **userProfile** | [**UserProfile**](UserProfile.md) |  | 
-
 ### Return type
 
- (empty response body)
+[**DeleteResponse**](DeleteResponse.md)
 
 ### Authorization
 
@@ -1628,8 +1535,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json
-- **Accept**: Not defined
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)

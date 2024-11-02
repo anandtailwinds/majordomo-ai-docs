@@ -10,13 +10,17 @@
 
 
 /**
- * The parameters used to filter file(s) for ingestion
+ * The parameters used to filter file(s) for ingestion.
  */
 export interface InputFilter { 
     /**
-     * Comma separated list of file(s) to be picked for ingestion. Supports wildcards
+     * Comma separated list of file name specification to be picked for ingestion. Supports wildcards.
      */
     files_list?: string;
+    /**
+     * Indicates that the file wildcards can be matched in sub-directories of the specified source.
+     */
+    recursive?: string;
     /**
      * Name of the blob incase of Azure storage.
      */

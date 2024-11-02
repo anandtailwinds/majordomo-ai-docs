@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **workspace** | **str** | Workspce in which the log was genereated. | 
 **user_name** | **str** | The user for which this log was generated. | 
-**level** | [**LogLevels**](LogLevels.md) |  | 
+**log_level** | [**LogLevels**](LogLevels.md) |  | 
 **topic** | **str** | The topic of the log message. | 
 **timestamp** | **int** | The timestamp of the generated log message. | 
 **message** | **str** | The log message generated for the user. | 
@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from majordomoai.models.log_info import LogInfo
+from majordomo_ai.models.log_info import LogInfo
 
 # TODO update the JSON string below
 json = "{}"

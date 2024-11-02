@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from majordomoai.models.workspace_info import WorkspaceInfo
+from majordomo_ai.models.workspace_info import WorkspaceInfo
 
 # TODO update the JSON string below
 json = "{}"

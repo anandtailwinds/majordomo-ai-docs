@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from majordomoai.models.query_pipelines import QueryPipelines
+from majordomo_ai.models.query_pipelines import QueryPipelines
 
 # TODO update the JSON string below
 json = "{}"

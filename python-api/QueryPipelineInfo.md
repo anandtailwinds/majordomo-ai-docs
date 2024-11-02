@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **workspace** | **str** | Workspce in which the data store is present. | 
 **user_name** | **str** | The user who created the ingest pipeline. | 
 **name** | **str** | Name of the query pipeline. | 
-**data_store_names** | **List[str]** | The type of the parent data store. | [optional] 
+**data_store_names** | **List[str]** | The type of the parent data store. | 
 **embedding_model** | **str** | The embedding model to be used | 
 **llm_model** | **str** | The LLM model to be used | 
 **query_type** | [**QueryTypes**](QueryTypes.md) |  | 
@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from majordomoai.models.query_pipeline_info import QueryPipelineInfo
+from majordomo_ai.models.query_pipeline_info import QueryPipelineInfo
 
 # TODO update the JSON string below
 json = "{}"

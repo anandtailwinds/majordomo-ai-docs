@@ -7,13 +7,14 @@ A data store query request
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **top_k** | **int** | The number of vector db matches to consider for llm context | [optional] [default to 2]
-**model_temperature** | **float** | The temperature of the LLM processing, the higher the more creative the LLM is. | [optional] 
-**query_mode** | **str** |  | [optional] 
+**temperature** | **float** | The temperature of the LLM processing, the higher the more creative the LLM is. | [optional] 
+**doc_metadata** | **Dict[str, str]** | Dictionary of metadata key/value pairs that are to be inserted into the vector database along with the chunks. This is useful while retrieval to restrict the relevant chunks. | [optional] 
+**query_mode** | [**QueryModes**](QueryModes.md) |  | [optional] 
 
 ## Example
 
 ```python
-from majordomoai.models.query_params import QueryParams
+from majordomo_ai.models.query_params import QueryParams
 
 # TODO update the JSON string below
 json = "{}"

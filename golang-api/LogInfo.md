@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Workspace** | **string** | Workspce in which the log was genereated. | 
 **UserName** | **string** | The user for which this log was generated. | 
-**Level** | [**LogLevels**](LogLevels.md) |  | 
+**LogLevel** | [**LogLevels**](LogLevels.md) |  | 
 **Topic** | **string** | The topic of the log message. | 
 **Timestamp** | **int64** | The timestamp of the generated log message. | 
 **Message** | **string** | The log message generated for the user. | 
@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 
 ### NewLogInfo
 
-`func NewLogInfo(workspace string, userName string, level LogLevels, topic string, timestamp int64, message string, ) *LogInfo`
+`func NewLogInfo(workspace string, userName string, logLevel LogLevels, topic string, timestamp int64, message string, ) *LogInfo`
 
 NewLogInfo instantiates a new LogInfo object
 This constructor will assign default values to properties that have it defined,
@@ -70,24 +70,24 @@ and a boolean to check if the value has been set.
 SetUserName sets UserName field to given value.
 
 
-### GetLevel
+### GetLogLevel
 
-`func (o *LogInfo) GetLevel() LogLevels`
+`func (o *LogInfo) GetLogLevel() LogLevels`
 
-GetLevel returns the Level field if non-nil, zero value otherwise.
+GetLogLevel returns the LogLevel field if non-nil, zero value otherwise.
 
-### GetLevelOk
+### GetLogLevelOk
 
-`func (o *LogInfo) GetLevelOk() (*LogLevels, bool)`
+`func (o *LogInfo) GetLogLevelOk() (*LogLevels, bool)`
 
-GetLevelOk returns a tuple with the Level field if it's non-nil, zero value otherwise
+GetLogLevelOk returns a tuple with the LogLevel field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetLevel
+### SetLogLevel
 
-`func (o *LogInfo) SetLevel(v LogLevels)`
+`func (o *LogInfo) SetLogLevel(v LogLevels)`
 
-SetLevel sets Level field to given value.
+SetLogLevel sets LogLevel field to given value.
 
 
 ### GetTopic

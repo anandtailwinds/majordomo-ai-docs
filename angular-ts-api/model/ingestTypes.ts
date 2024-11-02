@@ -15,8 +15,8 @@
 export type IngestTypes = 1 | 2 | 3;
 
 export const IngestTypes = {
-    IngestType_Text: 1 as IngestTypes,
-    IngestType_Images: 2 as IngestTypes,
-    IngestType_Custom: 3 as IngestTypes
+    INGEST_TEXT: 1 as IngestTypes,
+    INGEST_IMAGE: 2 as IngestTypes,
+    INGEST_CUSTOM: 3 as IngestTypes
 };
 

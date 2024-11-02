@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Workspace** | **string** | Workspce in which the data store is present. | 
+**Workspace** | **string** | Workspace in which the data store is present. | 
 **UserName** | **string** | The user who created the ingest pipeline. | 
 **Name** | **string** | Name of the ingest pipeline. | 
 **DataStoreName** | **string** | The name of the parent data store in which this ingest pipeline is present. | 

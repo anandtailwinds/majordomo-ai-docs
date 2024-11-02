@@ -1,12 +1,13 @@
 # InputFilter
 
-The parameters used to filter file(s) for ingestion
+The parameters used to filter file(s) for ingestion.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**files_list** | **str** | Comma separated list of file(s) to be picked for ingestion. Supports wildcards | [optional] 
+**files_list** | **str** | Comma separated list of file name specification to be picked for ingestion. Supports wildcards. | [optional] 
+**recursive** | **str** | Indicates that the file wildcards can be matched in sub-directories of the specified source. | [optional] 
 **az_blob** | **str** | Name of the blob incase of Azure storage. | [optional] 
 **az_account_url** | **str** | Name of the account URL incase of Azure storage. | [optional] 
 **s3_bucket** | **str** | Name of the S3 bucket in case of AWS storage. | [optional] 
@@ -14,7 +15,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from majordomoai.models.input_filter import InputFilter
+from majordomo_ai.models.input_filter import InputFilter
 
 # TODO update the JSON string below
 json = "{}"

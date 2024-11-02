@@ -8,6 +8,7 @@
  * Do not edit the class manually.
  */
 import { ModelProviders } from './modelProviders';
+import { ModelEndpoints } from './modelEndpoints';
 
 
 /**
@@ -18,11 +19,12 @@ export interface ModelProfileInfo {
      * Name of the model profile.
      */
     name: string;
-    model_provider: ModelProviders;
+    provider?: ModelProviders;
     /**
      * List of models allowed for a user who is associated to this profile. Incase list is empty all models available in the provider are allowed.
      */
     allowed_models?: Array<string>;
+    endpoint?: ModelEndpoints;
     /**
      * Access Key for accessing the model
      */

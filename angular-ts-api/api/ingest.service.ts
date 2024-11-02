@@ -19,11 +19,13 @@ import { Observable }                                        from 'rxjs';
 // @ts-ignore
 import { DataStore } from '../model/dataStore';
 // @ts-ignore
+import { DataStoreInfo } from '../model/dataStoreInfo';
+// @ts-ignore
 import { DataStoreIngest } from '../model/dataStoreIngest';
 // @ts-ignore
-import { DataStoreQuery } from '../model/dataStoreQuery';
-// @ts-ignore
 import { DataStores } from '../model/dataStores';
+// @ts-ignore
+import { DeleteResponse } from '../model/deleteResponse';
 // @ts-ignore
 import { IngestPipeline } from '../model/ingestPipeline';
 // @ts-ignore
@@ -37,15 +39,7 @@ import { IngestPipelines } from '../model/ingestPipelines';
 // @ts-ignore
 import { IngestResponse } from '../model/ingestResponse';
 // @ts-ignore
-import { QueryPipeline } from '../model/queryPipeline';
-// @ts-ignore
-import { QueryPipelineInfo } from '../model/queryPipelineInfo';
-// @ts-ignore
-import { QueryPipelineRun } from '../model/queryPipelineRun';
-// @ts-ignore
-import { QueryPipelines } from '../model/queryPipelines';
-// @ts-ignore
-import { QueryResponse } from '../model/queryResponse';
+import { VectorStores } from '../model/vectorStores';
 
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
@@ -56,7 +50,7 @@ import { Configuration }                                     from '../configurat
 @Injectable({
   providedIn: 'root'
 })
-export class RagService {
+export class IngestService {
 
     protected basePath = 'http://localhost:/25001';
     public defaultHeaders = new HttpHeaders();
@@ -121,18 +115,14 @@ export class RagService {
     /**
      * Data Store
      * Create a data store
-     * @param account Account Identifier
      * @param dataStore 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public createDataStore(account: number, dataStore: DataStore, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<DataStores>;
-    public createDataStore(account: number, dataStore: DataStore, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<DataStores>>;
-    public createDataStore(account: number, dataStore: DataStore, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<DataStores>>;
-    public createDataStore(account: number, dataStore: DataStore, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
-        if (account === null || account === undefined) {
-            throw new Error('Required parameter account was null or undefined when calling createDataStore.');
-        }
+    public createDataStore(dataStore: DataStore, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<DataStoreInfo>;
+    public createDataStore(dataStore: DataStore, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<DataStoreInfo>>;
+    public createDataStore(dataStore: DataStore, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<DataStoreInfo>>;
+    public createDataStore(dataStore: DataStore, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
         if (dataStore === null || dataStore === undefined) {
             throw new Error('Required parameter dataStore was null or undefined when calling createDataStore.');
         }
@@ -190,7 +180,7 @@ export class RagService {
         }
 
         let localVarPath = `/data_stores`;
-        return this.httpClient.request<DataStores>('post', `${this.configuration.basePath}${localVarPath}`,
+        return this.httpClient.request<DataStoreInfo>('post', `${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
                 body: dataStore,
@@ -287,88 +277,6 @@ export class RagService {
     }
 
     /**
-     * Query Pipeline
-     * Create a query pipeline
-     * @param queryPipeline 
-     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
-     * @param reportProgress flag to report request and response progress.
-     */
-    public createQueryPipeline(queryPipeline: QueryPipeline, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<QueryPipelineInfo>;
-    public createQueryPipeline(queryPipeline: QueryPipeline, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<QueryPipelineInfo>>;
-    public createQueryPipeline(queryPipeline: QueryPipeline, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<QueryPipelineInfo>>;
-    public createQueryPipeline(queryPipeline: QueryPipeline, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
-        if (queryPipeline === null || queryPipeline === undefined) {
-            throw new Error('Required parameter queryPipeline was null or undefined when calling createQueryPipeline.');
-        }
-
-        let localVarHeaders = this.defaultHeaders;
-
-        let localVarCredential: string | undefined;
-        // authentication (bearerAuth) required
-        localVarCredential = this.configuration.lookupCredential('bearerAuth');
-        if (localVarCredential) {
-            localVarHeaders = localVarHeaders.set('Authorization', 'Bearer ' + localVarCredential);
-        }
-
-        let localVarHttpHeaderAcceptSelected: string | undefined = options && options.httpHeaderAccept;
-        if (localVarHttpHeaderAcceptSelected === undefined) {
-            // to determine the Accept header
-            const httpHeaderAccepts: string[] = [
-                'application/json'
-            ];
-            localVarHttpHeaderAcceptSelected = this.configuration.selectHeaderAccept(httpHeaderAccepts);
-        }
-        if (localVarHttpHeaderAcceptSelected !== undefined) {
-            localVarHeaders = localVarHeaders.set('Accept', localVarHttpHeaderAcceptSelected);
-        }
-
-        let localVarHttpContext: HttpContext | undefined = options && options.context;
-        if (localVarHttpContext === undefined) {
-            localVarHttpContext = new HttpContext();
-        }
-
-        let localVarTransferCache: boolean | undefined = options && options.transferCache;
-        if (localVarTransferCache === undefined) {
-            localVarTransferCache = true;
-        }
-
-
-        // to determine the Content-Type header
-        const consumes: string[] = [
-            'application/json'
-        ];
-        const httpContentTypeSelected: string | undefined = this.configuration.selectHeaderContentType(consumes);
-        if (httpContentTypeSelected !== undefined) {
-            localVarHeaders = localVarHeaders.set('Content-Type', httpContentTypeSelected);
-        }
-
-        let responseType_: 'text' | 'json' | 'blob' = 'json';
-        if (localVarHttpHeaderAcceptSelected) {
-            if (localVarHttpHeaderAcceptSelected.startsWith('text')) {
-                responseType_ = 'text';
-            } else if (this.configuration.isJsonMime(localVarHttpHeaderAcceptSelected)) {
-                responseType_ = 'json';
-            } else {
-                responseType_ = 'blob';
-            }
-        }
-
-        let localVarPath = `/query_pipelines`;
-        return this.httpClient.request<QueryPipelineInfo>('post', `${this.configuration.basePath}${localVarPath}`,
-            {
-                context: localVarHttpContext,
-                body: queryPipeline,
-                responseType: <any>responseType_,
-                withCredentials: this.configuration.withCredentials,
-                headers: localVarHeaders,
-                observe: observe,
-                transferCache: localVarTransferCache,
-                reportProgress: reportProgress
-            }
-        );
-    }
-
-    /**
      * Ingest content into a data store
      * Ingest files into any type of data store
      * @param dataStoreIngest 
@@ -452,18 +360,26 @@ export class RagService {
     }
 
     /**
-     * Query a data store
-     * Query the contents of a data store
-     * @param dataStoreQuery 
+     * Data Store
+     * Delete an existing data store created by the user. All references to this data store need to be removed first, if not the delete will fail.
+     * @param workspace The name of the workspace the data store exists.
+     * @param name The name of the data store to be deleted. If no name is provided and workspace is provided, all data stores in a workspace are deleted.
+     * @param force Normally a data store deletion will succeed only if the corresponding entry in the vector database provider is removed. This is to ensure consistency. If there are scenarios where a discrepancy has creeped in, this option can be used to remove the data store reference in Majordomo AI. This option is available only if both workspace and data store name are provided.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public dataStoreQuery(dataStoreQuery: DataStoreQuery, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<QueryResponse>;
-    public dataStoreQuery(dataStoreQuery: DataStoreQuery, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<QueryResponse>>;
-    public dataStoreQuery(dataStoreQuery: DataStoreQuery, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<QueryResponse>>;
-    public dataStoreQuery(dataStoreQuery: DataStoreQuery, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
-        if (dataStoreQuery === null || dataStoreQuery === undefined) {
-            throw new Error('Required parameter dataStoreQuery was null or undefined when calling dataStoreQuery.');
+    public deleteDataStore(workspace: string, name: string, force: boolean, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<DeleteResponse>;
+    public deleteDataStore(workspace: string, name: string, force: boolean, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<DeleteResponse>>;
+    public deleteDataStore(workspace: string, name: string, force: boolean, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<DeleteResponse>>;
+    public deleteDataStore(workspace: string, name: string, force: boolean, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
+        if (workspace === null || workspace === undefined) {
+            throw new Error('Required parameter workspace was null or undefined when calling deleteDataStore.');
+        }
+        if (name === null || name === undefined) {
+            throw new Error('Required parameter name was null or undefined when calling deleteDataStore.');
+        }
+        if (force === null || force === undefined) {
+            throw new Error('Required parameter force was null or undefined when calling deleteDataStore.');
         }
 
         let localVarHeaders = this.defaultHeaders;
@@ -498,15 +414,6 @@ export class RagService {
         }
 
 
-        // to determine the Content-Type header
-        const consumes: string[] = [
-            'application/json'
-        ];
-        const httpContentTypeSelected: string | undefined = this.configuration.selectHeaderContentType(consumes);
-        if (httpContentTypeSelected !== undefined) {
-            localVarHeaders = localVarHeaders.set('Content-Type', httpContentTypeSelected);
-        }
-
         let responseType_: 'text' | 'json' | 'blob' = 'json';
         if (localVarHttpHeaderAcceptSelected) {
             if (localVarHttpHeaderAcceptSelected.startsWith('text')) {
@@ -518,84 +425,8 @@ export class RagService {
             }
         }
 
-        let localVarPath = `/data_store_query`;
-        return this.httpClient.request<QueryResponse>('post', `${this.configuration.basePath}${localVarPath}`,
-            {
-                context: localVarHttpContext,
-                body: dataStoreQuery,
-                responseType: <any>responseType_,
-                withCredentials: this.configuration.withCredentials,
-                headers: localVarHeaders,
-                observe: observe,
-                transferCache: localVarTransferCache,
-                reportProgress: reportProgress
-            }
-        );
-    }
-
-    /**
-     * Data Store
-     * Delete an existing data store.
-     * @param workspace The name of the workspace the data store exists
-     * @param name The name of the data store to be deleted.
-     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
-     * @param reportProgress flag to report request and response progress.
-     */
-    public deleteDataStore(workspace: string, name: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: undefined, context?: HttpContext, transferCache?: boolean}): Observable<any>;
-    public deleteDataStore(workspace: string, name: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: undefined, context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<any>>;
-    public deleteDataStore(workspace: string, name: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: undefined, context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<any>>;
-    public deleteDataStore(workspace: string, name: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: undefined, context?: HttpContext, transferCache?: boolean}): Observable<any> {
-        if (workspace === null || workspace === undefined) {
-            throw new Error('Required parameter workspace was null or undefined when calling deleteDataStore.');
-        }
-        if (name === null || name === undefined) {
-            throw new Error('Required parameter name was null or undefined when calling deleteDataStore.');
-        }
-
-        let localVarHeaders = this.defaultHeaders;
-
-        let localVarCredential: string | undefined;
-        // authentication (bearerAuth) required
-        localVarCredential = this.configuration.lookupCredential('bearerAuth');
-        if (localVarCredential) {
-            localVarHeaders = localVarHeaders.set('Authorization', 'Bearer ' + localVarCredential);
-        }
-
-        let localVarHttpHeaderAcceptSelected: string | undefined = options && options.httpHeaderAccept;
-        if (localVarHttpHeaderAcceptSelected === undefined) {
-            // to determine the Accept header
-            const httpHeaderAccepts: string[] = [
-            ];
-            localVarHttpHeaderAcceptSelected = this.configuration.selectHeaderAccept(httpHeaderAccepts);
-        }
-        if (localVarHttpHeaderAcceptSelected !== undefined) {
-            localVarHeaders = localVarHeaders.set('Accept', localVarHttpHeaderAcceptSelected);
-        }
-
-        let localVarHttpContext: HttpContext | undefined = options && options.context;
-        if (localVarHttpContext === undefined) {
-            localVarHttpContext = new HttpContext();
-        }
-
-        let localVarTransferCache: boolean | undefined = options && options.transferCache;
-        if (localVarTransferCache === undefined) {
-            localVarTransferCache = true;
-        }
-
-
-        let responseType_: 'text' | 'json' | 'blob' = 'json';
-        if (localVarHttpHeaderAcceptSelected) {
-            if (localVarHttpHeaderAcceptSelected.startsWith('text')) {
-                responseType_ = 'text';
-            } else if (this.configuration.isJsonMime(localVarHttpHeaderAcceptSelected)) {
-                responseType_ = 'json';
-            } else {
-                responseType_ = 'blob';
-            }
-        }
-
-        let localVarPath = `/data_stores`;
-        return this.httpClient.request<any>('delete', `${this.configuration.basePath}${localVarPath}`,
+        let localVarPath = `/data_store/workspace/${this.configuration.encodeParam({name: "workspace", value: workspace, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/name/${this.configuration.encodeParam({name: "name", value: name, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}`;
+        return this.httpClient.request<DeleteResponse>('delete', `${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
                 responseType: <any>responseType_,
@@ -611,16 +442,16 @@ export class RagService {
     /**
      * Ingest Pipeline
      * Delete an existing ingest pipeline.
-     * @param workspace The name of the workspace the ingest pipeline exists
+     * @param workspace The name of the workspace in which the ingest pipeline exists
      * @param dataStoreName The name of the data store in which the ingest pipeline is present.
-     * @param name The name of the ingest pipeline to be deleted.
+     * @param name The name of the ingest pipeline to be deleted. If no name is provided, all ingest pipelines in the data store are deleted.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public deleteIngestPipeline(workspace: string, dataStoreName: string, name: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: undefined, context?: HttpContext, transferCache?: boolean}): Observable<any>;
-    public deleteIngestPipeline(workspace: string, dataStoreName: string, name: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: undefined, context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<any>>;
-    public deleteIngestPipeline(workspace: string, dataStoreName: string, name: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: undefined, context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<any>>;
-    public deleteIngestPipeline(workspace: string, dataStoreName: string, name: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: undefined, context?: HttpContext, transferCache?: boolean}): Observable<any> {
+    public deleteIngestPipeline(workspace: string, dataStoreName: string, name: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<DeleteResponse>;
+    public deleteIngestPipeline(workspace: string, dataStoreName: string, name: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<DeleteResponse>>;
+    public deleteIngestPipeline(workspace: string, dataStoreName: string, name: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<DeleteResponse>>;
+    public deleteIngestPipeline(workspace: string, dataStoreName: string, name: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
         if (workspace === null || workspace === undefined) {
             throw new Error('Required parameter workspace was null or undefined when calling deleteIngestPipeline.');
         }
@@ -644,6 +475,7 @@ export class RagService {
         if (localVarHttpHeaderAcceptSelected === undefined) {
             // to determine the Accept header
             const httpHeaderAccepts: string[] = [
+                'application/json'
             ];
             localVarHttpHeaderAcceptSelected = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         }
@@ -673,83 +505,8 @@ export class RagService {
             }
         }
 
-        let localVarPath = `/ingest_pipelines`;
-        return this.httpClient.request<any>('delete', `${this.configuration.basePath}${localVarPath}`,
-            {
-                context: localVarHttpContext,
-                responseType: <any>responseType_,
-                withCredentials: this.configuration.withCredentials,
-                headers: localVarHeaders,
-                observe: observe,
-                transferCache: localVarTransferCache,
-                reportProgress: reportProgress
-            }
-        );
-    }
-
-    /**
-     * Query Pipeline
-     * Delete an existing query pipeline.
-     * @param name The name of the query pipeline to delete.
-     * @param workspace The workspace in which the query pipeline is present.
-     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
-     * @param reportProgress flag to report request and response progress.
-     */
-    public deleteQueryPipeline(name: string, workspace: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: undefined, context?: HttpContext, transferCache?: boolean}): Observable<any>;
-    public deleteQueryPipeline(name: string, workspace: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: undefined, context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<any>>;
-    public deleteQueryPipeline(name: string, workspace: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: undefined, context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<any>>;
-    public deleteQueryPipeline(name: string, workspace: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: undefined, context?: HttpContext, transferCache?: boolean}): Observable<any> {
-        if (name === null || name === undefined) {
-            throw new Error('Required parameter name was null or undefined when calling deleteQueryPipeline.');
-        }
-        if (workspace === null || workspace === undefined) {
-            throw new Error('Required parameter workspace was null or undefined when calling deleteQueryPipeline.');
-        }
-
-        let localVarHeaders = this.defaultHeaders;
-
-        let localVarCredential: string | undefined;
-        // authentication (bearerAuth) required
-        localVarCredential = this.configuration.lookupCredential('bearerAuth');
-        if (localVarCredential) {
-            localVarHeaders = localVarHeaders.set('Authorization', 'Bearer ' + localVarCredential);
-        }
-
-        let localVarHttpHeaderAcceptSelected: string | undefined = options && options.httpHeaderAccept;
-        if (localVarHttpHeaderAcceptSelected === undefined) {
-            // to determine the Accept header
-            const httpHeaderAccepts: string[] = [
-            ];
-            localVarHttpHeaderAcceptSelected = this.configuration.selectHeaderAccept(httpHeaderAccepts);
-        }
-        if (localVarHttpHeaderAcceptSelected !== undefined) {
-            localVarHeaders = localVarHeaders.set('Accept', localVarHttpHeaderAcceptSelected);
-        }
-
-        let localVarHttpContext: HttpContext | undefined = options && options.context;
-        if (localVarHttpContext === undefined) {
-            localVarHttpContext = new HttpContext();
-        }
-
-        let localVarTransferCache: boolean | undefined = options && options.transferCache;
-        if (localVarTransferCache === undefined) {
-            localVarTransferCache = true;
-        }
-
-
-        let responseType_: 'text' | 'json' | 'blob' = 'json';
-        if (localVarHttpHeaderAcceptSelected) {
-            if (localVarHttpHeaderAcceptSelected.startsWith('text')) {
-                responseType_ = 'text';
-            } else if (this.configuration.isJsonMime(localVarHttpHeaderAcceptSelected)) {
-                responseType_ = 'json';
-            } else {
-                responseType_ = 'blob';
-            }
-        }
-
-        let localVarPath = `/query_pipelines`;
-        return this.httpClient.request<any>('delete', `${this.configuration.basePath}${localVarPath}`,
+        let localVarPath = `/ingest_pipeline/workspace/${this.configuration.encodeParam({name: "workspace", value: workspace, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/data-store/${this.configuration.encodeParam({name: "dataStoreName", value: dataStoreName, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/name/${this.configuration.encodeParam({name: "name", value: name, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}`;
+        return this.httpClient.request<DeleteResponse>('delete', `${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
                 responseType: <any>responseType_,
@@ -770,10 +527,10 @@ export class RagService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getDataStore(name?: number, workspace?: number, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<DataStores>;
-    public getDataStore(name?: number, workspace?: number, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<DataStores>>;
-    public getDataStore(name?: number, workspace?: number, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<DataStores>>;
-    public getDataStore(name?: number, workspace?: number, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
+    public getDataStores(name?: number, workspace?: number, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<DataStores>;
+    public getDataStores(name?: number, workspace?: number, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<DataStores>>;
+    public getDataStores(name?: number, workspace?: number, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<DataStores>>;
+    public getDataStores(name?: number, workspace?: number, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
 
         let localVarQueryParameters = new HttpParams({encoder: this.encoder});
         if (name !== undefined && name !== null) {
@@ -925,26 +682,34 @@ export class RagService {
     }
 
     /**
-     * Query Pipeline Get
-     * Get a list of existing query pipelines.
-     * @param name The name of the query pipeline to retrieve.
-     * @param workspace The workspace to search the query pipeline, mandatory if name is provided.
+     * Vector database information obtained from provider.
+     * Get entries for vector database information obtained from the provider.
+     * @param workspace The workspace in which the data store corresponding to the vector store is present.
+     * @param dataStoreName Name of the data store for which the corresponding vector store information is sought. If none specified, all matching data stores created by the user are scanned.
+     * @param files Obtain the list of files that are ingested into the vector store also. This option is very compute intensive as most vector databases dont provide a way to get this information without downloading the entire database. So this option can be excercised only for one data store at a time, and it is mandatory to provide a specific workspace and data store name.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getQueryPipelines(name?: string, workspace?: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<QueryPipelines>;
-    public getQueryPipelines(name?: string, workspace?: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<QueryPipelines>>;
-    public getQueryPipelines(name?: string, workspace?: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<QueryPipelines>>;
-    public getQueryPipelines(name?: string, workspace?: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
+    public getVectorStores(workspace: string, dataStoreName?: string, files?: boolean, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<VectorStores>;
+    public getVectorStores(workspace: string, dataStoreName?: string, files?: boolean, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<VectorStores>>;
+    public getVectorStores(workspace: string, dataStoreName?: string, files?: boolean, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<VectorStores>>;
+    public getVectorStores(workspace: string, dataStoreName?: string, files?: boolean, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
+        if (workspace === null || workspace === undefined) {
+            throw new Error('Required parameter workspace was null or undefined when calling getVectorStores.');
+        }
 
         let localVarQueryParameters = new HttpParams({encoder: this.encoder});
-        if (name !== undefined && name !== null) {
-          localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
-            <any>name, 'name');
-        }
         if (workspace !== undefined && workspace !== null) {
           localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
             <any>workspace, 'workspace');
+        }
+        if (dataStoreName !== undefined && dataStoreName !== null) {
+          localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
+            <any>dataStoreName, 'data_store_name');
+        }
+        if (files !== undefined && files !== null) {
+          localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
+            <any>files, 'files');
         }
 
         let localVarHeaders = this.defaultHeaders;
@@ -990,8 +755,8 @@ export class RagService {
             }
         }
 
-        let localVarPath = `/query_pipelines`;
-        return this.httpClient.request<QueryPipelines>('get', `${this.configuration.basePath}${localVarPath}`,
+        let localVarPath = `/vector_stores`;
+        return this.httpClient.request<VectorStores>('get', `${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
                 params: localVarQueryParameters,
@@ -1088,102 +853,16 @@ export class RagService {
     }
 
     /**
-     * Query Pipeline Run
-     * Run an already defined query pipeline
-     * @param queryPipelineRun 
-     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
-     * @param reportProgress flag to report request and response progress.
-     */
-    public runQueryPipeline(queryPipelineRun: QueryPipelineRun, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<QueryResponse>;
-    public runQueryPipeline(queryPipelineRun: QueryPipelineRun, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<QueryResponse>>;
-    public runQueryPipeline(queryPipelineRun: QueryPipelineRun, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<QueryResponse>>;
-    public runQueryPipeline(queryPipelineRun: QueryPipelineRun, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
-        if (queryPipelineRun === null || queryPipelineRun === undefined) {
-            throw new Error('Required parameter queryPipelineRun was null or undefined when calling runQueryPipeline.');
-        }
-
-        let localVarHeaders = this.defaultHeaders;
-
-        let localVarCredential: string | undefined;
-        // authentication (bearerAuth) required
-        localVarCredential = this.configuration.lookupCredential('bearerAuth');
-        if (localVarCredential) {
-            localVarHeaders = localVarHeaders.set('Authorization', 'Bearer ' + localVarCredential);
-        }
-
-        let localVarHttpHeaderAcceptSelected: string | undefined = options && options.httpHeaderAccept;
-        if (localVarHttpHeaderAcceptSelected === undefined) {
-            // to determine the Accept header
-            const httpHeaderAccepts: string[] = [
-                'application/json'
-            ];
-            localVarHttpHeaderAcceptSelected = this.configuration.selectHeaderAccept(httpHeaderAccepts);
-        }
-        if (localVarHttpHeaderAcceptSelected !== undefined) {
-            localVarHeaders = localVarHeaders.set('Accept', localVarHttpHeaderAcceptSelected);
-        }
-
-        let localVarHttpContext: HttpContext | undefined = options && options.context;
-        if (localVarHttpContext === undefined) {
-            localVarHttpContext = new HttpContext();
-        }
-
-        let localVarTransferCache: boolean | undefined = options && options.transferCache;
-        if (localVarTransferCache === undefined) {
-            localVarTransferCache = true;
-        }
-
-
-        // to determine the Content-Type header
-        const consumes: string[] = [
-            'application/json'
-        ];
-        const httpContentTypeSelected: string | undefined = this.configuration.selectHeaderContentType(consumes);
-        if (httpContentTypeSelected !== undefined) {
-            localVarHeaders = localVarHeaders.set('Content-Type', httpContentTypeSelected);
-        }
-
-        let responseType_: 'text' | 'json' | 'blob' = 'json';
-        if (localVarHttpHeaderAcceptSelected) {
-            if (localVarHttpHeaderAcceptSelected.startsWith('text')) {
-                responseType_ = 'text';
-            } else if (this.configuration.isJsonMime(localVarHttpHeaderAcceptSelected)) {
-                responseType_ = 'json';
-            } else {
-                responseType_ = 'blob';
-            }
-        }
-
-        let localVarPath = `/query_pipeline_run`;
-        return this.httpClient.request<QueryResponse>('post', `${this.configuration.basePath}${localVarPath}`,
-            {
-                context: localVarHttpContext,
-                body: queryPipelineRun,
-                responseType: <any>responseType_,
-                withCredentials: this.configuration.withCredentials,
-                headers: localVarHeaders,
-                observe: observe,
-                transferCache: localVarTransferCache,
-                reportProgress: reportProgress
-            }
-        );
-    }
-
-    /**
      * Data Store
      * Update an existing data store.
-     * @param account Account Identifier
      * @param dataStore 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public updateDataStore(account: number, dataStore: DataStore, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/xml' | 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<DataStore>;
-    public updateDataStore(account: number, dataStore: DataStore, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/xml' | 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<DataStore>>;
-    public updateDataStore(account: number, dataStore: DataStore, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/xml' | 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<DataStore>>;
-    public updateDataStore(account: number, dataStore: DataStore, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/xml' | 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
-        if (account === null || account === undefined) {
-            throw new Error('Required parameter account was null or undefined when calling updateDataStore.');
-        }
+    public updateDataStore(dataStore: DataStore, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<DataStoreInfo>;
+    public updateDataStore(dataStore: DataStore, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<DataStoreInfo>>;
+    public updateDataStore(dataStore: DataStore, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<DataStoreInfo>>;
+    public updateDataStore(dataStore: DataStore, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
         if (dataStore === null || dataStore === undefined) {
             throw new Error('Required parameter dataStore was null or undefined when calling updateDataStore.');
         }
@@ -1201,7 +880,6 @@ export class RagService {
         if (localVarHttpHeaderAcceptSelected === undefined) {
             // to determine the Accept header
             const httpHeaderAccepts: string[] = [
-                'application/xml',
                 'application/json'
             ];
             localVarHttpHeaderAcceptSelected = this.configuration.selectHeaderAccept(httpHeaderAccepts);
@@ -1242,7 +920,7 @@ export class RagService {
         }
 
         let localVarPath = `/data_stores`;
-        return this.httpClient.request<DataStore>('put', `${this.configuration.basePath}${localVarPath}`,
+        return this.httpClient.request<DataStoreInfo>('put', `${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
                 body: dataStore,
@@ -1328,88 +1006,6 @@ export class RagService {
             {
                 context: localVarHttpContext,
                 body: ingestPipeline,
-                responseType: <any>responseType_,
-                withCredentials: this.configuration.withCredentials,
-                headers: localVarHeaders,
-                observe: observe,
-                transferCache: localVarTransferCache,
-                reportProgress: reportProgress
-            }
-        );
-    }
-
-    /**
-     * Query Pipeline
-     * Update an existing query pipeline.
-     * @param queryPipeline 
-     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
-     * @param reportProgress flag to report request and response progress.
-     */
-    public updateQueryPipeline(queryPipeline: QueryPipeline, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<QueryPipelineInfo>;
-    public updateQueryPipeline(queryPipeline: QueryPipeline, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<QueryPipelineInfo>>;
-    public updateQueryPipeline(queryPipeline: QueryPipeline, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<QueryPipelineInfo>>;
-    public updateQueryPipeline(queryPipeline: QueryPipeline, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
-        if (queryPipeline === null || queryPipeline === undefined) {
-            throw new Error('Required parameter queryPipeline was null or undefined when calling updateQueryPipeline.');
-        }
-
-        let localVarHeaders = this.defaultHeaders;
-
-        let localVarCredential: string | undefined;
-        // authentication (bearerAuth) required
-        localVarCredential = this.configuration.lookupCredential('bearerAuth');
-        if (localVarCredential) {
-            localVarHeaders = localVarHeaders.set('Authorization', 'Bearer ' + localVarCredential);
-        }
-
-        let localVarHttpHeaderAcceptSelected: string | undefined = options && options.httpHeaderAccept;
-        if (localVarHttpHeaderAcceptSelected === undefined) {
-            // to determine the Accept header
-            const httpHeaderAccepts: string[] = [
-                'application/json'
-            ];
-            localVarHttpHeaderAcceptSelected = this.configuration.selectHeaderAccept(httpHeaderAccepts);
-        }
-        if (localVarHttpHeaderAcceptSelected !== undefined) {
-            localVarHeaders = localVarHeaders.set('Accept', localVarHttpHeaderAcceptSelected);
-        }
-
-        let localVarHttpContext: HttpContext | undefined = options && options.context;
-        if (localVarHttpContext === undefined) {
-            localVarHttpContext = new HttpContext();
-        }
-
-        let localVarTransferCache: boolean | undefined = options && options.transferCache;
-        if (localVarTransferCache === undefined) {
-            localVarTransferCache = true;
-        }
-
-
-        // to determine the Content-Type header
-        const consumes: string[] = [
-            'application/json'
-        ];
-        const httpContentTypeSelected: string | undefined = this.configuration.selectHeaderContentType(consumes);
-        if (httpContentTypeSelected !== undefined) {
-            localVarHeaders = localVarHeaders.set('Content-Type', httpContentTypeSelected);
-        }
-
-        let responseType_: 'text' | 'json' | 'blob' = 'json';
-        if (localVarHttpHeaderAcceptSelected) {
-            if (localVarHttpHeaderAcceptSelected.startsWith('text')) {
-                responseType_ = 'text';
-            } else if (this.configuration.isJsonMime(localVarHttpHeaderAcceptSelected)) {
-                responseType_ = 'json';
-            } else {
-                responseType_ = 'blob';
-            }
-        }
-
-        let localVarPath = `/query_pipelines`;
-        return this.httpClient.request<QueryPipelineInfo>('put', `${this.configuration.basePath}${localVarPath}`,
-            {
-                context: localVarHttpContext,
-                body: queryPipeline,
                 responseType: <any>responseType_,
                 withCredentials: this.configuration.withCredentials,
                 headers: localVarHeaders,

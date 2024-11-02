@@ -13,12 +13,11 @@ Name | Type | Description | Notes
 **var_query_params** | [**QueryParams**](QueryParams.md) |  | [optional] 
 **query_string** | **str** | The actual query string for which the user wants a response to. | 
 **query_type** | [**QueryTypes**](QueryTypes.md) |  | 
-**query_mode** | [**QueryModes**](QueryModes.md) |  | [optional] 
 
 ## Example
 
 ```python
-from majordomoai.models.data_store_query import DataStoreQuery
+from majordomo_ai.models.data_store_query import DataStoreQuery
 
 # TODO update the JSON string below
 json = "{}"

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Workspace** | **string** | The workspace this data store belongs to. | 
+**Workspace** | **string** | The workspace the data store belongs to. | 
 **DataStoreName** | **string** | Name of the data store | 
 **InputFilter** | [**InputFilter**](InputFilter.md) |  | 
 **InputKeys** | Pointer to [**InputKeys**](InputKeys.md) |  | [optional] 

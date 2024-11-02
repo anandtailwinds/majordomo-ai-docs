@@ -8,13 +8,13 @@ Name | Type | Description | Notes
 **Provider** | [**VectordbProviders**](VectordbProviders.md) |  | 
 **AccessKey** | Pointer to **string** | Access Key for accessing the Vectordb | [optional] 
 **Endpoint** | [**VectordbEndpoint**](VectordbEndpoint.md) |  | 
-**Readonly** | **bool** | If this condition is set to true, then only read operations are permitted to this vector database. This can be used by administrators to restrict users from modifying the contents arbitrarily. | [default to false]
+**ReadOnly** | Pointer to **bool** | If this condition is set to true, then only read operations are permitted to this vector database. This can be used by administrators to restrict users from modifying the contents arbitrarily. | [optional] [default to false]
 
 ## Methods
 
 ### NewVectordbProfile
 
-`func NewVectordbProfile(name string, provider VectordbProviders, endpoint VectordbEndpoint, readonly bool, ) *VectordbProfile`
+`func NewVectordbProfile(name string, provider VectordbProviders, endpoint VectordbEndpoint, ) *VectordbProfile`
 
 NewVectordbProfile instantiates a new VectordbProfile object
 This constructor will assign default values to properties that have it defined,
@@ -114,25 +114,30 @@ and a boolean to check if the value has been set.
 SetEndpoint sets Endpoint field to given value.
 
 
-### GetReadonly
+### GetReadOnly
 
-`func (o *VectordbProfile) GetReadonly() bool`
+`func (o *VectordbProfile) GetReadOnly() bool`
 
-GetReadonly returns the Readonly field if non-nil, zero value otherwise.
+GetReadOnly returns the ReadOnly field if non-nil, zero value otherwise.
 
-### GetReadonlyOk
+### GetReadOnlyOk
 
-`func (o *VectordbProfile) GetReadonlyOk() (*bool, bool)`
+`func (o *VectordbProfile) GetReadOnlyOk() (*bool, bool)`
 
-GetReadonlyOk returns a tuple with the Readonly field if it's non-nil, zero value otherwise
+GetReadOnlyOk returns a tuple with the ReadOnly field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetReadonly
+### SetReadOnly
 
-`func (o *VectordbProfile) SetReadonly(v bool)`
+`func (o *VectordbProfile) SetReadOnly(v bool)`
 
-SetReadonly sets Readonly field to given value.
+SetReadOnly sets ReadOnly field to given value.
 
+### HasReadOnly
+
+`func (o *VectordbProfile) HasReadOnly() bool`
+
+HasReadOnly returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

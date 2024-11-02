@@ -1,13 +1,14 @@
 # DataStoreTypes
 
+The different types of data stores that are supported.
 
 ## Enum
 
-* `DataStoreType_Vector` (value: `1`)
+* `VECTOR_DATABASE` (value: `1`)
 
-* `DataStoreType_Structured` (value: `2`)
+* `STRUCTURED_DATABASE` (value: `2`)
 
-* `DataStoreType_Image` (value: `3`)
+* `IMAGE_DATABASE` (value: `3`)
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

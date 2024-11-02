@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from majordomoai.models.vectordb_endpoint import VectordbEndpoint
+from majordomo_ai.models.vectordb_endpoint import VectordbEndpoint
 
 # TODO update the JSON string below
 json = "{}"

@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from majordomoai.models.input_keys import InputKeys
+from majordomo_ai.models.input_keys import InputKeys
 
 # TODO update the JSON string below
 json = "{}"

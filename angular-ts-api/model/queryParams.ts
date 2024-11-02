@@ -7,6 +7,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import { QueryModes } from './queryModes';
 
 
 /**
@@ -20,7 +21,14 @@ export interface QueryParams {
     /**
      * The temperature of the LLM processing, the higher the more creative the LLM is.
      */
-    model_temperature?: number;
-    query_mode?: string;
+    temperature?: number;
+    /**
+     * Dictionary of metadata key/value pairs that are to be inserted into the vector database along with the chunks. This is useful while retrieval to restrict the relevant chunks.
+     */
+    doc_metadata?: { [key: string]: string; };
+    query_mode?: QueryModes;
 }
+export namespace QueryParams {
+}
+
 

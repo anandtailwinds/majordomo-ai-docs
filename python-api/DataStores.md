@@ -1,5 +1,6 @@
 # DataStores
 
+This contains an configuration and operational information for an array of data stores and is returned for GET operations.
 
 ## Properties
 
@@ -10,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from majordomoai.models.data_stores import DataStores
+from majordomo_ai.models.data_stores import DataStores
 
 # TODO update the JSON string below
 json = "{}"

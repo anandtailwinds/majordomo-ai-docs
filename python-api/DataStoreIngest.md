@@ -1,12 +1,12 @@
 # DataStoreIngest
 
-Data store ingest parameters
+The ingest parameters that are used for performing an ingest operation using a data store.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**workspace** | **str** | The workspace this data store belongs to. | 
+**workspace** | **str** | The workspace the data store belongs to. | 
 **data_store_name** | **str** | Name of the data store | 
 **input_filter** | [**InputFilter**](InputFilter.md) |  | 
 **input_keys** | [**InputKeys**](InputKeys.md) |  | [optional] 
@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from majordomoai.models.data_store_ingest import DataStoreIngest
+from majordomo_ai.models.data_store_ingest import DataStoreIngest
 
 # TODO update the JSON string below
 json = "{}"

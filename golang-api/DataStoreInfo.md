@@ -4,31 +4,25 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Workspace** | **string** | Workspce in which the data store is present. | 
+**Workspace** | **string** | Workspace in which the data store is present. | 
 **Name** | **string** | Name of the data store. | 
 **UserName** | **string** | The user who created the data store. | 
-**Type** | [**DataStoreTypes**](DataStoreTypes.md) |  | 
-**VectordbProfile** | Pointer to **string** | Name of the Vector DB profile. | [optional] 
-**VectordbEmbedding** | Pointer to **string** | The embedding model to be used while ingesting data (applies for vector DB only) | [optional] 
-**StructdbUrl** | Pointer to **string** | The endpoint of the structure database such as SQL/MongoDB. | [optional] 
-**StructdbName** | Pointer to **string** | The name of the database in the structured database. | [optional] 
-**StructdbTable** | Pointer to **string** | The name of the table in the structured database. | [optional] 
-**Status** | Pointer to **string** | If the status is active, it indicates that the vector database is present in the provider. | [optional] 
-**VectordbDimension** | Pointer to **int64** | Dimensions in case of a vector database. | [optional] 
-**VectordbRecords** | Pointer to **int64** | Total number of document chunks in case of a vector database. | [optional] 
+**StoreType** | [**DataStoreTypes**](DataStoreTypes.md) |  | 
+**VectordbStore** | Pointer to [**VectordbStore**](VectordbStore.md) |  | [optional] 
+**StructdbStore** | Pointer to [**StructdbStore**](StructdbStore.md) |  | [optional] 
 **CreatedAt** | **int64** | Timestamp of the data store creation. | 
 **LastUpdate** | **int64** | Timestamp of the last update to the data store. | 
-**LastQuery** | Pointer to **int64** | Timestamp of last query using the data store. | [optional] 
-**LastIngest** | Pointer to **int64** | Timestamp of the last ingestion to the data store. | [optional] 
-**DirectIngestCount** | Pointer to **int64** | Number of direct ingestions done to the data store until now. | [optional] 
-**PipelineIngestCount** | Pointer to **int64** | Number of pipeline ingestions done to the data store until now. | [optional] 
-**ErrorIngestCount** | Pointer to **int64** | Number of ingestions resulting in errors. | [optional] 
+**LastQuery** | **int64** | Timestamp of last query using the data store. | 
+**LastIngest** | **int64** | Timestamp of the last ingestion to the data store. | 
+**DirectIngestCount** | **int64** | Number of direct ingestions done to the data store until now. | 
+**PipelineIngestCount** | **int64** | Number of pipeline ingestions done to the data store until now. | 
+**ErrorIngestCount** | **int64** | Number of ingestions resulting in errors. | 
 
 ## Methods
 
 ### NewDataStoreInfo
 
-`func NewDataStoreInfo(workspace string, name string, userName string, type_ DataStoreTypes, createdAt int64, lastUpdate int64, ) *DataStoreInfo`
+`func NewDataStoreInfo(workspace string, name string, userName string, storeType DataStoreTypes, createdAt int64, lastUpdate int64, lastQuery int64, lastIngest int64, directIngestCount int64, pipelineIngestCount int64, errorIngestCount int64, ) *DataStoreInfo`
 
 NewDataStoreInfo instantiates a new DataStoreInfo object
 This constructor will assign default values to properties that have it defined,
@@ -103,225 +97,75 @@ and a boolean to check if the value has been set.
 SetUserName sets UserName field to given value.
 
 
-### GetType
+### GetStoreType
 
-`func (o *DataStoreInfo) GetType() DataStoreTypes`
+`func (o *DataStoreInfo) GetStoreType() DataStoreTypes`
 
-GetType returns the Type field if non-nil, zero value otherwise.
+GetStoreType returns the StoreType field if non-nil, zero value otherwise.
 
-### GetTypeOk
+### GetStoreTypeOk
 
-`func (o *DataStoreInfo) GetTypeOk() (*DataStoreTypes, bool)`
+`func (o *DataStoreInfo) GetStoreTypeOk() (*DataStoreTypes, bool)`
 
-GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
+GetStoreTypeOk returns a tuple with the StoreType field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetType
+### SetStoreType
 
-`func (o *DataStoreInfo) SetType(v DataStoreTypes)`
+`func (o *DataStoreInfo) SetStoreType(v DataStoreTypes)`
 
-SetType sets Type field to given value.
+SetStoreType sets StoreType field to given value.
 
 
-### GetVectordbProfile
+### GetVectordbStore
 
-`func (o *DataStoreInfo) GetVectordbProfile() string`
+`func (o *DataStoreInfo) GetVectordbStore() VectordbStore`
 
-GetVectordbProfile returns the VectordbProfile field if non-nil, zero value otherwise.
+GetVectordbStore returns the VectordbStore field if non-nil, zero value otherwise.
 
-### GetVectordbProfileOk
+### GetVectordbStoreOk
 
-`func (o *DataStoreInfo) GetVectordbProfileOk() (*string, bool)`
+`func (o *DataStoreInfo) GetVectordbStoreOk() (*VectordbStore, bool)`
 
-GetVectordbProfileOk returns a tuple with the VectordbProfile field if it's non-nil, zero value otherwise
+GetVectordbStoreOk returns a tuple with the VectordbStore field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetVectordbProfile
+### SetVectordbStore
 
-`func (o *DataStoreInfo) SetVectordbProfile(v string)`
+`func (o *DataStoreInfo) SetVectordbStore(v VectordbStore)`
 
-SetVectordbProfile sets VectordbProfile field to given value.
+SetVectordbStore sets VectordbStore field to given value.
 
-### HasVectordbProfile
+### HasVectordbStore
 
-`func (o *DataStoreInfo) HasVectordbProfile() bool`
+`func (o *DataStoreInfo) HasVectordbStore() bool`
 
-HasVectordbProfile returns a boolean if a field has been set.
+HasVectordbStore returns a boolean if a field has been set.
 
-### GetVectordbEmbedding
+### GetStructdbStore
 
-`func (o *DataStoreInfo) GetVectordbEmbedding() string`
+`func (o *DataStoreInfo) GetStructdbStore() StructdbStore`
 
-GetVectordbEmbedding returns the VectordbEmbedding field if non-nil, zero value otherwise.
+GetStructdbStore returns the StructdbStore field if non-nil, zero value otherwise.
 
-### GetVectordbEmbeddingOk
+### GetStructdbStoreOk
 
-`func (o *DataStoreInfo) GetVectordbEmbeddingOk() (*string, bool)`
+`func (o *DataStoreInfo) GetStructdbStoreOk() (*StructdbStore, bool)`
 
-GetVectordbEmbeddingOk returns a tuple with the VectordbEmbedding field if it's non-nil, zero value otherwise
+GetStructdbStoreOk returns a tuple with the StructdbStore field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetVectordbEmbedding
+### SetStructdbStore
 
-`func (o *DataStoreInfo) SetVectordbEmbedding(v string)`
+`func (o *DataStoreInfo) SetStructdbStore(v StructdbStore)`
 
-SetVectordbEmbedding sets VectordbEmbedding field to given value.
+SetStructdbStore sets StructdbStore field to given value.
 
-### HasVectordbEmbedding
+### HasStructdbStore
 
-`func (o *DataStoreInfo) HasVectordbEmbedding() bool`
+`func (o *DataStoreInfo) HasStructdbStore() bool`
 
-HasVectordbEmbedding returns a boolean if a field has been set.
-
-### GetStructdbUrl
-
-`func (o *DataStoreInfo) GetStructdbUrl() string`
-
-GetStructdbUrl returns the StructdbUrl field if non-nil, zero value otherwise.
-
-### GetStructdbUrlOk
-
-`func (o *DataStoreInfo) GetStructdbUrlOk() (*string, bool)`
-
-GetStructdbUrlOk returns a tuple with the StructdbUrl field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetStructdbUrl
-
-`func (o *DataStoreInfo) SetStructdbUrl(v string)`
-
-SetStructdbUrl sets StructdbUrl field to given value.
-
-### HasStructdbUrl
-
-`func (o *DataStoreInfo) HasStructdbUrl() bool`
-
-HasStructdbUrl returns a boolean if a field has been set.
-
-### GetStructdbName
-
-`func (o *DataStoreInfo) GetStructdbName() string`
-
-GetStructdbName returns the StructdbName field if non-nil, zero value otherwise.
-
-### GetStructdbNameOk
-
-`func (o *DataStoreInfo) GetStructdbNameOk() (*string, bool)`
-
-GetStructdbNameOk returns a tuple with the StructdbName field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetStructdbName
-
-`func (o *DataStoreInfo) SetStructdbName(v string)`
-
-SetStructdbName sets StructdbName field to given value.
-
-### HasStructdbName
-
-`func (o *DataStoreInfo) HasStructdbName() bool`
-
-HasStructdbName returns a boolean if a field has been set.
-
-### GetStructdbTable
-
-`func (o *DataStoreInfo) GetStructdbTable() string`
-
-GetStructdbTable returns the StructdbTable field if non-nil, zero value otherwise.
-
-### GetStructdbTableOk
-
-`func (o *DataStoreInfo) GetStructdbTableOk() (*string, bool)`
-
-GetStructdbTableOk returns a tuple with the StructdbTable field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetStructdbTable
-
-`func (o *DataStoreInfo) SetStructdbTable(v string)`
-
-SetStructdbTable sets StructdbTable field to given value.
-
-### HasStructdbTable
-
-`func (o *DataStoreInfo) HasStructdbTable() bool`
-
-HasStructdbTable returns a boolean if a field has been set.
-
-### GetStatus
-
-`func (o *DataStoreInfo) GetStatus() string`
-
-GetStatus returns the Status field if non-nil, zero value otherwise.
-
-### GetStatusOk
-
-`func (o *DataStoreInfo) GetStatusOk() (*string, bool)`
-
-GetStatusOk returns a tuple with the Status field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetStatus
-
-`func (o *DataStoreInfo) SetStatus(v string)`
-
-SetStatus sets Status field to given value.
-
-### HasStatus
-
-`func (o *DataStoreInfo) HasStatus() bool`
-
-HasStatus returns a boolean if a field has been set.
-
-### GetVectordbDimension
-
-`func (o *DataStoreInfo) GetVectordbDimension() int64`
-
-GetVectordbDimension returns the VectordbDimension field if non-nil, zero value otherwise.
-
-### GetVectordbDimensionOk
-
-`func (o *DataStoreInfo) GetVectordbDimensionOk() (*int64, bool)`
-
-GetVectordbDimensionOk returns a tuple with the VectordbDimension field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetVectordbDimension
-
-`func (o *DataStoreInfo) SetVectordbDimension(v int64)`
-
-SetVectordbDimension sets VectordbDimension field to given value.
-
-### HasVectordbDimension
-
-`func (o *DataStoreInfo) HasVectordbDimension() bool`
-
-HasVectordbDimension returns a boolean if a field has been set.
-
-### GetVectordbRecords
-
-`func (o *DataStoreInfo) GetVectordbRecords() int64`
-
-GetVectordbRecords returns the VectordbRecords field if non-nil, zero value otherwise.
-
-### GetVectordbRecordsOk
-
-`func (o *DataStoreInfo) GetVectordbRecordsOk() (*int64, bool)`
-
-GetVectordbRecordsOk returns a tuple with the VectordbRecords field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetVectordbRecords
-
-`func (o *DataStoreInfo) SetVectordbRecords(v int64)`
-
-SetVectordbRecords sets VectordbRecords field to given value.
-
-### HasVectordbRecords
-
-`func (o *DataStoreInfo) HasVectordbRecords() bool`
-
-HasVectordbRecords returns a boolean if a field has been set.
+HasStructdbStore returns a boolean if a field has been set.
 
 ### GetCreatedAt
 
@@ -382,11 +226,6 @@ and a boolean to check if the value has been set.
 
 SetLastQuery sets LastQuery field to given value.
 
-### HasLastQuery
-
-`func (o *DataStoreInfo) HasLastQuery() bool`
-
-HasLastQuery returns a boolean if a field has been set.
 
 ### GetLastIngest
 
@@ -407,11 +246,6 @@ and a boolean to check if the value has been set.
 
 SetLastIngest sets LastIngest field to given value.
 
-### HasLastIngest
-
-`func (o *DataStoreInfo) HasLastIngest() bool`
-
-HasLastIngest returns a boolean if a field has been set.
 
 ### GetDirectIngestCount
 
@@ -432,11 +266,6 @@ and a boolean to check if the value has been set.
 
 SetDirectIngestCount sets DirectIngestCount field to given value.
 
-### HasDirectIngestCount
-
-`func (o *DataStoreInfo) HasDirectIngestCount() bool`
-
-HasDirectIngestCount returns a boolean if a field has been set.
 
 ### GetPipelineIngestCount
 
@@ -457,11 +286,6 @@ and a boolean to check if the value has been set.
 
 SetPipelineIngestCount sets PipelineIngestCount field to given value.
 
-### HasPipelineIngestCount
-
-`func (o *DataStoreInfo) HasPipelineIngestCount() bool`
-
-HasPipelineIngestCount returns a boolean if a field has been set.
 
 ### GetErrorIngestCount
 
@@ -482,11 +306,6 @@ and a boolean to check if the value has been set.
 
 SetErrorIngestCount sets ErrorIngestCount field to given value.
 
-### HasErrorIngestCount
-
-`func (o *DataStoreInfo) HasErrorIngestCount() bool`
-
-HasErrorIngestCount returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

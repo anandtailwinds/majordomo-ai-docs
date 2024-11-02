@@ -9,10 +9,13 @@
  */
 
 
+/**
+ * The different sub-types of data stores that are supported. Sub-type validity will be determined by the data store type.
+ */
 export type DataStoreSubTypes = 1 | 2;
 
 export const DataStoreSubTypes = {
-    DataStoreSubType_SQL: 1 as DataStoreSubTypes,
-    DataStoreType_MongoDB: 2 as DataStoreSubTypes
+    DBTYPE_SQL: 1 as DataStoreSubTypes,
+    DBTYPE_MONGO: 2 as DataStoreSubTypes
 };
 

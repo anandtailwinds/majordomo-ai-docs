@@ -15,8 +15,8 @@
 export type VectordbProviders = 1 | 2 | 3;
 
 export const VectordbProviders = {
-    Vectordb_Pinecone: 1 as VectordbProviders,
-    Vectordb_Internal: 2 as VectordbProviders,
-    Vectordb_Mongodb: 3 as VectordbProviders
+    PINECONE_VECTORDB: 1 as VectordbProviders,
+    INTERNAL_VECTORDB: 2 as VectordbProviders,
+    MONGO_VECTORDB: 3 as VectordbProviders
 };
 

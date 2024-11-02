@@ -9,12 +9,13 @@
  */
 
 
-export type LogLevel = 1 | 2 | 3 | 4;
-
-export const LogLevel = {
-    Debug: 1 as LogLevel,
-    Info: 2 as LogLevel,
-    Warn: 3 as LogLevel,
-    Error: 4 as LogLevel
-};
+/**
+ * Model profile Information
+ */
+export interface ModelEndpoints { 
+    /**
+     * The AWS region in case of AWS Bedrock Provider.
+     */
+    aws_region?: string;
+}
 

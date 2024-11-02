@@ -1,12 +1,12 @@
 # IngestPipelineInfo
 
-Ingest Pipeline configuration and operation information.
+Ingest Pipeline configuration and operation information that is returned in GET requests.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**workspace** | **str** | Workspce in which the data store is present. | 
+**workspace** | **str** | Workspace in which the data store is present. | 
 **user_name** | **str** | The user who created the ingest pipeline. | 
 **name** | **str** | Name of the ingest pipeline. | 
 **data_store_name** | **str** | The name of the parent data store in which this ingest pipeline is present. | 
@@ -23,7 +23,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from majordomoai.models.ingest_pipeline_info import IngestPipelineInfo
+from majordomo_ai.models.ingest_pipeline_info import IngestPipelineInfo
 
 # TODO update the JSON string below
 json = "{}"

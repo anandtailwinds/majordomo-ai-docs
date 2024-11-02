@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**IngestPipelines** | Pointer to [**[]IngestPipelineInfo**](IngestPipelineInfo.md) |  | [optional] 
+**IngestPipelines** | Pointer to [**[]IngestPipelineInfo**](IngestPipelineInfo.md) | A list of individual ingest pipeline configuration and operation information that is returned in GET requests. | [optional] 
 
 ## Methods
 

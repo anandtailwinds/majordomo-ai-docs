@@ -10,7 +10,13 @@
 import { IngestPipelineInfo } from './ingestPipelineInfo';
 
 
+/**
+ * A list of individual ingest pipeline configuration and operation information that is returned in GET requests.
+ */
 export interface IngestPipelines { 
+    /**
+     * A list of individual ingest pipeline configuration and operation information that is returned in GET requests.
+     */
     ingest_pipelines?: Array<IngestPipelineInfo>;
 }
 

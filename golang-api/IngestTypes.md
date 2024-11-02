@@ -3,11 +3,11 @@
 ## Enum
 
 
-* `IngestType_Text` (value: `1`)
+* `INGEST_TEXT` (value: `1`)
 
-* `IngestType_Images` (value: `2`)
+* `INGEST_IMAGE` (value: `2`)
 
-* `IngestType_Custom` (value: `3`)
+* `INGEST_CUSTOM` (value: `3`)
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -1,35 +1,29 @@
 # DataStoreInfo
 
-Data store configuration and operation information.
+This contains configuration and operational information about a single data store and is returned for GET operation.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**workspace** | **str** | Workspce in which the data store is present. | 
+**workspace** | **str** | Workspace in which the data store is present. | 
 **name** | **str** | Name of the data store. | 
 **user_name** | **str** | The user who created the data store. | 
-**type** | [**DataStoreTypes**](DataStoreTypes.md) |  | 
-**vectordb_profile** | **str** | Name of the Vector DB profile. | [optional] 
-**vectordb_embedding** | **str** | The embedding model to be used while ingesting data (applies for vector DB only) | [optional] 
-**structdb_url** | **str** | The endpoint of the structure database such as SQL/MongoDB. | [optional] 
-**structdb_name** | **str** | The name of the database in the structured database. | [optional] 
-**structdb_table** | **str** | The name of the table in the structured database. | [optional] 
-**status** | **str** | If the status is active, it indicates that the vector database is present in the provider. | [optional] 
-**vectordb_dimension** | **int** | Dimensions in case of a vector database. | [optional] 
-**vectordb_records** | **int** | Total number of document chunks in case of a vector database. | [optional] 
+**store_type** | [**DataStoreTypes**](DataStoreTypes.md) |  | 
+**vectordb_store** | [**VectordbStore**](VectordbStore.md) |  | [optional] 
+**structdb_store** | [**StructdbStore**](StructdbStore.md) |  | [optional] 
 **created_at** | **int** | Timestamp of the data store creation. | 
 **last_update** | **int** | Timestamp of the last update to the data store. | 
-**last_query** | **int** | Timestamp of last query using the data store. | [optional] 
-**last_ingest** | **int** | Timestamp of the last ingestion to the data store. | [optional] 
-**direct_ingest_count** | **int** | Number of direct ingestions done to the data store until now. | [optional] 
-**pipeline_ingest_count** | **int** | Number of pipeline ingestions done to the data store until now. | [optional] 
-**error_ingest_count** | **int** | Number of ingestions resulting in errors. | [optional] 
+**last_query** | **int** | Timestamp of last query using the data store. | 
+**last_ingest** | **int** | Timestamp of the last ingestion to the data store. | 
+**direct_ingest_count** | **int** | Number of direct ingestions done to the data store until now. | 
+**pipeline_ingest_count** | **int** | Number of pipeline ingestions done to the data store until now. | 
+**error_ingest_count** | **int** | Number of ingestions resulting in errors. | 
 
 ## Example
 
 ```python
-from majordomoai.models.data_store_info import DataStoreInfo
+from majordomo_ai.models.data_store_info import DataStoreInfo
 
 # TODO update the JSON string below
 json = "{}"

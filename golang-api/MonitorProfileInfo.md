@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **Name** | **string** | Name of the monitor profile. | 
 **Provider** | [**MonitorProviders**](MonitorProviders.md) |  | 
 **Endpoint** | **string** | URL of the monitoring tool endpoint. | 
-**AccessKey** | Pointer to **string** | Access Key for accessing the monitoring tool. | [optional] 
+**AccessKey** | **string** | Access Key for accessing the monitoring tool. | 
 **CreatedBy** | **string** | Identifies the user who created this monitor profile. | 
 **CreatedAt** | **int64** | Timestamp of the monitor profile creation. | 
 **LastUpdate** | **int64** | Timestamp of the last update to the monitor profile. | 
@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 
 ### NewMonitorProfileInfo
 
-`func NewMonitorProfileInfo(name string, provider MonitorProviders, endpoint string, createdBy string, createdAt int64, lastUpdate int64, ) *MonitorProfileInfo`
+`func NewMonitorProfileInfo(name string, provider MonitorProviders, endpoint string, accessKey string, createdBy string, createdAt int64, lastUpdate int64, ) *MonitorProfileInfo`
 
 NewMonitorProfileInfo instantiates a new MonitorProfileInfo object
 This constructor will assign default values to properties that have it defined,
@@ -110,11 +110,6 @@ and a boolean to check if the value has been set.
 
 SetAccessKey sets AccessKey field to given value.
 
-### HasAccessKey
-
-`func (o *MonitorProfileInfo) HasAccessKey() bool`
-
-HasAccessKey returns a boolean if a field has been set.
 
 ### GetCreatedBy
 

@@ -1,5 +1,9 @@
 export * from './admin.service';
 import { AdminService } from './admin.service';
-export * from './rag.service';
-import { RagService } from './rag.service';
-export const APIS = [AdminService, RagService];
+export * from './ingest.service';
+import { IngestService } from './ingest.service';
+export * from './monitor.service';
+import { MonitorService } from './monitor.service';
+export * from './query.service';
+import { QueryService } from './query.service';
+export const APIS = [AdminService, IngestService, MonitorService, QueryService];

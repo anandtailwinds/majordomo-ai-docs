@@ -10,14 +10,12 @@
 
 
 /**
- * The type of query.
+ * Defines the handling of scenarios where the context cannot fit the entire query with vector retrievals.
  */
-export type QueryTypes = 1 | 2 | 3 | 4;
+export type QueryTypes = 1 | 2;
 
 export const QueryTypes = {
-    QueryType_Text: 1 as QueryTypes,
-    QueryType_TextAndImage: 2 as QueryTypes,
-    QueryType_SQL: 3 as QueryTypes,
-    QueryType_ChainOfThought: 4 as QueryTypes
+    TEXT_QUERY: 1 as QueryTypes,
+    SQL_QUERY: 2 as QueryTypes
 };
 

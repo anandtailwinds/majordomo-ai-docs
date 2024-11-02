@@ -13,8 +13,8 @@ Name | Type | Description | Notes
 **InputType** | [**InputTypes**](InputTypes.md) |  | 
 **IngestType** | [**IngestTypes**](IngestTypes.md) |  | 
 **IngestParams** | Pointer to [**IngestParams**](IngestParams.md) |  | [optional] 
-**TimerOn** | Pointer to **bool** |  | [optional] 
-**TimerInterval** | Pointer to **int64** |  | [optional] 
+**TimerOn** | Pointer to **bool** | Turn on the ingestion timer, once the timer expires the specified ingestion action is performed. | [optional] 
+**TimerInterval** | Pointer to **int64** | Specify the timer interval for the ingestion action in minutes. | [optional] 
 
 ## Methods
 

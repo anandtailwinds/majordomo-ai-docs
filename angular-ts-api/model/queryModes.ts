@@ -15,8 +15,8 @@
 export type QueryModes = 1 | 2 | 3;
 
 export const QueryModes = {
-    QueryMode_Refine: 1 as QueryModes,
-    QueryMode_Compact: 2 as QueryModes,
-    QueryMode_Accumulate: 3 as QueryModes
+    REFINE_MODE: 1 as QueryModes,
+    COMPACT_MODE: 2 as QueryModes,
+    ACCUMULATE_MODE: 3 as QueryModes
 };
 

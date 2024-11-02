@@ -4,7 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**FilesList** | Pointer to **string** | Comma separated list of file(s) to be picked for ingestion. Supports wildcards | [optional] 
+**FilesList** | Pointer to **string** | Comma separated list of file name specification to be picked for ingestion. Supports wildcards. | [optional] 
+**Recursive** | Pointer to **string** | Indicates that the file wildcards can be matched in sub-directories of the specified source. | [optional] 
 **AzBlob** | Pointer to **string** | Name of the blob incase of Azure storage. | [optional] 
 **AzAccountUrl** | Pointer to **string** | Name of the account URL incase of Azure storage. | [optional] 
 **S3Bucket** | Pointer to **string** | Name of the S3 bucket in case of AWS storage. | [optional] 
@@ -52,6 +53,31 @@ SetFilesList sets FilesList field to given value.
 `func (o *InputFilter) HasFilesList() bool`
 
 HasFilesList returns a boolean if a field has been set.
+
+### GetRecursive
+
+`func (o *InputFilter) GetRecursive() string`
+
+GetRecursive returns the Recursive field if non-nil, zero value otherwise.
+
+### GetRecursiveOk
+
+`func (o *InputFilter) GetRecursiveOk() (*string, bool)`
+
+GetRecursiveOk returns a tuple with the Recursive field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRecursive
+
+`func (o *InputFilter) SetRecursive(v string)`
+
+SetRecursive sets Recursive field to given value.
+
+### HasRecursive
+
+`func (o *InputFilter) HasRecursive() bool`
+
+HasRecursive returns a boolean if a field has been set.
 
 ### GetAzBlob
 

@@ -15,9 +15,9 @@
 export type InputTypes = 1 | 2 | 3 | 4;
 
 export const InputTypes = {
-    InputType_AWSS3: 1 as InputTypes,
-    InputType_AzureBlob: 2 as InputTypes,
-    InputType_Webpage: 3 as InputTypes,
-    InputType_Local: 4 as InputTypes
+    SOURCE_AWS_S3: 1 as InputTypes,
+    SOURCE_AZURE_BLOB: 2 as InputTypes,
+    SOURCE_WEBPAGE: 3 as InputTypes,
+    SOURCE_LOCAL: 4 as InputTypes
 };
 

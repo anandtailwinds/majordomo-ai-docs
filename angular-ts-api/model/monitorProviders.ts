@@ -15,6 +15,6 @@
 export type MonitorProviders = 1;
 
 export const MonitorProviders = {
-    Provider_Langfuse: 1 as MonitorProviders
+    LANGFUSE: 1 as MonitorProviders
 };
 

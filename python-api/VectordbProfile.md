@@ -10,12 +10,12 @@ Name | Type | Description | Notes
 **provider** | [**VectordbProviders**](VectordbProviders.md) |  | 
 **access_key** | **str** | Access Key for accessing the Vectordb | [optional] 
 **endpoint** | [**VectordbEndpoint**](VectordbEndpoint.md) |  | 
-**readonly** | **bool** | If this condition is set to true, then only read operations are permitted to this vector database. This can be used by administrators to restrict users from modifying the contents arbitrarily. | [default to False]
+**read_only** | **bool** | If this condition is set to true, then only read operations are permitted to this vector database. This can be used by administrators to restrict users from modifying the contents arbitrarily. | [optional] [default to False]
 
 ## Example
 
 ```python
-from majordomoai.models.vectordb_profile import VectordbProfile
+from majordomo_ai.models.vectordb_profile import VectordbProfile
 
 # TODO update the JSON string below
 json = "{}"

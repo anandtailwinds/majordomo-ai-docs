@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from majordomoai.models.logs import Logs
+from majordomo_ai.models.logs import Logs
 
 # TODO update the JSON string below
 json = "{}"

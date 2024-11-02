@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **Workspace** | **string** | The workspace this query pipeline belongs to. | 
 **UserName** | **string** | The user who created the ingest pipeline. | 
 **Name** | **string** | Name of the query pipeline. | 
-**DataStoreNames** | Pointer to **[]string** | The type of the parent data store. | [optional] 
+**DataStoreNames** | **[]string** | The type of the parent data store. | 
 **EmbeddingModel** | **string** | The embedding model to be used | 
 **LlmModel** | **string** | The LLM model to be used | 
 **QueryType** | [**QueryTypes**](QueryTypes.md) |  | 
@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 
 ### NewQueryPipeline
 
-`func NewQueryPipeline(workspace string, userName string, name string, embeddingModel string, llmModel string, queryType QueryTypes, ) *QueryPipeline`
+`func NewQueryPipeline(workspace string, userName string, name string, dataStoreNames []string, embeddingModel string, llmModel string, queryType QueryTypes, ) *QueryPipeline`
 
 NewQueryPipeline instantiates a new QueryPipeline object
 This constructor will assign default values to properties that have it defined,
@@ -111,11 +111,6 @@ and a boolean to check if the value has been set.
 
 SetDataStoreNames sets DataStoreNames field to given value.
 
-### HasDataStoreNames
-
-`func (o *QueryPipeline) HasDataStoreNames() bool`
-
-HasDataStoreNames returns a boolean if a field has been set.
 
 ### GetEmbeddingModel
 

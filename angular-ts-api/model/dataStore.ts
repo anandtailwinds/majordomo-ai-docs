@@ -8,47 +8,25 @@
  * Do not edit the class manually.
  */
 import { DataStoreTypes } from './dataStoreTypes';
-import { DataStoreSubTypes } from './dataStoreSubTypes';
+import { VectordbStore } from './vectordbStore';
+import { StructdbStore } from './structdbStore';
 
 
 /**
- * Data store
+ * This is the data store specification that is used for creating and updating a data store. Data stores can be of different types including a vector database. Some parameters are mandatory based on the type of database chosen and it will be indicated along with the parameter.
  */
 export interface DataStore { 
     /**
-     * Workspce in which the data store is present.
+     * Workspace in which the data store is present.
      */
     workspace: string;
-    /**
-     * The user who created the data store.
-     */
-    user_name: string;
     /**
      * Name of the data store.
      */
     name: string;
-    type: DataStoreTypes;
-    sub_type?: DataStoreSubTypes;
-    /**
-     * Name of the Vector DB profile.
-     */
-    vectordb_profile?: string;
-    /**
-     * The embedding model to be used while ingesting data (applies for vector DB only)
-     */
-    vectordb_embedding?: string;
-    /**
-     * The endpoint of the structure database such as SQL/MongoDB.
-     */
-    structdb_url?: string;
-    /**
-     * The name of the database in the structured database.
-     */
-    structdb_name?: string;
-    /**
-     * The name of the table in the structured database.
-     */
-    structdb_table?: string;
+    store_type: DataStoreTypes;
+    vectordb_store?: VectordbStore;
+    structdb_store?: StructdbStore;
 }
 export namespace DataStore {
 }

@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from majordomoai.models.vectordb_profiles import VectordbProfiles
+from majordomo_ai.models.vectordb_profiles import VectordbProfiles
 
 # TODO update the JSON string below
 json = "{}"

@@ -12,9 +12,9 @@
 export type LogLevels = 1 | 2 | 3 | 4;
 
 export const LogLevels = {
-    LogLevel_Debug: 1 as LogLevels,
-    LogLevel_Info: 2 as LogLevels,
-    LogLevel_Warn: 3 as LogLevels,
-    LogLevel_Error: 4 as LogLevels
+    LOG_LEVEL_DEBUG: 1 as LogLevels,
+    LOG_LEVEL_INFO: 2 as LogLevels,
+    LOG_LEVEL_WARN: 3 as LogLevels,
+    LOG_LEVEL_ERROR: 4 as LogLevels
 };
 

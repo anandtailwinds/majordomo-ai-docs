@@ -11,7 +11,6 @@ Name | Type | Description | Notes
 **QueryParams** | Pointer to [**QueryParams**](QueryParams.md) |  | [optional] 
 **QueryString** | **string** | The actual query string for which the user wants a response to. | 
 **QueryType** | [**QueryTypes**](QueryTypes.md) |  | 
-**QueryMode** | Pointer to [**QueryModes**](QueryModes.md) |  | [optional] 
 
 ## Methods
 
@@ -176,31 +175,6 @@ and a boolean to check if the value has been set.
 
 SetQueryType sets QueryType field to given value.
 
-
-### GetQueryMode
-
-`func (o *DataStoreQuery) GetQueryMode() QueryModes`
-
-GetQueryMode returns the QueryMode field if non-nil, zero value otherwise.
-
-### GetQueryModeOk
-
-`func (o *DataStoreQuery) GetQueryModeOk() (*QueryModes, bool)`
-
-GetQueryModeOk returns a tuple with the QueryMode field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetQueryMode
-
-`func (o *DataStoreQuery) SetQueryMode(v QueryModes)`
-
-SetQueryMode sets QueryMode field to given value.
-
-### HasQueryMode
-
-`func (o *DataStoreQuery) HasQueryMode() bool`
-
-HasQueryMode returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

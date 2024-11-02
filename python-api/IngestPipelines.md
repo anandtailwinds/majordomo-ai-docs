@@ -1,16 +1,17 @@
 # IngestPipelines
 
+A list of individual ingest pipeline configuration and operation information that is returned in GET requests.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ingest_pipelines** | [**List[IngestPipelineInfo]**](IngestPipelineInfo.md) |  | [optional] 
+**ingest_pipelines** | [**List[IngestPipelineInfo]**](IngestPipelineInfo.md) | A list of individual ingest pipeline configuration and operation information that is returned in GET requests. | [optional] 
 
 ## Example
 
 ```python
-from majordomoai.models.ingest_pipelines import IngestPipelines
+from majordomo_ai.models.ingest_pipelines import IngestPipelines
 
 # TODO update the JSON string below
 json = "{}"

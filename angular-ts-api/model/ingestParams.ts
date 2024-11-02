@@ -7,6 +7,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import { FileExtractors } from './fileExtractors';
 
 
 /**
@@ -17,10 +18,6 @@ export interface IngestParams {
      * The chunk size used to split documents.
      */
     chunk_size?: number;
-    /**
-     * The temperature to be used by LLM Model while generating response. The higher the number, the more creative the model is.
-     */
-    model_temperature?: number;
     /**
      * If not specified, is set to 0.75 value of chunk_size.
      */
@@ -38,9 +35,9 @@ export interface IngestParams {
      */
     custom_script?: string;
     /**
-     * Dictionary of file extension to file extractor mapper. Supported file extractors are PyMuPDF, LlamaParse and PDF2Image. The file extension should match the file not the file-type.
+     * Specify a file extractor for new file extensions or for a different supported extractor for standard extensions.
      */
-    file_extractor?: { [key: string]: string; };
+    file_extractor?: { [key: string]: FileExtractors; };
     /**
      * Any API keys required while accessing file extractors such as LlamaParse.
      */

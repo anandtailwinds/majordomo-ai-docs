@@ -8,7 +8,6 @@
  * Do not edit the class manually.
  */
 import { QueryTypes } from './queryTypes';
-import { QueryModes } from './queryModes';
 import { QueryParams } from './queryParams';
 
 
@@ -38,7 +37,6 @@ export interface DataStoreQuery {
      */
     query_string: string;
     query_type: QueryTypes;
-    query_mode?: QueryModes;
 }
 export namespace DataStoreQuery {
 }

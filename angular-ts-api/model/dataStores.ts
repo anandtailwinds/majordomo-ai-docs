@@ -10,6 +10,9 @@
 import { DataStoreInfo } from './dataStoreInfo';
 
 
+/**
+ * This contains an configuration and operational information for an array of data stores and is returned for GET operations.
+ */
 export interface DataStores { 
     data_stores?: Array<DataStoreInfo>;
 }

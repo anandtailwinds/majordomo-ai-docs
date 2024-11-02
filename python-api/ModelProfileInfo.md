@@ -7,8 +7,9 @@ Model profile Information
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **str** | Name of the model profile. | 
-**model_provider** | [**ModelProviders**](ModelProviders.md) |  | 
+**provider** | [**ModelProviders**](ModelProviders.md) |  | [optional] 
 **allowed_models** | **List[str]** | List of models allowed for a user who is associated to this profile. Incase list is empty all models available in the provider are allowed. | [optional] 
+**endpoint** | [**ModelEndpoints**](ModelEndpoints.md) |  | [optional] 
 **access_key** | **str** | Access Key for accessing the model | 
 **created_by** | **str** | The username who created this model profile | 
 **created_at** | **int** | Timestamp of the model profile creation | 
@@ -17,7 +18,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from majordomoai.models.model_profile_info import ModelProfileInfo
+from majordomo_ai.models.model_profile_info import ModelProfileInfo
 
 # TODO update the JSON string below
 json = "{}"

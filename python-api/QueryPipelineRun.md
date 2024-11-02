@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from majordomoai.models.query_pipeline_run import QueryPipelineRun
+from majordomo_ai.models.query_pipeline_run import QueryPipelineRun
 
 # TODO update the JSON string below
 json = "{}"

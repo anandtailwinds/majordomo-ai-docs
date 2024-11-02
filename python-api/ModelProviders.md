@@ -4,9 +4,11 @@ The list of model providers supported
 
 ## Enum
 
-* `Provider_OpenAI` (value: `1`)
+* `OPENAI` (value: `1`)
 
-* `Provider_Gemini` (value: `2`)
+* `GEMINI` (value: `2`)
+
+* `AWS_BEDROCK` (value: `3`)
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

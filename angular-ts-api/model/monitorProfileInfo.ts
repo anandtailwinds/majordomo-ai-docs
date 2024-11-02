@@ -26,7 +26,7 @@ export interface MonitorProfileInfo {
     /**
      * Access Key for accessing the monitoring tool.
      */
-    access_key?: string;
+    access_key: string;
     /**
      * Identifies the user who created this monitor profile.
      */

@@ -5,8 +5,9 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **TopK** | Pointer to **int32** | The number of vector db matches to consider for llm context | [optional] [default to 2]
-**ModelTemperature** | Pointer to **float32** | The temperature of the LLM processing, the higher the more creative the LLM is. | [optional] 
-**QueryMode** | Pointer to **string** |  | [optional] 
+**Temperature** | Pointer to **float32** | The temperature of the LLM processing, the higher the more creative the LLM is. | [optional] 
+**DocMetadata** | Pointer to **map[string]string** | Dictionary of metadata key/value pairs that are to be inserted into the vector database along with the chunks. This is useful while retrieval to restrict the relevant chunks. | [optional] 
+**QueryMode** | Pointer to [**QueryModes**](QueryModes.md) |  | [optional] 
 
 ## Methods
 
@@ -52,47 +53,72 @@ SetTopK sets TopK field to given value.
 
 HasTopK returns a boolean if a field has been set.
 
-### GetModelTemperature
+### GetTemperature
 
-`func (o *QueryParams) GetModelTemperature() float32`
+`func (o *QueryParams) GetTemperature() float32`
 
-GetModelTemperature returns the ModelTemperature field if non-nil, zero value otherwise.
+GetTemperature returns the Temperature field if non-nil, zero value otherwise.
 
-### GetModelTemperatureOk
+### GetTemperatureOk
 
-`func (o *QueryParams) GetModelTemperatureOk() (*float32, bool)`
+`func (o *QueryParams) GetTemperatureOk() (*float32, bool)`
 
-GetModelTemperatureOk returns a tuple with the ModelTemperature field if it's non-nil, zero value otherwise
+GetTemperatureOk returns a tuple with the Temperature field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetModelTemperature
+### SetTemperature
 
-`func (o *QueryParams) SetModelTemperature(v float32)`
+`func (o *QueryParams) SetTemperature(v float32)`
 
-SetModelTemperature sets ModelTemperature field to given value.
+SetTemperature sets Temperature field to given value.
 
-### HasModelTemperature
+### HasTemperature
 
-`func (o *QueryParams) HasModelTemperature() bool`
+`func (o *QueryParams) HasTemperature() bool`
 
-HasModelTemperature returns a boolean if a field has been set.
+HasTemperature returns a boolean if a field has been set.
+
+### GetDocMetadata
+
+`func (o *QueryParams) GetDocMetadata() map[string]string`
+
+GetDocMetadata returns the DocMetadata field if non-nil, zero value otherwise.
+
+### GetDocMetadataOk
+
+`func (o *QueryParams) GetDocMetadataOk() (*map[string]string, bool)`
+
+GetDocMetadataOk returns a tuple with the DocMetadata field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDocMetadata
+
+`func (o *QueryParams) SetDocMetadata(v map[string]string)`
+
+SetDocMetadata sets DocMetadata field to given value.
+
+### HasDocMetadata
+
+`func (o *QueryParams) HasDocMetadata() bool`
+
+HasDocMetadata returns a boolean if a field has been set.
 
 ### GetQueryMode
 
-`func (o *QueryParams) GetQueryMode() string`
+`func (o *QueryParams) GetQueryMode() QueryModes`
 
 GetQueryMode returns the QueryMode field if non-nil, zero value otherwise.
 
 ### GetQueryModeOk
 
-`func (o *QueryParams) GetQueryModeOk() (*string, bool)`
+`func (o *QueryParams) GetQueryModeOk() (*QueryModes, bool)`
 
 GetQueryModeOk returns a tuple with the QueryMode field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetQueryMode
 
-`func (o *QueryParams) SetQueryMode(v string)`
+`func (o *QueryParams) SetQueryMode(v QueryModes)`
 
 SetQueryMode sets QueryMode field to given value.
 

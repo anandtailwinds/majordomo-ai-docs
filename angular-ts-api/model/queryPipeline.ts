@@ -30,7 +30,7 @@ export interface QueryPipeline {
     /**
      * The type of the parent data store.
      */
-    data_store_names?: Array<string>;
+    data_store_names: Array<string>;
     /**
      * The embedding model to be used
      */

@@ -1,15 +1,13 @@
-# LogLevel
+# VectorStoreStatusTypes
 
 ## Enum
 
 
-* `Debug` (value: `1`)
+* `STATUS_ACTIVE` (value: `1`)
 
-* `Info` (value: `2`)
+* `STATUS_NOTPRESENT` (value: `2`)
 
-* `Warn` (value: `3`)
-
-* `Error` (value: `4`)
+* `STATUS_INCOMPLETE` (value: `3`)
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

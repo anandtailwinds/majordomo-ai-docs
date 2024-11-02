@@ -8,14 +8,16 @@
  * Do not edit the class manually.
  */
 import { DataStoreTypes } from './dataStoreTypes';
+import { VectordbStore } from './vectordbStore';
+import { StructdbStore } from './structdbStore';
 
 
 /**
- * Data store configuration and operation information.
+ * This contains configuration and operational information about a single data store and is returned for GET operation.
  */
 export interface DataStoreInfo { 
     /**
-     * Workspce in which the data store is present.
+     * Workspace in which the data store is present.
      */
     workspace: string;
     /**
@@ -26,39 +28,9 @@ export interface DataStoreInfo {
      * The user who created the data store.
      */
     user_name: string;
-    type: DataStoreTypes;
-    /**
-     * Name of the Vector DB profile.
-     */
-    vectordb_profile?: string;
-    /**
-     * The embedding model to be used while ingesting data (applies for vector DB only)
-     */
-    vectordb_embedding?: string;
-    /**
-     * The endpoint of the structure database such as SQL/MongoDB.
-     */
-    structdb_url?: string;
-    /**
-     * The name of the database in the structured database.
-     */
-    structdb_name?: string;
-    /**
-     * The name of the table in the structured database.
-     */
-    structdb_table?: string;
-    /**
-     * If the status is active, it indicates that the vector database is present in the provider.
-     */
-    status?: string;
-    /**
-     * Dimensions in case of a vector database.
-     */
-    vectordb_dimension?: number;
-    /**
-     * Total number of document chunks in case of a vector database.
-     */
-    vectordb_records?: number;
+    store_type: DataStoreTypes;
+    vectordb_store?: VectordbStore;
+    structdb_store?: StructdbStore;
     /**
      * Timestamp of the data store creation.
      */
@@ -70,23 +42,23 @@ export interface DataStoreInfo {
     /**
      * Timestamp of last query using the data store.
      */
-    last_query?: number;
+    last_query: number;
     /**
      * Timestamp of the last ingestion to the data store.
      */
-    last_ingest?: number;
+    last_ingest: number;
     /**
      * Number of direct ingestions done to the data store until now.
      */
-    direct_ingest_count?: number;
+    direct_ingest_count: number;
     /**
      * Number of pipeline ingestions done to the data store until now.
      */
-    pipeline_ingest_count?: number;
+    pipeline_ingest_count: number;
     /**
      * Number of ingestions resulting in errors.
      */
-    error_ingest_count?: number;
+    error_ingest_count: number;
 }
 export namespace DataStoreInfo {
 }

@@ -15,11 +15,11 @@ import { InputTypes } from './inputTypes';
 
 
 /**
- * Data store ingest parameters
+ * The ingest parameters that are used for performing an ingest operation using a data store.
  */
 export interface DataStoreIngest { 
     /**
-     * The workspace this data store belongs to.
+     * The workspace the data store belongs to.
      */
     workspace: string;
     /**

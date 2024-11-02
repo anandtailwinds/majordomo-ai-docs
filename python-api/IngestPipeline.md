@@ -1,6 +1,6 @@
 # IngestPipeline
 
-Ingest Pipeline
+Describes the configurable attributes of an ingest pipeline that is to be created or updated. The ingest pipeline is always a part of a parent data store.
 
 ## Properties
 
@@ -15,13 +15,13 @@ Name | Type | Description | Notes
 **input_type** | [**InputTypes**](InputTypes.md) |  | 
 **ingest_type** | [**IngestTypes**](IngestTypes.md) |  | 
 **ingest_params** | [**IngestParams**](IngestParams.md) |  | [optional] 
-**timer_on** | **bool** |  | [optional] 
-**timer_interval** | **int** |  | [optional] 
+**timer_on** | **bool** | Turn on the ingestion timer, once the timer expires the specified ingestion action is performed. | [optional] 
+**timer_interval** | **int** | Specify the timer interval for the ingestion action in minutes. | [optional] 
 
 ## Example
 
 ```python
-from majordomoai.models.ingest_pipeline import IngestPipeline
+from majordomo_ai.models.ingest_pipeline import IngestPipeline
 
 # TODO update the JSON string below
 json = "{}"

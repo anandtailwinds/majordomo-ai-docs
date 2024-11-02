@@ -12,10 +12,11 @@
 /**
  * The list of model providers supported
  */
-export type ModelProviders = 1 | 2;
+export type ModelProviders = 1 | 2 | 3;
 
 export const ModelProviders = {
-    Provider_OpenAI: 1 as ModelProviders,
-    Provider_Gemini: 2 as ModelProviders
+    OPENAI: 1 as ModelProviders,
+    GEMINI: 2 as ModelProviders,
+    AWS_BEDROCK: 3 as ModelProviders
 };
 

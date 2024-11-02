@@ -28,7 +28,7 @@ export interface VectordbProfileInfo {
     /**
      * If this condition is set to true, then only read operations are permitted to this vector database. This can be used by administrators to restrict users from modifying the contents arbitrarily.
      */
-    readonly: boolean;
+    read_only?: boolean;
     /**
      * The name of the user who created this Vectordb profile.
      */
