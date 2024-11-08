@@ -7,7 +7,6 @@ Describes the configurable attributes of an ingest pipeline that is to be create
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **workspace** | **str** | The workspace this ingest pipeline belongs to. | 
-**user_name** | **str** | The user who created the ingest pipeline. | 
 **name** | **str** | Name of the ingest pipeline. | 
 **data_store_name** | **str** | The name of the parent data store in which this ingest pipeline is present. | 
 **input_filter** | [**InputFilter**](InputFilter.md) |  | 

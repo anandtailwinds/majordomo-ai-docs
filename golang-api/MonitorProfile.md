@@ -6,14 +6,14 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | **string** | Name of the monitor profile. | 
 **Provider** | [**MonitorProviders**](MonitorProviders.md) |  | 
-**AccessKey** | **string** | Access Key for accessing the monitoring tool. | 
-**Endpoint** | **string** | URL of the monitoring tool endpoint. | 
+**AccessKey** | Pointer to [**MonitorAccessKey**](MonitorAccessKey.md) |  | [optional] 
+**AccessInfo** | Pointer to [**MonitorAccessInfo**](MonitorAccessInfo.md) |  | [optional] 
 
 ## Methods
 
 ### NewMonitorProfile
 
-`func NewMonitorProfile(name string, provider MonitorProviders, accessKey string, endpoint string, ) *MonitorProfile`
+`func NewMonitorProfile(name string, provider MonitorProviders, ) *MonitorProfile`
 
 NewMonitorProfile instantiates a new MonitorProfile object
 This constructor will assign default values to properties that have it defined,
@@ -70,43 +70,53 @@ SetProvider sets Provider field to given value.
 
 ### GetAccessKey
 
-`func (o *MonitorProfile) GetAccessKey() string`
+`func (o *MonitorProfile) GetAccessKey() MonitorAccessKey`
 
 GetAccessKey returns the AccessKey field if non-nil, zero value otherwise.
 
 ### GetAccessKeyOk
 
-`func (o *MonitorProfile) GetAccessKeyOk() (*string, bool)`
+`func (o *MonitorProfile) GetAccessKeyOk() (*MonitorAccessKey, bool)`
 
 GetAccessKeyOk returns a tuple with the AccessKey field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAccessKey
 
-`func (o *MonitorProfile) SetAccessKey(v string)`
+`func (o *MonitorProfile) SetAccessKey(v MonitorAccessKey)`
 
 SetAccessKey sets AccessKey field to given value.
 
+### HasAccessKey
 
-### GetEndpoint
+`func (o *MonitorProfile) HasAccessKey() bool`
 
-`func (o *MonitorProfile) GetEndpoint() string`
+HasAccessKey returns a boolean if a field has been set.
 
-GetEndpoint returns the Endpoint field if non-nil, zero value otherwise.
+### GetAccessInfo
 
-### GetEndpointOk
+`func (o *MonitorProfile) GetAccessInfo() MonitorAccessInfo`
 
-`func (o *MonitorProfile) GetEndpointOk() (*string, bool)`
+GetAccessInfo returns the AccessInfo field if non-nil, zero value otherwise.
 
-GetEndpointOk returns a tuple with the Endpoint field if it's non-nil, zero value otherwise
+### GetAccessInfoOk
+
+`func (o *MonitorProfile) GetAccessInfoOk() (*MonitorAccessInfo, bool)`
+
+GetAccessInfoOk returns a tuple with the AccessInfo field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetEndpoint
+### SetAccessInfo
 
-`func (o *MonitorProfile) SetEndpoint(v string)`
+`func (o *MonitorProfile) SetAccessInfo(v MonitorAccessInfo)`
 
-SetEndpoint sets Endpoint field to given value.
+SetAccessInfo sets AccessInfo field to given value.
 
+### HasAccessInfo
+
+`func (o *MonitorProfile) HasAccessInfo() bool`
+
+HasAccessInfo returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

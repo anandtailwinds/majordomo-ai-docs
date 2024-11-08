@@ -8,8 +8,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **str** | Name of the Vectordb profile | 
 **provider** | [**VectordbProviders**](VectordbProviders.md) |  | 
-**access_key** | **str** | Access Key for accessing the Vectordb | [optional] 
-**endpoint** | [**VectordbEndpoint**](VectordbEndpoint.md) |  | 
+**access_key** | [**VectordbAccessKey**](VectordbAccessKey.md) |  | [optional] 
+**access_info** | [**VectordbAccessInfo**](VectordbAccessInfo.md) |  | [optional] 
 **read_only** | **bool** | If this condition is set to true, then only read operations are permitted to this vector database. This can be used by administrators to restrict users from modifying the contents arbitrarily. | [optional] [default to False]
 
 ## Example

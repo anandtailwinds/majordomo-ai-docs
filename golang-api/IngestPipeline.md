@@ -5,7 +5,6 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Workspace** | **string** | The workspace this ingest pipeline belongs to. | 
-**UserName** | **string** | The user who created the ingest pipeline. | 
 **Name** | **string** | Name of the ingest pipeline. | 
 **DataStoreName** | **string** | The name of the parent data store in which this ingest pipeline is present. | 
 **InputFilter** | [**InputFilter**](InputFilter.md) |  | 
@@ -20,7 +19,7 @@ Name | Type | Description | Notes
 
 ### NewIngestPipeline
 
-`func NewIngestPipeline(workspace string, userName string, name string, dataStoreName string, inputFilter InputFilter, inputType InputTypes, ingestType IngestTypes, ) *IngestPipeline`
+`func NewIngestPipeline(workspace string, name string, dataStoreName string, inputFilter InputFilter, inputType InputTypes, ingestType IngestTypes, ) *IngestPipeline`
 
 NewIngestPipeline instantiates a new IngestPipeline object
 This constructor will assign default values to properties that have it defined,
@@ -53,26 +52,6 @@ and a boolean to check if the value has been set.
 `func (o *IngestPipeline) SetWorkspace(v string)`
 
 SetWorkspace sets Workspace field to given value.
-
-
-### GetUserName
-
-`func (o *IngestPipeline) GetUserName() string`
-
-GetUserName returns the UserName field if non-nil, zero value otherwise.
-
-### GetUserNameOk
-
-`func (o *IngestPipeline) GetUserNameOk() (*string, bool)`
-
-GetUserNameOk returns a tuple with the UserName field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetUserName
-
-`func (o *IngestPipeline) SetUserName(v string)`
-
-SetUserName sets UserName field to given value.
 
 
 ### GetName

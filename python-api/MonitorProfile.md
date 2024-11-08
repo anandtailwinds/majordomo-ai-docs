@@ -8,8 +8,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **str** | Name of the monitor profile. | 
 **provider** | [**MonitorProviders**](MonitorProviders.md) |  | 
-**access_key** | **str** | Access Key for accessing the monitoring tool. | 
-**endpoint** | **str** | URL of the monitoring tool endpoint. | 
+**access_key** | [**MonitorAccessKey**](MonitorAccessKey.md) |  | [optional] 
+**access_info** | [**MonitorAccessInfo**](MonitorAccessInfo.md) |  | [optional] 
 
 ## Example
 

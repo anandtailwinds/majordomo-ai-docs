@@ -8,8 +8,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **str** | Name of the monitor profile. | 
 **provider** | [**MonitorProviders**](MonitorProviders.md) |  | 
-**endpoint** | **str** | URL of the monitoring tool endpoint. | 
-**access_key** | **str** | Access Key for accessing the monitoring tool. | 
+**access_info** | [**MonitorAccessInfo**](MonitorAccessInfo.md) |  | [optional] 
+**access_key** | [**MonitorAccessKey**](MonitorAccessKey.md) |  | 
 **created_by** | **str** | Identifies the user who created this monitor profile. | 
 **created_at** | **int** | Timestamp of the monitor profile creation. | 
 **last_update** | **int** | Timestamp of the last update to the monitor profile. | 

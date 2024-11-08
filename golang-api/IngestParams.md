@@ -9,9 +9,9 @@ Name | Type | Description | Notes
 **LlmModel** | Pointer to **string** | The LLM model to be used in cases of any options that require it such as summarization. | [optional] 
 **SummarizeDoc** | Pointer to **bool** | If this option is set to True, the input document is summarized before storage. This helps in cases where the context of the document is spread across the entire document. | [optional] 
 **CustomScript** | Pointer to **string** | The name of the custom script to use while ingesting data into a structured database. Some custom scripts are pre-loaded. | [optional] 
-**FileExtractor** | Pointer to [**map[string]FileExtractors**](FileExtractors.md) | Specify a file extractor for new file extensions or for a different supported extractor for standard extensions. | [optional] 
+**FileExtractor** | Pointer to [**[]FileExtractor**](FileExtractor.md) | Specify a file extractor for new file extensions or for a different supported extractor for standard extensions. | [optional] 
 **ApiKey** | Pointer to **string** | Any API keys required while accessing file extractors such as LlamaParse. | [optional] 
-**DocMetadata** | Pointer to **map[string]string** | Dictionary of metadata key/value pairs that are to be inserted into the vector database along with the chunks. This is useful while retrieval to restrict the relevant chunks. | [optional] 
+**DocMetadata** | Pointer to [**[]Metadata**](Metadata.md) | Dictionary of metadata key/value pairs that are to be inserted into the vector database along with the chunks. This is useful while retrieval to restrict the relevant chunks. | [optional] 
 
 ## Methods
 
@@ -159,20 +159,20 @@ HasCustomScript returns a boolean if a field has been set.
 
 ### GetFileExtractor
 
-`func (o *IngestParams) GetFileExtractor() map[string]FileExtractors`
+`func (o *IngestParams) GetFileExtractor() []FileExtractor`
 
 GetFileExtractor returns the FileExtractor field if non-nil, zero value otherwise.
 
 ### GetFileExtractorOk
 
-`func (o *IngestParams) GetFileExtractorOk() (*map[string]FileExtractors, bool)`
+`func (o *IngestParams) GetFileExtractorOk() (*[]FileExtractor, bool)`
 
 GetFileExtractorOk returns a tuple with the FileExtractor field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetFileExtractor
 
-`func (o *IngestParams) SetFileExtractor(v map[string]FileExtractors)`
+`func (o *IngestParams) SetFileExtractor(v []FileExtractor)`
 
 SetFileExtractor sets FileExtractor field to given value.
 
@@ -209,20 +209,20 @@ HasApiKey returns a boolean if a field has been set.
 
 ### GetDocMetadata
 
-`func (o *IngestParams) GetDocMetadata() map[string]string`
+`func (o *IngestParams) GetDocMetadata() []Metadata`
 
 GetDocMetadata returns the DocMetadata field if non-nil, zero value otherwise.
 
 ### GetDocMetadataOk
 
-`func (o *IngestParams) GetDocMetadataOk() (*map[string]string, bool)`
+`func (o *IngestParams) GetDocMetadataOk() (*[]Metadata, bool)`
 
 GetDocMetadataOk returns a tuple with the DocMetadata field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDocMetadata
 
-`func (o *IngestParams) SetDocMetadata(v map[string]string)`
+`func (o *IngestParams) SetDocMetadata(v []Metadata)`
 
 SetDocMetadata sets DocMetadata field to given value.
 

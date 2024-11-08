@@ -7,7 +7,7 @@ Query Pipeline configuration and operation information.
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **workspace** | **str** | Workspce in which the data store is present. | 
-**user_name** | **str** | The user who created the ingest pipeline. | 
+**created_by** | **str** | The user who created the ingest pipeline. | 
 **name** | **str** | Name of the query pipeline. | 
 **data_store_names** | **List[str]** | The type of the parent data store. | 
 **embedding_model** | **str** | The embedding model to be used | 

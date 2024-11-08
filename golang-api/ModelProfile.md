@@ -6,15 +6,15 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | **string** | Name of the model profile. | 
 **Provider** | [**ModelProviders**](ModelProviders.md) |  | 
-**Endpoint** | Pointer to [**ModelEndpoints**](ModelEndpoints.md) |  | [optional] 
 **AllowedModels** | Pointer to **[]string** | List of models allowed for a user who is associated to this profile. Incase list is empty all models available in the provider are allowed. | [optional] 
-**AccessKey** | **string** | Access Key for accessing the model. It is possible to specify the access key as a secret value using either of the following formats {Azure:KeyVault-Name:Key} or {AWS:SecretName:Key} or {AWS:Region:SecretName:Key}. | 
+**AccessInfo** | Pointer to [**ModelAccessInfo**](ModelAccessInfo.md) |  | [optional] 
+**AccessKey** | Pointer to [**ModelAccessKey**](ModelAccessKey.md) |  | [optional] 
 
 ## Methods
 
 ### NewModelProfile
 
-`func NewModelProfile(name string, provider ModelProviders, accessKey string, ) *ModelProfile`
+`func NewModelProfile(name string, provider ModelProviders, ) *ModelProfile`
 
 NewModelProfile instantiates a new ModelProfile object
 This constructor will assign default values to properties that have it defined,
@@ -69,31 +69,6 @@ and a boolean to check if the value has been set.
 SetProvider sets Provider field to given value.
 
 
-### GetEndpoint
-
-`func (o *ModelProfile) GetEndpoint() ModelEndpoints`
-
-GetEndpoint returns the Endpoint field if non-nil, zero value otherwise.
-
-### GetEndpointOk
-
-`func (o *ModelProfile) GetEndpointOk() (*ModelEndpoints, bool)`
-
-GetEndpointOk returns a tuple with the Endpoint field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetEndpoint
-
-`func (o *ModelProfile) SetEndpoint(v ModelEndpoints)`
-
-SetEndpoint sets Endpoint field to given value.
-
-### HasEndpoint
-
-`func (o *ModelProfile) HasEndpoint() bool`
-
-HasEndpoint returns a boolean if a field has been set.
-
 ### GetAllowedModels
 
 `func (o *ModelProfile) GetAllowedModels() []string`
@@ -119,25 +94,55 @@ SetAllowedModels sets AllowedModels field to given value.
 
 HasAllowedModels returns a boolean if a field has been set.
 
+### GetAccessInfo
+
+`func (o *ModelProfile) GetAccessInfo() ModelAccessInfo`
+
+GetAccessInfo returns the AccessInfo field if non-nil, zero value otherwise.
+
+### GetAccessInfoOk
+
+`func (o *ModelProfile) GetAccessInfoOk() (*ModelAccessInfo, bool)`
+
+GetAccessInfoOk returns a tuple with the AccessInfo field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAccessInfo
+
+`func (o *ModelProfile) SetAccessInfo(v ModelAccessInfo)`
+
+SetAccessInfo sets AccessInfo field to given value.
+
+### HasAccessInfo
+
+`func (o *ModelProfile) HasAccessInfo() bool`
+
+HasAccessInfo returns a boolean if a field has been set.
+
 ### GetAccessKey
 
-`func (o *ModelProfile) GetAccessKey() string`
+`func (o *ModelProfile) GetAccessKey() ModelAccessKey`
 
 GetAccessKey returns the AccessKey field if non-nil, zero value otherwise.
 
 ### GetAccessKeyOk
 
-`func (o *ModelProfile) GetAccessKeyOk() (*string, bool)`
+`func (o *ModelProfile) GetAccessKeyOk() (*ModelAccessKey, bool)`
 
 GetAccessKeyOk returns a tuple with the AccessKey field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAccessKey
 
-`func (o *ModelProfile) SetAccessKey(v string)`
+`func (o *ModelProfile) SetAccessKey(v ModelAccessKey)`
 
 SetAccessKey sets AccessKey field to given value.
 
+### HasAccessKey
+
+`func (o *ModelProfile) HasAccessKey() bool`
+
+HasAccessKey returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

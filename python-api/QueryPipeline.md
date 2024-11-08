@@ -7,7 +7,6 @@ Query Pipeline
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **workspace** | **str** | The workspace this query pipeline belongs to. | 
-**user_name** | **str** | The user who created the ingest pipeline. | 
 **name** | **str** | Name of the query pipeline. | 
 **data_store_names** | **List[str]** | The type of the parent data store. | 
 **embedding_model** | **str** | The embedding model to be used | 

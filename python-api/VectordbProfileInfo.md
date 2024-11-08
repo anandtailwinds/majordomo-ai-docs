@@ -8,8 +8,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **str** | Name of the Vectordb profile. | 
 **provider** | [**VectordbProviders**](VectordbProviders.md) |  | 
-**endpoint** | [**VectordbEndpoint**](VectordbEndpoint.md) |  | 
-**access_key** | **str** | Access Key for accessing the Vectordb. | [optional] 
+**access_info** | [**VectordbAccessInfo**](VectordbAccessInfo.md) |  | [optional] 
+**access_key** | [**VectordbAccessKey**](VectordbAccessKey.md) |  | [optional] 
 **read_only** | **bool** | If this condition is set to true, then only read operations are permitted to this vector database. This can be used by administrators to restrict users from modifying the contents arbitrarily. | [optional] 
 **created_by** | **str** | The name of the user who created this Vectordb profile. | 
 **created_at** | **int** | Timestamp of the Vectordb profile creation. | 

@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Workspace** | **string** | Workspce in which the data store is present. | 
-**UserName** | **string** | The user who created the ingest pipeline. | 
+**CreatedBy** | **string** | The user who created the ingest pipeline. | 
 **Name** | **string** | Name of the query pipeline. | 
 **DataStoreNames** | **[]string** | The type of the parent data store. | 
 **EmbeddingModel** | **string** | The embedding model to be used | 
@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 
 ### NewQueryPipelineInfo
 
-`func NewQueryPipelineInfo(workspace string, userName string, name string, dataStoreNames []string, embeddingModel string, llmModel string, queryType QueryTypes, createdAt int64, lastUpdate int64, ) *QueryPipelineInfo`
+`func NewQueryPipelineInfo(workspace string, createdBy string, name string, dataStoreNames []string, embeddingModel string, llmModel string, queryType QueryTypes, createdAt int64, lastUpdate int64, ) *QueryPipelineInfo`
 
 NewQueryPipelineInfo instantiates a new QueryPipelineInfo object
 This constructor will assign default values to properties that have it defined,
@@ -54,24 +54,24 @@ and a boolean to check if the value has been set.
 SetWorkspace sets Workspace field to given value.
 
 
-### GetUserName
+### GetCreatedBy
 
-`func (o *QueryPipelineInfo) GetUserName() string`
+`func (o *QueryPipelineInfo) GetCreatedBy() string`
 
-GetUserName returns the UserName field if non-nil, zero value otherwise.
+GetCreatedBy returns the CreatedBy field if non-nil, zero value otherwise.
 
-### GetUserNameOk
+### GetCreatedByOk
 
-`func (o *QueryPipelineInfo) GetUserNameOk() (*string, bool)`
+`func (o *QueryPipelineInfo) GetCreatedByOk() (*string, bool)`
 
-GetUserNameOk returns a tuple with the UserName field if it's non-nil, zero value otherwise
+GetCreatedByOk returns a tuple with the CreatedBy field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetUserName
+### SetCreatedBy
 
-`func (o *QueryPipelineInfo) SetUserName(v string)`
+`func (o *QueryPipelineInfo) SetCreatedBy(v string)`
 
-SetUserName sets UserName field to given value.
+SetCreatedBy sets CreatedBy field to given value.
 
 
 ### GetName

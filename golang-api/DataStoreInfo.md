@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Workspace** | **string** | Workspace in which the data store is present. | 
 **Name** | **string** | Name of the data store. | 
-**UserName** | **string** | The user who created the data store. | 
+**CreatedBy** | **string** | The user who created the data store. | 
 **StoreType** | [**DataStoreTypes**](DataStoreTypes.md) |  | 
 **VectordbStore** | Pointer to [**VectordbStore**](VectordbStore.md) |  | [optional] 
 **StructdbStore** | Pointer to [**StructdbStore**](StructdbStore.md) |  | [optional] 
@@ -22,7 +22,7 @@ Name | Type | Description | Notes
 
 ### NewDataStoreInfo
 
-`func NewDataStoreInfo(workspace string, name string, userName string, storeType DataStoreTypes, createdAt int64, lastUpdate int64, lastQuery int64, lastIngest int64, directIngestCount int64, pipelineIngestCount int64, errorIngestCount int64, ) *DataStoreInfo`
+`func NewDataStoreInfo(workspace string, name string, createdBy string, storeType DataStoreTypes, createdAt int64, lastUpdate int64, lastQuery int64, lastIngest int64, directIngestCount int64, pipelineIngestCount int64, errorIngestCount int64, ) *DataStoreInfo`
 
 NewDataStoreInfo instantiates a new DataStoreInfo object
 This constructor will assign default values to properties that have it defined,
@@ -77,24 +77,24 @@ and a boolean to check if the value has been set.
 SetName sets Name field to given value.
 
 
-### GetUserName
+### GetCreatedBy
 
-`func (o *DataStoreInfo) GetUserName() string`
+`func (o *DataStoreInfo) GetCreatedBy() string`
 
-GetUserName returns the UserName field if non-nil, zero value otherwise.
+GetCreatedBy returns the CreatedBy field if non-nil, zero value otherwise.
 
-### GetUserNameOk
+### GetCreatedByOk
 
-`func (o *DataStoreInfo) GetUserNameOk() (*string, bool)`
+`func (o *DataStoreInfo) GetCreatedByOk() (*string, bool)`
 
-GetUserNameOk returns a tuple with the UserName field if it's non-nil, zero value otherwise
+GetCreatedByOk returns a tuple with the CreatedBy field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetUserName
+### SetCreatedBy
 
-`func (o *DataStoreInfo) SetUserName(v string)`
+`func (o *DataStoreInfo) SetCreatedBy(v string)`
 
-SetUserName sets UserName field to given value.
+SetCreatedBy sets CreatedBy field to given value.
 
 
 ### GetStoreType

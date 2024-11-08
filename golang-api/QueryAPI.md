@@ -6,9 +6,9 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CreateQueryPipeline**](QueryAPI.md#CreateQueryPipeline) | **Post** /query_pipelines | Query Pipeline
 [**DataStoreQuery**](QueryAPI.md#DataStoreQuery) | **Post** /data_store_query | Query a data store
-[**DeleteQueryPipeline**](QueryAPI.md#DeleteQueryPipeline) | **Delete** /query_pipeline/workspace/{workspace}/name/{name} | Query Pipeline
+[**DeleteQueryPipelines**](QueryAPI.md#DeleteQueryPipelines) | **Delete** /query_pipelines | Query Pipeline
 [**GetQueryPipelines**](QueryAPI.md#GetQueryPipelines) | **Get** /query_pipelines | Query Pipeline Get
-[**RunQueryPipeline**](QueryAPI.md#RunQueryPipeline) | **Post** /query_pipeline_run | Query Pipeline Run
+[**RunQueryPipeline**](QueryAPI.md#RunQueryPipeline) | **Post** /query_pipeline_run/workspace/{workspace}/name/{name}/query/{query_string} | Query Pipeline Run
 [**UpdateQueryPipeline**](QueryAPI.md#UpdateQueryPipeline) | **Put** /query_pipelines | Query Pipeline
 
 
@@ -34,7 +34,7 @@ import (
 )
 
 func main() {
-	queryPipeline := *openapiclient.NewQueryPipeline("Workspace_example", "UserName_example", "Name_example", []string{"DataStoreNames_example"}, "EmbeddingModel_example", "LlmModel_example", openapiclient.QueryTypes(1)) // QueryPipeline | 
+	queryPipeline := *openapiclient.NewQueryPipeline("Workspace_example", "Name_example", []string{"DataStoreNames_example"}, "EmbeddingModel_example", "LlmModel_example", openapiclient.QueryTypes(1)) // QueryPipeline | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -145,9 +145,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## DeleteQueryPipeline
+## DeleteQueryPipelines
 
-> DeleteResponse DeleteQueryPipeline(ctx, workspace, name).Execute()
+> DeleteResponse DeleteQueryPipelines(ctx).Workspace(workspace).Name(name).Execute()
 
 Query Pipeline
 
@@ -167,38 +167,33 @@ import (
 
 func main() {
 	workspace := "workspace_example" // string | The workspace in which the query pipeline is present.
-	name := "name_example" // string | The name of the query pipeline to delete. If no name is provided, all query pipelines in the workspace are deleted.
+	name := "name_example" // string | The name of the query pipeline to delete. If no name is provided, all query pipelines in the workspace are deleted. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.QueryAPI.DeleteQueryPipeline(context.Background(), workspace, name).Execute()
+	resp, r, err := apiClient.QueryAPI.DeleteQueryPipelines(context.Background()).Workspace(workspace).Name(name).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `QueryAPI.DeleteQueryPipeline``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `QueryAPI.DeleteQueryPipelines``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `DeleteQueryPipeline`: DeleteResponse
-	fmt.Fprintf(os.Stdout, "Response from `QueryAPI.DeleteQueryPipeline`: %v\n", resp)
+	// response from `DeleteQueryPipelines`: DeleteResponse
+	fmt.Fprintf(os.Stdout, "Response from `QueryAPI.DeleteQueryPipelines`: %v\n", resp)
 }
 ```
 
 ### Path Parameters
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**workspace** | **string** | The workspace in which the query pipeline is present. | 
-**name** | **string** | The name of the query pipeline to delete. If no name is provided, all query pipelines in the workspace are deleted. | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiDeleteQueryPipelineRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiDeleteQueryPipelinesRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-
-
+ **workspace** | **string** | The workspace in which the query pipeline is present. | 
+ **name** | **string** | The name of the query pipeline to delete. If no name is provided, all query pipelines in the workspace are deleted. | 
 
 ### Return type
 
@@ -288,7 +283,7 @@ Name | Type | Description  | Notes
 
 ## RunQueryPipeline
 
-> QueryResponse RunQueryPipeline(ctx).QueryPipelineRun(queryPipelineRun).Execute()
+> QueryResponse RunQueryPipeline(ctx, workspace, name, queryString).Execute()
 
 Query Pipeline Run
 
@@ -307,11 +302,13 @@ import (
 )
 
 func main() {
-	queryPipelineRun := *openapiclient.NewQueryPipelineRun("Workspace_example", "Name_example", "QueryString_example") // QueryPipelineRun | 
+	workspace := "workspace_example" // string | The name of the workspace in which the query pipeline is present.
+	name := "name_example" // string | The name of the query pipeline.
+	queryString := "queryString_example" // string | The user query for which an answer is sought using the query pipeline information.
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.QueryAPI.RunQueryPipeline(context.Background()).QueryPipelineRun(queryPipelineRun).Execute()
+	resp, r, err := apiClient.QueryAPI.RunQueryPipeline(context.Background(), workspace, name, queryString).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `QueryAPI.RunQueryPipeline``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -324,6 +321,12 @@ func main() {
 ### Path Parameters
 
 
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**workspace** | **string** | The name of the workspace in which the query pipeline is present. | 
+**name** | **string** | The name of the query pipeline. | 
+**queryString** | **string** | The user query for which an answer is sought using the query pipeline information. | 
 
 ### Other Parameters
 
@@ -332,7 +335,9 @@ Other parameters are passed through a pointer to a apiRunQueryPipelineRequest st
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **queryPipelineRun** | [**QueryPipelineRun**](QueryPipelineRun.md) |  | 
+
+
+
 
 ### Return type
 
@@ -344,7 +349,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -373,7 +378,7 @@ import (
 )
 
 func main() {
-	queryPipeline := *openapiclient.NewQueryPipeline("Workspace_example", "UserName_example", "Name_example", []string{"DataStoreNames_example"}, "EmbeddingModel_example", "LlmModel_example", openapiclient.QueryTypes(1)) // QueryPipeline | 
+	queryPipeline := *openapiclient.NewQueryPipeline("Workspace_example", "Name_example", []string{"DataStoreNames_example"}, "EmbeddingModel_example", "LlmModel_example", openapiclient.QueryTypes(1)) // QueryPipeline | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)

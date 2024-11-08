@@ -7,8 +7,8 @@ Name | Type | Description | Notes
 **Name** | **string** | Name of the model profile. | 
 **Provider** | Pointer to [**ModelProviders**](ModelProviders.md) |  | [optional] 
 **AllowedModels** | Pointer to **[]string** | List of models allowed for a user who is associated to this profile. Incase list is empty all models available in the provider are allowed. | [optional] 
-**Endpoint** | Pointer to [**ModelEndpoints**](ModelEndpoints.md) |  | [optional] 
-**AccessKey** | **string** | Access Key for accessing the model | 
+**AccessInfo** | Pointer to [**ModelAccessInfo**](ModelAccessInfo.md) |  | [optional] 
+**AccessKey** | [**ModelAccessKey**](ModelAccessKey.md) |  | 
 **CreatedBy** | **string** | The username who created this model profile | 
 **CreatedAt** | **int64** | Timestamp of the model profile creation | 
 **LastUpdate** | **int64** | Timestamp of the last update to the model profile | 
@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 
 ### NewModelProfileInfo
 
-`func NewModelProfileInfo(name string, accessKey string, createdBy string, createdAt int64, lastUpdate int64, ) *ModelProfileInfo`
+`func NewModelProfileInfo(name string, accessKey ModelAccessKey, createdBy string, createdAt int64, lastUpdate int64, ) *ModelProfileInfo`
 
 NewModelProfileInfo instantiates a new ModelProfileInfo object
 This constructor will assign default values to properties that have it defined,
@@ -102,47 +102,47 @@ SetAllowedModels sets AllowedModels field to given value.
 
 HasAllowedModels returns a boolean if a field has been set.
 
-### GetEndpoint
+### GetAccessInfo
 
-`func (o *ModelProfileInfo) GetEndpoint() ModelEndpoints`
+`func (o *ModelProfileInfo) GetAccessInfo() ModelAccessInfo`
 
-GetEndpoint returns the Endpoint field if non-nil, zero value otherwise.
+GetAccessInfo returns the AccessInfo field if non-nil, zero value otherwise.
 
-### GetEndpointOk
+### GetAccessInfoOk
 
-`func (o *ModelProfileInfo) GetEndpointOk() (*ModelEndpoints, bool)`
+`func (o *ModelProfileInfo) GetAccessInfoOk() (*ModelAccessInfo, bool)`
 
-GetEndpointOk returns a tuple with the Endpoint field if it's non-nil, zero value otherwise
+GetAccessInfoOk returns a tuple with the AccessInfo field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetEndpoint
+### SetAccessInfo
 
-`func (o *ModelProfileInfo) SetEndpoint(v ModelEndpoints)`
+`func (o *ModelProfileInfo) SetAccessInfo(v ModelAccessInfo)`
 
-SetEndpoint sets Endpoint field to given value.
+SetAccessInfo sets AccessInfo field to given value.
 
-### HasEndpoint
+### HasAccessInfo
 
-`func (o *ModelProfileInfo) HasEndpoint() bool`
+`func (o *ModelProfileInfo) HasAccessInfo() bool`
 
-HasEndpoint returns a boolean if a field has been set.
+HasAccessInfo returns a boolean if a field has been set.
 
 ### GetAccessKey
 
-`func (o *ModelProfileInfo) GetAccessKey() string`
+`func (o *ModelProfileInfo) GetAccessKey() ModelAccessKey`
 
 GetAccessKey returns the AccessKey field if non-nil, zero value otherwise.
 
 ### GetAccessKeyOk
 
-`func (o *ModelProfileInfo) GetAccessKeyOk() (*string, bool)`
+`func (o *ModelProfileInfo) GetAccessKeyOk() (*ModelAccessKey, bool)`
 
 GetAccessKeyOk returns a tuple with the AccessKey field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAccessKey
 
-`func (o *ModelProfileInfo) SetAccessKey(v string)`
+`func (o *ModelProfileInfo) SetAccessKey(v ModelAccessKey)`
 
 SetAccessKey sets AccessKey field to given value.
 

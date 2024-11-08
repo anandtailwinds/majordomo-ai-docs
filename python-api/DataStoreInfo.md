@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **workspace** | **str** | Workspace in which the data store is present. | 
 **name** | **str** | Name of the data store. | 
-**user_name** | **str** | The user who created the data store. | 
+**created_by** | **str** | The user who created the data store. | 
 **store_type** | [**DataStoreTypes**](DataStoreTypes.md) |  | 
 **vectordb_store** | [**VectordbStore**](VectordbStore.md) |  | [optional] 
 **structdb_store** | [**StructdbStore**](StructdbStore.md) |  | [optional] 

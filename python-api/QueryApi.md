@@ -6,9 +6,9 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**create_query_pipeline**](QueryApi.md#create_query_pipeline) | **POST** /query_pipelines | Query Pipeline
 [**data_store_query**](QueryApi.md#data_store_query) | **POST** /data_store_query | Query a data store
-[**delete_query_pipeline**](QueryApi.md#delete_query_pipeline) | **DELETE** /query_pipeline/workspace/{workspace}/name/{name} | Query Pipeline
+[**delete_query_pipelines**](QueryApi.md#delete_query_pipelines) | **DELETE** /query_pipelines | Query Pipeline
 [**get_query_pipelines**](QueryApi.md#get_query_pipelines) | **GET** /query_pipelines | Query Pipeline Get
-[**run_query_pipeline**](QueryApi.md#run_query_pipeline) | **POST** /query_pipeline_run | Query Pipeline Run
+[**run_query_pipeline**](QueryApi.md#run_query_pipeline) | **POST** /query_pipeline_run/workspace/{workspace}/name/{name}/query/{query_string} | Query Pipeline Run
 [**update_query_pipeline**](QueryApi.md#update_query_pipeline) | **PUT** /query_pipelines | Query Pipeline
 
 
@@ -172,8 +172,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **delete_query_pipeline**
-> DeleteResponse delete_query_pipeline(workspace, name)
+# **delete_query_pipelines**
+> DeleteResponse delete_query_pipelines(workspace, name=name)
 
 Query Pipeline
 
@@ -210,15 +210,15 @@ with majordomo_ai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = majordomo_ai.QueryApi(api_client)
     workspace = 'workspace_example' # str | The workspace in which the query pipeline is present.
-    name = 'name_example' # str | The name of the query pipeline to delete. If no name is provided, all query pipelines in the workspace are deleted.
+    name = 'name_example' # str | The name of the query pipeline to delete. If no name is provided, all query pipelines in the workspace are deleted. (optional)
 
     try:
         # Query Pipeline
-        api_response = api_instance.delete_query_pipeline(workspace, name)
-        print("The response of QueryApi->delete_query_pipeline:\n")
+        api_response = api_instance.delete_query_pipelines(workspace, name=name)
+        print("The response of QueryApi->delete_query_pipelines:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling QueryApi->delete_query_pipeline: %s\n" % e)
+        print("Exception when calling QueryApi->delete_query_pipelines: %s\n" % e)
 ```
 
 
@@ -229,7 +229,7 @@ with majordomo_ai.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **workspace** | **str**| The workspace in which the query pipeline is present. | 
- **name** | **str**| The name of the query pipeline to delete. If no name is provided, all query pipelines in the workspace are deleted. | 
+ **name** | **str**| The name of the query pipeline to delete. If no name is provided, all query pipelines in the workspace are deleted. | [optional] 
 
 ### Return type
 
@@ -336,7 +336,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **run_query_pipeline**
-> QueryResponse run_query_pipeline(query_pipeline_run)
+> QueryResponse run_query_pipeline(workspace, name, query_string)
 
 Query Pipeline Run
 
@@ -348,7 +348,6 @@ Run an already defined query pipeline
 
 ```python
 import majordomo_ai
-from majordomo_ai.models.query_pipeline_run import QueryPipelineRun
 from majordomo_ai.models.query_response import QueryResponse
 from majordomo_ai.rest import ApiException
 from pprint import pprint
@@ -373,11 +372,13 @@ configuration = majordomo_ai.Configuration(
 with majordomo_ai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = majordomo_ai.QueryApi(api_client)
-    query_pipeline_run = majordomo_ai.QueryPipelineRun() # QueryPipelineRun | 
+    workspace = 'workspace_example' # str | The name of the workspace in which the query pipeline is present.
+    name = 'name_example' # str | The name of the query pipeline.
+    query_string = 'query_string_example' # str | The user query for which an answer is sought using the query pipeline information.
 
     try:
         # Query Pipeline Run
-        api_response = api_instance.run_query_pipeline(query_pipeline_run)
+        api_response = api_instance.run_query_pipeline(workspace, name, query_string)
         print("The response of QueryApi->run_query_pipeline:\n")
         pprint(api_response)
     except Exception as e:
@@ -391,7 +392,9 @@ with majordomo_ai.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **query_pipeline_run** | [**QueryPipelineRun**](QueryPipelineRun.md)|  | 
+ **workspace** | **str**| The name of the workspace in which the query pipeline is present. | 
+ **name** | **str**| The name of the query pipeline. | 
+ **query_string** | **str**| The user query for which an answer is sought using the query pipeline information. | 
 
 ### Return type
 
@@ -403,7 +406,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 ### HTTP response details

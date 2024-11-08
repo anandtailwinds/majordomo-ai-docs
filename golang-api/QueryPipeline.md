@@ -5,7 +5,6 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Workspace** | **string** | The workspace this query pipeline belongs to. | 
-**UserName** | **string** | The user who created the ingest pipeline. | 
 **Name** | **string** | Name of the query pipeline. | 
 **DataStoreNames** | **[]string** | The type of the parent data store. | 
 **EmbeddingModel** | **string** | The embedding model to be used | 
@@ -17,7 +16,7 @@ Name | Type | Description | Notes
 
 ### NewQueryPipeline
 
-`func NewQueryPipeline(workspace string, userName string, name string, dataStoreNames []string, embeddingModel string, llmModel string, queryType QueryTypes, ) *QueryPipeline`
+`func NewQueryPipeline(workspace string, name string, dataStoreNames []string, embeddingModel string, llmModel string, queryType QueryTypes, ) *QueryPipeline`
 
 NewQueryPipeline instantiates a new QueryPipeline object
 This constructor will assign default values to properties that have it defined,
@@ -50,26 +49,6 @@ and a boolean to check if the value has been set.
 `func (o *QueryPipeline) SetWorkspace(v string)`
 
 SetWorkspace sets Workspace field to given value.
-
-
-### GetUserName
-
-`func (o *QueryPipeline) GetUserName() string`
-
-GetUserName returns the UserName field if non-nil, zero value otherwise.
-
-### GetUserNameOk
-
-`func (o *QueryPipeline) GetUserNameOk() (*string, bool)`
-
-GetUserNameOk returns a tuple with the UserName field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetUserName
-
-`func (o *QueryPipeline) SetUserName(v string)`
-
-SetUserName sets UserName field to given value.
 
 
 ### GetName

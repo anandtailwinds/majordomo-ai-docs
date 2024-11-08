@@ -7,7 +7,7 @@ Ingest Pipeline configuration and operation information that is returned in GET 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **workspace** | **str** | Workspace in which the data store is present. | 
-**user_name** | **str** | The user who created the ingest pipeline. | 
+**created_by** | **str** | The user who created the ingest pipeline. | 
 **name** | **str** | Name of the ingest pipeline. | 
 **data_store_name** | **str** | The name of the parent data store in which this ingest pipeline is present. | 
 **input_filter** | [**InputFilter**](InputFilter.md) |  | 

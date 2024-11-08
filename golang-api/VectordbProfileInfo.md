@@ -6,8 +6,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | **string** | Name of the Vectordb profile. | 
 **Provider** | [**VectordbProviders**](VectordbProviders.md) |  | 
-**Endpoint** | [**VectordbEndpoint**](VectordbEndpoint.md) |  | 
-**AccessKey** | Pointer to **string** | Access Key for accessing the Vectordb. | [optional] 
+**AccessInfo** | Pointer to [**VectordbAccessInfo**](VectordbAccessInfo.md) |  | [optional] 
+**AccessKey** | Pointer to [**VectordbAccessKey**](VectordbAccessKey.md) |  | [optional] 
 **ReadOnly** | Pointer to **bool** | If this condition is set to true, then only read operations are permitted to this vector database. This can be used by administrators to restrict users from modifying the contents arbitrarily. | [optional] 
 **CreatedBy** | **string** | The name of the user who created this Vectordb profile. | 
 **CreatedAt** | **int64** | Timestamp of the Vectordb profile creation. | 
@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 
 ### NewVectordbProfileInfo
 
-`func NewVectordbProfileInfo(name string, provider VectordbProviders, endpoint VectordbEndpoint, createdBy string, createdAt int64, lastUpdate int64, ) *VectordbProfileInfo`
+`func NewVectordbProfileInfo(name string, provider VectordbProviders, createdBy string, createdAt int64, lastUpdate int64, ) *VectordbProfileInfo`
 
 NewVectordbProfileInfo instantiates a new VectordbProfileInfo object
 This constructor will assign default values to properties that have it defined,
@@ -72,42 +72,47 @@ and a boolean to check if the value has been set.
 SetProvider sets Provider field to given value.
 
 
-### GetEndpoint
+### GetAccessInfo
 
-`func (o *VectordbProfileInfo) GetEndpoint() VectordbEndpoint`
+`func (o *VectordbProfileInfo) GetAccessInfo() VectordbAccessInfo`
 
-GetEndpoint returns the Endpoint field if non-nil, zero value otherwise.
+GetAccessInfo returns the AccessInfo field if non-nil, zero value otherwise.
 
-### GetEndpointOk
+### GetAccessInfoOk
 
-`func (o *VectordbProfileInfo) GetEndpointOk() (*VectordbEndpoint, bool)`
+`func (o *VectordbProfileInfo) GetAccessInfoOk() (*VectordbAccessInfo, bool)`
 
-GetEndpointOk returns a tuple with the Endpoint field if it's non-nil, zero value otherwise
+GetAccessInfoOk returns a tuple with the AccessInfo field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetEndpoint
+### SetAccessInfo
 
-`func (o *VectordbProfileInfo) SetEndpoint(v VectordbEndpoint)`
+`func (o *VectordbProfileInfo) SetAccessInfo(v VectordbAccessInfo)`
 
-SetEndpoint sets Endpoint field to given value.
+SetAccessInfo sets AccessInfo field to given value.
 
+### HasAccessInfo
+
+`func (o *VectordbProfileInfo) HasAccessInfo() bool`
+
+HasAccessInfo returns a boolean if a field has been set.
 
 ### GetAccessKey
 
-`func (o *VectordbProfileInfo) GetAccessKey() string`
+`func (o *VectordbProfileInfo) GetAccessKey() VectordbAccessKey`
 
 GetAccessKey returns the AccessKey field if non-nil, zero value otherwise.
 
 ### GetAccessKeyOk
 
-`func (o *VectordbProfileInfo) GetAccessKeyOk() (*string, bool)`
+`func (o *VectordbProfileInfo) GetAccessKeyOk() (*VectordbAccessKey, bool)`
 
 GetAccessKeyOk returns a tuple with the AccessKey field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAccessKey
 
-`func (o *VectordbProfileInfo) SetAccessKey(v string)`
+`func (o *VectordbProfileInfo) SetAccessKey(v VectordbAccessKey)`
 
 SetAccessKey sets AccessKey field to given value.
 
