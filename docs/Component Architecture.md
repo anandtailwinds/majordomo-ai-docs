@@ -25,3 +25,8 @@ Key aspects of the architecture
 - The director components are horizontally scalable and can cater to increased work load through K8s auto-scaling. 
 
 - The communication between the director and the worker happens via a proxy channel that is fully authenticated and secure. When the worker is brought up in the customer network, an associated component called the worker proxy is also brought up. This takes care of all the interfacing between the worker and the director.
+
+# Pipeline Architecture
+![Pipeline Architecture](Pipelines.png)
+
+The pipeline architecture in Majordomo AI provides an extensible way for implementing newer RAG workflows and integrating that with different kinds of data sources and query operations. The pipeline is integrated with cloud storages to begin with and is architected to interface with any enterprise data source or application in future with minimal changes to the interface. Similarly the query pipeline infrastructure can also be evolved more in the future based on the newed developments in the RAG space including options such as Agentic RAG. The details of how the pipelines and the data store are constructed are available in their respective sections in the documentation. 
