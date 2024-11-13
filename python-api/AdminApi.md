@@ -4,25 +4,25 @@ All URIs are relative to *http://localhost:/25001*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create_model_profile**](AdminApi.md#create_model_profile) | **POST** /model_profiles | Create a model profile.
-[**create_user_profile**](AdminApi.md#create_user_profile) | **POST** /user_profiles | Create an user profile.
+[**create_model_profile**](AdminApi.md#create_model_profile) | **POST** /model_profiles | Create model profile.
+[**create_user_profile**](AdminApi.md#create_user_profile) | **POST** /user_profiles | Create user profile.
 [**create_vectordb_profile**](AdminApi.md#create_vectordb_profile) | **POST** /vectordb_profiles | Create vectordb profile.
 [**create_worker**](AdminApi.md#create_worker) | **POST** /workers | Create worker node.
-[**create_workspace**](AdminApi.md#create_workspace) | **POST** /workspaces | Create a workspace.
-[**delete_model_profiles**](AdminApi.md#delete_model_profiles) | **DELETE** /model_profiles | Model Profile Delete.
+[**create_workspace**](AdminApi.md#create_workspace) | **POST** /workspaces | Create workspace.
+[**delete_model_profiles**](AdminApi.md#delete_model_profiles) | **DELETE** /model_profiles | Delete model profile.
 [**delete_user_profiles**](AdminApi.md#delete_user_profiles) | **DELETE** /user_profiles | Delete user profile.
 [**delete_vectordb_profiles**](AdminApi.md#delete_vectordb_profiles) | **DELETE** /vectordb_profiles | Delete vectordb profiles.
 [**delete_workers**](AdminApi.md#delete_workers) | **DELETE** /workers | Delete worker nodes.
-[**delete_workspaces**](AdminApi.md#delete_workspaces) | **DELETE** /workspaces | Delete a workspace.
+[**delete_workspaces**](AdminApi.md#delete_workspaces) | **DELETE** /workspaces | Delete workspace.
 [**get_model_profiles**](AdminApi.md#get_model_profiles) | **GET** /model_profiles | Get model profiles.
 [**get_user_profiles**](AdminApi.md#get_user_profiles) | **GET** /user_profiles | Get user profile.
-[**get_user_scope**](AdminApi.md#get_user_scope) | **GET** /user_scope | Get a list of permitted profiles, workspaces and stores for the user.
+[**get_user_scope**](AdminApi.md#get_user_scope) | **GET** /user_scope | Get permitted profiles for a specific user.
 [**get_users**](AdminApi.md#get_users) | **GET** /users | Get users list.
 [**get_vectordb_profiles**](AdminApi.md#get_vectordb_profiles) | **GET** /vectordb_profiles | Get vectordb profiles.
 [**get_workers**](AdminApi.md#get_workers) | **GET** /workers | Get worker nodes.
 [**get_workspaces**](AdminApi.md#get_workspaces) | **GET** /workspaces | Get workspaces.
-[**update_model_profile**](AdminApi.md#update_model_profile) | **PUT** /model_profiles | Update an existing model profile.
-[**update_user_profile**](AdminApi.md#update_user_profile) | **PUT** /user_profiles | Update an existing user profile.
+[**update_model_profile**](AdminApi.md#update_model_profile) | **PUT** /model_profiles | Update model profile.
+[**update_user_profile**](AdminApi.md#update_user_profile) | **PUT** /user_profiles | Update user profile.
 [**update_vectordb_profile**](AdminApi.md#update_vectordb_profile) | **PUT** /vectordb_profiles | Update vectordb profile.
 [**update_workspace**](AdminApi.md#update_workspace) | **PUT** /workspaces | Update workspace.
 
@@ -30,9 +30,9 @@ Method | HTTP request | Description
 # **create_model_profile**
 > ModelProfile create_model_profile(model_profile)
 
-Create a model profile.
+Create model profile.
 
-Create a model profile.
+Create a new model profile.
 
 ### Example
 
@@ -67,7 +67,7 @@ with majordomo_ai.ApiClient(configuration) as api_client:
     model_profile = majordomo_ai.ModelProfile() # ModelProfile | 
 
     try:
-        # Create a model profile.
+        # Create model profile.
         api_response = api_instance.create_model_profile(model_profile)
         print("The response of AdminApi->create_model_profile:\n")
         pprint(api_response)
@@ -109,7 +109,7 @@ Name | Type | Description  | Notes
 # **create_user_profile**
 > UserProfile create_user_profile(user_profile)
 
-Create an user profile.
+Create user profile.
 
 Create an user profile.
 
@@ -146,7 +146,7 @@ with majordomo_ai.ApiClient(configuration) as api_client:
     user_profile = majordomo_ai.UserProfile() # UserProfile | 
 
     try:
-        # Create an user profile.
+        # Create user profile.
         api_response = api_instance.create_user_profile(user_profile)
         print("The response of AdminApi->create_user_profile:\n")
         pprint(api_response)
@@ -347,9 +347,9 @@ Name | Type | Description  | Notes
 # **create_workspace**
 > WorkspaceInfo create_workspace(workspace)
 
-Create a workspace.
+Create workspace.
 
-Create a workspace.
+Create a new workspace.
 
 ### Example
 
@@ -385,7 +385,7 @@ with majordomo_ai.ApiClient(configuration) as api_client:
     workspace = majordomo_ai.Workspace() # Workspace | 
 
     try:
-        # Create a workspace.
+        # Create workspace.
         api_response = api_instance.create_workspace(workspace)
         print("The response of AdminApi->create_workspace:\n")
         pprint(api_response)
@@ -427,7 +427,7 @@ Name | Type | Description  | Notes
 # **delete_model_profiles**
 > DeleteResponse delete_model_profiles(name=name)
 
-Model Profile Delete.
+Delete model profile.
 
 Delete one or more configured model profiles.
 
@@ -464,7 +464,7 @@ with majordomo_ai.ApiClient(configuration) as api_client:
     name = 'name_example' # str | The name of the model profile to delete. (optional)
 
     try:
-        # Model Profile Delete.
+        # Delete model profile.
         api_response = api_instance.delete_model_profiles(name=name)
         print("The response of AdminApi->delete_model_profiles:\n")
         pprint(api_response)
@@ -735,7 +735,7 @@ void (empty response body)
 # **delete_workspaces**
 > DeleteResponse delete_workspaces(name)
 
-Delete a workspace.
+Delete workspace.
 
 Delete an existing workspace created by the user.
 
@@ -772,7 +772,7 @@ with majordomo_ai.ApiClient(configuration) as api_client:
     name = 'name_example' # str | Name of the workspaces to delete. Any references to this workspace need to be deleted first before this operation can succeed.
 
     try:
-        # Delete a workspace.
+        # Delete workspace.
         api_response = api_instance.delete_workspaces(name)
         print("The response of AdminApi->delete_workspaces:\n")
         pprint(api_response)
@@ -973,9 +973,9 @@ Name | Type | Description  | Notes
 # **get_user_scope**
 > UserScope get_user_scope(workspace)
 
-Get a list of permitted profiles, workspaces and stores for the user.
+Get permitted profiles for a specific user.
 
-Get a list of permitted profiles, workspaces and stores for the user.
+Get a list of permitted profiles, workspaces and stores allowed for the user.
 
 ### Example
 
@@ -1010,7 +1010,7 @@ with majordomo_ai.ApiClient(configuration) as api_client:
     workspace = 'workspace_example' # str | The name of the workspace to retrieve the information for.
 
     try:
-        # Get a list of permitted profiles, workspaces and stores for the user.
+        # Get permitted profiles for a specific user.
         api_response = api_instance.get_user_scope(workspace)
         print("The response of AdminApi->get_user_scope:\n")
         pprint(api_response)
@@ -1368,7 +1368,7 @@ Name | Type | Description  | Notes
 # **update_model_profile**
 > ModelProfile update_model_profile(model_profile)
 
-Update an existing model profile.
+Update model profile.
 
 Update an existing model profile.
 
@@ -1405,7 +1405,7 @@ with majordomo_ai.ApiClient(configuration) as api_client:
     model_profile = majordomo_ai.ModelProfile() # ModelProfile | 
 
     try:
-        # Update an existing model profile.
+        # Update model profile.
         api_response = api_instance.update_model_profile(model_profile)
         print("The response of AdminApi->update_model_profile:\n")
         pprint(api_response)
@@ -1447,7 +1447,7 @@ Name | Type | Description  | Notes
 # **update_user_profile**
 > UserProfile update_user_profile(user_profile)
 
-Update an existing user profile.
+Update user profile.
 
 Update an existing user profile.
 
@@ -1484,7 +1484,7 @@ with majordomo_ai.ApiClient(configuration) as api_client:
     user_profile = majordomo_ai.UserProfile() # UserProfile | 
 
     try:
-        # Update an existing user profile.
+        # Update user profile.
         api_response = api_instance.update_user_profile(user_profile)
         print("The response of AdminApi->update_user_profile:\n")
         pprint(api_response)

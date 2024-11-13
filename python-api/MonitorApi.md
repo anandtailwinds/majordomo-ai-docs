@@ -4,20 +4,20 @@ All URIs are relative to *http://localhost:/25001*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create_monitor_profile**](MonitorApi.md#create_monitor_profile) | **POST** /monitor_profiles | Create a monitor profile.
+[**create_monitor_profile**](MonitorApi.md#create_monitor_profile) | **POST** /monitor_profiles | Create monitor profile.
 [**delete_monitor_profiles**](MonitorApi.md#delete_monitor_profiles) | **DELETE** /monitor_profiles | Delete monitor profiles.
 [**get_logs**](MonitorApi.md#get_logs) | **GET** /logs | Get logs.
 [**get_monitor_profiles**](MonitorApi.md#get_monitor_profiles) | **GET** /monitor_profiles | Get monitor profiles.
 [**get_token_stats**](MonitorApi.md#get_token_stats) | **GET** /token_stats | Get token statistics.
-[**update_monitor_profile**](MonitorApi.md#update_monitor_profile) | **PUT** /monitor_profiles | Update an existing monitor profile.
+[**update_monitor_profile**](MonitorApi.md#update_monitor_profile) | **PUT** /monitor_profiles | Update monitor profile.
 
 
 # **create_monitor_profile**
 > MonitorProfile create_monitor_profile(monitor_profile)
 
-Create a monitor profile.
+Create monitor profile.
 
-Create a monitor profile.
+Create a new monitor profile.
 
 ### Example
 
@@ -52,7 +52,7 @@ with majordomo_ai.ApiClient(configuration) as api_client:
     monitor_profile = majordomo_ai.MonitorProfile() # MonitorProfile | 
 
     try:
-        # Create a monitor profile.
+        # Create monitor profile.
         api_response = api_instance.create_monitor_profile(monitor_profile)
         print("The response of MonitorApi->create_monitor_profile:\n")
         pprint(api_response)
@@ -428,7 +428,7 @@ Name | Type | Description  | Notes
 # **update_monitor_profile**
 > MonitorProfile update_monitor_profile(monitor_profile)
 
-Update an existing monitor profile.
+Update monitor profile.
 
 Update an existing monitor profile.
 
@@ -465,7 +465,7 @@ with majordomo_ai.ApiClient(configuration) as api_client:
     monitor_profile = majordomo_ai.MonitorProfile() # MonitorProfile | 
 
     try:
-        # Update an existing monitor profile.
+        # Update monitor profile.
         api_response = api_instance.update_monitor_profile(monitor_profile)
         print("The response of MonitorApi->update_monitor_profile:\n")
         pprint(api_response)

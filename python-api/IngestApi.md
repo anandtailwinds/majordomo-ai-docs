@@ -5,18 +5,18 @@ All URIs are relative to *http://localhost:/25001*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**create_data_store**](IngestApi.md#create_data_store) | **POST** /data_stores | Create a data store.
-[**create_ingest_pipeline**](IngestApi.md#create_ingest_pipeline) | **POST** /ingest_pipelines | Create an ingest pipeline.
+[**create_ingest_pipeline**](IngestApi.md#create_ingest_pipeline) | **POST** /ingest_pipelines | Create ingest pipeline.
 [**data_store_ingest**](IngestApi.md#data_store_ingest) | **POST** /data_store_ingest | Data store ingestion.
 [**data_store_upload**](IngestApi.md#data_store_upload) | **POST** /data_store_upload | Data store ingest local file.
-[**delete_data_stores**](IngestApi.md#delete_data_stores) | **DELETE** /data_stores | Delete an existing data store.
-[**delete_ingest_pipelines**](IngestApi.md#delete_ingest_pipelines) | **DELETE** /ingest_pipelines | Delete an existing ingest pipeline.
+[**delete_data_stores**](IngestApi.md#delete_data_stores) | **DELETE** /data_stores | Delete data store.
+[**delete_ingest_pipelines**](IngestApi.md#delete_ingest_pipelines) | **DELETE** /ingest_pipelines | Delete ingest pipeline.
 [**delete_vector_store_files**](IngestApi.md#delete_vector_store_files) | **DELETE** /delete_vector_store_files/workspace/{workspace}/data-store/{data_store}/files/{files} | Delete vector stores information.
-[**get_data_stores**](IngestApi.md#get_data_stores) | **GET** /data_stores | Get a list of existing data stores.
+[**get_data_stores**](IngestApi.md#get_data_stores) | **GET** /data_stores | List data stores.
 [**get_ingest_pipelines**](IngestApi.md#get_ingest_pipelines) | **GET** /ingest_pipelines | Get ingest pipeline.
 [**get_vector_stores**](IngestApi.md#get_vector_stores) | **GET** /vector_stores | Get vector stores information.
-[**run_ingest_pipeline**](IngestApi.md#run_ingest_pipeline) | **POST** /ingest_pipeline_run/workspace/{workspace}/data-store/{data_store}/name/{name} | Run an ingest pipeline.
-[**update_data_store**](IngestApi.md#update_data_store) | **PUT** /data_stores | Update an existing data store.
-[**update_ingest_pipeline**](IngestApi.md#update_ingest_pipeline) | **PUT** /ingest_pipelines | Update an existing ingest pipeline.
+[**run_ingest_pipeline**](IngestApi.md#run_ingest_pipeline) | **POST** /ingest_pipeline_run/workspace/{workspace}/data-store/{data_store}/name/{name} | Run ingest pipeline.
+[**update_data_store**](IngestApi.md#update_data_store) | **PUT** /data_stores | Update data store.
+[**update_ingest_pipeline**](IngestApi.md#update_ingest_pipeline) | **PUT** /ingest_pipelines | Update ingest pipeline.
 
 
 # **create_data_store**
@@ -102,7 +102,7 @@ Name | Type | Description  | Notes
 # **create_ingest_pipeline**
 > IngestPipelineInfo create_ingest_pipeline(ingest_pipeline)
 
-Create an ingest pipeline.
+Create ingest pipeline.
 
 Create a ingest pipeline as part of a data store to add documents.
 
@@ -140,7 +140,7 @@ with majordomo_ai.ApiClient(configuration) as api_client:
     ingest_pipeline = majordomo_ai.IngestPipeline() # IngestPipeline | 
 
     try:
-        # Create an ingest pipeline.
+        # Create ingest pipeline.
         api_response = api_instance.create_ingest_pipeline(ingest_pipeline)
         print("The response of IngestApi->create_ingest_pipeline:\n")
         pprint(api_response)
@@ -351,7 +351,7 @@ Name | Type | Description  | Notes
 # **delete_data_stores**
 > DeleteResponse delete_data_stores(workspace, name=name, force=force)
 
-Delete an existing data store.
+Delete data store.
 
 Delete an existing data store created by the user. All references to this data store need to be removed first, if not the delete will fail.
 
@@ -390,7 +390,7 @@ with majordomo_ai.ApiClient(configuration) as api_client:
     force = True # bool | Normally a data store deletion will succeed only if the corresponding entry in the vector database provider is removed. This is to ensure consistency. If there are scenarios where a discrepancy has creeped in, this option can be used to remove the data store reference in Majordomo AI. This option is available only if both workspace and data store name are provided. (optional)
 
     try:
-        # Delete an existing data store.
+        # Delete data store.
         api_response = api_instance.delete_data_stores(workspace, name=name, force=force)
         print("The response of IngestApi->delete_data_stores:\n")
         pprint(api_response)
@@ -435,7 +435,7 @@ Name | Type | Description  | Notes
 # **delete_ingest_pipelines**
 > DeleteResponse delete_ingest_pipelines(workspace, data_store, name=name)
 
-Delete an existing ingest pipeline.
+Delete ingest pipeline.
 
 Delete an existing ingest pipeline.
 
@@ -474,7 +474,7 @@ with majordomo_ai.ApiClient(configuration) as api_client:
     name = 'name_example' # str | The name of the ingest pipeline to be deleted. If no name is provided, all ingest pipelines in the data store are deleted. (optional)
 
     try:
-        # Delete an existing ingest pipeline.
+        # Delete ingest pipeline.
         api_response = api_instance.delete_ingest_pipelines(workspace, data_store, name=name)
         print("The response of IngestApi->delete_ingest_pipelines:\n")
         pprint(api_response)
@@ -602,7 +602,7 @@ Name | Type | Description  | Notes
 # **get_data_stores**
 > DataStores get_data_stores(workspace=workspace, name=name)
 
-Get a list of existing data stores.
+List data stores.
 
 Get a list of existing data stores that are created by the user filtered based on parameters such as workspace.
 
@@ -640,7 +640,7 @@ with majordomo_ai.ApiClient(configuration) as api_client:
     name = 'name_example' # str | The name of the data store to retrieve. (optional)
 
     try:
-        # Get a list of existing data stores.
+        # List data stores.
         api_response = api_instance.get_data_stores(workspace=workspace, name=name)
         print("The response of IngestApi->get_data_stores:\n")
         pprint(api_response)
@@ -849,7 +849,7 @@ Name | Type | Description  | Notes
 # **run_ingest_pipeline**
 > run_ingest_pipeline(workspace, data_store, name)
 
-Run an ingest pipeline.
+Run ingest pipeline.
 
 Trigger a single run of an already created ingest pipeline.
 
@@ -887,7 +887,7 @@ with majordomo_ai.ApiClient(configuration) as api_client:
     name = 'name_example' # str | The name of the ingest pipeline to run.
 
     try:
-        # Run an ingest pipeline.
+        # Run ingest pipeline.
         api_instance.run_ingest_pipeline(workspace, data_store, name)
     except Exception as e:
         print("Exception when calling IngestApi->run_ingest_pipeline: %s\n" % e)
@@ -929,9 +929,9 @@ void (empty response body)
 # **update_data_store**
 > DataStoreInfo update_data_store(data_store)
 
-Update an existing data store.
+Update data store.
 
-Update an existing data store of a specified type.
+Change any modifiable parameters of the data store.
 
 ### Example
 
@@ -967,7 +967,7 @@ with majordomo_ai.ApiClient(configuration) as api_client:
     data_store = majordomo_ai.DataStore() # DataStore | 
 
     try:
-        # Update an existing data store.
+        # Update data store.
         api_response = api_instance.update_data_store(data_store)
         print("The response of IngestApi->update_data_store:\n")
         pprint(api_response)
@@ -1009,7 +1009,7 @@ Name | Type | Description  | Notes
 # **update_ingest_pipeline**
 > IngestPipelineInfo update_ingest_pipeline(ingest_pipeline)
 
-Update an existing ingest pipeline.
+Update ingest pipeline.
 
 Update an existing ingest pipeline.
 
@@ -1047,7 +1047,7 @@ with majordomo_ai.ApiClient(configuration) as api_client:
     ingest_pipeline = majordomo_ai.IngestPipeline() # IngestPipeline | 
 
     try:
-        # Update an existing ingest pipeline.
+        # Update ingest pipeline.
         api_response = api_instance.update_ingest_pipeline(ingest_pipeline)
         print("The response of IngestApi->update_ingest_pipeline:\n")
         pprint(api_response)
