@@ -13,13 +13,15 @@ When a particular enterprise which can be a company or a department or a group i
 
 Every Majordomo AI account will have a set of AI assets and access policies for using them. These set of access policies are called profiles. There are different types of profiles that are applicable to different kinds of AI assets. Namely,
 
-[Model Profiles](Model Profile.md)
-[Vectordb Profiles](Vectordb Profile.md)
-[Monitor Profiles](Vectordb Profile.md)
+[Model Profile.md](https://github.com/anandtailwinds/majordomo-ai-docs/blob/main/docs/Model%20Profile.md)
+
+[Vectordb Profiles](https://github.com/anandtailwinds/majordomo-ai-docs/blob/main/docs/Vectordb%20Profile.md)
+
+[Monitor Profiles](https://github.com/anandtailwinds/majordomo-ai-docs/blob/main/docs/Monitor%20Profile.md)
 
 The policies that control the access on a per-user level are created through 
 
-[User Profiles](User Profile.md)
+[User Profiles](https://github.com/anandtailwinds/majordomo-ai-docs/blob/main/docs/User%20Profile.md)
 
 In an administrator controlled account, individual users will not be able to create any profiles. They are created by the administrator and their lifecycle if fully managed by them. User can only use the profiles assigned to them to access AI assets. This model is suitable for production environments where the control to the AI assets is restricted.
 
