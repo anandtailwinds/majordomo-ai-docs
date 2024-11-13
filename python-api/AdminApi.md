@@ -4,35 +4,35 @@ All URIs are relative to *http://localhost:/25001*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create_model_profile**](AdminApi.md#create_model_profile) | **POST** /model_profiles | Model Profile
-[**create_user_profile**](AdminApi.md#create_user_profile) | **POST** /user_profiles | User Profile
-[**create_vectordb_profile**](AdminApi.md#create_vectordb_profile) | **POST** /vectordb_profiles | Vectordb Profile
-[**create_worker**](AdminApi.md#create_worker) | **POST** /workers | Worker
-[**create_workspace**](AdminApi.md#create_workspace) | **POST** /workspaces | Workspace
+[**create_model_profile**](AdminApi.md#create_model_profile) | **POST** /model_profiles | Create a model profile.
+[**create_user_profile**](AdminApi.md#create_user_profile) | **POST** /user_profiles | Create an user profile.
+[**create_vectordb_profile**](AdminApi.md#create_vectordb_profile) | **POST** /vectordb_profiles | Create vectordb profile.
+[**create_worker**](AdminApi.md#create_worker) | **POST** /workers | Create worker node.
+[**create_workspace**](AdminApi.md#create_workspace) | **POST** /workspaces | Create a workspace.
 [**delete_model_profiles**](AdminApi.md#delete_model_profiles) | **DELETE** /model_profiles | Model Profile Delete.
-[**delete_user_profiles**](AdminApi.md#delete_user_profiles) | **DELETE** /user_profiles | User Profile Specific DELETE.
-[**delete_vectordb_profiles**](AdminApi.md#delete_vectordb_profiles) | **DELETE** /vectordb_profiles | Vectordb Profile Specific Delete.
-[**delete_workers**](AdminApi.md#delete_workers) | **DELETE** /workers | Worker Specific Delete.
-[**delete_workspaces**](AdminApi.md#delete_workspaces) | **DELETE** /workspaces | Workspace Specific Delete.
-[**get_model_profiles**](AdminApi.md#get_model_profiles) | **GET** /model_profiles | Model profiles GET operation.
-[**get_user_profiles**](AdminApi.md#get_user_profiles) | **GET** /user_profiles | User profiles GET operation.
-[**get_user_scope**](AdminApi.md#get_user_scope) | **GET** /user_scope | 
-[**get_users**](AdminApi.md#get_users) | **GET** /users | 
-[**get_vectordb_profiles**](AdminApi.md#get_vectordb_profiles) | **GET** /vectordb_profiles | Vectordb profiles GET operation.
-[**get_workers**](AdminApi.md#get_workers) | **GET** /workers | Worker Get
-[**get_workspaces**](AdminApi.md#get_workspaces) | **GET** /workspaces | Workspace GET operation.
-[**update_model_profile**](AdminApi.md#update_model_profile) | **PUT** /model_profiles | Model Profile
-[**update_user_profile**](AdminApi.md#update_user_profile) | **PUT** /user_profiles | User Profile
-[**update_vectordb_profile**](AdminApi.md#update_vectordb_profile) | **PUT** /vectordb_profiles | Vectordb Profile
-[**update_workspace**](AdminApi.md#update_workspace) | **PUT** /workspaces | Workspace
+[**delete_user_profiles**](AdminApi.md#delete_user_profiles) | **DELETE** /user_profiles | Delete user profile.
+[**delete_vectordb_profiles**](AdminApi.md#delete_vectordb_profiles) | **DELETE** /vectordb_profiles | Delete vectordb profiles.
+[**delete_workers**](AdminApi.md#delete_workers) | **DELETE** /workers | Delete worker nodes.
+[**delete_workspaces**](AdminApi.md#delete_workspaces) | **DELETE** /workspaces | Delete a workspace.
+[**get_model_profiles**](AdminApi.md#get_model_profiles) | **GET** /model_profiles | Get model profiles.
+[**get_user_profiles**](AdminApi.md#get_user_profiles) | **GET** /user_profiles | Get user profile.
+[**get_user_scope**](AdminApi.md#get_user_scope) | **GET** /user_scope | Get a list of permitted profiles, workspaces and stores for the user.
+[**get_users**](AdminApi.md#get_users) | **GET** /users | Get users list.
+[**get_vectordb_profiles**](AdminApi.md#get_vectordb_profiles) | **GET** /vectordb_profiles | Get vectordb profiles.
+[**get_workers**](AdminApi.md#get_workers) | **GET** /workers | Get worker nodes.
+[**get_workspaces**](AdminApi.md#get_workspaces) | **GET** /workspaces | Get workspaces.
+[**update_model_profile**](AdminApi.md#update_model_profile) | **PUT** /model_profiles | Update an existing model profile.
+[**update_user_profile**](AdminApi.md#update_user_profile) | **PUT** /user_profiles | Update an existing user profile.
+[**update_vectordb_profile**](AdminApi.md#update_vectordb_profile) | **PUT** /vectordb_profiles | Update vectordb profile.
+[**update_workspace**](AdminApi.md#update_workspace) | **PUT** /workspaces | Update workspace.
 
 
 # **create_model_profile**
 > ModelProfile create_model_profile(model_profile)
 
-Model Profile
+Create a model profile.
 
-Create a model profile
+Create a model profile.
 
 ### Example
 
@@ -67,7 +67,7 @@ with majordomo_ai.ApiClient(configuration) as api_client:
     model_profile = majordomo_ai.ModelProfile() # ModelProfile | 
 
     try:
-        # Model Profile
+        # Create a model profile.
         api_response = api_instance.create_model_profile(model_profile)
         print("The response of AdminApi->create_model_profile:\n")
         pprint(api_response)
@@ -109,9 +109,9 @@ Name | Type | Description  | Notes
 # **create_user_profile**
 > UserProfile create_user_profile(user_profile)
 
-User Profile
+Create an user profile.
 
-Create a user profile.
+Create an user profile.
 
 ### Example
 
@@ -146,7 +146,7 @@ with majordomo_ai.ApiClient(configuration) as api_client:
     user_profile = majordomo_ai.UserProfile() # UserProfile | 
 
     try:
-        # User Profile
+        # Create an user profile.
         api_response = api_instance.create_user_profile(user_profile)
         print("The response of AdminApi->create_user_profile:\n")
         pprint(api_response)
@@ -188,9 +188,9 @@ Name | Type | Description  | Notes
 # **create_vectordb_profile**
 > VectordbProfile create_vectordb_profile(vectordb_profile)
 
-Vectordb Profile
+Create vectordb profile.
 
-Create a Vectordb profile
+Create a vectordb profile.
 
 ### Example
 
@@ -225,7 +225,7 @@ with majordomo_ai.ApiClient(configuration) as api_client:
     vectordb_profile = majordomo_ai.VectordbProfile() # VectordbProfile | 
 
     try:
-        # Vectordb Profile
+        # Create vectordb profile.
         api_response = api_instance.create_vectordb_profile(vectordb_profile)
         print("The response of AdminApi->create_vectordb_profile:\n")
         pprint(api_response)
@@ -267,9 +267,9 @@ Name | Type | Description  | Notes
 # **create_worker**
 > WorkerInfo create_worker(worker)
 
-Worker
+Create worker node.
 
-Create a worker
+Create a worker node.
 
 ### Example
 
@@ -305,7 +305,7 @@ with majordomo_ai.ApiClient(configuration) as api_client:
     worker = majordomo_ai.Worker() # Worker | 
 
     try:
-        # Worker
+        # Create worker node.
         api_response = api_instance.create_worker(worker)
         print("The response of AdminApi->create_worker:\n")
         pprint(api_response)
@@ -347,9 +347,9 @@ Name | Type | Description  | Notes
 # **create_workspace**
 > WorkspaceInfo create_workspace(workspace)
 
-Workspace
+Create a workspace.
 
-Create a workspace
+Create a workspace.
 
 ### Example
 
@@ -385,7 +385,7 @@ with majordomo_ai.ApiClient(configuration) as api_client:
     workspace = majordomo_ai.Workspace() # Workspace | 
 
     try:
-        # Workspace
+        # Create a workspace.
         api_response = api_instance.create_workspace(workspace)
         print("The response of AdminApi->create_workspace:\n")
         pprint(api_response)
@@ -429,7 +429,7 @@ Name | Type | Description  | Notes
 
 Model Profile Delete.
 
-Delete one or mode existing model profiles.
+Delete one or more configured model profiles.
 
 ### Example
 
@@ -507,7 +507,7 @@ Name | Type | Description  | Notes
 # **delete_user_profiles**
 > delete_user_profiles(workspace, user_name)
 
-User Profile Specific DELETE.
+Delete user profile.
 
 Delete an existing user profile.
 
@@ -544,7 +544,7 @@ with majordomo_ai.ApiClient(configuration) as api_client:
     user_name = 'user_name_example' # str | The name of the user associated with the user profile.
 
     try:
-        # User Profile Specific DELETE.
+        # Delete user profile.
         api_instance.delete_user_profiles(workspace, user_name)
     except Exception as e:
         print("Exception when calling AdminApi->delete_user_profiles: %s\n" % e)
@@ -585,7 +585,7 @@ void (empty response body)
 # **delete_vectordb_profiles**
 > DeleteResponse delete_vectordb_profiles(name=name)
 
-Vectordb Profile Specific Delete.
+Delete vectordb profiles.
 
 Delete one or more existing vectordb profiles.
 
@@ -622,7 +622,7 @@ with majordomo_ai.ApiClient(configuration) as api_client:
     name = 'name_example' # str | The name of the vectordb profile to delete. (optional)
 
     try:
-        # Vectordb Profile Specific Delete.
+        # Delete vectordb profiles.
         api_response = api_instance.delete_vectordb_profiles(name=name)
         print("The response of AdminApi->delete_vectordb_profiles:\n")
         pprint(api_response)
@@ -665,9 +665,9 @@ Name | Type | Description  | Notes
 # **delete_workers**
 > delete_workers(name)
 
-Worker Specific Delete.
+Delete worker nodes.
 
-Delete an existing worker created by the user.
+Delete an existing worker node.
 
 ### Example
 
@@ -701,7 +701,7 @@ with majordomo_ai.ApiClient(configuration) as api_client:
     name = 'name_example' # str | Name of the worker to delete. Any references to this worker need to be deleted first before this operation can succeed.
 
     try:
-        # Worker Specific Delete.
+        # Delete worker nodes.
         api_instance.delete_workers(name)
     except Exception as e:
         print("Exception when calling AdminApi->delete_workers: %s\n" % e)
@@ -735,7 +735,7 @@ void (empty response body)
 # **delete_workspaces**
 > DeleteResponse delete_workspaces(name)
 
-Workspace Specific Delete.
+Delete a workspace.
 
 Delete an existing workspace created by the user.
 
@@ -772,7 +772,7 @@ with majordomo_ai.ApiClient(configuration) as api_client:
     name = 'name_example' # str | Name of the workspaces to delete. Any references to this workspace need to be deleted first before this operation can succeed.
 
     try:
-        # Workspace Specific Delete.
+        # Delete a workspace.
         api_response = api_instance.delete_workspaces(name)
         print("The response of AdminApi->delete_workspaces:\n")
         pprint(api_response)
@@ -815,7 +815,7 @@ Name | Type | Description  | Notes
 # **get_model_profiles**
 > ModelProfiles get_model_profiles(name=name)
 
-Model profiles GET operation.
+Get model profiles.
 
 Get a list of existing model profiles.
 
@@ -852,7 +852,7 @@ with majordomo_ai.ApiClient(configuration) as api_client:
     name = 'name_example' # str | The name of the model profile to retrieve. (optional)
 
     try:
-        # Model profiles GET operation.
+        # Get model profiles.
         api_response = api_instance.get_model_profiles(name=name)
         print("The response of AdminApi->get_model_profiles:\n")
         pprint(api_response)
@@ -894,7 +894,7 @@ Name | Type | Description  | Notes
 # **get_user_profiles**
 > UserProfiles get_user_profiles(name=name)
 
-User profiles GET operation.
+Get user profile.
 
 Get a list of existing user profiles.
 
@@ -931,7 +931,7 @@ with majordomo_ai.ApiClient(configuration) as api_client:
     name = 'name_example' # str | The name of the user profile to retrieve. (optional)
 
     try:
-        # User profiles GET operation.
+        # Get user profile.
         api_response = api_instance.get_user_profiles(name=name)
         print("The response of AdminApi->get_user_profiles:\n")
         pprint(api_response)
@@ -973,7 +973,7 @@ Name | Type | Description  | Notes
 # **get_user_scope**
 > UserScope get_user_scope(workspace)
 
-
+Get a list of permitted profiles, workspaces and stores for the user.
 
 Get a list of permitted profiles, workspaces and stores for the user.
 
@@ -1010,6 +1010,7 @@ with majordomo_ai.ApiClient(configuration) as api_client:
     workspace = 'workspace_example' # str | The name of the workspace to retrieve the information for.
 
     try:
+        # Get a list of permitted profiles, workspaces and stores for the user.
         api_response = api_instance.get_user_scope(workspace)
         print("The response of AdminApi->get_user_scope:\n")
         pprint(api_response)
@@ -1051,9 +1052,9 @@ Name | Type | Description  | Notes
 # **get_users**
 > Users get_users(name=name)
 
+Get users list.
 
-
-Get a list of users
+Get the list of users in the account.
 
 ### Example
 
@@ -1088,6 +1089,7 @@ with majordomo_ai.ApiClient(configuration) as api_client:
     name = 'name_example' # str | Get information specific to a user. (optional)
 
     try:
+        # Get users list.
         api_response = api_instance.get_users(name=name)
         print("The response of AdminApi->get_users:\n")
         pprint(api_response)
@@ -1129,9 +1131,9 @@ Name | Type | Description  | Notes
 # **get_vectordb_profiles**
 > VectordbProfiles get_vectordb_profiles(name=name)
 
-Vectordb profiles GET operation.
+Get vectordb profiles.
 
-Get a list of existing Vectordb profiles.
+Get a list of existing vectordb profiles.
 
 ### Example
 
@@ -1166,7 +1168,7 @@ with majordomo_ai.ApiClient(configuration) as api_client:
     name = 'name_example' # str | The name of the vectordb profile to retrieve. (optional)
 
     try:
-        # Vectordb profiles GET operation.
+        # Get vectordb profiles.
         api_response = api_instance.get_vectordb_profiles(name=name)
         print("The response of AdminApi->get_vectordb_profiles:\n")
         pprint(api_response)
@@ -1208,7 +1210,7 @@ Name | Type | Description  | Notes
 # **get_workers**
 > Workers get_workers(name=name)
 
-Worker Get
+Get worker nodes.
 
 Get a list of existing workers.
 
@@ -1245,7 +1247,7 @@ with majordomo_ai.ApiClient(configuration) as api_client:
     name = 'name_example' # str | Name of the specific worker to retrieve. (optional)
 
     try:
-        # Worker Get
+        # Get worker nodes.
         api_response = api_instance.get_workers(name=name)
         print("The response of AdminApi->get_workers:\n")
         pprint(api_response)
@@ -1287,7 +1289,7 @@ Name | Type | Description  | Notes
 # **get_workspaces**
 > Workspaces get_workspaces(name=name)
 
-Workspace GET operation.
+Get workspaces.
 
 Get a list of existing workspaces.
 
@@ -1324,7 +1326,7 @@ with majordomo_ai.ApiClient(configuration) as api_client:
     name = 'name_example' # str | Name of the workspace (optional)
 
     try:
-        # Workspace GET operation.
+        # Get workspaces.
         api_response = api_instance.get_workspaces(name=name)
         print("The response of AdminApi->get_workspaces:\n")
         pprint(api_response)
@@ -1366,7 +1368,7 @@ Name | Type | Description  | Notes
 # **update_model_profile**
 > ModelProfile update_model_profile(model_profile)
 
-Model Profile
+Update an existing model profile.
 
 Update an existing model profile.
 
@@ -1403,7 +1405,7 @@ with majordomo_ai.ApiClient(configuration) as api_client:
     model_profile = majordomo_ai.ModelProfile() # ModelProfile | 
 
     try:
-        # Model Profile
+        # Update an existing model profile.
         api_response = api_instance.update_model_profile(model_profile)
         print("The response of AdminApi->update_model_profile:\n")
         pprint(api_response)
@@ -1445,7 +1447,7 @@ Name | Type | Description  | Notes
 # **update_user_profile**
 > UserProfile update_user_profile(user_profile)
 
-User Profile
+Update an existing user profile.
 
 Update an existing user profile.
 
@@ -1482,7 +1484,7 @@ with majordomo_ai.ApiClient(configuration) as api_client:
     user_profile = majordomo_ai.UserProfile() # UserProfile | 
 
     try:
-        # User Profile
+        # Update an existing user profile.
         api_response = api_instance.update_user_profile(user_profile)
         print("The response of AdminApi->update_user_profile:\n")
         pprint(api_response)
@@ -1524,9 +1526,9 @@ Name | Type | Description  | Notes
 # **update_vectordb_profile**
 > VectordbProfile update_vectordb_profile(vectordb_profile)
 
-Vectordb Profile
+Update vectordb profile.
 
-Update an existing Vectordb profile.
+Update an existing vectordb profile.
 
 ### Example
 
@@ -1561,7 +1563,7 @@ with majordomo_ai.ApiClient(configuration) as api_client:
     vectordb_profile = majordomo_ai.VectordbProfile() # VectordbProfile | 
 
     try:
-        # Vectordb Profile
+        # Update vectordb profile.
         api_response = api_instance.update_vectordb_profile(vectordb_profile)
         print("The response of AdminApi->update_vectordb_profile:\n")
         pprint(api_response)
@@ -1603,7 +1605,7 @@ Name | Type | Description  | Notes
 # **update_workspace**
 > WorkspaceInfo update_workspace(workspace)
 
-Workspace
+Update workspace.
 
 Update an existing workspace.
 
@@ -1641,7 +1643,7 @@ with majordomo_ai.ApiClient(configuration) as api_client:
     workspace = majordomo_ai.Workspace() # Workspace | 
 
     try:
-        # Workspace
+        # Update workspace.
         api_response = api_instance.update_workspace(workspace)
         print("The response of AdminApi->update_workspace:\n")
         pprint(api_response)

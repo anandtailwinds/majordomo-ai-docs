@@ -4,20 +4,20 @@ All URIs are relative to *http://localhost:/25001*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create_query_pipeline**](QueryApi.md#create_query_pipeline) | **POST** /query_pipelines | Query Pipeline
-[**data_store_query**](QueryApi.md#data_store_query) | **POST** /data_store_query | Query a data store
-[**delete_query_pipelines**](QueryApi.md#delete_query_pipelines) | **DELETE** /query_pipelines | Query Pipeline
-[**get_query_pipelines**](QueryApi.md#get_query_pipelines) | **GET** /query_pipelines | Query Pipeline Get
-[**run_query_pipeline**](QueryApi.md#run_query_pipeline) | **POST** /query_pipeline_run/workspace/{workspace}/name/{name}/query/{query_string} | Query Pipeline Run
-[**update_query_pipeline**](QueryApi.md#update_query_pipeline) | **PUT** /query_pipelines | Query Pipeline
+[**create_query_pipeline**](QueryApi.md#create_query_pipeline) | **POST** /query_pipelines | Create a query pipeline.
+[**data_store_query**](QueryApi.md#data_store_query) | **POST** /data_store_query | Data store query.
+[**delete_query_pipelines**](QueryApi.md#delete_query_pipelines) | **DELETE** /query_pipelines | Delete query pipelines.
+[**get_query_pipelines**](QueryApi.md#get_query_pipelines) | **GET** /query_pipelines | Get query pipelines.
+[**run_query_pipeline**](QueryApi.md#run_query_pipeline) | **POST** /query_pipeline_run/workspace/{workspace}/name/{name}/query/{query_string} | Query pipeline run.
+[**update_query_pipeline**](QueryApi.md#update_query_pipeline) | **PUT** /query_pipelines | Update an existing query pipeline.
 
 
 # **create_query_pipeline**
 > QueryPipelineInfo create_query_pipeline(query_pipeline)
 
-Query Pipeline
+Create a query pipeline.
 
-Create a query pipeline
+Create a query pipeline.
 
 ### Example
 
@@ -53,7 +53,7 @@ with majordomo_ai.ApiClient(configuration) as api_client:
     query_pipeline = majordomo_ai.QueryPipeline() # QueryPipeline | 
 
     try:
-        # Query Pipeline
+        # Create a query pipeline.
         api_response = api_instance.create_query_pipeline(query_pipeline)
         print("The response of QueryApi->create_query_pipeline:\n")
         pprint(api_response)
@@ -95,9 +95,9 @@ Name | Type | Description  | Notes
 # **data_store_query**
 > QueryResponse data_store_query(data_store_query)
 
-Query a data store
+Data store query.
 
-Query the contents of a data store
+Query the contents of a specific data store.
 
 ### Example
 
@@ -133,7 +133,7 @@ with majordomo_ai.ApiClient(configuration) as api_client:
     data_store_query = majordomo_ai.DataStoreQuery() # DataStoreQuery | 
 
     try:
-        # Query a data store
+        # Data store query.
         api_response = api_instance.data_store_query(data_store_query)
         print("The response of QueryApi->data_store_query:\n")
         pprint(api_response)
@@ -175,9 +175,9 @@ Name | Type | Description  | Notes
 # **delete_query_pipelines**
 > DeleteResponse delete_query_pipelines(workspace, name=name)
 
-Query Pipeline
+Delete query pipelines.
 
-Delete an existing query pipeline.
+Delete one or more existing query pipelines.
 
 ### Example
 
@@ -213,7 +213,7 @@ with majordomo_ai.ApiClient(configuration) as api_client:
     name = 'name_example' # str | The name of the query pipeline to delete. If no name is provided, all query pipelines in the workspace are deleted. (optional)
 
     try:
-        # Query Pipeline
+        # Delete query pipelines.
         api_response = api_instance.delete_query_pipelines(workspace, name=name)
         print("The response of QueryApi->delete_query_pipelines:\n")
         pprint(api_response)
@@ -257,7 +257,7 @@ Name | Type | Description  | Notes
 # **get_query_pipelines**
 > QueryPipelines get_query_pipelines(workspace=workspace, name=name)
 
-Query Pipeline Get
+Get query pipelines.
 
 Get a list of existing query pipelines.
 
@@ -295,7 +295,7 @@ with majordomo_ai.ApiClient(configuration) as api_client:
     name = 'name_example' # str | The name of the query pipeline to retrieve. (optional)
 
     try:
-        # Query Pipeline Get
+        # Get query pipelines.
         api_response = api_instance.get_query_pipelines(workspace=workspace, name=name)
         print("The response of QueryApi->get_query_pipelines:\n")
         pprint(api_response)
@@ -338,9 +338,9 @@ Name | Type | Description  | Notes
 # **run_query_pipeline**
 > QueryResponse run_query_pipeline(workspace, name, query_string)
 
-Query Pipeline Run
+Query pipeline run.
 
-Run an already defined query pipeline
+Run an already defined query pipeline.
 
 ### Example
 
@@ -377,7 +377,7 @@ with majordomo_ai.ApiClient(configuration) as api_client:
     query_string = 'query_string_example' # str | The user query for which an answer is sought using the query pipeline information.
 
     try:
-        # Query Pipeline Run
+        # Query pipeline run.
         api_response = api_instance.run_query_pipeline(workspace, name, query_string)
         print("The response of QueryApi->run_query_pipeline:\n")
         pprint(api_response)
@@ -421,7 +421,7 @@ Name | Type | Description  | Notes
 # **update_query_pipeline**
 > QueryPipelineInfo update_query_pipeline(query_pipeline)
 
-Query Pipeline
+Update an existing query pipeline.
 
 Update an existing query pipeline.
 
@@ -459,7 +459,7 @@ with majordomo_ai.ApiClient(configuration) as api_client:
     query_pipeline = majordomo_ai.QueryPipeline() # QueryPipeline | 
 
     try:
-        # Query Pipeline
+        # Update an existing query pipeline.
         api_response = api_instance.update_query_pipeline(query_pipeline)
         print("The response of QueryApi->update_query_pipeline:\n")
         pprint(api_response)
