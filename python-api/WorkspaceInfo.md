@@ -8,8 +8,6 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **str** | Name of the workspace. | 
 **worker_name** | **str** | Name of the worker associated with the workspace. | 
-**model_profiles** | **List[str]** | The list of model profiles that are enabled for this workspace. | [optional] 
-**vectordb_profiles** | **List[str]** | The list of vectordb profiles that are enabled for this workspace. | [optional] 
 **monitor_profile** | **str** | The monitoring profile enabled for this workspace. | [optional] 
 **created_by** | **str** | The username who created this workspace. | 
 **created_at** | **int** | Timestamp of the workspace creation. | 

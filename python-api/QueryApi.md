@@ -255,7 +255,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_query_pipelines**
-> QueryPipelines get_query_pipelines(workspace=workspace, name=name)
+> QueryPipelines get_query_pipelines(workspace=workspace, name=name, shared=shared)
 
 Get query pipelines.
 
@@ -293,10 +293,11 @@ with majordomo_ai.ApiClient(configuration) as api_client:
     api_instance = majordomo_ai.QueryApi(api_client)
     workspace = 'workspace_example' # str | The workspace to search the query pipeline, mandatory if name is provided. (optional)
     name = 'name_example' # str | The name of the query pipeline to retrieve. (optional)
+    shared = True # bool | Retrieve all query pipelines that are shared with the user. (optional)
 
     try:
         # Get query pipelines.
-        api_response = api_instance.get_query_pipelines(workspace=workspace, name=name)
+        api_response = api_instance.get_query_pipelines(workspace=workspace, name=name, shared=shared)
         print("The response of QueryApi->get_query_pipelines:\n")
         pprint(api_response)
     except Exception as e:
@@ -312,6 +313,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **workspace** | **str**| The workspace to search the query pipeline, mandatory if name is provided. | [optional] 
  **name** | **str**| The name of the query pipeline to retrieve. | [optional] 
+ **shared** | **bool**| Retrieve all query pipelines that are shared with the user. | [optional] 
 
 ### Return type
 

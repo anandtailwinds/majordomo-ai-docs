@@ -5,11 +5,13 @@ All URIs are relative to *http://localhost:/25001*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**create_model_profile**](AdminApi.md#create_model_profile) | **POST** /model_profiles | Create model profile.
+[**create_user**](AdminApi.md#create_user) | **POST** /users | Add user.
 [**create_user_profile**](AdminApi.md#create_user_profile) | **POST** /user_profiles | Create user profile.
 [**create_vectordb_profile**](AdminApi.md#create_vectordb_profile) | **POST** /vectordb_profiles | Create vectordb profile.
 [**create_worker**](AdminApi.md#create_worker) | **POST** /workers | Create worker node.
 [**create_workspace**](AdminApi.md#create_workspace) | **POST** /workspaces | Create workspace.
 [**delete_model_profiles**](AdminApi.md#delete_model_profiles) | **DELETE** /model_profiles | Delete model profile.
+[**delete_user**](AdminApi.md#delete_user) | **DELETE** /users | Delete user.
 [**delete_user_profiles**](AdminApi.md#delete_user_profiles) | **DELETE** /user_profiles | Delete user profile.
 [**delete_vectordb_profiles**](AdminApi.md#delete_vectordb_profiles) | **DELETE** /vectordb_profiles | Delete vectordb profiles.
 [**delete_workers**](AdminApi.md#delete_workers) | **DELETE** /workers | Delete worker nodes.
@@ -22,6 +24,7 @@ Method | HTTP request | Description
 [**get_workers**](AdminApi.md#get_workers) | **GET** /workers | Get worker nodes.
 [**get_workspaces**](AdminApi.md#get_workspaces) | **GET** /workspaces | Get workspaces.
 [**update_model_profile**](AdminApi.md#update_model_profile) | **PUT** /model_profiles | Update model profile.
+[**update_user**](AdminApi.md#update_user) | **PUT** /users | Update user.
 [**update_user_profile**](AdminApi.md#update_user_profile) | **PUT** /user_profiles | Update user profile.
 [**update_vectordb_profile**](AdminApi.md#update_vectordb_profile) | **PUT** /vectordb_profiles | Update vectordb profile.
 [**update_workspace**](AdminApi.md#update_workspace) | **PUT** /workspaces | Update workspace.
@@ -87,6 +90,86 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ModelProfile**](ModelProfile.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | successful operation |  -  |
+**422** | Invalid input |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **create_user**
+> UserInfo create_user(user)
+
+Add user.
+
+Add a new user.
+
+### Example
+
+* Bearer (JWT) Authentication (bearerAuth):
+
+```python
+import majordomo_ai
+from majordomo_ai.models.user import User
+from majordomo_ai.models.user_info import UserInfo
+from majordomo_ai.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost:/25001
+# See configuration.py for a list of all supported configuration parameters.
+configuration = majordomo_ai.Configuration(
+    host = "http://localhost:/25001"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (JWT): bearerAuth
+configuration = majordomo_ai.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with majordomo_ai.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = majordomo_ai.AdminApi(api_client)
+    user = majordomo_ai.User() # User | 
+
+    try:
+        # Add user.
+        api_response = api_instance.create_user(user)
+        print("The response of AdminApi->create_user:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling AdminApi->create_user: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **user** | [**User**](User.md)|  | 
+
+### Return type
+
+[**UserInfo**](UserInfo.md)
 
 ### Authorization
 
@@ -425,7 +508,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_model_profiles**
-> DeleteResponse delete_model_profiles(name=name)
+> DeleteResponse delete_model_profiles(workspace=workspace, name=name)
 
 Delete model profile.
 
@@ -461,11 +544,12 @@ configuration = majordomo_ai.Configuration(
 with majordomo_ai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = majordomo_ai.AdminApi(api_client)
+    workspace = 'workspace_example' # str | The name of the workspace in which the profile exists. (optional)
     name = 'name_example' # str | The name of the model profile to delete. (optional)
 
     try:
         # Delete model profile.
-        api_response = api_instance.delete_model_profiles(name=name)
+        api_response = api_instance.delete_model_profiles(workspace=workspace, name=name)
         print("The response of AdminApi->delete_model_profiles:\n")
         pprint(api_response)
     except Exception as e:
@@ -479,6 +563,7 @@ with majordomo_ai.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **workspace** | **str**| The name of the workspace in which the profile exists. | [optional] 
  **name** | **str**| The name of the model profile to delete. | [optional] 
 
 ### Return type
@@ -501,6 +586,85 @@ Name | Type | Description  | Notes
 **200** | successful operation |  -  |
 **422** | Invalid input. |  -  |
 **401** | Unauthorized access. This is most likely because the access token has expired or the user API key is invalid. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **delete_user**
+> DeleteResponse delete_user(name=name)
+
+Delete user.
+
+Delete a specific user and all his associated data such as data stores, query pipelines and logs.
+
+### Example
+
+* Bearer (JWT) Authentication (bearerAuth):
+
+```python
+import majordomo_ai
+from majordomo_ai.models.delete_response import DeleteResponse
+from majordomo_ai.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost:/25001
+# See configuration.py for a list of all supported configuration parameters.
+configuration = majordomo_ai.Configuration(
+    host = "http://localhost:/25001"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (JWT): bearerAuth
+configuration = majordomo_ai.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with majordomo_ai.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = majordomo_ai.AdminApi(api_client)
+    name = 'name_example' # str | The name of the user to delete. (optional)
+
+    try:
+        # Delete user.
+        api_response = api_instance.delete_user(name=name)
+        print("The response of AdminApi->delete_user:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling AdminApi->delete_user: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **str**| The name of the user to delete. | [optional] 
+
+### Return type
+
+[**DeleteResponse**](DeleteResponse.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | successful operation |  -  |
+**422** | Invalid input |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -583,7 +747,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_vectordb_profiles**
-> DeleteResponse delete_vectordb_profiles(name=name)
+> DeleteResponse delete_vectordb_profiles(workspace=workspace, name=name)
 
 Delete vectordb profiles.
 
@@ -619,11 +783,12 @@ configuration = majordomo_ai.Configuration(
 with majordomo_ai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = majordomo_ai.AdminApi(api_client)
+    workspace = 'workspace_example' # str | The name of the workspace in which the profile exists. (optional)
     name = 'name_example' # str | The name of the vectordb profile to delete. (optional)
 
     try:
         # Delete vectordb profiles.
-        api_response = api_instance.delete_vectordb_profiles(name=name)
+        api_response = api_instance.delete_vectordb_profiles(workspace=workspace, name=name)
         print("The response of AdminApi->delete_vectordb_profiles:\n")
         pprint(api_response)
     except Exception as e:
@@ -637,6 +802,7 @@ with majordomo_ai.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **workspace** | **str**| The name of the workspace in which the profile exists. | [optional] 
  **name** | **str**| The name of the vectordb profile to delete. | [optional] 
 
 ### Return type
@@ -813,7 +979,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_model_profiles**
-> ModelProfiles get_model_profiles(name=name)
+> ModelProfiles get_model_profiles(workspace=workspace, name=name, shared=shared)
 
 Get model profiles.
 
@@ -849,11 +1015,13 @@ configuration = majordomo_ai.Configuration(
 with majordomo_ai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = majordomo_ai.AdminApi(api_client)
+    workspace = 'workspace_example' # str | Query a specific workspace for model profiles. (optional)
     name = 'name_example' # str | The name of the model profile to retrieve. (optional)
+    shared = True # bool | Retrieve the profiles that are shared with this user by other users. (optional)
 
     try:
         # Get model profiles.
-        api_response = api_instance.get_model_profiles(name=name)
+        api_response = api_instance.get_model_profiles(workspace=workspace, name=name, shared=shared)
         print("The response of AdminApi->get_model_profiles:\n")
         pprint(api_response)
     except Exception as e:
@@ -867,7 +1035,9 @@ with majordomo_ai.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **workspace** | **str**| Query a specific workspace for model profiles. | [optional] 
  **name** | **str**| The name of the model profile to retrieve. | [optional] 
+ **shared** | **bool**| Retrieve the profiles that are shared with this user by other users. | [optional] 
 
 ### Return type
 
@@ -1129,7 +1299,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_vectordb_profiles**
-> VectordbProfiles get_vectordb_profiles(name=name)
+> VectordbProfiles get_vectordb_profiles(workspace=workspace, name=name, shared=shared)
 
 Get vectordb profiles.
 
@@ -1165,11 +1335,13 @@ configuration = majordomo_ai.Configuration(
 with majordomo_ai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = majordomo_ai.AdminApi(api_client)
+    workspace = 'workspace_example' # str | Query a specific workspace for model profiles. (optional)
     name = 'name_example' # str | The name of the vectordb profile to retrieve. (optional)
+    shared = True # bool | Retrieve the profiles that are shared with this user by other users. (optional)
 
     try:
         # Get vectordb profiles.
-        api_response = api_instance.get_vectordb_profiles(name=name)
+        api_response = api_instance.get_vectordb_profiles(workspace=workspace, name=name, shared=shared)
         print("The response of AdminApi->get_vectordb_profiles:\n")
         pprint(api_response)
     except Exception as e:
@@ -1183,7 +1355,9 @@ with majordomo_ai.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **workspace** | **str**| Query a specific workspace for model profiles. | [optional] 
  **name** | **str**| The name of the vectordb profile to retrieve. | [optional] 
+ **shared** | **bool**| Retrieve the profiles that are shared with this user by other users. | [optional] 
 
 ### Return type
 
@@ -1434,6 +1608,86 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/json
  - **Accept**: application/xml, application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | successful operation |  -  |
+**422** | Invalid input |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **update_user**
+> UserInfo update_user(user)
+
+Update user.
+
+Update the API key of an existing user.
+
+### Example
+
+* Bearer (JWT) Authentication (bearerAuth):
+
+```python
+import majordomo_ai
+from majordomo_ai.models.user import User
+from majordomo_ai.models.user_info import UserInfo
+from majordomo_ai.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost:/25001
+# See configuration.py for a list of all supported configuration parameters.
+configuration = majordomo_ai.Configuration(
+    host = "http://localhost:/25001"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (JWT): bearerAuth
+configuration = majordomo_ai.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with majordomo_ai.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = majordomo_ai.AdminApi(api_client)
+    user = majordomo_ai.User() # User | 
+
+    try:
+        # Update user.
+        api_response = api_instance.update_user(user)
+        print("The response of AdminApi->update_user:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling AdminApi->update_user: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **user** | [**User**](User.md)|  | 
+
+### Return type
+
+[**UserInfo**](UserInfo.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
 
 ### HTTP response details
 

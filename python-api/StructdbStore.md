@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **sub_type** | [**DataStoreSubTypes**](DataStoreSubTypes.md) |  | 
 **connect_string** | **str** | The endpoint of the structure database such as SQL/MongoDB. This string can contain keystore specification for any sensitive information. This is a mandatory parameter for structured and image databases. | 
 **database_name** | **str** | The name of the database in the structured database This is a mandatory parameter for structured and image databases. | 
-**table_name** | **str** | The name of the table in the structured database. This is a mandatory parameter for structured and image databases. | 
+**tables** | **List[str]** | The list of tables in the structured database. | 
 
 ## Example
 

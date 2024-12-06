@@ -600,7 +600,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_data_stores**
-> DataStores get_data_stores(workspace=workspace, name=name)
+> DataStores get_data_stores(workspace=workspace, name=name, shared=shared, type=type)
 
 List data stores.
 
@@ -612,6 +612,7 @@ Get a list of existing data stores that are created by the user filtered based o
 
 ```python
 import majordomo_ai
+from majordomo_ai.models.data_store_types import DataStoreTypes
 from majordomo_ai.models.data_stores import DataStores
 from majordomo_ai.rest import ApiException
 from pprint import pprint
@@ -638,10 +639,12 @@ with majordomo_ai.ApiClient(configuration) as api_client:
     api_instance = majordomo_ai.IngestApi(api_client)
     workspace = 'workspace_example' # str | The workspace to search the data store, mandatory if name is provided. (optional)
     name = 'name_example' # str | The name of the data store to retrieve. (optional)
+    shared = True # bool | Retrieve data stores that are shared by others for querying. (optional)
+    type = majordomo_ai.DataStoreTypes() # DataStoreTypes | Retrieve data stores that are shared by others for querying. (optional)
 
     try:
         # List data stores.
-        api_response = api_instance.get_data_stores(workspace=workspace, name=name)
+        api_response = api_instance.get_data_stores(workspace=workspace, name=name, shared=shared, type=type)
         print("The response of IngestApi->get_data_stores:\n")
         pprint(api_response)
     except Exception as e:
@@ -657,6 +660,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **workspace** | **str**| The workspace to search the data store, mandatory if name is provided. | [optional] 
  **name** | **str**| The name of the data store to retrieve. | [optional] 
+ **shared** | **bool**| Retrieve data stores that are shared by others for querying. | [optional] 
+ **type** | [**DataStoreTypes**](.md)| Retrieve data stores that are shared by others for querying. | [optional] 
 
 ### Return type
 

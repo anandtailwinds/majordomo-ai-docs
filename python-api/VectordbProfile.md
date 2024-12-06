@@ -8,9 +8,10 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **str** | Name of the Vectordb profile | 
 **provider** | [**VectordbProviders**](VectordbProviders.md) |  | 
+**workspace** | **str** | The workspace that contains the vectordb profile. | 
 **access_key** | [**VectordbAccessKey**](VectordbAccessKey.md) |  | [optional] 
 **access_info** | [**VectordbAccessInfo**](VectordbAccessInfo.md) |  | [optional] 
-**read_only** | **bool** | If this condition is set to true, then only read operations are permitted to this vector database. This can be used by administrators to restrict users from modifying the contents arbitrarily. | [optional] [default to False]
+**shared_users** | **List[str]** | The list of users this profile is shared with. | [optional] 
 
 ## Example
 

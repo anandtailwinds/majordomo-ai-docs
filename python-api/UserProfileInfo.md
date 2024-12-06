@@ -8,9 +8,9 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **workspace** | **str** | Name of the workspace. | 
 **user_name** | **str** | Name of the user. | 
-**cost_tags** | **str** | The cost tags to be associated with this user operations. | [optional] 
 **model_profiles** | **List[str]** | The list of model profiles that are enabled for this user. | [optional] 
 **vectordb_profiles** | **List[str]** | The list of VectorDB profiles that are enabled for this user. | [optional] 
+**created_by** | **str** | The user who has created the user profile for sharing information. | 
 **created_at** | **int** | Timestamp of the user profile creation. | 
 **last_update** | **int** | Timestamp of the last update to the user profile. | 
 

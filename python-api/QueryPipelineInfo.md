@@ -7,13 +7,13 @@ Query Pipeline configuration and operation information.
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **workspace** | **str** | Workspce in which the data store is present. | 
-**created_by** | **str** | The user who created the ingest pipeline. | 
 **name** | **str** | Name of the query pipeline. | 
-**data_store_names** | **List[str]** | The type of the parent data store. | 
-**embedding_model** | **str** | The embedding model to be used | 
-**llm_model** | **str** | The LLM model to be used | 
 **query_type** | [**QueryTypes**](QueryTypes.md) |  | 
 **var_query_params** | [**QueryParams**](QueryParams.md) |  | [optional] 
+**text_query_params** | [**TextQueryParams**](TextQueryParams.md) |  | [optional] 
+**sql_query_params** | [**SQLQueryParams**](SQLQueryParams.md) |  | [optional] 
+**created_by** | **str** | The user who created the ingest pipeline. | 
+**shared_users** | **List[str]** | The list of users this profile is shared with. | [optional] 
 **created_at** | **int** | Timestamp of the query pipeline creation. | 
 **last_update** | **int** | Timestamp of the last update to the query pipeline. | 
 

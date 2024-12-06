@@ -6,9 +6,12 @@ This is the data store specification vector databases.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**vectordb_profile** | **str** | Name of the Vector DB profile. This is mandatory parameter in case of vector database. | 
+**name** | **str** | The name of the vector database. | 
+**embedding_model_profile** | **str** | Name of the Model profile. This profile determines the provider from which the embedding model is accessed. | 
+**vectordb_profile** | **str** | Name of the Vector DB profile. This profile determines the provider from which the vector database is accessed. | 
 **embedding_model** | **str** | The embedding model to be used while ingesting data. This is mandatory parameter in case of vector database. | 
-**shared** | **bool** | This describes whether the data store is shared with others in the account for query purposes. | [optional] [default to False]
+**llm_model_profile** | **str** | Name of the Model profile. This profile determines the provider from which the LLM model is accessed. | [optional] 
+**llm_model** | **str** | The LLM model to be used if any specialized operations during the ingestion such as summarization. | [optional] 
 
 ## Example
 
