@@ -8,7 +8,6 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **connect_string** | **str** | Connection string used to connect to the database, this can include password in case of some providers. | [optional] 
 **database** | **str** | Name of the database to which the profile connects. | [optional] 
-**collection** | **str** | The specific collection within the database where data will be stored. | [optional] 
 **cloud** | **str** | Indicates the cloud provider, e.g., AWS, Azure. | [optional] 
 **region** | **str** | Specifies the cloud region (e.g., us-west-2) where the database or collection is hosted. | [optional] 
 

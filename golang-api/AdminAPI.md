@@ -4,27 +4,30 @@ All URIs are relative to *http://localhost:/25001*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateModelProfile**](AdminAPI.md#CreateModelProfile) | **Post** /model_profiles | Model Profile
-[**CreateUserProfile**](AdminAPI.md#CreateUserProfile) | **Post** /user_profiles | User Profile
-[**CreateVectordbProfile**](AdminAPI.md#CreateVectordbProfile) | **Post** /vectordb_profiles | Vectordb Profile
-[**CreateWorker**](AdminAPI.md#CreateWorker) | **Post** /workers | Worker
-[**CreateWorkspace**](AdminAPI.md#CreateWorkspace) | **Post** /workspaces | Workspace
-[**DeleteModelProfiles**](AdminAPI.md#DeleteModelProfiles) | **Delete** /model_profiles | Model Profile Delete.
-[**DeleteUserProfiles**](AdminAPI.md#DeleteUserProfiles) | **Delete** /user_profiles | User Profile Specific DELETE.
-[**DeleteVectordbProfiles**](AdminAPI.md#DeleteVectordbProfiles) | **Delete** /vectordb_profiles | Vectordb Profile Specific Delete.
-[**DeleteWorkers**](AdminAPI.md#DeleteWorkers) | **Delete** /workers | Worker Specific Delete.
-[**DeleteWorkspaces**](AdminAPI.md#DeleteWorkspaces) | **Delete** /workspaces | Workspace Specific Delete.
-[**GetModelProfiles**](AdminAPI.md#GetModelProfiles) | **Get** /model_profiles | Model profiles GET operation.
-[**GetUserProfiles**](AdminAPI.md#GetUserProfiles) | **Get** /user_profiles | User profiles GET operation.
-[**GetUserScope**](AdminAPI.md#GetUserScope) | **Get** /user_scope | 
-[**GetUsers**](AdminAPI.md#GetUsers) | **Get** /users | 
-[**GetVectordbProfiles**](AdminAPI.md#GetVectordbProfiles) | **Get** /vectordb_profiles | Vectordb profiles GET operation.
-[**GetWorkers**](AdminAPI.md#GetWorkers) | **Get** /workers | Worker Get
-[**GetWorkspaces**](AdminAPI.md#GetWorkspaces) | **Get** /workspaces | Workspace GET operation.
-[**UpdateModelProfile**](AdminAPI.md#UpdateModelProfile) | **Put** /model_profiles | Model Profile
-[**UpdateUserProfile**](AdminAPI.md#UpdateUserProfile) | **Put** /user_profiles | User Profile
-[**UpdateVectordbProfile**](AdminAPI.md#UpdateVectordbProfile) | **Put** /vectordb_profiles | Vectordb Profile
-[**UpdateWorkspace**](AdminAPI.md#UpdateWorkspace) | **Put** /workspaces | Workspace
+[**CreateModelProfile**](AdminAPI.md#CreateModelProfile) | **Post** /model_profiles | Create model profile.
+[**CreateUser**](AdminAPI.md#CreateUser) | **Post** /users | Add user.
+[**CreateUserProfile**](AdminAPI.md#CreateUserProfile) | **Post** /user_profiles | Create user profile.
+[**CreateVectordbProfile**](AdminAPI.md#CreateVectordbProfile) | **Post** /vectordb_profiles | Create vectordb profile.
+[**CreateWorker**](AdminAPI.md#CreateWorker) | **Post** /workers | Create worker node.
+[**CreateWorkspace**](AdminAPI.md#CreateWorkspace) | **Post** /workspaces | Create workspace.
+[**DeleteModelProfiles**](AdminAPI.md#DeleteModelProfiles) | **Delete** /model_profiles | Delete model profile.
+[**DeleteUser**](AdminAPI.md#DeleteUser) | **Delete** /users | Delete user.
+[**DeleteUserProfiles**](AdminAPI.md#DeleteUserProfiles) | **Delete** /user_profiles | Delete user profile.
+[**DeleteVectordbProfiles**](AdminAPI.md#DeleteVectordbProfiles) | **Delete** /vectordb_profiles | Delete vectordb profiles.
+[**DeleteWorkers**](AdminAPI.md#DeleteWorkers) | **Delete** /workers | Delete worker nodes.
+[**DeleteWorkspaces**](AdminAPI.md#DeleteWorkspaces) | **Delete** /workspaces | Delete workspace.
+[**GetModelProfiles**](AdminAPI.md#GetModelProfiles) | **Get** /model_profiles | Get model profiles.
+[**GetUserProfiles**](AdminAPI.md#GetUserProfiles) | **Get** /user_profiles | Get user profile.
+[**GetUserScope**](AdminAPI.md#GetUserScope) | **Get** /user_scope | Get permitted profiles for a specific user.
+[**GetUsers**](AdminAPI.md#GetUsers) | **Get** /users | Get users list.
+[**GetVectordbProfiles**](AdminAPI.md#GetVectordbProfiles) | **Get** /vectordb_profiles | Get vectordb profiles.
+[**GetWorkers**](AdminAPI.md#GetWorkers) | **Get** /workers | Get worker nodes.
+[**GetWorkspaces**](AdminAPI.md#GetWorkspaces) | **Get** /workspaces | Get workspaces.
+[**UpdateModelProfile**](AdminAPI.md#UpdateModelProfile) | **Put** /model_profiles | Update model profile.
+[**UpdateUser**](AdminAPI.md#UpdateUser) | **Put** /users | Update user.
+[**UpdateUserProfile**](AdminAPI.md#UpdateUserProfile) | **Put** /user_profiles | Update user profile.
+[**UpdateVectordbProfile**](AdminAPI.md#UpdateVectordbProfile) | **Put** /vectordb_profiles | Update vectordb profile.
+[**UpdateWorkspace**](AdminAPI.md#UpdateWorkspace) | **Put** /workspaces | Update workspace.
 
 
 
@@ -32,7 +35,7 @@ Method | HTTP request | Description
 
 > ModelProfile CreateModelProfile(ctx).ModelProfile(modelProfile).Execute()
 
-Model Profile
+Create model profile.
 
 
 
@@ -49,7 +52,7 @@ import (
 )
 
 func main() {
-	modelProfile := *openapiclient.NewModelProfile("{"name":"OpenAI-Dev"}", openapiclient.ModelProviders(1)) // ModelProfile | 
+	modelProfile := *openapiclient.NewModelProfile("{"name":"OpenAI-Dev"}", openapiclient.ModelProviders(1), "{"name":"Engineering"}") // ModelProfile | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -94,11 +97,77 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## CreateUser
+
+> UserInfo CreateUser(ctx).User(user).Execute()
+
+Add user.
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+)
+
+func main() {
+	user := *openapiclient.NewUser("UserName_example", "FirstName_example", "LastName_example", "Password_example", false) // User | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AdminAPI.CreateUser(context.Background()).User(user).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AdminAPI.CreateUser``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `CreateUser`: UserInfo
+	fmt.Fprintf(os.Stdout, "Response from `AdminAPI.CreateUser`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCreateUserRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **user** | [**User**](User.md) |  | 
+
+### Return type
+
+[**UserInfo**](UserInfo.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## CreateUserProfile
 
 > UserProfile CreateUserProfile(ctx).UserProfile(userProfile).Execute()
 
-User Profile
+Create user profile.
 
 
 
@@ -164,7 +233,7 @@ Name | Type | Description  | Notes
 
 > VectordbProfile CreateVectordbProfile(ctx).VectordbProfile(vectordbProfile).Execute()
 
-Vectordb Profile
+Create vectordb profile.
 
 
 
@@ -181,7 +250,7 @@ import (
 )
 
 func main() {
-	vectordbProfile := *openapiclient.NewVectordbProfile("Name_example", openapiclient.VectordbProviders(1)) // VectordbProfile | 
+	vectordbProfile := *openapiclient.NewVectordbProfile("Name_example", openapiclient.VectordbProviders(1), "{"name":"Engineering"}") // VectordbProfile | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -230,7 +299,7 @@ Name | Type | Description  | Notes
 
 > WorkerInfo CreateWorker(ctx).Worker(worker).Execute()
 
-Worker
+Create worker node.
 
 
 
@@ -296,7 +365,7 @@ Name | Type | Description  | Notes
 
 > WorkspaceInfo CreateWorkspace(ctx).Workspace(workspace).Execute()
 
-Workspace
+Create workspace.
 
 
 
@@ -360,9 +429,9 @@ Name | Type | Description  | Notes
 
 ## DeleteModelProfiles
 
-> DeleteResponse DeleteModelProfiles(ctx).Name(name).Execute()
+> DeleteResponse DeleteModelProfiles(ctx).Workspace(workspace).Name(name).Force(force).Execute()
 
-Model Profile Delete.
+Delete model profile.
 
 
 
@@ -379,11 +448,13 @@ import (
 )
 
 func main() {
+	workspace := "workspace_example" // string | The name of the workspace in which the profile exists. (optional)
 	name := "name_example" // string | The name of the model profile to delete. (optional)
+	force := true // bool | Force delete all query pipelines or data stores that are referring to this model profile. This will also delete all usages of model profile done by users with whom the profile is shared. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.AdminAPI.DeleteModelProfiles(context.Background()).Name(name).Execute()
+	resp, r, err := apiClient.AdminAPI.DeleteModelProfiles(context.Background()).Workspace(workspace).Name(name).Force(force).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `AdminAPI.DeleteModelProfiles``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -404,7 +475,75 @@ Other parameters are passed through a pointer to a apiDeleteModelProfilesRequest
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **workspace** | **string** | The name of the workspace in which the profile exists. | 
  **name** | **string** | The name of the model profile to delete. | 
+ **force** | **bool** | Force delete all query pipelines or data stores that are referring to this model profile. This will also delete all usages of model profile done by users with whom the profile is shared. | 
+
+### Return type
+
+[**DeleteResponse**](DeleteResponse.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DeleteUser
+
+> DeleteResponse DeleteUser(ctx).Name(name).Execute()
+
+Delete user.
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+)
+
+func main() {
+	name := "name_example" // string | The name of the user to delete. (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AdminAPI.DeleteUser(context.Background()).Name(name).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AdminAPI.DeleteUser``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `DeleteUser`: DeleteResponse
+	fmt.Fprintf(os.Stdout, "Response from `AdminAPI.DeleteUser`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDeleteUserRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **string** | The name of the user to delete. | 
 
 ### Return type
 
@@ -428,7 +567,7 @@ Name | Type | Description  | Notes
 
 > DeleteUserProfiles(ctx, workspace, userName).Execute()
 
-User Profile Specific DELETE.
+Delete user profile.
 
 
 
@@ -497,9 +636,9 @@ Name | Type | Description  | Notes
 
 ## DeleteVectordbProfiles
 
-> DeleteResponse DeleteVectordbProfiles(ctx).Name(name).Execute()
+> DeleteResponse DeleteVectordbProfiles(ctx).Workspace(workspace).Name(name).Force(force).Execute()
 
-Vectordb Profile Specific Delete.
+Delete vectordb profiles.
 
 
 
@@ -516,11 +655,13 @@ import (
 )
 
 func main() {
+	workspace := "workspace_example" // string | The name of the workspace in which the profile exists. (optional)
 	name := "name_example" // string | The name of the vectordb profile to delete. (optional)
+	force := true // bool | Force delete all query pipelines or data stores that are referring to this vectordb profile. This will also delete all usages of vectordb profile done by users with whom the profile is shared. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.AdminAPI.DeleteVectordbProfiles(context.Background()).Name(name).Execute()
+	resp, r, err := apiClient.AdminAPI.DeleteVectordbProfiles(context.Background()).Workspace(workspace).Name(name).Force(force).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `AdminAPI.DeleteVectordbProfiles``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -541,7 +682,9 @@ Other parameters are passed through a pointer to a apiDeleteVectordbProfilesRequ
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **workspace** | **string** | The name of the workspace in which the profile exists. | 
  **name** | **string** | The name of the vectordb profile to delete. | 
+ **force** | **bool** | Force delete all query pipelines or data stores that are referring to this vectordb profile. This will also delete all usages of vectordb profile done by users with whom the profile is shared. | 
 
 ### Return type
 
@@ -565,7 +708,7 @@ Name | Type | Description  | Notes
 
 > DeleteWorkers(ctx).Name(name).Execute()
 
-Worker Specific Delete.
+Delete worker nodes.
 
 
 
@@ -629,7 +772,7 @@ Name | Type | Description  | Notes
 
 > DeleteResponse DeleteWorkspaces(ctx).Name(name).Execute()
 
-Workspace Specific Delete.
+Delete workspace.
 
 
 
@@ -693,9 +836,9 @@ Name | Type | Description  | Notes
 
 ## GetModelProfiles
 
-> ModelProfiles GetModelProfiles(ctx).Name(name).Execute()
+> ModelProfiles GetModelProfiles(ctx).Workspace(workspace).Name(name).Shared(shared).Execute()
 
-Model profiles GET operation.
+Get model profiles.
 
 
 
@@ -712,11 +855,13 @@ import (
 )
 
 func main() {
+	workspace := "workspace_example" // string | Query a specific workspace for model profiles. (optional)
 	name := "name_example" // string | The name of the model profile to retrieve. (optional)
+	shared := true // bool | Retrieve the profiles that are shared with this user by other users. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.AdminAPI.GetModelProfiles(context.Background()).Name(name).Execute()
+	resp, r, err := apiClient.AdminAPI.GetModelProfiles(context.Background()).Workspace(workspace).Name(name).Shared(shared).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `AdminAPI.GetModelProfiles``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -737,7 +882,9 @@ Other parameters are passed through a pointer to a apiGetModelProfilesRequest st
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **workspace** | **string** | Query a specific workspace for model profiles. | 
  **name** | **string** | The name of the model profile to retrieve. | 
+ **shared** | **bool** | Retrieve the profiles that are shared with this user by other users. | 
 
 ### Return type
 
@@ -761,7 +908,7 @@ Name | Type | Description  | Notes
 
 > UserProfiles GetUserProfiles(ctx).Name(name).Execute()
 
-User profiles GET operation.
+Get user profile.
 
 
 
@@ -827,7 +974,7 @@ Name | Type | Description  | Notes
 
 > UserScope GetUserScope(ctx).Workspace(workspace).Execute()
 
-
+Get permitted profiles for a specific user.
 
 
 
@@ -893,7 +1040,7 @@ Name | Type | Description  | Notes
 
 > Users GetUsers(ctx).Name(name).Execute()
 
-
+Get users list.
 
 
 
@@ -957,9 +1104,9 @@ Name | Type | Description  | Notes
 
 ## GetVectordbProfiles
 
-> VectordbProfiles GetVectordbProfiles(ctx).Name(name).Execute()
+> VectordbProfiles GetVectordbProfiles(ctx).Workspace(workspace).Name(name).Shared(shared).Execute()
 
-Vectordb profiles GET operation.
+Get vectordb profiles.
 
 
 
@@ -976,11 +1123,13 @@ import (
 )
 
 func main() {
+	workspace := "workspace_example" // string | Query a specific workspace for model profiles. (optional)
 	name := "name_example" // string | The name of the vectordb profile to retrieve. (optional)
+	shared := true // bool | Retrieve the profiles that are shared with this user by other users. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.AdminAPI.GetVectordbProfiles(context.Background()).Name(name).Execute()
+	resp, r, err := apiClient.AdminAPI.GetVectordbProfiles(context.Background()).Workspace(workspace).Name(name).Shared(shared).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `AdminAPI.GetVectordbProfiles``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1001,7 +1150,9 @@ Other parameters are passed through a pointer to a apiGetVectordbProfilesRequest
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **workspace** | **string** | Query a specific workspace for model profiles. | 
  **name** | **string** | The name of the vectordb profile to retrieve. | 
+ **shared** | **bool** | Retrieve the profiles that are shared with this user by other users. | 
 
 ### Return type
 
@@ -1025,7 +1176,7 @@ Name | Type | Description  | Notes
 
 > Workers GetWorkers(ctx).Name(name).Execute()
 
-Worker Get
+Get worker nodes.
 
 
 
@@ -1091,7 +1242,7 @@ Name | Type | Description  | Notes
 
 > Workspaces GetWorkspaces(ctx).Name(name).Execute()
 
-Workspace GET operation.
+Get workspaces.
 
 
 
@@ -1157,7 +1308,7 @@ Name | Type | Description  | Notes
 
 > ModelProfile UpdateModelProfile(ctx).ModelProfile(modelProfile).Execute()
 
-Model Profile
+Update model profile.
 
 
 
@@ -1174,7 +1325,7 @@ import (
 )
 
 func main() {
-	modelProfile := *openapiclient.NewModelProfile("{"name":"OpenAI-Dev"}", openapiclient.ModelProviders(1)) // ModelProfile | 
+	modelProfile := *openapiclient.NewModelProfile("{"name":"OpenAI-Dev"}", openapiclient.ModelProviders(1), "{"name":"Engineering"}") // ModelProfile | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -1219,11 +1370,77 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## UpdateUser
+
+> UserInfo UpdateUser(ctx).User(user).Execute()
+
+Update user.
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+)
+
+func main() {
+	user := *openapiclient.NewUser("UserName_example", "FirstName_example", "LastName_example", "Password_example", false) // User | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AdminAPI.UpdateUser(context.Background()).User(user).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AdminAPI.UpdateUser``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `UpdateUser`: UserInfo
+	fmt.Fprintf(os.Stdout, "Response from `AdminAPI.UpdateUser`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUpdateUserRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **user** | [**User**](User.md) |  | 
+
+### Return type
+
+[**UserInfo**](UserInfo.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## UpdateUserProfile
 
 > UserProfile UpdateUserProfile(ctx).UserProfile(userProfile).Execute()
 
-User Profile
+Update user profile.
 
 
 
@@ -1289,7 +1506,7 @@ Name | Type | Description  | Notes
 
 > VectordbProfile UpdateVectordbProfile(ctx).VectordbProfile(vectordbProfile).Execute()
 
-Vectordb Profile
+Update vectordb profile.
 
 
 
@@ -1306,7 +1523,7 @@ import (
 )
 
 func main() {
-	vectordbProfile := *openapiclient.NewVectordbProfile("Name_example", openapiclient.VectordbProviders(1)) // VectordbProfile | 
+	vectordbProfile := *openapiclient.NewVectordbProfile("Name_example", openapiclient.VectordbProviders(1), "{"name":"Engineering"}") // VectordbProfile | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -1355,7 +1572,7 @@ Name | Type | Description  | Notes
 
 > WorkspaceInfo UpdateWorkspace(ctx).Workspace(workspace).Execute()
 
-Workspace
+Update workspace.
 
 
 

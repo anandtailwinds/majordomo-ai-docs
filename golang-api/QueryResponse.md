@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Response** | Pointer to **string** | Response from LLM for the user query. | [optional] 
+**Metadata** | Pointer to [**QueryResponseMetadata**](QueryResponseMetadata.md) |  | [optional] 
 
 ## Methods
 
@@ -49,6 +50,31 @@ SetResponse sets Response field to given value.
 `func (o *QueryResponse) HasResponse() bool`
 
 HasResponse returns a boolean if a field has been set.
+
+### GetMetadata
+
+`func (o *QueryResponse) GetMetadata() QueryResponseMetadata`
+
+GetMetadata returns the Metadata field if non-nil, zero value otherwise.
+
+### GetMetadataOk
+
+`func (o *QueryResponse) GetMetadataOk() (*QueryResponseMetadata, bool)`
+
+GetMetadataOk returns a tuple with the Metadata field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMetadata
+
+`func (o *QueryResponse) SetMetadata(v QueryResponseMetadata)`
+
+SetMetadata sets Metadata field to given value.
+
+### HasMetadata
+
+`func (o *QueryResponse) HasMetadata() bool`
+
+HasMetadata returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

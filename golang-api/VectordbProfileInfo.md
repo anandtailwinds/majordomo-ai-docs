@@ -6,10 +6,11 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | **string** | Name of the Vectordb profile. | 
 **Provider** | [**VectordbProviders**](VectordbProviders.md) |  | 
+**Workspace** | **string** | The workspace that contains the vectordb profile. | 
 **AccessInfo** | Pointer to [**VectordbAccessInfo**](VectordbAccessInfo.md) |  | [optional] 
 **AccessKey** | Pointer to [**VectordbAccessKey**](VectordbAccessKey.md) |  | [optional] 
-**ReadOnly** | Pointer to **bool** | If this condition is set to true, then only read operations are permitted to this vector database. This can be used by administrators to restrict users from modifying the contents arbitrarily. | [optional] 
 **CreatedBy** | **string** | The name of the user who created this Vectordb profile. | 
+**SharedUsers** | Pointer to **[]string** | The list of users this profile is shared with. | [optional] 
 **CreatedAt** | **int64** | Timestamp of the Vectordb profile creation. | 
 **LastUpdate** | **int64** | Timestamp of the last update to the Vectordb profile. | 
 
@@ -17,7 +18,7 @@ Name | Type | Description | Notes
 
 ### NewVectordbProfileInfo
 
-`func NewVectordbProfileInfo(name string, provider VectordbProviders, createdBy string, createdAt int64, lastUpdate int64, ) *VectordbProfileInfo`
+`func NewVectordbProfileInfo(name string, provider VectordbProviders, workspace string, createdBy string, createdAt int64, lastUpdate int64, ) *VectordbProfileInfo`
 
 NewVectordbProfileInfo instantiates a new VectordbProfileInfo object
 This constructor will assign default values to properties that have it defined,
@@ -72,6 +73,26 @@ and a boolean to check if the value has been set.
 SetProvider sets Provider field to given value.
 
 
+### GetWorkspace
+
+`func (o *VectordbProfileInfo) GetWorkspace() string`
+
+GetWorkspace returns the Workspace field if non-nil, zero value otherwise.
+
+### GetWorkspaceOk
+
+`func (o *VectordbProfileInfo) GetWorkspaceOk() (*string, bool)`
+
+GetWorkspaceOk returns a tuple with the Workspace field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetWorkspace
+
+`func (o *VectordbProfileInfo) SetWorkspace(v string)`
+
+SetWorkspace sets Workspace field to given value.
+
+
 ### GetAccessInfo
 
 `func (o *VectordbProfileInfo) GetAccessInfo() VectordbAccessInfo`
@@ -122,31 +143,6 @@ SetAccessKey sets AccessKey field to given value.
 
 HasAccessKey returns a boolean if a field has been set.
 
-### GetReadOnly
-
-`func (o *VectordbProfileInfo) GetReadOnly() bool`
-
-GetReadOnly returns the ReadOnly field if non-nil, zero value otherwise.
-
-### GetReadOnlyOk
-
-`func (o *VectordbProfileInfo) GetReadOnlyOk() (*bool, bool)`
-
-GetReadOnlyOk returns a tuple with the ReadOnly field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetReadOnly
-
-`func (o *VectordbProfileInfo) SetReadOnly(v bool)`
-
-SetReadOnly sets ReadOnly field to given value.
-
-### HasReadOnly
-
-`func (o *VectordbProfileInfo) HasReadOnly() bool`
-
-HasReadOnly returns a boolean if a field has been set.
-
 ### GetCreatedBy
 
 `func (o *VectordbProfileInfo) GetCreatedBy() string`
@@ -166,6 +162,31 @@ and a boolean to check if the value has been set.
 
 SetCreatedBy sets CreatedBy field to given value.
 
+
+### GetSharedUsers
+
+`func (o *VectordbProfileInfo) GetSharedUsers() []string`
+
+GetSharedUsers returns the SharedUsers field if non-nil, zero value otherwise.
+
+### GetSharedUsersOk
+
+`func (o *VectordbProfileInfo) GetSharedUsersOk() (*[]string, bool)`
+
+GetSharedUsersOk returns a tuple with the SharedUsers field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSharedUsers
+
+`func (o *VectordbProfileInfo) SetSharedUsers(v []string)`
+
+SetSharedUsers sets SharedUsers field to given value.
+
+### HasSharedUsers
+
+`func (o *VectordbProfileInfo) HasSharedUsers() bool`
+
+HasSharedUsers returns a boolean if a field has been set.
 
 ### GetCreatedAt
 

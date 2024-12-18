@@ -5,13 +5,13 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Workspace** | **string** | Workspce in which the data store is present. | 
-**CreatedBy** | **string** | The user who created the ingest pipeline. | 
 **Name** | **string** | Name of the query pipeline. | 
-**DataStoreNames** | **[]string** | The type of the parent data store. | 
-**EmbeddingModel** | **string** | The embedding model to be used | 
-**LlmModel** | **string** | The LLM model to be used | 
 **QueryType** | [**QueryTypes**](QueryTypes.md) |  | 
 **QueryParams** | Pointer to [**QueryParams**](QueryParams.md) |  | [optional] 
+**TextQueryParams** | Pointer to [**TextQueryParams**](TextQueryParams.md) |  | [optional] 
+**SqlQueryParams** | Pointer to [**SQLQueryParams**](SQLQueryParams.md) |  | [optional] 
+**CreatedBy** | **string** | The user who created the ingest pipeline. | 
+**SharedUsers** | Pointer to **[]string** | The list of users this profile is shared with. | [optional] 
 **CreatedAt** | **int64** | Timestamp of the query pipeline creation. | 
 **LastUpdate** | **int64** | Timestamp of the last update to the query pipeline. | 
 
@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 
 ### NewQueryPipelineInfo
 
-`func NewQueryPipelineInfo(workspace string, createdBy string, name string, dataStoreNames []string, embeddingModel string, llmModel string, queryType QueryTypes, createdAt int64, lastUpdate int64, ) *QueryPipelineInfo`
+`func NewQueryPipelineInfo(workspace string, name string, queryType QueryTypes, createdBy string, createdAt int64, lastUpdate int64, ) *QueryPipelineInfo`
 
 NewQueryPipelineInfo instantiates a new QueryPipelineInfo object
 This constructor will assign default values to properties that have it defined,
@@ -54,26 +54,6 @@ and a boolean to check if the value has been set.
 SetWorkspace sets Workspace field to given value.
 
 
-### GetCreatedBy
-
-`func (o *QueryPipelineInfo) GetCreatedBy() string`
-
-GetCreatedBy returns the CreatedBy field if non-nil, zero value otherwise.
-
-### GetCreatedByOk
-
-`func (o *QueryPipelineInfo) GetCreatedByOk() (*string, bool)`
-
-GetCreatedByOk returns a tuple with the CreatedBy field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCreatedBy
-
-`func (o *QueryPipelineInfo) SetCreatedBy(v string)`
-
-SetCreatedBy sets CreatedBy field to given value.
-
-
 ### GetName
 
 `func (o *QueryPipelineInfo) GetName() string`
@@ -92,66 +72,6 @@ and a boolean to check if the value has been set.
 `func (o *QueryPipelineInfo) SetName(v string)`
 
 SetName sets Name field to given value.
-
-
-### GetDataStoreNames
-
-`func (o *QueryPipelineInfo) GetDataStoreNames() []string`
-
-GetDataStoreNames returns the DataStoreNames field if non-nil, zero value otherwise.
-
-### GetDataStoreNamesOk
-
-`func (o *QueryPipelineInfo) GetDataStoreNamesOk() (*[]string, bool)`
-
-GetDataStoreNamesOk returns a tuple with the DataStoreNames field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetDataStoreNames
-
-`func (o *QueryPipelineInfo) SetDataStoreNames(v []string)`
-
-SetDataStoreNames sets DataStoreNames field to given value.
-
-
-### GetEmbeddingModel
-
-`func (o *QueryPipelineInfo) GetEmbeddingModel() string`
-
-GetEmbeddingModel returns the EmbeddingModel field if non-nil, zero value otherwise.
-
-### GetEmbeddingModelOk
-
-`func (o *QueryPipelineInfo) GetEmbeddingModelOk() (*string, bool)`
-
-GetEmbeddingModelOk returns a tuple with the EmbeddingModel field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetEmbeddingModel
-
-`func (o *QueryPipelineInfo) SetEmbeddingModel(v string)`
-
-SetEmbeddingModel sets EmbeddingModel field to given value.
-
-
-### GetLlmModel
-
-`func (o *QueryPipelineInfo) GetLlmModel() string`
-
-GetLlmModel returns the LlmModel field if non-nil, zero value otherwise.
-
-### GetLlmModelOk
-
-`func (o *QueryPipelineInfo) GetLlmModelOk() (*string, bool)`
-
-GetLlmModelOk returns a tuple with the LlmModel field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetLlmModel
-
-`func (o *QueryPipelineInfo) SetLlmModel(v string)`
-
-SetLlmModel sets LlmModel field to given value.
 
 
 ### GetQueryType
@@ -198,6 +118,101 @@ SetQueryParams sets QueryParams field to given value.
 `func (o *QueryPipelineInfo) HasQueryParams() bool`
 
 HasQueryParams returns a boolean if a field has been set.
+
+### GetTextQueryParams
+
+`func (o *QueryPipelineInfo) GetTextQueryParams() TextQueryParams`
+
+GetTextQueryParams returns the TextQueryParams field if non-nil, zero value otherwise.
+
+### GetTextQueryParamsOk
+
+`func (o *QueryPipelineInfo) GetTextQueryParamsOk() (*TextQueryParams, bool)`
+
+GetTextQueryParamsOk returns a tuple with the TextQueryParams field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTextQueryParams
+
+`func (o *QueryPipelineInfo) SetTextQueryParams(v TextQueryParams)`
+
+SetTextQueryParams sets TextQueryParams field to given value.
+
+### HasTextQueryParams
+
+`func (o *QueryPipelineInfo) HasTextQueryParams() bool`
+
+HasTextQueryParams returns a boolean if a field has been set.
+
+### GetSqlQueryParams
+
+`func (o *QueryPipelineInfo) GetSqlQueryParams() SQLQueryParams`
+
+GetSqlQueryParams returns the SqlQueryParams field if non-nil, zero value otherwise.
+
+### GetSqlQueryParamsOk
+
+`func (o *QueryPipelineInfo) GetSqlQueryParamsOk() (*SQLQueryParams, bool)`
+
+GetSqlQueryParamsOk returns a tuple with the SqlQueryParams field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSqlQueryParams
+
+`func (o *QueryPipelineInfo) SetSqlQueryParams(v SQLQueryParams)`
+
+SetSqlQueryParams sets SqlQueryParams field to given value.
+
+### HasSqlQueryParams
+
+`func (o *QueryPipelineInfo) HasSqlQueryParams() bool`
+
+HasSqlQueryParams returns a boolean if a field has been set.
+
+### GetCreatedBy
+
+`func (o *QueryPipelineInfo) GetCreatedBy() string`
+
+GetCreatedBy returns the CreatedBy field if non-nil, zero value otherwise.
+
+### GetCreatedByOk
+
+`func (o *QueryPipelineInfo) GetCreatedByOk() (*string, bool)`
+
+GetCreatedByOk returns a tuple with the CreatedBy field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCreatedBy
+
+`func (o *QueryPipelineInfo) SetCreatedBy(v string)`
+
+SetCreatedBy sets CreatedBy field to given value.
+
+
+### GetSharedUsers
+
+`func (o *QueryPipelineInfo) GetSharedUsers() []string`
+
+GetSharedUsers returns the SharedUsers field if non-nil, zero value otherwise.
+
+### GetSharedUsersOk
+
+`func (o *QueryPipelineInfo) GetSharedUsersOk() (*[]string, bool)`
+
+GetSharedUsersOk returns a tuple with the SharedUsers field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSharedUsers
+
+`func (o *QueryPipelineInfo) SetSharedUsers(v []string)`
+
+SetSharedUsers sets SharedUsers field to given value.
+
+### HasSharedUsers
+
+`func (o *QueryPipelineInfo) HasSharedUsers() bool`
+
+HasSharedUsers returns a boolean if a field has been set.
 
 ### GetCreatedAt
 

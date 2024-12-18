@@ -6,15 +6,17 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | **string** | Name of the model profile. | 
 **Provider** | [**ModelProviders**](ModelProviders.md) |  | 
+**Workspace** | **string** | The workspace that contains the model profile. | 
 **AllowedModels** | Pointer to **[]string** | List of models allowed for a user who is associated to this profile. Incase list is empty all models available in the provider are allowed. | [optional] 
 **AccessInfo** | Pointer to [**ModelAccessInfo**](ModelAccessInfo.md) |  | [optional] 
 **AccessKey** | Pointer to [**ModelAccessKey**](ModelAccessKey.md) |  | [optional] 
+**SharedUsers** | Pointer to **[]string** | The list of users this profile is shared with. | [optional] 
 
 ## Methods
 
 ### NewModelProfile
 
-`func NewModelProfile(name string, provider ModelProviders, ) *ModelProfile`
+`func NewModelProfile(name string, provider ModelProviders, workspace string, ) *ModelProfile`
 
 NewModelProfile instantiates a new ModelProfile object
 This constructor will assign default values to properties that have it defined,
@@ -67,6 +69,26 @@ and a boolean to check if the value has been set.
 `func (o *ModelProfile) SetProvider(v ModelProviders)`
 
 SetProvider sets Provider field to given value.
+
+
+### GetWorkspace
+
+`func (o *ModelProfile) GetWorkspace() string`
+
+GetWorkspace returns the Workspace field if non-nil, zero value otherwise.
+
+### GetWorkspaceOk
+
+`func (o *ModelProfile) GetWorkspaceOk() (*string, bool)`
+
+GetWorkspaceOk returns a tuple with the Workspace field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetWorkspace
+
+`func (o *ModelProfile) SetWorkspace(v string)`
+
+SetWorkspace sets Workspace field to given value.
 
 
 ### GetAllowedModels
@@ -143,6 +165,31 @@ SetAccessKey sets AccessKey field to given value.
 `func (o *ModelProfile) HasAccessKey() bool`
 
 HasAccessKey returns a boolean if a field has been set.
+
+### GetSharedUsers
+
+`func (o *ModelProfile) GetSharedUsers() []string`
+
+GetSharedUsers returns the SharedUsers field if non-nil, zero value otherwise.
+
+### GetSharedUsersOk
+
+`func (o *ModelProfile) GetSharedUsersOk() (*[]string, bool)`
+
+GetSharedUsersOk returns a tuple with the SharedUsers field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSharedUsers
+
+`func (o *ModelProfile) SetSharedUsers(v []string)`
+
+SetSharedUsers sets SharedUsers field to given value.
+
+### HasSharedUsers
+
+`func (o *ModelProfile) HasSharedUsers() bool`
+
+HasSharedUsers returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

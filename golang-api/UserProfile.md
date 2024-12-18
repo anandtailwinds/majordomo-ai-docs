@@ -6,7 +6,6 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Workspace** | **string** | Name of the workspace. | 
 **UserName** | **string** | Name of the user. | 
-**CostTags** | Pointer to **string** | The cost tags to be associated with this user operations. | [optional] 
 **ModelProfiles** | Pointer to **[]string** | The list of model profiles that are enabled for this user. | [optional] 
 **VectordbProfiles** | Pointer to **[]string** | The list of VectorDB profiles that are enabled for this user. | [optional] 
 
@@ -68,31 +67,6 @@ and a boolean to check if the value has been set.
 
 SetUserName sets UserName field to given value.
 
-
-### GetCostTags
-
-`func (o *UserProfile) GetCostTags() string`
-
-GetCostTags returns the CostTags field if non-nil, zero value otherwise.
-
-### GetCostTagsOk
-
-`func (o *UserProfile) GetCostTagsOk() (*string, bool)`
-
-GetCostTagsOk returns a tuple with the CostTags field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCostTags
-
-`func (o *UserProfile) SetCostTags(v string)`
-
-SetCostTags sets CostTags field to given value.
-
-### HasCostTags
-
-`func (o *UserProfile) HasCostTags() bool`
-
-HasCostTags returns a boolean if a field has been set.
 
 ### GetModelProfiles
 

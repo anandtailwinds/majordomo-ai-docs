@@ -4,19 +4,19 @@ All URIs are relative to *http://localhost:/25001*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateDataStore**](IngestAPI.md#CreateDataStore) | **Post** /data_stores | Data Store
-[**CreateIngestPipeline**](IngestAPI.md#CreateIngestPipeline) | **Post** /ingest_pipelines | Ingest Pipeline
-[**DataStoreIngest**](IngestAPI.md#DataStoreIngest) | **Post** /data_store_ingest | Ingest content into a data store
-[**DataStoreUpload**](IngestAPI.md#DataStoreUpload) | **Post** /data_store_upload | Ingest content into a data store from set of input files.
-[**DeleteDataStores**](IngestAPI.md#DeleteDataStores) | **Delete** /data_stores | Data Store
-[**DeleteIngestPipelines**](IngestAPI.md#DeleteIngestPipelines) | **Delete** /ingest_pipelines | Ingest Pipeline
-[**DeleteVectorStoreFiles**](IngestAPI.md#DeleteVectorStoreFiles) | **Delete** /delete_vector_store_files/workspace/{workspace}/data-store/{data_store}/files/{files} | 
-[**GetDataStores**](IngestAPI.md#GetDataStores) | **Get** /data_stores | Data Store Get
-[**GetIngestPipelines**](IngestAPI.md#GetIngestPipelines) | **Get** /ingest_pipelines | Ingest Pipeline Get
-[**GetVectorStores**](IngestAPI.md#GetVectorStores) | **Get** /vector_stores | Vector database information obtained from provider.
-[**RunIngestPipeline**](IngestAPI.md#RunIngestPipeline) | **Post** /ingest_pipeline_run/workspace/{workspace}/data-store/{data_store}/name/{name} | 
-[**UpdateDataStore**](IngestAPI.md#UpdateDataStore) | **Put** /data_stores | Data Store
-[**UpdateIngestPipeline**](IngestAPI.md#UpdateIngestPipeline) | **Put** /ingest_pipelines | Ingest Pipeline
+[**CreateDataStore**](IngestAPI.md#CreateDataStore) | **Post** /data_stores | Create a data store.
+[**CreateIngestPipeline**](IngestAPI.md#CreateIngestPipeline) | **Post** /ingest_pipelines | Create ingest pipeline.
+[**DataStoreIngest**](IngestAPI.md#DataStoreIngest) | **Post** /data_store_ingest | Data store ingestion.
+[**DataStoreUpload**](IngestAPI.md#DataStoreUpload) | **Post** /data_store_upload | Data store ingest local file.
+[**DeleteDataStores**](IngestAPI.md#DeleteDataStores) | **Delete** /data_stores | Delete data store.
+[**DeleteIngestPipelines**](IngestAPI.md#DeleteIngestPipelines) | **Delete** /ingest_pipelines | Delete ingest pipeline.
+[**DeleteVectorStoreFiles**](IngestAPI.md#DeleteVectorStoreFiles) | **Delete** /delete_vector_store_files/workspace/{workspace}/data-store-name/{data-store-name}/files/{files} | Delete vector stores information.
+[**GetDataStores**](IngestAPI.md#GetDataStores) | **Get** /data_stores | List data stores.
+[**GetIngestPipelines**](IngestAPI.md#GetIngestPipelines) | **Get** /ingest_pipelines | Get ingest pipeline.
+[**GetVectorStores**](IngestAPI.md#GetVectorStores) | **Get** /vector_stores | Get vector stores information.
+[**RunIngestPipeline**](IngestAPI.md#RunIngestPipeline) | **Post** /ingest_pipeline_run/workspace/{workspace}/data-store/{data_store}/name/{name} | Run ingest pipeline.
+[**UpdateDataStore**](IngestAPI.md#UpdateDataStore) | **Put** /data_stores | Update data store.
+[**UpdateIngestPipeline**](IngestAPI.md#UpdateIngestPipeline) | **Put** /ingest_pipelines | Update ingest pipeline.
 
 
 
@@ -24,7 +24,7 @@ Method | HTTP request | Description
 
 > DataStoreInfo CreateDataStore(ctx).DataStore(dataStore).Execute()
 
-Data Store
+Create a data store.
 
 
 
@@ -90,7 +90,7 @@ Name | Type | Description  | Notes
 
 > IngestPipelineInfo CreateIngestPipeline(ctx).IngestPipeline(ingestPipeline).Execute()
 
-Ingest Pipeline
+Create ingest pipeline.
 
 
 
@@ -156,7 +156,7 @@ Name | Type | Description  | Notes
 
 > IngestResponse DataStoreIngest(ctx).DataStoreIngest(dataStoreIngest).Execute()
 
-Ingest content into a data store
+Data store ingestion.
 
 
 
@@ -222,7 +222,7 @@ Name | Type | Description  | Notes
 
 > IngestResponse DataStoreUpload(ctx).Workspace(workspace).DataStoreName(dataStoreName).IngestType(ingestType).Files(files).IngestParams(ingestParams).Execute()
 
-Ingest content into a data store from set of input files.
+Data store ingest local file.
 
 
 
@@ -296,7 +296,7 @@ Name | Type | Description  | Notes
 
 > DeleteResponse DeleteDataStores(ctx).Workspace(workspace).Name(name).Force(force).Execute()
 
-Data Store
+Delete data store.
 
 
 
@@ -366,7 +366,7 @@ Name | Type | Description  | Notes
 
 > DeleteResponse DeleteIngestPipelines(ctx).Workspace(workspace).DataStore(dataStore).Name(name).Execute()
 
-Ingest Pipeline
+Delete ingest pipeline.
 
 
 
@@ -434,9 +434,9 @@ Name | Type | Description  | Notes
 
 ## DeleteVectorStoreFiles
 
-> DeleteResponse DeleteVectorStoreFiles(ctx, workspace, dataStore, files).Execute()
+> DeleteResponse DeleteVectorStoreFiles(ctx, workspace, dataStoreName, files).Execute()
 
-
+Delete vector stores information.
 
 
 
@@ -454,12 +454,12 @@ import (
 
 func main() {
 	workspace := "workspace_example" // string | The workspace in which the data store corresponding to the vector store is present.
-	dataStore := "dataStore_example" // string | Name of the data store for which the corresponding vector store information is sought. If none specified, all matching data stores created by the user are scanned.
+	dataStoreName := "dataStoreName_example" // string | Name of the data store for which the corresponding vector store information is sought. If none specified, all matching data stores created by the user are scanned.
 	files := "files_example" // string | The list of files to delete from the vector store at the provider.
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.IngestAPI.DeleteVectorStoreFiles(context.Background(), workspace, dataStore, files).Execute()
+	resp, r, err := apiClient.IngestAPI.DeleteVectorStoreFiles(context.Background(), workspace, dataStoreName, files).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `IngestAPI.DeleteVectorStoreFiles``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -476,7 +476,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **workspace** | **string** | The workspace in which the data store corresponding to the vector store is present. | 
-**dataStore** | **string** | Name of the data store for which the corresponding vector store information is sought. If none specified, all matching data stores created by the user are scanned. | 
+**dataStoreName** | **string** | Name of the data store for which the corresponding vector store information is sought. If none specified, all matching data stores created by the user are scanned. | 
 **files** | **string** | The list of files to delete from the vector store at the provider. | 
 
 ### Other Parameters
@@ -510,9 +510,9 @@ Name | Type | Description  | Notes
 
 ## GetDataStores
 
-> DataStores GetDataStores(ctx).Workspace(workspace).Name(name).Execute()
+> DataStores GetDataStores(ctx).Workspace(workspace).Name(name).Shared(shared).Type_(type_).Execute()
 
-Data Store Get
+List data stores.
 
 
 
@@ -531,10 +531,12 @@ import (
 func main() {
 	workspace := "workspace_example" // string | The workspace to search the data store, mandatory if name is provided. (optional)
 	name := "name_example" // string | The name of the data store to retrieve. (optional)
+	shared := true // bool | Retrieve data stores that are shared by others for querying. (optional)
+	type_ := openapiclient.DataStoreTypes(1) // DataStoreTypes | Retrieve data stores that are shared by others for querying. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.IngestAPI.GetDataStores(context.Background()).Workspace(workspace).Name(name).Execute()
+	resp, r, err := apiClient.IngestAPI.GetDataStores(context.Background()).Workspace(workspace).Name(name).Shared(shared).Type_(type_).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `IngestAPI.GetDataStores``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -557,6 +559,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **workspace** | **string** | The workspace to search the data store, mandatory if name is provided. | 
  **name** | **string** | The name of the data store to retrieve. | 
+ **shared** | **bool** | Retrieve data stores that are shared by others for querying. | 
+ **type_** | [**DataStoreTypes**](DataStoreTypes.md) | Retrieve data stores that are shared by others for querying. | 
 
 ### Return type
 
@@ -578,9 +582,9 @@ Name | Type | Description  | Notes
 
 ## GetIngestPipelines
 
-> IngestPipelines GetIngestPipelines(ctx).Workspace(workspace).Name(name).DataStore(dataStore).Execute()
+> IngestPipelines GetIngestPipelines(ctx).Workspace(workspace).Name(name).DataStore(dataStore).DataStoreType(dataStoreType).Execute()
 
-Ingest Pipeline Get
+Get ingest pipeline.
 
 
 
@@ -597,13 +601,14 @@ import (
 )
 
 func main() {
-	workspace := "workspace_example" // string | The workspace to search the ingest pipeline, mandatory if name is provided.
+	workspace := "workspace_example" // string | The workspace to search the ingest pipeline, mandatory if name is provided. (optional)
 	name := "name_example" // string | The name of the ingest pipeline to retrieve. (optional)
 	dataStore := "dataStore_example" // string | The name of the data store in which the ingest pipeline is present. (optional)
+	dataStoreType := "dataStoreType_example" // string | The type of the data store in which the ingest pipeline is present. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.IngestAPI.GetIngestPipelines(context.Background()).Workspace(workspace).Name(name).DataStore(dataStore).Execute()
+	resp, r, err := apiClient.IngestAPI.GetIngestPipelines(context.Background()).Workspace(workspace).Name(name).DataStore(dataStore).DataStoreType(dataStoreType).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `IngestAPI.GetIngestPipelines``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -627,6 +632,7 @@ Name | Type | Description  | Notes
  **workspace** | **string** | The workspace to search the ingest pipeline, mandatory if name is provided. | 
  **name** | **string** | The name of the ingest pipeline to retrieve. | 
  **dataStore** | **string** | The name of the data store in which the ingest pipeline is present. | 
+ **dataStoreType** | **string** | The type of the data store in which the ingest pipeline is present. | 
 
 ### Return type
 
@@ -648,9 +654,9 @@ Name | Type | Description  | Notes
 
 ## GetVectorStores
 
-> VectorStores GetVectorStores(ctx).Workspace(workspace).DataStore(dataStore).Files(files).Execute()
+> VectorStores GetVectorStores(ctx).Workspace(workspace).DataStoreName(dataStoreName).Files(files).Execute()
 
-Vector database information obtained from provider.
+Get vector stores information.
 
 
 
@@ -668,12 +674,12 @@ import (
 
 func main() {
 	workspace := "workspace_example" // string | The workspace in which the data store corresponding to the vector store is present.
-	dataStore := "dataStore_example" // string | Name of the data store for which the corresponding vector store information is sought. If none specified, all matching data stores created by the user are scanned. (optional)
+	dataStoreName := "dataStoreName_example" // string | Name of the data store for which the corresponding vector store information is sought. If none specified, all matching data stores created by the user are scanned. (optional)
 	files := true // bool | Obtain the list of files that are ingested into the vector store also. This option is very compute intensive as most vector databases dont provide a way to get this information without downloading the entire database. So this option can be excercised only for one data store at a time, and it is mandatory to provide a specific workspace and data store name. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.IngestAPI.GetVectorStores(context.Background()).Workspace(workspace).DataStore(dataStore).Files(files).Execute()
+	resp, r, err := apiClient.IngestAPI.GetVectorStores(context.Background()).Workspace(workspace).DataStoreName(dataStoreName).Files(files).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `IngestAPI.GetVectorStores``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -695,7 +701,7 @@ Other parameters are passed through a pointer to a apiGetVectorStoresRequest str
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **workspace** | **string** | The workspace in which the data store corresponding to the vector store is present. | 
- **dataStore** | **string** | Name of the data store for which the corresponding vector store information is sought. If none specified, all matching data stores created by the user are scanned. | 
+ **dataStoreName** | **string** | Name of the data store for which the corresponding vector store information is sought. If none specified, all matching data stores created by the user are scanned. | 
  **files** | **bool** | Obtain the list of files that are ingested into the vector store also. This option is very compute intensive as most vector databases dont provide a way to get this information without downloading the entire database. So this option can be excercised only for one data store at a time, and it is mandatory to provide a specific workspace and data store name. | 
 
 ### Return type
@@ -720,7 +726,7 @@ Name | Type | Description  | Notes
 
 > RunIngestPipeline(ctx, workspace, dataStore, name).Execute()
 
-
+Run ingest pipeline.
 
 
 
@@ -794,7 +800,7 @@ Name | Type | Description  | Notes
 
 > DataStoreInfo UpdateDataStore(ctx).DataStore(dataStore).Execute()
 
-Data Store
+Update data store.
 
 
 
@@ -860,7 +866,7 @@ Name | Type | Description  | Notes
 
 > IngestPipelineInfo UpdateIngestPipeline(ctx).IngestPipeline(ingestPipeline).Execute()
 
-Ingest Pipeline
+Update ingest pipeline.
 
 
 

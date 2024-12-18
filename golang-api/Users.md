@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Logs** | Pointer to [**[]UserInfo**](UserInfo.md) |  | [optional] 
+**Users** | Pointer to [**[]UserInfo**](UserInfo.md) |  | [optional] 
 
 ## Methods
 
@@ -25,30 +25,30 @@ NewUsersWithDefaults instantiates a new Users object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetLogs
+### GetUsers
 
-`func (o *Users) GetLogs() []UserInfo`
+`func (o *Users) GetUsers() []UserInfo`
 
-GetLogs returns the Logs field if non-nil, zero value otherwise.
+GetUsers returns the Users field if non-nil, zero value otherwise.
 
-### GetLogsOk
+### GetUsersOk
 
-`func (o *Users) GetLogsOk() (*[]UserInfo, bool)`
+`func (o *Users) GetUsersOk() (*[]UserInfo, bool)`
 
-GetLogsOk returns a tuple with the Logs field if it's non-nil, zero value otherwise
+GetUsersOk returns a tuple with the Users field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetLogs
+### SetUsers
 
-`func (o *Users) SetLogs(v []UserInfo)`
+`func (o *Users) SetUsers(v []UserInfo)`
 
-SetLogs sets Logs field to given value.
+SetUsers sets Users field to given value.
 
-### HasLogs
+### HasUsers
 
-`func (o *Users) HasLogs() bool`
+`func (o *Users) HasUsers() bool`
 
-HasLogs returns a boolean if a field has been set.
+HasUsers returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

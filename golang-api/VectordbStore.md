@@ -4,15 +4,18 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**VectordbProfile** | **string** | Name of the Vector DB profile. This is mandatory parameter in case of vector database. | 
+**Name** | **string** | The name of the vector database. | 
+**EmbeddingModelProfile** | **string** | Name of the Model profile. This profile determines the provider from which the embedding model is accessed. | 
+**VectordbProfile** | **string** | Name of the Vector DB profile. This profile determines the provider from which the vector database is accessed. | 
 **EmbeddingModel** | **string** | The embedding model to be used while ingesting data. This is mandatory parameter in case of vector database. | 
-**Shared** | Pointer to **bool** | This describes whether the data store is shared with others in the account for query purposes. | [optional] [default to false]
+**LlmModelProfile** | Pointer to **string** | Name of the Model profile. This profile determines the provider from which the LLM model is accessed. | [optional] 
+**LlmModel** | Pointer to **string** | The LLM model to be used if any specialized operations during the ingestion such as summarization. | [optional] 
 
 ## Methods
 
 ### NewVectordbStore
 
-`func NewVectordbStore(vectordbProfile string, embeddingModel string, ) *VectordbStore`
+`func NewVectordbStore(name string, embeddingModelProfile string, vectordbProfile string, embeddingModel string, ) *VectordbStore`
 
 NewVectordbStore instantiates a new VectordbStore object
 This constructor will assign default values to properties that have it defined,
@@ -26,6 +29,46 @@ will change when the set of required properties is changed
 NewVectordbStoreWithDefaults instantiates a new VectordbStore object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetName
+
+`func (o *VectordbStore) GetName() string`
+
+GetName returns the Name field if non-nil, zero value otherwise.
+
+### GetNameOk
+
+`func (o *VectordbStore) GetNameOk() (*string, bool)`
+
+GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetName
+
+`func (o *VectordbStore) SetName(v string)`
+
+SetName sets Name field to given value.
+
+
+### GetEmbeddingModelProfile
+
+`func (o *VectordbStore) GetEmbeddingModelProfile() string`
+
+GetEmbeddingModelProfile returns the EmbeddingModelProfile field if non-nil, zero value otherwise.
+
+### GetEmbeddingModelProfileOk
+
+`func (o *VectordbStore) GetEmbeddingModelProfileOk() (*string, bool)`
+
+GetEmbeddingModelProfileOk returns a tuple with the EmbeddingModelProfile field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEmbeddingModelProfile
+
+`func (o *VectordbStore) SetEmbeddingModelProfile(v string)`
+
+SetEmbeddingModelProfile sets EmbeddingModelProfile field to given value.
+
 
 ### GetVectordbProfile
 
@@ -67,30 +110,55 @@ and a boolean to check if the value has been set.
 SetEmbeddingModel sets EmbeddingModel field to given value.
 
 
-### GetShared
+### GetLlmModelProfile
 
-`func (o *VectordbStore) GetShared() bool`
+`func (o *VectordbStore) GetLlmModelProfile() string`
 
-GetShared returns the Shared field if non-nil, zero value otherwise.
+GetLlmModelProfile returns the LlmModelProfile field if non-nil, zero value otherwise.
 
-### GetSharedOk
+### GetLlmModelProfileOk
 
-`func (o *VectordbStore) GetSharedOk() (*bool, bool)`
+`func (o *VectordbStore) GetLlmModelProfileOk() (*string, bool)`
 
-GetSharedOk returns a tuple with the Shared field if it's non-nil, zero value otherwise
+GetLlmModelProfileOk returns a tuple with the LlmModelProfile field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetShared
+### SetLlmModelProfile
 
-`func (o *VectordbStore) SetShared(v bool)`
+`func (o *VectordbStore) SetLlmModelProfile(v string)`
 
-SetShared sets Shared field to given value.
+SetLlmModelProfile sets LlmModelProfile field to given value.
 
-### HasShared
+### HasLlmModelProfile
 
-`func (o *VectordbStore) HasShared() bool`
+`func (o *VectordbStore) HasLlmModelProfile() bool`
 
-HasShared returns a boolean if a field has been set.
+HasLlmModelProfile returns a boolean if a field has been set.
+
+### GetLlmModel
+
+`func (o *VectordbStore) GetLlmModel() string`
+
+GetLlmModel returns the LlmModel field if non-nil, zero value otherwise.
+
+### GetLlmModelOk
+
+`func (o *VectordbStore) GetLlmModelOk() (*string, bool)`
+
+GetLlmModelOk returns a tuple with the LlmModel field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLlmModel
+
+`func (o *VectordbStore) SetLlmModel(v string)`
+
+SetLlmModel sets LlmModel field to given value.
+
+### HasLlmModel
+
+`func (o *VectordbStore) HasLlmModel() bool`
+
+HasLlmModel returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

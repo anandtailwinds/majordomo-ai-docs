@@ -7,6 +7,8 @@
 
 * `SQL_QUERY` (value: `2`)
 
+* `MONGO_QUERY` (value: `3`)
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

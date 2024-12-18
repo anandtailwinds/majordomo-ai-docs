@@ -6,8 +6,6 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | **string** | Name of the workspace. | 
 **WorkerName** | **string** | Name of the worker associated with the workspace. | 
-**ModelProfiles** | Pointer to **[]string** | The list of model profiles that are enabled for this workspace. | [optional] 
-**VectordbProfiles** | Pointer to **[]string** | The list of vectordb profiles that are enabled for this workspace. | [optional] 
 **MonitorProfile** | Pointer to **string** | The monitoring profile enabled for this workspace. | [optional] 
 **CreatedBy** | **string** | The username who created this workspace. | 
 **CreatedAt** | **int64** | Timestamp of the workspace creation. | 
@@ -71,56 +69,6 @@ and a boolean to check if the value has been set.
 
 SetWorkerName sets WorkerName field to given value.
 
-
-### GetModelProfiles
-
-`func (o *WorkspaceInfo) GetModelProfiles() []string`
-
-GetModelProfiles returns the ModelProfiles field if non-nil, zero value otherwise.
-
-### GetModelProfilesOk
-
-`func (o *WorkspaceInfo) GetModelProfilesOk() (*[]string, bool)`
-
-GetModelProfilesOk returns a tuple with the ModelProfiles field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetModelProfiles
-
-`func (o *WorkspaceInfo) SetModelProfiles(v []string)`
-
-SetModelProfiles sets ModelProfiles field to given value.
-
-### HasModelProfiles
-
-`func (o *WorkspaceInfo) HasModelProfiles() bool`
-
-HasModelProfiles returns a boolean if a field has been set.
-
-### GetVectordbProfiles
-
-`func (o *WorkspaceInfo) GetVectordbProfiles() []string`
-
-GetVectordbProfiles returns the VectordbProfiles field if non-nil, zero value otherwise.
-
-### GetVectordbProfilesOk
-
-`func (o *WorkspaceInfo) GetVectordbProfilesOk() (*[]string, bool)`
-
-GetVectordbProfilesOk returns a tuple with the VectordbProfiles field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetVectordbProfiles
-
-`func (o *WorkspaceInfo) SetVectordbProfiles(v []string)`
-
-SetVectordbProfiles sets VectordbProfiles field to given value.
-
-### HasVectordbProfiles
-
-`func (o *WorkspaceInfo) HasVectordbProfiles() bool`
-
-HasVectordbProfiles returns a boolean if a field has been set.
 
 ### GetMonitorProfile
 

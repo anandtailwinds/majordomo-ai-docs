@@ -6,17 +6,17 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Workspace** | **string** | The workspace this query pipeline belongs to. | 
 **Name** | **string** | Name of the query pipeline. | 
-**DataStoreNames** | **[]string** | The type of the parent data store. | 
-**EmbeddingModel** | **string** | The embedding model to be used | 
-**LlmModel** | **string** | The LLM model to be used | 
 **QueryType** | [**QueryTypes**](QueryTypes.md) |  | 
 **QueryParams** | Pointer to [**QueryParams**](QueryParams.md) |  | [optional] 
+**TextQueryParams** | Pointer to [**TextQueryParams**](TextQueryParams.md) |  | [optional] 
+**SqlQueryParams** | Pointer to [**SQLQueryParams**](SQLQueryParams.md) |  | [optional] 
+**SharedUsers** | Pointer to **[]string** | The list of users this profile is shared with. | [optional] 
 
 ## Methods
 
 ### NewQueryPipeline
 
-`func NewQueryPipeline(workspace string, name string, dataStoreNames []string, embeddingModel string, llmModel string, queryType QueryTypes, ) *QueryPipeline`
+`func NewQueryPipeline(workspace string, name string, queryType QueryTypes, ) *QueryPipeline`
 
 NewQueryPipeline instantiates a new QueryPipeline object
 This constructor will assign default values to properties that have it defined,
@@ -71,66 +71,6 @@ and a boolean to check if the value has been set.
 SetName sets Name field to given value.
 
 
-### GetDataStoreNames
-
-`func (o *QueryPipeline) GetDataStoreNames() []string`
-
-GetDataStoreNames returns the DataStoreNames field if non-nil, zero value otherwise.
-
-### GetDataStoreNamesOk
-
-`func (o *QueryPipeline) GetDataStoreNamesOk() (*[]string, bool)`
-
-GetDataStoreNamesOk returns a tuple with the DataStoreNames field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetDataStoreNames
-
-`func (o *QueryPipeline) SetDataStoreNames(v []string)`
-
-SetDataStoreNames sets DataStoreNames field to given value.
-
-
-### GetEmbeddingModel
-
-`func (o *QueryPipeline) GetEmbeddingModel() string`
-
-GetEmbeddingModel returns the EmbeddingModel field if non-nil, zero value otherwise.
-
-### GetEmbeddingModelOk
-
-`func (o *QueryPipeline) GetEmbeddingModelOk() (*string, bool)`
-
-GetEmbeddingModelOk returns a tuple with the EmbeddingModel field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetEmbeddingModel
-
-`func (o *QueryPipeline) SetEmbeddingModel(v string)`
-
-SetEmbeddingModel sets EmbeddingModel field to given value.
-
-
-### GetLlmModel
-
-`func (o *QueryPipeline) GetLlmModel() string`
-
-GetLlmModel returns the LlmModel field if non-nil, zero value otherwise.
-
-### GetLlmModelOk
-
-`func (o *QueryPipeline) GetLlmModelOk() (*string, bool)`
-
-GetLlmModelOk returns a tuple with the LlmModel field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetLlmModel
-
-`func (o *QueryPipeline) SetLlmModel(v string)`
-
-SetLlmModel sets LlmModel field to given value.
-
-
 ### GetQueryType
 
 `func (o *QueryPipeline) GetQueryType() QueryTypes`
@@ -175,6 +115,81 @@ SetQueryParams sets QueryParams field to given value.
 `func (o *QueryPipeline) HasQueryParams() bool`
 
 HasQueryParams returns a boolean if a field has been set.
+
+### GetTextQueryParams
+
+`func (o *QueryPipeline) GetTextQueryParams() TextQueryParams`
+
+GetTextQueryParams returns the TextQueryParams field if non-nil, zero value otherwise.
+
+### GetTextQueryParamsOk
+
+`func (o *QueryPipeline) GetTextQueryParamsOk() (*TextQueryParams, bool)`
+
+GetTextQueryParamsOk returns a tuple with the TextQueryParams field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTextQueryParams
+
+`func (o *QueryPipeline) SetTextQueryParams(v TextQueryParams)`
+
+SetTextQueryParams sets TextQueryParams field to given value.
+
+### HasTextQueryParams
+
+`func (o *QueryPipeline) HasTextQueryParams() bool`
+
+HasTextQueryParams returns a boolean if a field has been set.
+
+### GetSqlQueryParams
+
+`func (o *QueryPipeline) GetSqlQueryParams() SQLQueryParams`
+
+GetSqlQueryParams returns the SqlQueryParams field if non-nil, zero value otherwise.
+
+### GetSqlQueryParamsOk
+
+`func (o *QueryPipeline) GetSqlQueryParamsOk() (*SQLQueryParams, bool)`
+
+GetSqlQueryParamsOk returns a tuple with the SqlQueryParams field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSqlQueryParams
+
+`func (o *QueryPipeline) SetSqlQueryParams(v SQLQueryParams)`
+
+SetSqlQueryParams sets SqlQueryParams field to given value.
+
+### HasSqlQueryParams
+
+`func (o *QueryPipeline) HasSqlQueryParams() bool`
+
+HasSqlQueryParams returns a boolean if a field has been set.
+
+### GetSharedUsers
+
+`func (o *QueryPipeline) GetSharedUsers() []string`
+
+GetSharedUsers returns the SharedUsers field if non-nil, zero value otherwise.
+
+### GetSharedUsersOk
+
+`func (o *QueryPipeline) GetSharedUsersOk() (*[]string, bool)`
+
+GetSharedUsersOk returns a tuple with the SharedUsers field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSharedUsers
+
+`func (o *QueryPipeline) SetSharedUsers(v []string)`
+
+SetSharedUsers sets SharedUsers field to given value.
+
+### HasSharedUsers
+
+`func (o *QueryPipeline) HasSharedUsers() bool`
+
+HasSharedUsers returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

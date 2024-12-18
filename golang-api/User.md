@@ -1,141 +1,157 @@
-# UserInfo
+# User
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**UserName** | **string** | The user name. | 
+**UserName** | **string** | The user name in the form of a email address. | 
 **FirstName** | **string** | The first name of the user. | 
 **LastName** | **string** | The last name of the user. | 
-**MdApiKey** | Pointer to **string** | The Majordomo API key allocated to the user. | [optional] 
+**Password** | **string** | The password for the user. | 
+**GenerateApiKey** | **bool** | The API key for the user. | 
 **Roles** | Pointer to **[]string** | The allowed user roles. | [optional] 
 
 ## Methods
 
-### NewUserInfo
+### NewUser
 
-`func NewUserInfo(userName string, firstName string, lastName string, ) *UserInfo`
+`func NewUser(userName string, firstName string, lastName string, password string, generateApiKey bool, ) *User`
 
-NewUserInfo instantiates a new UserInfo object
+NewUser instantiates a new User object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewUserInfoWithDefaults
+### NewUserWithDefaults
 
-`func NewUserInfoWithDefaults() *UserInfo`
+`func NewUserWithDefaults() *User`
 
-NewUserInfoWithDefaults instantiates a new UserInfo object
+NewUserWithDefaults instantiates a new User object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetUserName
 
-`func (o *UserInfo) GetUserName() string`
+`func (o *User) GetUserName() string`
 
 GetUserName returns the UserName field if non-nil, zero value otherwise.
 
 ### GetUserNameOk
 
-`func (o *UserInfo) GetUserNameOk() (*string, bool)`
+`func (o *User) GetUserNameOk() (*string, bool)`
 
 GetUserNameOk returns a tuple with the UserName field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUserName
 
-`func (o *UserInfo) SetUserName(v string)`
+`func (o *User) SetUserName(v string)`
 
 SetUserName sets UserName field to given value.
 
 
 ### GetFirstName
 
-`func (o *UserInfo) GetFirstName() string`
+`func (o *User) GetFirstName() string`
 
 GetFirstName returns the FirstName field if non-nil, zero value otherwise.
 
 ### GetFirstNameOk
 
-`func (o *UserInfo) GetFirstNameOk() (*string, bool)`
+`func (o *User) GetFirstNameOk() (*string, bool)`
 
 GetFirstNameOk returns a tuple with the FirstName field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetFirstName
 
-`func (o *UserInfo) SetFirstName(v string)`
+`func (o *User) SetFirstName(v string)`
 
 SetFirstName sets FirstName field to given value.
 
 
 ### GetLastName
 
-`func (o *UserInfo) GetLastName() string`
+`func (o *User) GetLastName() string`
 
 GetLastName returns the LastName field if non-nil, zero value otherwise.
 
 ### GetLastNameOk
 
-`func (o *UserInfo) GetLastNameOk() (*string, bool)`
+`func (o *User) GetLastNameOk() (*string, bool)`
 
 GetLastNameOk returns a tuple with the LastName field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLastName
 
-`func (o *UserInfo) SetLastName(v string)`
+`func (o *User) SetLastName(v string)`
 
 SetLastName sets LastName field to given value.
 
 
-### GetMdApiKey
+### GetPassword
 
-`func (o *UserInfo) GetMdApiKey() string`
+`func (o *User) GetPassword() string`
 
-GetMdApiKey returns the MdApiKey field if non-nil, zero value otherwise.
+GetPassword returns the Password field if non-nil, zero value otherwise.
 
-### GetMdApiKeyOk
+### GetPasswordOk
 
-`func (o *UserInfo) GetMdApiKeyOk() (*string, bool)`
+`func (o *User) GetPasswordOk() (*string, bool)`
 
-GetMdApiKeyOk returns a tuple with the MdApiKey field if it's non-nil, zero value otherwise
+GetPasswordOk returns a tuple with the Password field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetMdApiKey
+### SetPassword
 
-`func (o *UserInfo) SetMdApiKey(v string)`
+`func (o *User) SetPassword(v string)`
 
-SetMdApiKey sets MdApiKey field to given value.
+SetPassword sets Password field to given value.
 
-### HasMdApiKey
 
-`func (o *UserInfo) HasMdApiKey() bool`
+### GetGenerateApiKey
 
-HasMdApiKey returns a boolean if a field has been set.
+`func (o *User) GetGenerateApiKey() bool`
+
+GetGenerateApiKey returns the GenerateApiKey field if non-nil, zero value otherwise.
+
+### GetGenerateApiKeyOk
+
+`func (o *User) GetGenerateApiKeyOk() (*bool, bool)`
+
+GetGenerateApiKeyOk returns a tuple with the GenerateApiKey field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGenerateApiKey
+
+`func (o *User) SetGenerateApiKey(v bool)`
+
+SetGenerateApiKey sets GenerateApiKey field to given value.
+
 
 ### GetRoles
 
-`func (o *UserInfo) GetRoles() []string`
+`func (o *User) GetRoles() []string`
 
 GetRoles returns the Roles field if non-nil, zero value otherwise.
 
 ### GetRolesOk
 
-`func (o *UserInfo) GetRolesOk() (*[]string, bool)`
+`func (o *User) GetRolesOk() (*[]string, bool)`
 
 GetRolesOk returns a tuple with the Roles field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRoles
 
-`func (o *UserInfo) SetRoles(v []string)`
+`func (o *User) SetRoles(v []string)`
 
 SetRoles sets Roles field to given value.
 
 ### HasRoles
 
-`func (o *UserInfo) HasRoles() bool`
+`func (o *User) HasRoles() bool`
 
 HasRoles returns a boolean if a field has been set.
 

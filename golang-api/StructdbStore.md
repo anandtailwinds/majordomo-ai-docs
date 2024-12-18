@@ -7,13 +7,14 @@ Name | Type | Description | Notes
 **SubType** | [**DataStoreSubTypes**](DataStoreSubTypes.md) |  | 
 **ConnectString** | **string** | The endpoint of the structure database such as SQL/MongoDB. This string can contain keystore specification for any sensitive information. This is a mandatory parameter for structured and image databases. | 
 **DatabaseName** | **string** | The name of the database in the structured database This is a mandatory parameter for structured and image databases. | 
-**TableName** | **string** | The name of the table in the structured database. This is a mandatory parameter for structured and image databases. | 
+**Tables** | **[]string** | The list of tables in the structured database. | 
+**ExtraInfo** | Pointer to **string** | For any queries that are performed using this data store, this content will be used to augment the context that is provided along with the question. For example, by default the context for SQL tables will contain the table schemas, however if we want to detail more information about the tables for all the queries, then it can be added here instead of repeating for each query. | [optional] 
 
 ## Methods
 
 ### NewStructdbStore
 
-`func NewStructdbStore(subType DataStoreSubTypes, connectString string, databaseName string, tableName string, ) *StructdbStore`
+`func NewStructdbStore(subType DataStoreSubTypes, connectString string, databaseName string, tables []string, ) *StructdbStore`
 
 NewStructdbStore instantiates a new StructdbStore object
 This constructor will assign default values to properties that have it defined,
@@ -88,25 +89,50 @@ and a boolean to check if the value has been set.
 SetDatabaseName sets DatabaseName field to given value.
 
 
-### GetTableName
+### GetTables
 
-`func (o *StructdbStore) GetTableName() string`
+`func (o *StructdbStore) GetTables() []string`
 
-GetTableName returns the TableName field if non-nil, zero value otherwise.
+GetTables returns the Tables field if non-nil, zero value otherwise.
 
-### GetTableNameOk
+### GetTablesOk
 
-`func (o *StructdbStore) GetTableNameOk() (*string, bool)`
+`func (o *StructdbStore) GetTablesOk() (*[]string, bool)`
 
-GetTableNameOk returns a tuple with the TableName field if it's non-nil, zero value otherwise
+GetTablesOk returns a tuple with the Tables field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetTableName
+### SetTables
 
-`func (o *StructdbStore) SetTableName(v string)`
+`func (o *StructdbStore) SetTables(v []string)`
 
-SetTableName sets TableName field to given value.
+SetTables sets Tables field to given value.
 
+
+### GetExtraInfo
+
+`func (o *StructdbStore) GetExtraInfo() string`
+
+GetExtraInfo returns the ExtraInfo field if non-nil, zero value otherwise.
+
+### GetExtraInfoOk
+
+`func (o *StructdbStore) GetExtraInfoOk() (*string, bool)`
+
+GetExtraInfoOk returns a tuple with the ExtraInfo field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExtraInfo
+
+`func (o *StructdbStore) SetExtraInfo(v string)`
+
+SetExtraInfo sets ExtraInfo field to given value.
+
+### HasExtraInfo
+
+`func (o *StructdbStore) HasExtraInfo() bool`
+
+HasExtraInfo returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

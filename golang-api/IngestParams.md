@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **FileExtractor** | Pointer to [**[]FileExtractor**](FileExtractor.md) | Specify a file extractor for new file extensions or for a different supported extractor for standard extensions. | [optional] 
 **ApiKey** | Pointer to **string** | Any API keys required while accessing file extractors such as LlamaParse. | [optional] 
 **DocMetadata** | Pointer to [**[]Metadata**](Metadata.md) | Dictionary of metadata key/value pairs that are to be inserted into the vector database along with the chunks. This is useful while retrieval to restrict the relevant chunks. | [optional] 
+**TableName** | Pointer to **string** | Name of the table to ingest the data into, incase of a database ingestion into a database containing multiple tables. | [optional] 
 
 ## Methods
 
@@ -231,6 +232,31 @@ SetDocMetadata sets DocMetadata field to given value.
 `func (o *IngestParams) HasDocMetadata() bool`
 
 HasDocMetadata returns a boolean if a field has been set.
+
+### GetTableName
+
+`func (o *IngestParams) GetTableName() string`
+
+GetTableName returns the TableName field if non-nil, zero value otherwise.
+
+### GetTableNameOk
+
+`func (o *IngestParams) GetTableNameOk() (*string, bool)`
+
+GetTableNameOk returns a tuple with the TableName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTableName
+
+`func (o *IngestParams) SetTableName(v string)`
+
+SetTableName sets TableName field to given value.
+
+### HasTableName
+
+`func (o *IngestParams) HasTableName() bool`
+
+HasTableName returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

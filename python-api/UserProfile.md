@@ -8,7 +8,6 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **workspace** | **str** | Name of the workspace. | 
 **user_name** | **str** | Name of the user. | 
-**cost_tags** | **str** | The cost tags to be associated with this user operations. | [optional] 
 **model_profiles** | **List[str]** | The list of model profiles that are enabled for this user. | [optional] 
 **vectordb_profiles** | **List[str]** | The list of VectorDB profiles that are enabled for this user. | [optional] 
 

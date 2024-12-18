@@ -9,6 +9,8 @@ Name | Type | Description | Notes
 **workspace** | **str** | Workspace in which the data store is present. | 
 **name** | **str** | Name of the data store. | 
 **created_by** | **str** | The user who created the data store. | 
+**shared_users** | **List[str]** | The list of users this profile is shared with. | [optional] 
+**read_only** | **bool** | Flag to indicate whether the data store is read-only. | [optional] 
 **store_type** | [**DataStoreTypes**](DataStoreTypes.md) |  | 
 **vectordb_store** | [**VectordbStore**](VectordbStore.md) |  | [optional] 
 **structdb_store** | [**StructdbStore**](StructdbStore.md) |  | [optional] 

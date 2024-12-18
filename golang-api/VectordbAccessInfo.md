@@ -6,7 +6,6 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ConnectString** | Pointer to **string** | Connection string used to connect to the database, this can include password in case of some providers. | [optional] 
 **Database** | Pointer to **string** | Name of the database to which the profile connects. | [optional] 
-**Collection** | Pointer to **string** | The specific collection within the database where data will be stored. | [optional] 
 **Cloud** | Pointer to **string** | Indicates the cloud provider, e.g., AWS, Azure. | [optional] 
 **Region** | Pointer to **string** | Specifies the cloud region (e.g., us-west-2) where the database or collection is hosted. | [optional] 
 
@@ -78,31 +77,6 @@ SetDatabase sets Database field to given value.
 `func (o *VectordbAccessInfo) HasDatabase() bool`
 
 HasDatabase returns a boolean if a field has been set.
-
-### GetCollection
-
-`func (o *VectordbAccessInfo) GetCollection() string`
-
-GetCollection returns the Collection field if non-nil, zero value otherwise.
-
-### GetCollectionOk
-
-`func (o *VectordbAccessInfo) GetCollectionOk() (*string, bool)`
-
-GetCollectionOk returns a tuple with the Collection field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCollection
-
-`func (o *VectordbAccessInfo) SetCollection(v string)`
-
-SetCollection sets Collection field to given value.
-
-### HasCollection
-
-`func (o *VectordbAccessInfo) HasCollection() bool`
-
-HasCollection returns a boolean if a field has been set.
 
 ### GetCloud
 

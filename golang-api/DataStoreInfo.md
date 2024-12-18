@@ -7,6 +7,8 @@ Name | Type | Description | Notes
 **Workspace** | **string** | Workspace in which the data store is present. | 
 **Name** | **string** | Name of the data store. | 
 **CreatedBy** | **string** | The user who created the data store. | 
+**SharedUsers** | Pointer to **[]string** | The list of users this profile is shared with. | [optional] 
+**ReadOnly** | Pointer to **bool** | Flag to indicate whether the data store is read-only. | [optional] 
 **StoreType** | [**DataStoreTypes**](DataStoreTypes.md) |  | 
 **VectordbStore** | Pointer to [**VectordbStore**](VectordbStore.md) |  | [optional] 
 **StructdbStore** | Pointer to [**StructdbStore**](StructdbStore.md) |  | [optional] 
@@ -96,6 +98,56 @@ and a boolean to check if the value has been set.
 
 SetCreatedBy sets CreatedBy field to given value.
 
+
+### GetSharedUsers
+
+`func (o *DataStoreInfo) GetSharedUsers() []string`
+
+GetSharedUsers returns the SharedUsers field if non-nil, zero value otherwise.
+
+### GetSharedUsersOk
+
+`func (o *DataStoreInfo) GetSharedUsersOk() (*[]string, bool)`
+
+GetSharedUsersOk returns a tuple with the SharedUsers field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSharedUsers
+
+`func (o *DataStoreInfo) SetSharedUsers(v []string)`
+
+SetSharedUsers sets SharedUsers field to given value.
+
+### HasSharedUsers
+
+`func (o *DataStoreInfo) HasSharedUsers() bool`
+
+HasSharedUsers returns a boolean if a field has been set.
+
+### GetReadOnly
+
+`func (o *DataStoreInfo) GetReadOnly() bool`
+
+GetReadOnly returns the ReadOnly field if non-nil, zero value otherwise.
+
+### GetReadOnlyOk
+
+`func (o *DataStoreInfo) GetReadOnlyOk() (*bool, bool)`
+
+GetReadOnlyOk returns a tuple with the ReadOnly field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetReadOnly
+
+`func (o *DataStoreInfo) SetReadOnly(v bool)`
+
+SetReadOnly sets ReadOnly field to given value.
+
+### HasReadOnly
+
+`func (o *DataStoreInfo) HasReadOnly() bool`
+
+HasReadOnly returns a boolean if a field has been set.
 
 ### GetStoreType
 

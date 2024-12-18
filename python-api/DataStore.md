@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **store_type** | [**DataStoreTypes**](DataStoreTypes.md) |  | 
 **vectordb_store** | [**VectordbStore**](VectordbStore.md) |  | [optional] 
 **structdb_store** | [**StructdbStore**](StructdbStore.md) |  | [optional] 
+**shared_users** | **List[str]** | The list of users this profile is shared with. | [optional] 
 
 ## Example
 

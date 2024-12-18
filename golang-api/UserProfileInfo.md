@@ -6,9 +6,9 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Workspace** | **string** | Name of the workspace. | 
 **UserName** | **string** | Name of the user. | 
-**CostTags** | Pointer to **string** | The cost tags to be associated with this user operations. | [optional] 
 **ModelProfiles** | Pointer to **[]string** | The list of model profiles that are enabled for this user. | [optional] 
 **VectordbProfiles** | Pointer to **[]string** | The list of VectorDB profiles that are enabled for this user. | [optional] 
+**CreatedBy** | **string** | The user who has created the user profile for sharing information. | 
 **CreatedAt** | **int64** | Timestamp of the user profile creation. | 
 **LastUpdate** | **int64** | Timestamp of the last update to the user profile. | 
 
@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 
 ### NewUserProfileInfo
 
-`func NewUserProfileInfo(workspace string, userName string, createdAt int64, lastUpdate int64, ) *UserProfileInfo`
+`func NewUserProfileInfo(workspace string, userName string, createdBy string, createdAt int64, lastUpdate int64, ) *UserProfileInfo`
 
 NewUserProfileInfo instantiates a new UserProfileInfo object
 This constructor will assign default values to properties that have it defined,
@@ -71,31 +71,6 @@ and a boolean to check if the value has been set.
 SetUserName sets UserName field to given value.
 
 
-### GetCostTags
-
-`func (o *UserProfileInfo) GetCostTags() string`
-
-GetCostTags returns the CostTags field if non-nil, zero value otherwise.
-
-### GetCostTagsOk
-
-`func (o *UserProfileInfo) GetCostTagsOk() (*string, bool)`
-
-GetCostTagsOk returns a tuple with the CostTags field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCostTags
-
-`func (o *UserProfileInfo) SetCostTags(v string)`
-
-SetCostTags sets CostTags field to given value.
-
-### HasCostTags
-
-`func (o *UserProfileInfo) HasCostTags() bool`
-
-HasCostTags returns a boolean if a field has been set.
-
 ### GetModelProfiles
 
 `func (o *UserProfileInfo) GetModelProfiles() []string`
@@ -145,6 +120,26 @@ SetVectordbProfiles sets VectordbProfiles field to given value.
 `func (o *UserProfileInfo) HasVectordbProfiles() bool`
 
 HasVectordbProfiles returns a boolean if a field has been set.
+
+### GetCreatedBy
+
+`func (o *UserProfileInfo) GetCreatedBy() string`
+
+GetCreatedBy returns the CreatedBy field if non-nil, zero value otherwise.
+
+### GetCreatedByOk
+
+`func (o *UserProfileInfo) GetCreatedByOk() (*string, bool)`
+
+GetCreatedByOk returns a tuple with the CreatedBy field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCreatedBy
+
+`func (o *UserProfileInfo) SetCreatedBy(v string)`
+
+SetCreatedBy sets CreatedBy field to given value.
+
 
 ### GetCreatedAt
 

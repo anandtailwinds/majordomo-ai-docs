@@ -4,20 +4,20 @@ All URIs are relative to *http://localhost:/25001*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create_monitor_profile**](MonitorApi.md#create_monitor_profile) | **POST** /monitor_profiles | Monitor Profile
-[**delete_monitor_profiles**](MonitorApi.md#delete_monitor_profiles) | **DELETE** /monitor_profiles | Monitor Profile Specific Delete.
-[**get_logs**](MonitorApi.md#get_logs) | **GET** /logs | Logs
-[**get_monitor_profiles**](MonitorApi.md#get_monitor_profiles) | **GET** /monitor_profiles | Monitor profiles GET operation.
-[**get_token_stats**](MonitorApi.md#get_token_stats) | **GET** /token_stats | TokenStats
-[**update_monitor_profile**](MonitorApi.md#update_monitor_profile) | **PUT** /monitor_profiles | Monitor Profile
+[**create_monitor_profile**](MonitorApi.md#create_monitor_profile) | **POST** /monitor_profiles | Create monitor profile.
+[**delete_monitor_profiles**](MonitorApi.md#delete_monitor_profiles) | **DELETE** /monitor_profiles | Delete monitor profiles.
+[**get_logs**](MonitorApi.md#get_logs) | **GET** /logs | Get logs.
+[**get_monitor_profiles**](MonitorApi.md#get_monitor_profiles) | **GET** /monitor_profiles | Get monitor profiles.
+[**get_token_stats**](MonitorApi.md#get_token_stats) | **GET** /token_stats | Get token statistics.
+[**update_monitor_profile**](MonitorApi.md#update_monitor_profile) | **PUT** /monitor_profiles | Update monitor profile.
 
 
 # **create_monitor_profile**
 > MonitorProfile create_monitor_profile(monitor_profile)
 
-Monitor Profile
+Create monitor profile.
 
-Create a Monitor profile
+Create a new monitor profile.
 
 ### Example
 
@@ -52,7 +52,7 @@ with majordomo_ai.ApiClient(configuration) as api_client:
     monitor_profile = majordomo_ai.MonitorProfile() # MonitorProfile | 
 
     try:
-        # Monitor Profile
+        # Create monitor profile.
         api_response = api_instance.create_monitor_profile(monitor_profile)
         print("The response of MonitorApi->create_monitor_profile:\n")
         pprint(api_response)
@@ -94,7 +94,7 @@ Name | Type | Description  | Notes
 # **delete_monitor_profiles**
 > DeleteResponse delete_monitor_profiles(name=name)
 
-Monitor Profile Specific Delete.
+Delete monitor profiles.
 
 Delete one or more existing monitor profiles.
 
@@ -131,7 +131,7 @@ with majordomo_ai.ApiClient(configuration) as api_client:
     name = 'name_example' # str | The name of the monitor profile to delete. (optional)
 
     try:
-        # Monitor Profile Specific Delete.
+        # Delete monitor profiles.
         api_response = api_instance.delete_monitor_profiles(name=name)
         print("The response of MonitorApi->delete_monitor_profiles:\n")
         pprint(api_response)
@@ -174,9 +174,9 @@ Name | Type | Description  | Notes
 # **get_logs**
 > Logs get_logs(workspace=workspace, user_name=user_name, topic=topic, log_level=log_level, start_time=start_time, end_time=end_time)
 
-Logs
+Get logs.
 
-Get a list of log messages.
+Get a list of log messages filtered by specific parameters and timeframe.
 
 ### Example
 
@@ -217,7 +217,7 @@ with majordomo_ai.ApiClient(configuration) as api_client:
     end_time = 'end_time_example' # str | Filter the logs ending at this time. (optional)
 
     try:
-        # Logs
+        # Get logs.
         api_response = api_instance.get_logs(workspace=workspace, user_name=user_name, topic=topic, log_level=log_level, start_time=start_time, end_time=end_time)
         print("The response of MonitorApi->get_logs:\n")
         pprint(api_response)
@@ -264,7 +264,7 @@ Name | Type | Description  | Notes
 # **get_monitor_profiles**
 > MonitorProfiles get_monitor_profiles(name=name)
 
-Monitor profiles GET operation.
+Get monitor profiles.
 
 Get a list of existing monitor profiles.
 
@@ -301,7 +301,7 @@ with majordomo_ai.ApiClient(configuration) as api_client:
     name = 'name_example' # str | The name of the monitor profile to retrieve. If none is provided all monitor profiles are retrieved. (optional)
 
     try:
-        # Monitor profiles GET operation.
+        # Get monitor profiles.
         api_response = api_instance.get_monitor_profiles(name=name)
         print("The response of MonitorApi->get_monitor_profiles:\n")
         pprint(api_response)
@@ -343,9 +343,9 @@ Name | Type | Description  | Notes
 # **get_token_stats**
 > TokenStats get_token_stats(workspace=workspace, user_name=user_name, start_time=start_time, end_time=end_time)
 
-TokenStats
+Get token statistics.
 
-Get entries recording the token counts for the RAG operations.
+Get token consumption statistics recorded for each RAG operation, filtered by timeframe.
 
 ### Example
 
@@ -383,7 +383,7 @@ with majordomo_ai.ApiClient(configuration) as api_client:
     end_time = 'end_time_example' # str | Filter the logs ending at this time. (optional)
 
     try:
-        # TokenStats
+        # Get token statistics.
         api_response = api_instance.get_token_stats(workspace=workspace, user_name=user_name, start_time=start_time, end_time=end_time)
         print("The response of MonitorApi->get_token_stats:\n")
         pprint(api_response)
@@ -428,7 +428,7 @@ Name | Type | Description  | Notes
 # **update_monitor_profile**
 > MonitorProfile update_monitor_profile(monitor_profile)
 
-Monitor Profile
+Update monitor profile.
 
 Update an existing monitor profile.
 
@@ -465,7 +465,7 @@ with majordomo_ai.ApiClient(configuration) as api_client:
     monitor_profile = majordomo_ai.MonitorProfile() # MonitorProfile | 
 
     try:
-        # Monitor Profile
+        # Update monitor profile.
         api_response = api_instance.update_monitor_profile(monitor_profile)
         print("The response of MonitorApi->update_monitor_profile:\n")
         pprint(api_response)

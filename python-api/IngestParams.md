@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **file_extractor** | [**List[FileExtractor]**](FileExtractor.md) | Specify a file extractor for new file extensions or for a different supported extractor for standard extensions. | [optional] 
 **api_key** | **str** | Any API keys required while accessing file extractors such as LlamaParse. | [optional] 
 **doc_metadata** | [**List[Metadata]**](Metadata.md) | Dictionary of metadata key/value pairs that are to be inserted into the vector database along with the chunks. This is useful while retrieval to restrict the relevant chunks. | [optional] 
+**table_name** | **str** | Name of the table to ingest the data into, incase of a database ingestion into a database containing multiple tables. | [optional] 
 
 ## Example
 

@@ -4,12 +4,12 @@ All URIs are relative to *http://localhost:/25001*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateMonitorProfile**](MonitorAPI.md#CreateMonitorProfile) | **Post** /monitor_profiles | Monitor Profile
-[**DeleteMonitorProfiles**](MonitorAPI.md#DeleteMonitorProfiles) | **Delete** /monitor_profiles | Monitor Profile Specific Delete.
-[**GetLogs**](MonitorAPI.md#GetLogs) | **Get** /logs | Logs
-[**GetMonitorProfiles**](MonitorAPI.md#GetMonitorProfiles) | **Get** /monitor_profiles | Monitor profiles GET operation.
-[**GetTokenStats**](MonitorAPI.md#GetTokenStats) | **Get** /token_stats | TokenStats
-[**UpdateMonitorProfile**](MonitorAPI.md#UpdateMonitorProfile) | **Put** /monitor_profiles | Monitor Profile
+[**CreateMonitorProfile**](MonitorAPI.md#CreateMonitorProfile) | **Post** /monitor_profiles | Create monitor profile.
+[**DeleteMonitorProfiles**](MonitorAPI.md#DeleteMonitorProfiles) | **Delete** /monitor_profiles | Delete monitor profiles.
+[**GetLogs**](MonitorAPI.md#GetLogs) | **Get** /logs | Get logs.
+[**GetMonitorProfiles**](MonitorAPI.md#GetMonitorProfiles) | **Get** /monitor_profiles | Get monitor profiles.
+[**GetTokenStats**](MonitorAPI.md#GetTokenStats) | **Get** /token_stats | Get token statistics.
+[**UpdateMonitorProfile**](MonitorAPI.md#UpdateMonitorProfile) | **Put** /monitor_profiles | Update monitor profile.
 
 
 
@@ -17,7 +17,7 @@ Method | HTTP request | Description
 
 > MonitorProfile CreateMonitorProfile(ctx).MonitorProfile(monitorProfile).Execute()
 
-Monitor Profile
+Create monitor profile.
 
 
 
@@ -83,7 +83,7 @@ Name | Type | Description  | Notes
 
 > DeleteResponse DeleteMonitorProfiles(ctx).Name(name).Execute()
 
-Monitor Profile Specific Delete.
+Delete monitor profiles.
 
 
 
@@ -149,7 +149,7 @@ Name | Type | Description  | Notes
 
 > Logs GetLogs(ctx).Workspace(workspace).UserName(userName).Topic(topic).LogLevel(logLevel).StartTime(startTime).EndTime(endTime).Execute()
 
-Logs
+Get logs.
 
 
 
@@ -225,7 +225,7 @@ Name | Type | Description  | Notes
 
 > MonitorProfiles GetMonitorProfiles(ctx).Name(name).Execute()
 
-Monitor profiles GET operation.
+Get monitor profiles.
 
 
 
@@ -291,7 +291,7 @@ Name | Type | Description  | Notes
 
 > TokenStats GetTokenStats(ctx).Workspace(workspace).UserName(userName).StartTime(startTime).EndTime(endTime).Execute()
 
-TokenStats
+Get token statistics.
 
 
 
@@ -363,7 +363,7 @@ Name | Type | Description  | Notes
 
 > MonitorProfile UpdateMonitorProfile(ctx).MonitorProfile(monitorProfile).Execute()
 
-Monitor Profile
+Update monitor profile.
 
 
 

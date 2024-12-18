@@ -4,35 +4,38 @@ All URIs are relative to *http://localhost:/25001*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create_model_profile**](AdminApi.md#create_model_profile) | **POST** /model_profiles | Model Profile
-[**create_user_profile**](AdminApi.md#create_user_profile) | **POST** /user_profiles | User Profile
-[**create_vectordb_profile**](AdminApi.md#create_vectordb_profile) | **POST** /vectordb_profiles | Vectordb Profile
-[**create_worker**](AdminApi.md#create_worker) | **POST** /workers | Worker
-[**create_workspace**](AdminApi.md#create_workspace) | **POST** /workspaces | Workspace
-[**delete_model_profiles**](AdminApi.md#delete_model_profiles) | **DELETE** /model_profiles | Model Profile Delete.
-[**delete_user_profiles**](AdminApi.md#delete_user_profiles) | **DELETE** /user_profiles | User Profile Specific DELETE.
-[**delete_vectordb_profiles**](AdminApi.md#delete_vectordb_profiles) | **DELETE** /vectordb_profiles | Vectordb Profile Specific Delete.
-[**delete_workers**](AdminApi.md#delete_workers) | **DELETE** /workers | Worker Specific Delete.
-[**delete_workspaces**](AdminApi.md#delete_workspaces) | **DELETE** /workspaces | Workspace Specific Delete.
-[**get_model_profiles**](AdminApi.md#get_model_profiles) | **GET** /model_profiles | Model profiles GET operation.
-[**get_user_profiles**](AdminApi.md#get_user_profiles) | **GET** /user_profiles | User profiles GET operation.
-[**get_user_scope**](AdminApi.md#get_user_scope) | **GET** /user_scope | 
-[**get_users**](AdminApi.md#get_users) | **GET** /users | 
-[**get_vectordb_profiles**](AdminApi.md#get_vectordb_profiles) | **GET** /vectordb_profiles | Vectordb profiles GET operation.
-[**get_workers**](AdminApi.md#get_workers) | **GET** /workers | Worker Get
-[**get_workspaces**](AdminApi.md#get_workspaces) | **GET** /workspaces | Workspace GET operation.
-[**update_model_profile**](AdminApi.md#update_model_profile) | **PUT** /model_profiles | Model Profile
-[**update_user_profile**](AdminApi.md#update_user_profile) | **PUT** /user_profiles | User Profile
-[**update_vectordb_profile**](AdminApi.md#update_vectordb_profile) | **PUT** /vectordb_profiles | Vectordb Profile
-[**update_workspace**](AdminApi.md#update_workspace) | **PUT** /workspaces | Workspace
+[**create_model_profile**](AdminApi.md#create_model_profile) | **POST** /model_profiles | Create model profile.
+[**create_user**](AdminApi.md#create_user) | **POST** /users | Add user.
+[**create_user_profile**](AdminApi.md#create_user_profile) | **POST** /user_profiles | Create user profile.
+[**create_vectordb_profile**](AdminApi.md#create_vectordb_profile) | **POST** /vectordb_profiles | Create vectordb profile.
+[**create_worker**](AdminApi.md#create_worker) | **POST** /workers | Create worker node.
+[**create_workspace**](AdminApi.md#create_workspace) | **POST** /workspaces | Create workspace.
+[**delete_model_profiles**](AdminApi.md#delete_model_profiles) | **DELETE** /model_profiles | Delete model profile.
+[**delete_user**](AdminApi.md#delete_user) | **DELETE** /users | Delete user.
+[**delete_user_profiles**](AdminApi.md#delete_user_profiles) | **DELETE** /user_profiles | Delete user profile.
+[**delete_vectordb_profiles**](AdminApi.md#delete_vectordb_profiles) | **DELETE** /vectordb_profiles | Delete vectordb profiles.
+[**delete_workers**](AdminApi.md#delete_workers) | **DELETE** /workers | Delete worker nodes.
+[**delete_workspaces**](AdminApi.md#delete_workspaces) | **DELETE** /workspaces | Delete workspace.
+[**get_model_profiles**](AdminApi.md#get_model_profiles) | **GET** /model_profiles | Get model profiles.
+[**get_user_profiles**](AdminApi.md#get_user_profiles) | **GET** /user_profiles | Get user profile.
+[**get_user_scope**](AdminApi.md#get_user_scope) | **GET** /user_scope | Get permitted profiles for a specific user.
+[**get_users**](AdminApi.md#get_users) | **GET** /users | Get users list.
+[**get_vectordb_profiles**](AdminApi.md#get_vectordb_profiles) | **GET** /vectordb_profiles | Get vectordb profiles.
+[**get_workers**](AdminApi.md#get_workers) | **GET** /workers | Get worker nodes.
+[**get_workspaces**](AdminApi.md#get_workspaces) | **GET** /workspaces | Get workspaces.
+[**update_model_profile**](AdminApi.md#update_model_profile) | **PUT** /model_profiles | Update model profile.
+[**update_user**](AdminApi.md#update_user) | **PUT** /users | Update user.
+[**update_user_profile**](AdminApi.md#update_user_profile) | **PUT** /user_profiles | Update user profile.
+[**update_vectordb_profile**](AdminApi.md#update_vectordb_profile) | **PUT** /vectordb_profiles | Update vectordb profile.
+[**update_workspace**](AdminApi.md#update_workspace) | **PUT** /workspaces | Update workspace.
 
 
 # **create_model_profile**
 > ModelProfile create_model_profile(model_profile)
 
-Model Profile
+Create model profile.
 
-Create a model profile
+Create a new model profile.
 
 ### Example
 
@@ -67,7 +70,7 @@ with majordomo_ai.ApiClient(configuration) as api_client:
     model_profile = majordomo_ai.ModelProfile() # ModelProfile | 
 
     try:
-        # Model Profile
+        # Create model profile.
         api_response = api_instance.create_model_profile(model_profile)
         print("The response of AdminApi->create_model_profile:\n")
         pprint(api_response)
@@ -106,12 +109,92 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **create_user**
+> UserInfo create_user(user)
+
+Add user.
+
+Add a new user.
+
+### Example
+
+* Bearer (JWT) Authentication (bearerAuth):
+
+```python
+import majordomo_ai
+from majordomo_ai.models.user import User
+from majordomo_ai.models.user_info import UserInfo
+from majordomo_ai.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost:/25001
+# See configuration.py for a list of all supported configuration parameters.
+configuration = majordomo_ai.Configuration(
+    host = "http://localhost:/25001"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (JWT): bearerAuth
+configuration = majordomo_ai.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with majordomo_ai.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = majordomo_ai.AdminApi(api_client)
+    user = majordomo_ai.User() # User | 
+
+    try:
+        # Add user.
+        api_response = api_instance.create_user(user)
+        print("The response of AdminApi->create_user:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling AdminApi->create_user: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **user** | [**User**](User.md)|  | 
+
+### Return type
+
+[**UserInfo**](UserInfo.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | successful operation |  -  |
+**422** | Invalid input |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **create_user_profile**
 > UserProfile create_user_profile(user_profile)
 
-User Profile
+Create user profile.
 
-Create a user profile.
+Create an user profile.
 
 ### Example
 
@@ -146,7 +229,7 @@ with majordomo_ai.ApiClient(configuration) as api_client:
     user_profile = majordomo_ai.UserProfile() # UserProfile | 
 
     try:
-        # User Profile
+        # Create user profile.
         api_response = api_instance.create_user_profile(user_profile)
         print("The response of AdminApi->create_user_profile:\n")
         pprint(api_response)
@@ -188,9 +271,9 @@ Name | Type | Description  | Notes
 # **create_vectordb_profile**
 > VectordbProfile create_vectordb_profile(vectordb_profile)
 
-Vectordb Profile
+Create vectordb profile.
 
-Create a Vectordb profile
+Create a vectordb profile.
 
 ### Example
 
@@ -225,7 +308,7 @@ with majordomo_ai.ApiClient(configuration) as api_client:
     vectordb_profile = majordomo_ai.VectordbProfile() # VectordbProfile | 
 
     try:
-        # Vectordb Profile
+        # Create vectordb profile.
         api_response = api_instance.create_vectordb_profile(vectordb_profile)
         print("The response of AdminApi->create_vectordb_profile:\n")
         pprint(api_response)
@@ -267,9 +350,9 @@ Name | Type | Description  | Notes
 # **create_worker**
 > WorkerInfo create_worker(worker)
 
-Worker
+Create worker node.
 
-Create a worker
+Create a worker node.
 
 ### Example
 
@@ -305,7 +388,7 @@ with majordomo_ai.ApiClient(configuration) as api_client:
     worker = majordomo_ai.Worker() # Worker | 
 
     try:
-        # Worker
+        # Create worker node.
         api_response = api_instance.create_worker(worker)
         print("The response of AdminApi->create_worker:\n")
         pprint(api_response)
@@ -347,9 +430,9 @@ Name | Type | Description  | Notes
 # **create_workspace**
 > WorkspaceInfo create_workspace(workspace)
 
-Workspace
+Create workspace.
 
-Create a workspace
+Create a new workspace.
 
 ### Example
 
@@ -385,7 +468,7 @@ with majordomo_ai.ApiClient(configuration) as api_client:
     workspace = majordomo_ai.Workspace() # Workspace | 
 
     try:
-        # Workspace
+        # Create workspace.
         api_response = api_instance.create_workspace(workspace)
         print("The response of AdminApi->create_workspace:\n")
         pprint(api_response)
@@ -425,11 +508,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_model_profiles**
-> DeleteResponse delete_model_profiles(name=name)
+> DeleteResponse delete_model_profiles(workspace=workspace, name=name, force=force)
 
-Model Profile Delete.
+Delete model profile.
 
-Delete one or mode existing model profiles.
+Delete one or more configured model profiles.
 
 ### Example
 
@@ -461,11 +544,13 @@ configuration = majordomo_ai.Configuration(
 with majordomo_ai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = majordomo_ai.AdminApi(api_client)
+    workspace = 'workspace_example' # str | The name of the workspace in which the profile exists. (optional)
     name = 'name_example' # str | The name of the model profile to delete. (optional)
+    force = True # bool | Force delete all query pipelines or data stores that are referring to this model profile. This will also delete all usages of model profile done by users with whom the profile is shared. (optional)
 
     try:
-        # Model Profile Delete.
-        api_response = api_instance.delete_model_profiles(name=name)
+        # Delete model profile.
+        api_response = api_instance.delete_model_profiles(workspace=workspace, name=name, force=force)
         print("The response of AdminApi->delete_model_profiles:\n")
         pprint(api_response)
     except Exception as e:
@@ -479,7 +564,9 @@ with majordomo_ai.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **workspace** | **str**| The name of the workspace in which the profile exists. | [optional] 
  **name** | **str**| The name of the model profile to delete. | [optional] 
+ **force** | **bool**| Force delete all query pipelines or data stores that are referring to this model profile. This will also delete all usages of model profile done by users with whom the profile is shared. | [optional] 
 
 ### Return type
 
@@ -504,10 +591,89 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **delete_user**
+> DeleteResponse delete_user(name=name)
+
+Delete user.
+
+Delete a specific user and all his associated data such as data stores, query pipelines and logs.
+
+### Example
+
+* Bearer (JWT) Authentication (bearerAuth):
+
+```python
+import majordomo_ai
+from majordomo_ai.models.delete_response import DeleteResponse
+from majordomo_ai.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost:/25001
+# See configuration.py for a list of all supported configuration parameters.
+configuration = majordomo_ai.Configuration(
+    host = "http://localhost:/25001"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (JWT): bearerAuth
+configuration = majordomo_ai.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with majordomo_ai.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = majordomo_ai.AdminApi(api_client)
+    name = 'name_example' # str | The name of the user to delete. (optional)
+
+    try:
+        # Delete user.
+        api_response = api_instance.delete_user(name=name)
+        print("The response of AdminApi->delete_user:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling AdminApi->delete_user: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **str**| The name of the user to delete. | [optional] 
+
+### Return type
+
+[**DeleteResponse**](DeleteResponse.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | successful operation |  -  |
+**422** | Invalid input |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **delete_user_profiles**
 > delete_user_profiles(workspace, user_name)
 
-User Profile Specific DELETE.
+Delete user profile.
 
 Delete an existing user profile.
 
@@ -544,7 +710,7 @@ with majordomo_ai.ApiClient(configuration) as api_client:
     user_name = 'user_name_example' # str | The name of the user associated with the user profile.
 
     try:
-        # User Profile Specific DELETE.
+        # Delete user profile.
         api_instance.delete_user_profiles(workspace, user_name)
     except Exception as e:
         print("Exception when calling AdminApi->delete_user_profiles: %s\n" % e)
@@ -583,9 +749,9 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_vectordb_profiles**
-> DeleteResponse delete_vectordb_profiles(name=name)
+> DeleteResponse delete_vectordb_profiles(workspace=workspace, name=name, force=force)
 
-Vectordb Profile Specific Delete.
+Delete vectordb profiles.
 
 Delete one or more existing vectordb profiles.
 
@@ -619,11 +785,13 @@ configuration = majordomo_ai.Configuration(
 with majordomo_ai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = majordomo_ai.AdminApi(api_client)
+    workspace = 'workspace_example' # str | The name of the workspace in which the profile exists. (optional)
     name = 'name_example' # str | The name of the vectordb profile to delete. (optional)
+    force = True # bool | Force delete all query pipelines or data stores that are referring to this vectordb profile. This will also delete all usages of vectordb profile done by users with whom the profile is shared. (optional)
 
     try:
-        # Vectordb Profile Specific Delete.
-        api_response = api_instance.delete_vectordb_profiles(name=name)
+        # Delete vectordb profiles.
+        api_response = api_instance.delete_vectordb_profiles(workspace=workspace, name=name, force=force)
         print("The response of AdminApi->delete_vectordb_profiles:\n")
         pprint(api_response)
     except Exception as e:
@@ -637,7 +805,9 @@ with majordomo_ai.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **workspace** | **str**| The name of the workspace in which the profile exists. | [optional] 
  **name** | **str**| The name of the vectordb profile to delete. | [optional] 
+ **force** | **bool**| Force delete all query pipelines or data stores that are referring to this vectordb profile. This will also delete all usages of vectordb profile done by users with whom the profile is shared. | [optional] 
 
 ### Return type
 
@@ -665,9 +835,9 @@ Name | Type | Description  | Notes
 # **delete_workers**
 > delete_workers(name)
 
-Worker Specific Delete.
+Delete worker nodes.
 
-Delete an existing worker created by the user.
+Delete an existing worker node.
 
 ### Example
 
@@ -701,7 +871,7 @@ with majordomo_ai.ApiClient(configuration) as api_client:
     name = 'name_example' # str | Name of the worker to delete. Any references to this worker need to be deleted first before this operation can succeed.
 
     try:
-        # Worker Specific Delete.
+        # Delete worker nodes.
         api_instance.delete_workers(name)
     except Exception as e:
         print("Exception when calling AdminApi->delete_workers: %s\n" % e)
@@ -735,7 +905,7 @@ void (empty response body)
 # **delete_workspaces**
 > DeleteResponse delete_workspaces(name)
 
-Workspace Specific Delete.
+Delete workspace.
 
 Delete an existing workspace created by the user.
 
@@ -772,7 +942,7 @@ with majordomo_ai.ApiClient(configuration) as api_client:
     name = 'name_example' # str | Name of the workspaces to delete. Any references to this workspace need to be deleted first before this operation can succeed.
 
     try:
-        # Workspace Specific Delete.
+        # Delete workspace.
         api_response = api_instance.delete_workspaces(name)
         print("The response of AdminApi->delete_workspaces:\n")
         pprint(api_response)
@@ -813,9 +983,9 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_model_profiles**
-> ModelProfiles get_model_profiles(name=name)
+> ModelProfiles get_model_profiles(workspace=workspace, name=name, shared=shared)
 
-Model profiles GET operation.
+Get model profiles.
 
 Get a list of existing model profiles.
 
@@ -849,11 +1019,13 @@ configuration = majordomo_ai.Configuration(
 with majordomo_ai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = majordomo_ai.AdminApi(api_client)
+    workspace = 'workspace_example' # str | Query a specific workspace for model profiles. (optional)
     name = 'name_example' # str | The name of the model profile to retrieve. (optional)
+    shared = True # bool | Retrieve the profiles that are shared with this user by other users. (optional)
 
     try:
-        # Model profiles GET operation.
-        api_response = api_instance.get_model_profiles(name=name)
+        # Get model profiles.
+        api_response = api_instance.get_model_profiles(workspace=workspace, name=name, shared=shared)
         print("The response of AdminApi->get_model_profiles:\n")
         pprint(api_response)
     except Exception as e:
@@ -867,7 +1039,9 @@ with majordomo_ai.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **workspace** | **str**| Query a specific workspace for model profiles. | [optional] 
  **name** | **str**| The name of the model profile to retrieve. | [optional] 
+ **shared** | **bool**| Retrieve the profiles that are shared with this user by other users. | [optional] 
 
 ### Return type
 
@@ -894,7 +1068,7 @@ Name | Type | Description  | Notes
 # **get_user_profiles**
 > UserProfiles get_user_profiles(name=name)
 
-User profiles GET operation.
+Get user profile.
 
 Get a list of existing user profiles.
 
@@ -931,7 +1105,7 @@ with majordomo_ai.ApiClient(configuration) as api_client:
     name = 'name_example' # str | The name of the user profile to retrieve. (optional)
 
     try:
-        # User profiles GET operation.
+        # Get user profile.
         api_response = api_instance.get_user_profiles(name=name)
         print("The response of AdminApi->get_user_profiles:\n")
         pprint(api_response)
@@ -973,9 +1147,9 @@ Name | Type | Description  | Notes
 # **get_user_scope**
 > UserScope get_user_scope(workspace)
 
+Get permitted profiles for a specific user.
 
-
-Get a list of permitted profiles, workspaces and stores for the user.
+Get a list of permitted profiles, workspaces and stores allowed for the user.
 
 ### Example
 
@@ -1010,6 +1184,7 @@ with majordomo_ai.ApiClient(configuration) as api_client:
     workspace = 'workspace_example' # str | The name of the workspace to retrieve the information for.
 
     try:
+        # Get permitted profiles for a specific user.
         api_response = api_instance.get_user_scope(workspace)
         print("The response of AdminApi->get_user_scope:\n")
         pprint(api_response)
@@ -1051,9 +1226,9 @@ Name | Type | Description  | Notes
 # **get_users**
 > Users get_users(name=name)
 
+Get users list.
 
-
-Get a list of users
+Get the list of users in the account.
 
 ### Example
 
@@ -1088,6 +1263,7 @@ with majordomo_ai.ApiClient(configuration) as api_client:
     name = 'name_example' # str | Get information specific to a user. (optional)
 
     try:
+        # Get users list.
         api_response = api_instance.get_users(name=name)
         print("The response of AdminApi->get_users:\n")
         pprint(api_response)
@@ -1127,11 +1303,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_vectordb_profiles**
-> VectordbProfiles get_vectordb_profiles(name=name)
+> VectordbProfiles get_vectordb_profiles(workspace=workspace, name=name, shared=shared)
 
-Vectordb profiles GET operation.
+Get vectordb profiles.
 
-Get a list of existing Vectordb profiles.
+Get a list of existing vectordb profiles.
 
 ### Example
 
@@ -1163,11 +1339,13 @@ configuration = majordomo_ai.Configuration(
 with majordomo_ai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = majordomo_ai.AdminApi(api_client)
+    workspace = 'workspace_example' # str | Query a specific workspace for model profiles. (optional)
     name = 'name_example' # str | The name of the vectordb profile to retrieve. (optional)
+    shared = True # bool | Retrieve the profiles that are shared with this user by other users. (optional)
 
     try:
-        # Vectordb profiles GET operation.
-        api_response = api_instance.get_vectordb_profiles(name=name)
+        # Get vectordb profiles.
+        api_response = api_instance.get_vectordb_profiles(workspace=workspace, name=name, shared=shared)
         print("The response of AdminApi->get_vectordb_profiles:\n")
         pprint(api_response)
     except Exception as e:
@@ -1181,7 +1359,9 @@ with majordomo_ai.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **workspace** | **str**| Query a specific workspace for model profiles. | [optional] 
  **name** | **str**| The name of the vectordb profile to retrieve. | [optional] 
+ **shared** | **bool**| Retrieve the profiles that are shared with this user by other users. | [optional] 
 
 ### Return type
 
@@ -1208,7 +1388,7 @@ Name | Type | Description  | Notes
 # **get_workers**
 > Workers get_workers(name=name)
 
-Worker Get
+Get worker nodes.
 
 Get a list of existing workers.
 
@@ -1245,7 +1425,7 @@ with majordomo_ai.ApiClient(configuration) as api_client:
     name = 'name_example' # str | Name of the specific worker to retrieve. (optional)
 
     try:
-        # Worker Get
+        # Get worker nodes.
         api_response = api_instance.get_workers(name=name)
         print("The response of AdminApi->get_workers:\n")
         pprint(api_response)
@@ -1287,7 +1467,7 @@ Name | Type | Description  | Notes
 # **get_workspaces**
 > Workspaces get_workspaces(name=name)
 
-Workspace GET operation.
+Get workspaces.
 
 Get a list of existing workspaces.
 
@@ -1324,7 +1504,7 @@ with majordomo_ai.ApiClient(configuration) as api_client:
     name = 'name_example' # str | Name of the workspace (optional)
 
     try:
-        # Workspace GET operation.
+        # Get workspaces.
         api_response = api_instance.get_workspaces(name=name)
         print("The response of AdminApi->get_workspaces:\n")
         pprint(api_response)
@@ -1366,7 +1546,7 @@ Name | Type | Description  | Notes
 # **update_model_profile**
 > ModelProfile update_model_profile(model_profile)
 
-Model Profile
+Update model profile.
 
 Update an existing model profile.
 
@@ -1403,7 +1583,7 @@ with majordomo_ai.ApiClient(configuration) as api_client:
     model_profile = majordomo_ai.ModelProfile() # ModelProfile | 
 
     try:
-        # Model Profile
+        # Update model profile.
         api_response = api_instance.update_model_profile(model_profile)
         print("The response of AdminApi->update_model_profile:\n")
         pprint(api_response)
@@ -1442,10 +1622,90 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **update_user**
+> UserInfo update_user(user)
+
+Update user.
+
+Update the API key of an existing user.
+
+### Example
+
+* Bearer (JWT) Authentication (bearerAuth):
+
+```python
+import majordomo_ai
+from majordomo_ai.models.user import User
+from majordomo_ai.models.user_info import UserInfo
+from majordomo_ai.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost:/25001
+# See configuration.py for a list of all supported configuration parameters.
+configuration = majordomo_ai.Configuration(
+    host = "http://localhost:/25001"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (JWT): bearerAuth
+configuration = majordomo_ai.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with majordomo_ai.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = majordomo_ai.AdminApi(api_client)
+    user = majordomo_ai.User() # User | 
+
+    try:
+        # Update user.
+        api_response = api_instance.update_user(user)
+        print("The response of AdminApi->update_user:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling AdminApi->update_user: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **user** | [**User**](User.md)|  | 
+
+### Return type
+
+[**UserInfo**](UserInfo.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | successful operation |  -  |
+**422** | Invalid input |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **update_user_profile**
 > UserProfile update_user_profile(user_profile)
 
-User Profile
+Update user profile.
 
 Update an existing user profile.
 
@@ -1482,7 +1742,7 @@ with majordomo_ai.ApiClient(configuration) as api_client:
     user_profile = majordomo_ai.UserProfile() # UserProfile | 
 
     try:
-        # User Profile
+        # Update user profile.
         api_response = api_instance.update_user_profile(user_profile)
         print("The response of AdminApi->update_user_profile:\n")
         pprint(api_response)
@@ -1524,9 +1784,9 @@ Name | Type | Description  | Notes
 # **update_vectordb_profile**
 > VectordbProfile update_vectordb_profile(vectordb_profile)
 
-Vectordb Profile
+Update vectordb profile.
 
-Update an existing Vectordb profile.
+Update an existing vectordb profile.
 
 ### Example
 
@@ -1561,7 +1821,7 @@ with majordomo_ai.ApiClient(configuration) as api_client:
     vectordb_profile = majordomo_ai.VectordbProfile() # VectordbProfile | 
 
     try:
-        # Vectordb Profile
+        # Update vectordb profile.
         api_response = api_instance.update_vectordb_profile(vectordb_profile)
         print("The response of AdminApi->update_vectordb_profile:\n")
         pprint(api_response)
@@ -1603,7 +1863,7 @@ Name | Type | Description  | Notes
 # **update_workspace**
 > WorkspaceInfo update_workspace(workspace)
 
-Workspace
+Update workspace.
 
 Update an existing workspace.
 
@@ -1641,7 +1901,7 @@ with majordomo_ai.ApiClient(configuration) as api_client:
     workspace = majordomo_ai.Workspace() # Workspace | 
 
     try:
-        # Workspace
+        # Update workspace.
         api_response = api_instance.update_workspace(workspace)
         print("The response of AdminApi->update_workspace:\n")
         pprint(api_response)
