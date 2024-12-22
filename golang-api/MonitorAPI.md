@@ -6,6 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CreateMonitorProfile**](MonitorAPI.md#CreateMonitorProfile) | **Post** /monitor_profiles | Create monitor profile.
 [**DeleteMonitorProfiles**](MonitorAPI.md#DeleteMonitorProfiles) | **Delete** /monitor_profiles | Delete monitor profiles.
+[**GetDataCount**](MonitorAPI.md#GetDataCount) | **Get** /data_count | Get the total count of various entities in the workspace.
 [**GetLogs**](MonitorAPI.md#GetLogs) | **Get** /logs | Get logs.
 [**GetMonitorProfiles**](MonitorAPI.md#GetMonitorProfiles) | **Get** /monitor_profiles | Get monitor profiles.
 [**GetTokenStats**](MonitorAPI.md#GetTokenStats) | **Get** /token_stats | Get token statistics.
@@ -130,6 +131,72 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**DeleteResponse**](DeleteResponse.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetDataCount
+
+> DataCount GetDataCount(ctx).Workspace(workspace).Execute()
+
+Get the total count of various entities in the workspace.
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+)
+
+func main() {
+	workspace := "workspace_example" // string | Filter the logs based on the workspace. (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.MonitorAPI.GetDataCount(context.Background()).Workspace(workspace).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `MonitorAPI.GetDataCount``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetDataCount`: DataCount
+	fmt.Fprintf(os.Stdout, "Response from `MonitorAPI.GetDataCount`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetDataCountRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **workspace** | **string** | Filter the logs based on the workspace. | 
+
+### Return type
+
+[**DataCount**](DataCount.md)
 
 ### Authorization
 

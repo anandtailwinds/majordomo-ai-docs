@@ -6,26 +6,23 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CreateModelProfile**](AdminAPI.md#CreateModelProfile) | **Post** /model_profiles | Create model profile.
 [**CreateUser**](AdminAPI.md#CreateUser) | **Post** /users | Add user.
-[**CreateUserProfile**](AdminAPI.md#CreateUserProfile) | **Post** /user_profiles | Create user profile.
 [**CreateVectordbProfile**](AdminAPI.md#CreateVectordbProfile) | **Post** /vectordb_profiles | Create vectordb profile.
 [**CreateWorker**](AdminAPI.md#CreateWorker) | **Post** /workers | Create worker node.
 [**CreateWorkspace**](AdminAPI.md#CreateWorkspace) | **Post** /workspaces | Create workspace.
 [**DeleteModelProfiles**](AdminAPI.md#DeleteModelProfiles) | **Delete** /model_profiles | Delete model profile.
 [**DeleteUser**](AdminAPI.md#DeleteUser) | **Delete** /users | Delete user.
-[**DeleteUserProfiles**](AdminAPI.md#DeleteUserProfiles) | **Delete** /user_profiles | Delete user profile.
 [**DeleteVectordbProfiles**](AdminAPI.md#DeleteVectordbProfiles) | **Delete** /vectordb_profiles | Delete vectordb profiles.
 [**DeleteWorkers**](AdminAPI.md#DeleteWorkers) | **Delete** /workers | Delete worker nodes.
 [**DeleteWorkspaces**](AdminAPI.md#DeleteWorkspaces) | **Delete** /workspaces | Delete workspace.
+[**GetAllowedProfiles**](AdminAPI.md#GetAllowedProfiles) | **Get** /allowed_profiles | Get permitted profiles for a specific user.
 [**GetModelProfiles**](AdminAPI.md#GetModelProfiles) | **Get** /model_profiles | Get model profiles.
-[**GetUserProfiles**](AdminAPI.md#GetUserProfiles) | **Get** /user_profiles | Get user profile.
-[**GetUserScope**](AdminAPI.md#GetUserScope) | **Get** /user_scope | Get permitted profiles for a specific user.
+[**GetUserList**](AdminAPI.md#GetUserList) | **Get** /user_list | Get list of all users.
 [**GetUsers**](AdminAPI.md#GetUsers) | **Get** /users | Get users list.
 [**GetVectordbProfiles**](AdminAPI.md#GetVectordbProfiles) | **Get** /vectordb_profiles | Get vectordb profiles.
 [**GetWorkers**](AdminAPI.md#GetWorkers) | **Get** /workers | Get worker nodes.
 [**GetWorkspaces**](AdminAPI.md#GetWorkspaces) | **Get** /workspaces | Get workspaces.
 [**UpdateModelProfile**](AdminAPI.md#UpdateModelProfile) | **Put** /model_profiles | Update model profile.
 [**UpdateUser**](AdminAPI.md#UpdateUser) | **Put** /users | Update user.
-[**UpdateUserProfile**](AdminAPI.md#UpdateUserProfile) | **Put** /user_profiles | Update user profile.
 [**UpdateVectordbProfile**](AdminAPI.md#UpdateVectordbProfile) | **Put** /vectordb_profiles | Update vectordb profile.
 [**UpdateWorkspace**](AdminAPI.md#UpdateWorkspace) | **Put** /workspaces | Update workspace.
 
@@ -148,72 +145,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**UserInfo**](UserInfo.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## CreateUserProfile
-
-> UserProfile CreateUserProfile(ctx).UserProfile(userProfile).Execute()
-
-Create user profile.
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
-)
-
-func main() {
-	userProfile := *openapiclient.NewUserProfile("Workspace_example", "UserName_example") // UserProfile | 
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.AdminAPI.CreateUserProfile(context.Background()).UserProfile(userProfile).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AdminAPI.CreateUserProfile``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `CreateUserProfile`: UserProfile
-	fmt.Fprintf(os.Stdout, "Response from `AdminAPI.CreateUserProfile`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiCreateUserProfileRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **userProfile** | [**UserProfile**](UserProfile.md) |  | 
-
-### Return type
-
-[**UserProfile**](UserProfile.md)
 
 ### Authorization
 
@@ -563,77 +494,6 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## DeleteUserProfiles
-
-> DeleteUserProfiles(ctx, workspace, userName).Execute()
-
-Delete user profile.
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
-)
-
-func main() {
-	workspace := "workspace_example" // string | The name of the workspace associated with the user profile.
-	userName := "userName_example" // string | The name of the user associated with the user profile.
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.AdminAPI.DeleteUserProfiles(context.Background(), workspace, userName).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AdminAPI.DeleteUserProfiles``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**workspace** | **string** | The name of the workspace associated with the user profile. | 
-**userName** | **string** | The name of the user associated with the user profile. | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiDeleteUserProfilesRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-
-### Return type
-
- (empty response body)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: Not defined
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
 ## DeleteVectordbProfiles
 
 > DeleteResponse DeleteVectordbProfiles(ctx).Workspace(workspace).Name(name).Force(force).Execute()
@@ -834,6 +694,72 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## GetAllowedProfiles
+
+> AllowedProfiles GetAllowedProfiles(ctx).Workspace(workspace).Execute()
+
+Get permitted profiles for a specific user.
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+)
+
+func main() {
+	workspace := "workspace_example" // string | The name of the workspace to retrieve the information for.
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AdminAPI.GetAllowedProfiles(context.Background()).Workspace(workspace).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AdminAPI.GetAllowedProfiles``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetAllowedProfiles`: AllowedProfiles
+	fmt.Fprintf(os.Stdout, "Response from `AdminAPI.GetAllowedProfiles`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetAllowedProfilesRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **workspace** | **string** | The name of the workspace to retrieve the information for. | 
+
+### Return type
+
+[**AllowedProfiles**](AllowedProfiles.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## GetModelProfiles
 
 > ModelProfiles GetModelProfiles(ctx).Workspace(workspace).Name(name).Shared(shared).Execute()
@@ -904,77 +830,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetUserProfiles
+## GetUserList
 
-> UserProfiles GetUserProfiles(ctx).Name(name).Execute()
+> []string GetUserList(ctx).Name(name).Execute()
 
-Get user profile.
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
-)
-
-func main() {
-	name := "name_example" // string | The name of the user profile to retrieve. (optional)
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.AdminAPI.GetUserProfiles(context.Background()).Name(name).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AdminAPI.GetUserProfiles``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `GetUserProfiles`: UserProfiles
-	fmt.Fprintf(os.Stdout, "Response from `AdminAPI.GetUserProfiles`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetUserProfilesRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **name** | **string** | The name of the user profile to retrieve. | 
-
-### Return type
-
-[**UserProfiles**](UserProfiles.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## GetUserScope
-
-> UserScope GetUserScope(ctx).Workspace(workspace).Execute()
-
-Get permitted profiles for a specific user.
+Get list of all users.
 
 
 
@@ -991,17 +851,17 @@ import (
 )
 
 func main() {
-	workspace := "workspace_example" // string | The name of the workspace to retrieve the information for.
+	name := "name_example" // string | Get information specific to a user. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.AdminAPI.GetUserScope(context.Background()).Workspace(workspace).Execute()
+	resp, r, err := apiClient.AdminAPI.GetUserList(context.Background()).Name(name).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AdminAPI.GetUserScope``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `AdminAPI.GetUserList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GetUserScope`: UserScope
-	fmt.Fprintf(os.Stdout, "Response from `AdminAPI.GetUserScope`: %v\n", resp)
+	// response from `GetUserList`: []string
+	fmt.Fprintf(os.Stdout, "Response from `AdminAPI.GetUserList`: %v\n", resp)
 }
 ```
 
@@ -1011,16 +871,16 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiGetUserScopeRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetUserListRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **workspace** | **string** | The name of the workspace to retrieve the information for. | 
+ **name** | **string** | Get information specific to a user. | 
 
 ### Return type
 
-[**UserScope**](UserScope.md)
+**[]string**
 
 ### Authorization
 
@@ -1421,72 +1281,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**UserInfo**](UserInfo.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## UpdateUserProfile
-
-> UserProfile UpdateUserProfile(ctx).UserProfile(userProfile).Execute()
-
-Update user profile.
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
-)
-
-func main() {
-	userProfile := *openapiclient.NewUserProfile("Workspace_example", "UserName_example") // UserProfile | 
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.AdminAPI.UpdateUserProfile(context.Background()).UserProfile(userProfile).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AdminAPI.UpdateUserProfile``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `UpdateUserProfile`: UserProfile
-	fmt.Fprintf(os.Stdout, "Response from `AdminAPI.UpdateUserProfile`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiUpdateUserProfileRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **userProfile** | [**UserProfile**](UserProfile.md) |  | 
-
-### Return type
-
-[**UserProfile**](UserProfile.md)
 
 ### Authorization
 
