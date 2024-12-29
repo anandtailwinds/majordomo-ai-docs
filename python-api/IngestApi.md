@@ -698,6 +698,7 @@ Get a list of existing ingest pipelines.
 
 ```python
 import majordomo_ai
+from majordomo_ai.models.data_store_types import DataStoreTypes
 from majordomo_ai.models.ingest_pipelines import IngestPipelines
 from majordomo_ai.rest import ApiException
 from pprint import pprint
@@ -725,7 +726,7 @@ with majordomo_ai.ApiClient(configuration) as api_client:
     workspace = 'workspace_example' # str | The workspace to search the ingest pipeline, mandatory if name is provided. (optional)
     name = 'name_example' # str | The name of the ingest pipeline to retrieve. (optional)
     data_store = 'data_store_example' # str | The name of the data store in which the ingest pipeline is present. (optional)
-    data_store_type = 'data_store_type_example' # str | The type of the data store in which the ingest pipeline is present. (optional)
+    data_store_type = majordomo_ai.DataStoreTypes() # DataStoreTypes | The type of the data store in which the ingest pipeline is present. (optional)
 
     try:
         # Get ingest pipeline.
@@ -746,7 +747,7 @@ Name | Type | Description  | Notes
  **workspace** | **str**| The workspace to search the ingest pipeline, mandatory if name is provided. | [optional] 
  **name** | **str**| The name of the ingest pipeline to retrieve. | [optional] 
  **data_store** | **str**| The name of the data store in which the ingest pipeline is present. | [optional] 
- **data_store_type** | **str**| The type of the data store in which the ingest pipeline is present. | [optional] 
+ **data_store_type** | [**DataStoreTypes**](.md)| The type of the data store in which the ingest pipeline is present. | [optional] 
 
 ### Return type
 

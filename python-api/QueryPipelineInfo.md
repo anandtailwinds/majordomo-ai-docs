@@ -10,8 +10,8 @@ Name | Type | Description | Notes
 **name** | **str** | Name of the query pipeline. | 
 **query_type** | [**QueryTypes**](QueryTypes.md) |  | 
 **var_query_params** | [**QueryParams**](QueryParams.md) |  | [optional] 
-**text_query_params** | [**TextQueryParams**](TextQueryParams.md) |  | [optional] 
-**sql_query_params** | [**SQLQueryParams**](SQLQueryParams.md) |  | [optional] 
+**vectordb_query_params** | [**VectordbQueryParams**](VectordbQueryParams.md) |  | [optional] 
+**structdb_query_params** | [**StructdbQueryParams**](StructdbQueryParams.md) |  | [optional] 
 **created_by** | **str** | The user who created the ingest pipeline. | 
 **shared_users** | **List[str]** | The list of users this profile is shared with. | [optional] 
 **created_at** | **int** | Timestamp of the query pipeline creation. | 
