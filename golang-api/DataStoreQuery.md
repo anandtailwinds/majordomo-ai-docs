@@ -12,7 +12,6 @@ Name | Type | Description | Notes
 **LlmModel** | **string** | The LLM model to be used. | [default to "gpt-3.5-turbo"]
 **QueryParams** | Pointer to [**QueryParams**](QueryParams.md) |  | [optional] 
 **QueryString** | **string** | The actual query string for which the user wants a response to. | 
-**QueryType** | Pointer to [**QueryTypes**](QueryTypes.md) |  | [optional] 
 
 ## Methods
 
@@ -207,31 +206,6 @@ and a boolean to check if the value has been set.
 
 SetQueryString sets QueryString field to given value.
 
-
-### GetQueryType
-
-`func (o *DataStoreQuery) GetQueryType() QueryTypes`
-
-GetQueryType returns the QueryType field if non-nil, zero value otherwise.
-
-### GetQueryTypeOk
-
-`func (o *DataStoreQuery) GetQueryTypeOk() (*QueryTypes, bool)`
-
-GetQueryTypeOk returns a tuple with the QueryType field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetQueryType
-
-`func (o *DataStoreQuery) SetQueryType(v QueryTypes)`
-
-SetQueryType sets QueryType field to given value.
-
-### HasQueryType
-
-`func (o *DataStoreQuery) HasQueryType() bool`
-
-HasQueryType returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

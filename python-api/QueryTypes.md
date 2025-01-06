@@ -4,11 +4,9 @@ Defines the handling of scenarios where the context cannot fit the entire query 
 
 ## Enum
 
-* `TEXT_QUERY` (value: `1`)
+* `QUERY_SINGLE` (value: `1`)
 
-* `SQL_QUERY` (value: `2`)
-
-* `MONGO_QUERY` (value: `3`)
+* `QUERY_ONE_FROM_MANY` (value: `2`)
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

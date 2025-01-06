@@ -4,14 +4,18 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Workspace** | **string** | Workspce in which the data store is present. | 
+**Workspace** | **string** | Workspace in which the data store is present. | 
 **Name** | **string** | Name of the query pipeline. | 
+**DataStoreNames** | Pointer to **[]string** | The list of data stores to be used in the query. | [optional] 
 **QueryType** | [**QueryTypes**](QueryTypes.md) |  | 
 **QueryParams** | Pointer to [**QueryParams**](QueryParams.md) |  | [optional] 
-**TextQueryParams** | Pointer to [**TextQueryParams**](TextQueryParams.md) |  | [optional] 
-**SqlQueryParams** | Pointer to [**SQLQueryParams**](SQLQueryParams.md) |  | [optional] 
+**EmbeddingModelProfile** | Pointer to **string** | The name of the model profile to use for accessing the embedding models. | [optional] 
+**EmbeddingModel** | Pointer to **string** | The embedding model to be used. | [optional] 
+**LlmModelProfile** | Pointer to **string** | The name of the model profile to use for accessing the LLM models. | [optional] 
+**LlmModel** | Pointer to **string** | The LLM model to be used. | [optional] 
 **CreatedBy** | **string** | The user who created the ingest pipeline. | 
 **SharedUsers** | Pointer to **[]string** | The list of users this profile is shared with. | [optional] 
+**ExtraInfo** | Pointer to **string** | For any queries that are performed using this pipeline, this content will be used to augment the context that is provided along with the question. For example, by default the context for SQL tables will contain the table schemas, however if we want to detail more information about the tables for all the queries, then it can be added here instead of repeating for each query. | [optional] 
 **CreatedAt** | **int64** | Timestamp of the query pipeline creation. | 
 **LastUpdate** | **int64** | Timestamp of the last update to the query pipeline. | 
 
@@ -74,6 +78,31 @@ and a boolean to check if the value has been set.
 SetName sets Name field to given value.
 
 
+### GetDataStoreNames
+
+`func (o *QueryPipelineInfo) GetDataStoreNames() []string`
+
+GetDataStoreNames returns the DataStoreNames field if non-nil, zero value otherwise.
+
+### GetDataStoreNamesOk
+
+`func (o *QueryPipelineInfo) GetDataStoreNamesOk() (*[]string, bool)`
+
+GetDataStoreNamesOk returns a tuple with the DataStoreNames field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDataStoreNames
+
+`func (o *QueryPipelineInfo) SetDataStoreNames(v []string)`
+
+SetDataStoreNames sets DataStoreNames field to given value.
+
+### HasDataStoreNames
+
+`func (o *QueryPipelineInfo) HasDataStoreNames() bool`
+
+HasDataStoreNames returns a boolean if a field has been set.
+
 ### GetQueryType
 
 `func (o *QueryPipelineInfo) GetQueryType() QueryTypes`
@@ -119,55 +148,105 @@ SetQueryParams sets QueryParams field to given value.
 
 HasQueryParams returns a boolean if a field has been set.
 
-### GetTextQueryParams
+### GetEmbeddingModelProfile
 
-`func (o *QueryPipelineInfo) GetTextQueryParams() TextQueryParams`
+`func (o *QueryPipelineInfo) GetEmbeddingModelProfile() string`
 
-GetTextQueryParams returns the TextQueryParams field if non-nil, zero value otherwise.
+GetEmbeddingModelProfile returns the EmbeddingModelProfile field if non-nil, zero value otherwise.
 
-### GetTextQueryParamsOk
+### GetEmbeddingModelProfileOk
 
-`func (o *QueryPipelineInfo) GetTextQueryParamsOk() (*TextQueryParams, bool)`
+`func (o *QueryPipelineInfo) GetEmbeddingModelProfileOk() (*string, bool)`
 
-GetTextQueryParamsOk returns a tuple with the TextQueryParams field if it's non-nil, zero value otherwise
+GetEmbeddingModelProfileOk returns a tuple with the EmbeddingModelProfile field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetTextQueryParams
+### SetEmbeddingModelProfile
 
-`func (o *QueryPipelineInfo) SetTextQueryParams(v TextQueryParams)`
+`func (o *QueryPipelineInfo) SetEmbeddingModelProfile(v string)`
 
-SetTextQueryParams sets TextQueryParams field to given value.
+SetEmbeddingModelProfile sets EmbeddingModelProfile field to given value.
 
-### HasTextQueryParams
+### HasEmbeddingModelProfile
 
-`func (o *QueryPipelineInfo) HasTextQueryParams() bool`
+`func (o *QueryPipelineInfo) HasEmbeddingModelProfile() bool`
 
-HasTextQueryParams returns a boolean if a field has been set.
+HasEmbeddingModelProfile returns a boolean if a field has been set.
 
-### GetSqlQueryParams
+### GetEmbeddingModel
 
-`func (o *QueryPipelineInfo) GetSqlQueryParams() SQLQueryParams`
+`func (o *QueryPipelineInfo) GetEmbeddingModel() string`
 
-GetSqlQueryParams returns the SqlQueryParams field if non-nil, zero value otherwise.
+GetEmbeddingModel returns the EmbeddingModel field if non-nil, zero value otherwise.
 
-### GetSqlQueryParamsOk
+### GetEmbeddingModelOk
 
-`func (o *QueryPipelineInfo) GetSqlQueryParamsOk() (*SQLQueryParams, bool)`
+`func (o *QueryPipelineInfo) GetEmbeddingModelOk() (*string, bool)`
 
-GetSqlQueryParamsOk returns a tuple with the SqlQueryParams field if it's non-nil, zero value otherwise
+GetEmbeddingModelOk returns a tuple with the EmbeddingModel field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetSqlQueryParams
+### SetEmbeddingModel
 
-`func (o *QueryPipelineInfo) SetSqlQueryParams(v SQLQueryParams)`
+`func (o *QueryPipelineInfo) SetEmbeddingModel(v string)`
 
-SetSqlQueryParams sets SqlQueryParams field to given value.
+SetEmbeddingModel sets EmbeddingModel field to given value.
 
-### HasSqlQueryParams
+### HasEmbeddingModel
 
-`func (o *QueryPipelineInfo) HasSqlQueryParams() bool`
+`func (o *QueryPipelineInfo) HasEmbeddingModel() bool`
 
-HasSqlQueryParams returns a boolean if a field has been set.
+HasEmbeddingModel returns a boolean if a field has been set.
+
+### GetLlmModelProfile
+
+`func (o *QueryPipelineInfo) GetLlmModelProfile() string`
+
+GetLlmModelProfile returns the LlmModelProfile field if non-nil, zero value otherwise.
+
+### GetLlmModelProfileOk
+
+`func (o *QueryPipelineInfo) GetLlmModelProfileOk() (*string, bool)`
+
+GetLlmModelProfileOk returns a tuple with the LlmModelProfile field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLlmModelProfile
+
+`func (o *QueryPipelineInfo) SetLlmModelProfile(v string)`
+
+SetLlmModelProfile sets LlmModelProfile field to given value.
+
+### HasLlmModelProfile
+
+`func (o *QueryPipelineInfo) HasLlmModelProfile() bool`
+
+HasLlmModelProfile returns a boolean if a field has been set.
+
+### GetLlmModel
+
+`func (o *QueryPipelineInfo) GetLlmModel() string`
+
+GetLlmModel returns the LlmModel field if non-nil, zero value otherwise.
+
+### GetLlmModelOk
+
+`func (o *QueryPipelineInfo) GetLlmModelOk() (*string, bool)`
+
+GetLlmModelOk returns a tuple with the LlmModel field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLlmModel
+
+`func (o *QueryPipelineInfo) SetLlmModel(v string)`
+
+SetLlmModel sets LlmModel field to given value.
+
+### HasLlmModel
+
+`func (o *QueryPipelineInfo) HasLlmModel() bool`
+
+HasLlmModel returns a boolean if a field has been set.
 
 ### GetCreatedBy
 
@@ -213,6 +292,31 @@ SetSharedUsers sets SharedUsers field to given value.
 `func (o *QueryPipelineInfo) HasSharedUsers() bool`
 
 HasSharedUsers returns a boolean if a field has been set.
+
+### GetExtraInfo
+
+`func (o *QueryPipelineInfo) GetExtraInfo() string`
+
+GetExtraInfo returns the ExtraInfo field if non-nil, zero value otherwise.
+
+### GetExtraInfoOk
+
+`func (o *QueryPipelineInfo) GetExtraInfoOk() (*string, bool)`
+
+GetExtraInfoOk returns a tuple with the ExtraInfo field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExtraInfo
+
+`func (o *QueryPipelineInfo) SetExtraInfo(v string)`
+
+SetExtraInfo sets ExtraInfo field to given value.
+
+### HasExtraInfo
+
+`func (o *QueryPipelineInfo) HasExtraInfo() bool`
+
+HasExtraInfo returns a boolean if a field has been set.
 
 ### GetCreatedAt
 

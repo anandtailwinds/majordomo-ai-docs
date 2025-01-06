@@ -604,7 +604,7 @@ func main() {
 	workspace := "workspace_example" // string | The workspace to search the ingest pipeline, mandatory if name is provided. (optional)
 	name := "name_example" // string | The name of the ingest pipeline to retrieve. (optional)
 	dataStore := "dataStore_example" // string | The name of the data store in which the ingest pipeline is present. (optional)
-	dataStoreType := "dataStoreType_example" // string | The type of the data store in which the ingest pipeline is present. (optional)
+	dataStoreType := openapiclient.DataStoreTypes(1) // DataStoreTypes | The type of the data store in which the ingest pipeline is present. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -632,7 +632,7 @@ Name | Type | Description  | Notes
  **workspace** | **string** | The workspace to search the ingest pipeline, mandatory if name is provided. | 
  **name** | **string** | The name of the ingest pipeline to retrieve. | 
  **dataStore** | **string** | The name of the data store in which the ingest pipeline is present. | 
- **dataStoreType** | **string** | The type of the data store in which the ingest pipeline is present. | 
+ **dataStoreType** | [**DataStoreTypes**](DataStoreTypes.md) | The type of the data store in which the ingest pipeline is present. | 
 
 ### Return type
 

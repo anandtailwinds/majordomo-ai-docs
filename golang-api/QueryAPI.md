@@ -104,7 +104,7 @@ import (
 )
 
 func main() {
-	queryPipeline := *openapiclient.NewQueryPipeline("Workspace_example", "Name_example", openapiclient.QueryTypes(1)) // QueryPipeline | 
+	queryPipeline := *openapiclient.NewQueryPipeline("Workspace_example", "Name_example", openapiclient.QueryTypes(1), []string{"DataStoreNames_example"}, "LlmModelProfile_example", "LlmModel_example") // QueryPipeline | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -650,7 +650,7 @@ import (
 )
 
 func main() {
-	queryPipeline := *openapiclient.NewQueryPipeline("Workspace_example", "Name_example", openapiclient.QueryTypes(1)) // QueryPipeline | 
+	queryPipeline := *openapiclient.NewQueryPipeline("Workspace_example", "Name_example", openapiclient.QueryTypes(1), []string{"DataStoreNames_example"}, "LlmModelProfile_example", "LlmModel_example") // QueryPipeline | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)

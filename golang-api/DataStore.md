@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Workspace** | **string** | Workspace in which the data store is present. | 
 **Name** | **string** | Name of the data store. | 
+**Contents** | Pointer to **string** | Description of the data store. This can be optionally included in queries. | [optional] 
 **StoreType** | [**DataStoreTypes**](DataStoreTypes.md) |  | 
 **VectordbStore** | Pointer to [**VectordbStore**](VectordbStore.md) |  | [optional] 
 **StructdbStore** | Pointer to [**StructdbStore**](StructdbStore.md) |  | [optional] 
@@ -69,6 +70,31 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
+
+### GetContents
+
+`func (o *DataStore) GetContents() string`
+
+GetContents returns the Contents field if non-nil, zero value otherwise.
+
+### GetContentsOk
+
+`func (o *DataStore) GetContentsOk() (*string, bool)`
+
+GetContentsOk returns a tuple with the Contents field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetContents
+
+`func (o *DataStore) SetContents(v string)`
+
+SetContents sets Contents field to given value.
+
+### HasContents
+
+`func (o *DataStore) HasContents() bool`
+
+HasContents returns a boolean if a field has been set.
 
 ### GetStoreType
 

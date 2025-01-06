@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **WorkerId** | **string** | The unique identifier that is automatically assigned to the worker. | 
 **AccessKey** | **string** | The client secret that is used to authenticate the worker. This needs to be provided when a worker tries to join Majordomo director. | 
 **ClientStatus** | **bool** | Indicates whether the worker is currently connected to the director. | 
+**ClientUrl** | Pointer to **string** | The registered endpoint for the worker. | [optional] 
 **CreatedAt** | **int64** | Timestamp of the worker creation. | 
 **LastUpdate** | **int64** | Timestamp of the last update to the worker. | 
 
@@ -109,6 +110,31 @@ and a boolean to check if the value has been set.
 
 SetClientStatus sets ClientStatus field to given value.
 
+
+### GetClientUrl
+
+`func (o *WorkerInfo) GetClientUrl() string`
+
+GetClientUrl returns the ClientUrl field if non-nil, zero value otherwise.
+
+### GetClientUrlOk
+
+`func (o *WorkerInfo) GetClientUrlOk() (*string, bool)`
+
+GetClientUrlOk returns a tuple with the ClientUrl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetClientUrl
+
+`func (o *WorkerInfo) SetClientUrl(v string)`
+
+SetClientUrl sets ClientUrl field to given value.
+
+### HasClientUrl
+
+`func (o *WorkerInfo) HasClientUrl() bool`
+
+HasClientUrl returns a boolean if a field has been set.
 
 ### GetCreatedAt
 

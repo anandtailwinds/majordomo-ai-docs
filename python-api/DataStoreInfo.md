@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **workspace** | **str** | Workspace in which the data store is present. | 
 **name** | **str** | Name of the data store. | 
+**contents** | **str** | Description of the data store. This can be optionally included in queries. | [optional] 
 **created_by** | **str** | The user who created the data store. | 
 **shared_users** | **List[str]** | The list of users this profile is shared with. | [optional] 
 **read_only** | **bool** | Flag to indicate whether the data store is read-only. | [optional] 

@@ -14,7 +14,6 @@ Name | Type | Description | Notes
 **llm_model** | **str** | The LLM model to be used. | [default to 'gpt-3.5-turbo']
 **var_query_params** | [**QueryParams**](QueryParams.md) |  | [optional] 
 **query_string** | **str** | The actual query string for which the user wants a response to. | 
-**query_type** | [**QueryTypes**](QueryTypes.md) |  | [optional] 
 
 ## Example
 

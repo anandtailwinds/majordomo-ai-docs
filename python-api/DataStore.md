@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **workspace** | **str** | Workspace in which the data store is present. | 
 **name** | **str** | Name of the data store. | 
+**contents** | **str** | Description of the data store. This can be optionally included in queries. | [optional] 
 **store_type** | [**DataStoreTypes**](DataStoreTypes.md) |  | 
 **vectordb_store** | [**VectordbStore**](VectordbStore.md) |  | [optional] 
 **structdb_store** | [**StructdbStore**](StructdbStore.md) |  | [optional] 
