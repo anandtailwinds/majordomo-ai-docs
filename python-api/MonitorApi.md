@@ -6,10 +6,12 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**create_monitor_profile**](MonitorApi.md#create_monitor_profile) | **POST** /monitor_profiles | Create monitor profile.
 [**delete_monitor_profiles**](MonitorApi.md#delete_monitor_profiles) | **DELETE** /monitor_profiles | Delete monitor profiles.
+[**get_aggregate_stats**](MonitorApi.md#get_aggregate_stats) | **GET** /aggregate_stats | Get token statistics.
 [**get_data_count**](MonitorApi.md#get_data_count) | **GET** /data_count | Get the total count of various entities in the workspace.
 [**get_logs**](MonitorApi.md#get_logs) | **GET** /logs | Get logs.
 [**get_monitor_profiles**](MonitorApi.md#get_monitor_profiles) | **GET** /monitor_profiles | Get monitor profiles.
 [**get_token_stats**](MonitorApi.md#get_token_stats) | **GET** /token_stats | Get token statistics.
+[**get_topk_stats**](MonitorApi.md#get_topk_stats) | **GET** /topk_stats | Get token statistics.
 [**update_monitor_profile**](MonitorApi.md#update_monitor_profile) | **PUT** /monitor_profiles | Update monitor profile.
 
 
@@ -169,6 +171,93 @@ Name | Type | Description  | Notes
 **200** | successful operation |  -  |
 **422** | Invalid input |  -  |
 **401** | Unauthorized access. This is most likely because the access token has expired or the user API key is invalid. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_aggregate_stats**
+> AggregateStats get_aggregate_stats(workspace=workspace, user_name=user_name, start_time=start_time, end_time=end_time, hour=hour)
+
+Get token statistics.
+
+Get token consumption statistics recorded for each RAG operation, filtered by timeframe.
+
+### Example
+
+* Bearer (JWT) Authentication (bearerAuth):
+
+```python
+import majordomo_ai
+from majordomo_ai.models.aggregate_stats import AggregateStats
+from majordomo_ai.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost:/25001
+# See configuration.py for a list of all supported configuration parameters.
+configuration = majordomo_ai.Configuration(
+    host = "http://localhost:/25001"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (JWT): bearerAuth
+configuration = majordomo_ai.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with majordomo_ai.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = majordomo_ai.MonitorApi(api_client)
+    workspace = 'workspace_example' # str | Filter the logs based on the workspace. (optional)
+    user_name = 'user_name_example' # str | Filter the logs based on the username. (optional)
+    start_time = 'start_time_example' # str | Filter the logs starting at this time. (optional)
+    end_time = 'end_time_example' # str | Filter the logs ending at this time. (optional)
+    hour = True # bool | Aggregate on an hourly basis, default is day basis. (optional)
+
+    try:
+        # Get token statistics.
+        api_response = api_instance.get_aggregate_stats(workspace=workspace, user_name=user_name, start_time=start_time, end_time=end_time, hour=hour)
+        print("The response of MonitorApi->get_aggregate_stats:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling MonitorApi->get_aggregate_stats: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **workspace** | **str**| Filter the logs based on the workspace. | [optional] 
+ **user_name** | **str**| Filter the logs based on the username. | [optional] 
+ **start_time** | **str**| Filter the logs starting at this time. | [optional] 
+ **end_time** | **str**| Filter the logs ending at this time. | [optional] 
+ **hour** | **bool**| Aggregate on an hourly basis, default is day basis. | [optional] 
+
+### Return type
+
+[**AggregateStats**](AggregateStats.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | successful operation |  -  |
+**422** | Invalid input |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -486,6 +575,93 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**TokenStats**](TokenStats.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | successful operation |  -  |
+**422** | Invalid input |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_topk_stats**
+> TopkStats get_topk_stats(workspace=workspace, user_name=user_name, start_time=start_time, end_time=end_time, hour=hour)
+
+Get token statistics.
+
+Get token consumption statistics recorded for each RAG operation, filtered by timeframe.
+
+### Example
+
+* Bearer (JWT) Authentication (bearerAuth):
+
+```python
+import majordomo_ai
+from majordomo_ai.models.topk_stats import TopkStats
+from majordomo_ai.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost:/25001
+# See configuration.py for a list of all supported configuration parameters.
+configuration = majordomo_ai.Configuration(
+    host = "http://localhost:/25001"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (JWT): bearerAuth
+configuration = majordomo_ai.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with majordomo_ai.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = majordomo_ai.MonitorApi(api_client)
+    workspace = 'workspace_example' # str | Filter the logs based on the workspace. (optional)
+    user_name = 'user_name_example' # str | Filter the logs based on the username. (optional)
+    start_time = 'start_time_example' # str | Filter the logs starting at this time. (optional)
+    end_time = 'end_time_example' # str | Filter the logs ending at this time. (optional)
+    hour = True # bool | Aggregate on an hourly basis, default is day basis. (optional)
+
+    try:
+        # Get token statistics.
+        api_response = api_instance.get_topk_stats(workspace=workspace, user_name=user_name, start_time=start_time, end_time=end_time, hour=hour)
+        print("The response of MonitorApi->get_topk_stats:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling MonitorApi->get_topk_stats: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **workspace** | **str**| Filter the logs based on the workspace. | [optional] 
+ **user_name** | **str**| Filter the logs based on the username. | [optional] 
+ **start_time** | **str**| Filter the logs starting at this time. | [optional] 
+ **end_time** | **str**| Filter the logs ending at this time. | [optional] 
+ **hour** | **bool**| Aggregate on an hourly basis, default is day basis. | [optional] 
+
+### Return type
+
+[**TopkStats**](TopkStats.md)
 
 ### Authorization
 
