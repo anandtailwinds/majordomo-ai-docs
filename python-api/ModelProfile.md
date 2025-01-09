@@ -9,7 +9,8 @@ Name | Type | Description | Notes
 **name** | **str** | Name of the model profile. | 
 **provider** | [**ModelProviders**](ModelProviders.md) |  | 
 **workspace** | **str** | The workspace that contains the model profile. | 
-**allowed_models** | **List[str]** | List of models allowed for a user who is associated to this profile. Incase list is empty all models available in the provider are allowed. | [optional] 
+**embedding_models** | **List[str]** | List of embedding models allowed for a user who is associated to this profile. Incase list is empty all models available in the provider are allowed. | [optional] 
+**llm_models** | **List[str]** | List of embedding models allowed for a user who is associated to this profile. Incase list is empty all models available in the provider are allowed. | [optional] 
 **access_info** | [**ModelAccessInfo**](ModelAccessInfo.md) |  | [optional] 
 **access_key** | [**ModelAccessKey**](ModelAccessKey.md) |  | [optional] 
 **shared_users** | **List[str]** | The list of users this profile is shared with. | [optional] 

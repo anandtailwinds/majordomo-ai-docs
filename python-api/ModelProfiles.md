@@ -6,6 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **model_profiles** | [**List[ModelProfileInfo]**](ModelProfileInfo.md) |  | [optional] 
+**shared_profiles** | [**List[ModelProfileInfo]**](ModelProfileInfo.md) |  | [optional] 
 
 ## Example
 

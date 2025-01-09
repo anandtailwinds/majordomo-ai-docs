@@ -6,10 +6,12 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CreateMonitorProfile**](MonitorAPI.md#CreateMonitorProfile) | **Post** /monitor_profiles | Create monitor profile.
 [**DeleteMonitorProfiles**](MonitorAPI.md#DeleteMonitorProfiles) | **Delete** /monitor_profiles | Delete monitor profiles.
+[**GetAggregateStats**](MonitorAPI.md#GetAggregateStats) | **Get** /aggregate_stats | Get token statistics.
 [**GetDataCount**](MonitorAPI.md#GetDataCount) | **Get** /data_count | Get the total count of various entities in the workspace.
 [**GetLogs**](MonitorAPI.md#GetLogs) | **Get** /logs | Get logs.
 [**GetMonitorProfiles**](MonitorAPI.md#GetMonitorProfiles) | **Get** /monitor_profiles | Get monitor profiles.
 [**GetTokenStats**](MonitorAPI.md#GetTokenStats) | **Get** /token_stats | Get token statistics.
+[**GetTopkStats**](MonitorAPI.md#GetTopkStats) | **Get** /topk_stats | Get token statistics.
 [**UpdateMonitorProfile**](MonitorAPI.md#UpdateMonitorProfile) | **Put** /monitor_profiles | Update monitor profile.
 
 
@@ -131,6 +133,80 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**DeleteResponse**](DeleteResponse.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetAggregateStats
+
+> AggregateStats GetAggregateStats(ctx).Workspace(workspace).UserName(userName).StartTime(startTime).EndTime(endTime).Hour(hour).Execute()
+
+Get token statistics.
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+)
+
+func main() {
+	workspace := "workspace_example" // string | Filter the logs based on the workspace. (optional)
+	userName := "userName_example" // string | Filter the logs based on the username. (optional)
+	startTime := "startTime_example" // string | Filter the logs starting at this time. (optional)
+	endTime := "endTime_example" // string | Filter the logs ending at this time. (optional)
+	hour := true // bool | Aggregate on an hourly basis, default is day basis. (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.MonitorAPI.GetAggregateStats(context.Background()).Workspace(workspace).UserName(userName).StartTime(startTime).EndTime(endTime).Hour(hour).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `MonitorAPI.GetAggregateStats``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetAggregateStats`: AggregateStats
+	fmt.Fprintf(os.Stdout, "Response from `MonitorAPI.GetAggregateStats`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetAggregateStatsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **workspace** | **string** | Filter the logs based on the workspace. | 
+ **userName** | **string** | Filter the logs based on the username. | 
+ **startTime** | **string** | Filter the logs starting at this time. | 
+ **endTime** | **string** | Filter the logs ending at this time. | 
+ **hour** | **bool** | Aggregate on an hourly basis, default is day basis. | 
+
+### Return type
+
+[**AggregateStats**](AggregateStats.md)
 
 ### Authorization
 
@@ -411,6 +487,80 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**TokenStats**](TokenStats.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetTopkStats
+
+> TopkStats GetTopkStats(ctx).Workspace(workspace).UserName(userName).StartTime(startTime).EndTime(endTime).Hour(hour).Execute()
+
+Get token statistics.
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+)
+
+func main() {
+	workspace := "workspace_example" // string | Filter the logs based on the workspace. (optional)
+	userName := "userName_example" // string | Filter the logs based on the username. (optional)
+	startTime := "startTime_example" // string | Filter the logs starting at this time. (optional)
+	endTime := "endTime_example" // string | Filter the logs ending at this time. (optional)
+	hour := true // bool | Aggregate on an hourly basis, default is day basis. (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.MonitorAPI.GetTopkStats(context.Background()).Workspace(workspace).UserName(userName).StartTime(startTime).EndTime(endTime).Hour(hour).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `MonitorAPI.GetTopkStats``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetTopkStats`: TopkStats
+	fmt.Fprintf(os.Stdout, "Response from `MonitorAPI.GetTopkStats`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetTopkStatsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **workspace** | **string** | Filter the logs based on the workspace. | 
+ **userName** | **string** | Filter the logs based on the username. | 
+ **startTime** | **string** | Filter the logs starting at this time. | 
+ **endTime** | **string** | Filter the logs ending at this time. | 
+ **hour** | **bool** | Aggregate on an hourly basis, default is day basis. | 
+
+### Return type
+
+[**TopkStats**](TopkStats.md)
 
 ### Authorization
 

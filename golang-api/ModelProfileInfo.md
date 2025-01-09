@@ -7,7 +7,8 @@ Name | Type | Description | Notes
 **Name** | **string** | Name of the model profile. | 
 **Provider** | Pointer to [**ModelProviders**](ModelProviders.md) |  | [optional] 
 **Workspace** | **string** | The workspace that contains the model profile. | 
-**AllowedModels** | Pointer to **[]string** | List of models allowed for a user who is associated to this profile. Incase list is empty all models available in the provider are allowed. | [optional] 
+**EmbeddingModels** | Pointer to **[]string** | List of embedding models allowed for a user who is associated to this profile. Incase list is empty all models available in the provider are allowed. | [optional] 
+**LlmModels** | Pointer to **[]string** | List of LLM models allowed for a user who is associated to this profile. Incase list is empty all models available in the provider are allowed. | [optional] 
 **AccessInfo** | Pointer to [**ModelAccessInfo**](ModelAccessInfo.md) |  | [optional] 
 **AccessKey** | Pointer to [**ModelAccessKey**](ModelAccessKey.md) |  | [optional] 
 **CreatedBy** | **string** | The username who created this model profile | 
@@ -99,30 +100,55 @@ and a boolean to check if the value has been set.
 SetWorkspace sets Workspace field to given value.
 
 
-### GetAllowedModels
+### GetEmbeddingModels
 
-`func (o *ModelProfileInfo) GetAllowedModels() []string`
+`func (o *ModelProfileInfo) GetEmbeddingModels() []string`
 
-GetAllowedModels returns the AllowedModels field if non-nil, zero value otherwise.
+GetEmbeddingModels returns the EmbeddingModels field if non-nil, zero value otherwise.
 
-### GetAllowedModelsOk
+### GetEmbeddingModelsOk
 
-`func (o *ModelProfileInfo) GetAllowedModelsOk() (*[]string, bool)`
+`func (o *ModelProfileInfo) GetEmbeddingModelsOk() (*[]string, bool)`
 
-GetAllowedModelsOk returns a tuple with the AllowedModels field if it's non-nil, zero value otherwise
+GetEmbeddingModelsOk returns a tuple with the EmbeddingModels field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetAllowedModels
+### SetEmbeddingModels
 
-`func (o *ModelProfileInfo) SetAllowedModels(v []string)`
+`func (o *ModelProfileInfo) SetEmbeddingModels(v []string)`
 
-SetAllowedModels sets AllowedModels field to given value.
+SetEmbeddingModels sets EmbeddingModels field to given value.
 
-### HasAllowedModels
+### HasEmbeddingModels
 
-`func (o *ModelProfileInfo) HasAllowedModels() bool`
+`func (o *ModelProfileInfo) HasEmbeddingModels() bool`
 
-HasAllowedModels returns a boolean if a field has been set.
+HasEmbeddingModels returns a boolean if a field has been set.
+
+### GetLlmModels
+
+`func (o *ModelProfileInfo) GetLlmModels() []string`
+
+GetLlmModels returns the LlmModels field if non-nil, zero value otherwise.
+
+### GetLlmModelsOk
+
+`func (o *ModelProfileInfo) GetLlmModelsOk() (*[]string, bool)`
+
+GetLlmModelsOk returns a tuple with the LlmModels field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLlmModels
+
+`func (o *ModelProfileInfo) SetLlmModels(v []string)`
+
+SetLlmModels sets LlmModels field to given value.
+
+### HasLlmModels
+
+`func (o *ModelProfileInfo) HasLlmModels() bool`
+
+HasLlmModels returns a boolean if a field has been set.
 
 ### GetAccessInfo
 

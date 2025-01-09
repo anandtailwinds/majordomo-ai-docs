@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **CreatedBy** | **string** | The username who created this workspace. | 
 **CreatedAt** | **int64** | Timestamp of the workspace creation. | 
 **LastUpdate** | **int64** | Timestamp of the last update to the workspace. | 
+**ActiveUsers** | Pointer to **[]string** | The list of users enabled for the workspace. | [optional] 
 
 ## Methods
 
@@ -154,6 +155,31 @@ and a boolean to check if the value has been set.
 
 SetLastUpdate sets LastUpdate field to given value.
 
+
+### GetActiveUsers
+
+`func (o *WorkspaceInfo) GetActiveUsers() []string`
+
+GetActiveUsers returns the ActiveUsers field if non-nil, zero value otherwise.
+
+### GetActiveUsersOk
+
+`func (o *WorkspaceInfo) GetActiveUsersOk() (*[]string, bool)`
+
+GetActiveUsersOk returns a tuple with the ActiveUsers field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetActiveUsers
+
+`func (o *WorkspaceInfo) SetActiveUsers(v []string)`
+
+SetActiveUsers sets ActiveUsers field to given value.
+
+### HasActiveUsers
+
+`func (o *WorkspaceInfo) HasActiveUsers() bool`
+
+HasActiveUsers returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
