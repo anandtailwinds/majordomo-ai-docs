@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **created_by** | **str** | The username who created this workspace. | 
 **created_at** | **int** | Timestamp of the workspace creation. | 
 **last_update** | **int** | Timestamp of the last update to the workspace. | 
+**active_users** | **List[str]** | The list of users enabled for the workspace. | [optional] 
 
 ## Example
 

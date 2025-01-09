@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **name** | **str** | Name of the workspace. | 
 **worker_name** | **str** | Name of the worker associated with the workspace. | 
 **monitor_profile** | **str** | The monitoring profile enabled for this workspace. | [optional] 
+**active_users** | **List[str]** | The list of users enabled for the workspace. | [optional] 
 
 ## Example
 
