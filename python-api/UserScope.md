@@ -7,7 +7,7 @@ This describes the list of permitted profiles and stores for the user on a works
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **str** | Name of the workspace. | 
-**model_profiles** | **List[str]** | List of model profiles permitted for the user. | [optional] 
+**model_profiles** | [**List[ModelProfileScope]**](ModelProfileScope.md) | List of model profiles permitted for the user. | [optional] 
 **vectordb_profiles** | **List[str]** | List of vectordb profiles permitted for the user. | [optional] 
 **monitor_profiles** | **List[str]** | List of monitor profiles permitted for the user. | [optional] 
 **data_stores** | [**List[DataStoreScope]**](DataStoreScope.md) | List of data stores permitted for the user. | [optional] 

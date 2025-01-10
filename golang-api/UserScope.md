@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | **string** | Name of the workspace. | 
-**ModelProfiles** | Pointer to **[]string** | List of model profiles permitted for the user. | [optional] 
+**ModelProfiles** | Pointer to [**[]ModelProfileScope**](ModelProfileScope.md) | List of model profiles permitted for the user. | [optional] 
 **VectordbProfiles** | Pointer to **[]string** | List of vectordb profiles permitted for the user. | [optional] 
 **MonitorProfiles** | Pointer to **[]string** | List of monitor profiles permitted for the user. | [optional] 
 **DataStores** | Pointer to [**[]DataStoreScope**](DataStoreScope.md) | List of data stores permitted for the user. | [optional] 
@@ -52,20 +52,20 @@ SetName sets Name field to given value.
 
 ### GetModelProfiles
 
-`func (o *UserScope) GetModelProfiles() []string`
+`func (o *UserScope) GetModelProfiles() []ModelProfileScope`
 
 GetModelProfiles returns the ModelProfiles field if non-nil, zero value otherwise.
 
 ### GetModelProfilesOk
 
-`func (o *UserScope) GetModelProfilesOk() (*[]string, bool)`
+`func (o *UserScope) GetModelProfilesOk() (*[]ModelProfileScope, bool)`
 
 GetModelProfilesOk returns a tuple with the ModelProfiles field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetModelProfiles
 
-`func (o *UserScope) SetModelProfiles(v []string)`
+`func (o *UserScope) SetModelProfiles(v []ModelProfileScope)`
 
 SetModelProfiles sets ModelProfiles field to given value.
 
