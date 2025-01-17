@@ -583,7 +583,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **run_query_pipeline**
-> QueryResponse run_query_pipeline(workspace, name, query_string)
+> QueryResponse run_query_pipeline(query_pipeline_run)
 
 Run query pipeline.
 
@@ -595,6 +595,7 @@ Run an already defined query pipeline.
 
 ```python
 import majordomo_ai
+from majordomo_ai.models.query_pipeline_run import QueryPipelineRun
 from majordomo_ai.models.query_response import QueryResponse
 from majordomo_ai.rest import ApiException
 from pprint import pprint
@@ -619,13 +620,11 @@ configuration = majordomo_ai.Configuration(
 with majordomo_ai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = majordomo_ai.QueryApi(api_client)
-    workspace = 'workspace_example' # str | The name of the workspace in which the query pipeline is present.
-    name = 'name_example' # str | The name of the query pipeline.
-    query_string = 'query_string_example' # str | The user query for which an answer is sought using the query pipeline information.
+    query_pipeline_run = majordomo_ai.QueryPipelineRun() # QueryPipelineRun | 
 
     try:
         # Run query pipeline.
-        api_response = api_instance.run_query_pipeline(workspace, name, query_string)
+        api_response = api_instance.run_query_pipeline(query_pipeline_run)
         print("The response of QueryApi->run_query_pipeline:\n")
         pprint(api_response)
     except Exception as e:
@@ -639,9 +638,7 @@ with majordomo_ai.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **workspace** | **str**| The name of the workspace in which the query pipeline is present. | 
- **name** | **str**| The name of the query pipeline. | 
- **query_string** | **str**| The user query for which an answer is sought using the query pipeline information. | 
+ **query_pipeline_run** | [**QueryPipelineRun**](QueryPipelineRun.md)|  | 
 
 ### Return type
 
@@ -653,7 +650,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 ### HTTP response details

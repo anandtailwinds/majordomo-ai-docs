@@ -985,7 +985,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_user_list**
-> List[str] get_user_list(name=name)
+> List[str] get_user_list(name=name, workspace=workspace)
 
 Get list of all users.
 
@@ -1021,10 +1021,11 @@ with majordomo_ai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = majordomo_ai.AdminApi(api_client)
     name = 'name_example' # str | Get information specific to a user. (optional)
+    workspace = 'workspace_example' # str | Get list of active users in a workspace. (optional)
 
     try:
         # Get list of all users.
-        api_response = api_instance.get_user_list(name=name)
+        api_response = api_instance.get_user_list(name=name, workspace=workspace)
         print("The response of AdminApi->get_user_list:\n")
         pprint(api_response)
     except Exception as e:
@@ -1039,6 +1040,7 @@ with majordomo_ai.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **str**| Get information specific to a user. | [optional] 
+ **workspace** | **str**| Get list of active users in a workspace. | [optional] 
 
 ### Return type
 
