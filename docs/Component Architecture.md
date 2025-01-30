@@ -14,10 +14,6 @@ Key aspects of the architecture
 
 - API availability can be provided in any language of customer choice. Currrently we support Python API and Golang API.
 
-# Communication Architecture
-
-![Communication Architecture](Communications.png)
-
 ## Features
 
 - The SaaS solution at the director end is fully scalable and provides isolation for customer information both at the Keycloak IDP level as well as with the proxy infrastructure.
