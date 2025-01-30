@@ -7,7 +7,7 @@ Query response
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **response** | **str** | Response from LLM for the user query. | [optional] 
-**metadata** | [**QueryResponseMetadata**](QueryResponseMetadata.md) |  | [optional] 
+**metadata** | **Dict[str, str]** |  | [optional] 
 
 ## Example
 
