@@ -11,7 +11,7 @@ Method | HTTP request | Description
 [**delete_query_pipelines**](QueryApi.md#delete_query_pipelines) | **DELETE** /query_pipelines | Delete query pipelines.
 [**get_chat_history**](QueryApi.md#get_chat_history) | **GET** /chat_history | Chat history information for a user.
 [**get_query_pipelines**](QueryApi.md#get_query_pipelines) | **GET** /query_pipelines | Get query pipelines.
-[**run_query_pipeline**](QueryApi.md#run_query_pipeline) | **POST** /query_pipeline_run/workspace/{workspace}/name/{name}/query/{query_string} | Run query pipeline.
+[**run_query_pipeline**](QueryApi.md#run_query_pipeline) | **POST** /query_pipeline_run | Run query pipeline.
 [**update_chat_history**](QueryApi.md#update_chat_history) | **PUT** /chat_history | Update chat history parameters.
 [**update_query_pipeline**](QueryApi.md#update_query_pipeline) | **PUT** /query_pipelines | Update query pipeline.
 

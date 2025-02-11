@@ -7,7 +7,7 @@ The worker node that is used to connect the user network to the director.
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **str** | Name of the worker. | 
-**static_endpoint** | **str** | The static registered endpoint for the worker. | [optional] 
+**client_url** | **str** | The static registered endpoint for the worker. This will bypass proxy. | [optional] 
 
 ## Example
 

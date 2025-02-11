@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **embedding_model** | **str** | The embedding model to be used. | [optional] 
 **embedding_model_profile** | **str** | The name of the model profile to use for accessing the embedding models. | [optional] 
 **llm_model_profile** | **str** | The name of the model profile to use for accessing the LLM models. | 
-**llm_model** | **str** | The LLM model to be used. | [default to 'gpt-3.5-turbo']
+**llm_model** | **str** | The LLM model to be used. | 
 **var_query_params** | [**QueryParams**](QueryParams.md) |  | [optional] 
 **query_string** | **str** | The actual query string for which the user wants a response to. | 
 

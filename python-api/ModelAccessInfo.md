@@ -7,6 +7,7 @@ Model profile Information
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **region** | **str** | The region in case of cloud Provider. | [optional] 
+**base_url** | **str** | The base URL for a self-hosted model. | [optional] 
 
 ## Example
 

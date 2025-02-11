@@ -12,9 +12,11 @@ The list of model providers supported
 
 * `AZURE_OPENAI` (value: `4`)
 
-* `GEMINI` (value: `5`)
+* `CUSTOM_LLM` (value: `5`)
 
 * `AWS_BEDROCK` (value: `6`)
+
+* `OPENAI_LIKE` (value: `7`)
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
