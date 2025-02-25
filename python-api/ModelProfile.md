@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **str** | Name of the model profile. | 
 **provider** | [**ModelProviders**](ModelProviders.md) |  | 
+**tags** | **List[str]** | Tags to describe the model where it is running or what its purpose is. | [optional] 
 **workspace** | **str** | The workspace that contains the model profile. | 
 **embedding_models** | **List[str]** | List of embedding models allowed for a user who is associated to this profile. Incase list is empty all models available in the provider are allowed. | [optional] 
 **llm_models** | **List[str]** | List of embedding models allowed for a user who is associated to this profile. Incase list is empty all models available in the provider are allowed. | [optional] 

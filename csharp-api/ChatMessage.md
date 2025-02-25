@@ -1,11 +1,11 @@
-# Org.OpenAPITools.Model.ChatQA
+# Org.OpenAPITools.Model.ChatMessage
 The user question and answer.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Uid** | **string** | A unique identifier for the question and answer. | 
+**Timestamp** | **long** | A unique identifier for the question and answer. This is auto-generated. | [optional] 
 **Question** | **string** | The user question for which completion or answer is sought. | 
 **Answer** | **string** | The answer obtained from Gen AI. | 
 

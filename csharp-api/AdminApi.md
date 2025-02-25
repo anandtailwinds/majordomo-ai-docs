@@ -24,6 +24,7 @@ All URIs are relative to *http://localhost:/25001*
 | [**UpdateModelProfile**](AdminApi.md#updatemodelprofile) | **PUT** /model_profiles | Update model profile. |
 | [**UpdateUser**](AdminApi.md#updateuser) | **PUT** /users | Update user. |
 | [**UpdateVectordbProfile**](AdminApi.md#updatevectordbprofile) | **PUT** /vectordb_profiles | Update vectordb profile. |
+| [**UpdateWorker**](AdminApi.md#updateworker) | **PUT** /workers | Update worker node. |
 | [**UpdateWorkspace**](AdminApi.md#updateworkspace) | **PUT** /workspaces | Update workspace. |
 
 <a id="createmodelprofile"></a>
@@ -1927,6 +1928,101 @@ catch (ApiException e)
 
  - **Content-Type**: application/json
  - **Accept**: application/xml, application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | successful operation |  -  |
+| **422** | Invalid input |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="updateworker"></a>
+# **UpdateWorker**
+> WorkerInfo UpdateWorker (Worker worker)
+
+Update worker node.
+
+Update a worker node.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using Org.OpenAPITools.Api;
+using Org.OpenAPITools.Client;
+using Org.OpenAPITools.Model;
+
+namespace Example
+{
+    public class UpdateWorkerExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "http://localhost:/25001";
+            // Configure Bearer token for authorization: bearerAuth
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new AdminApi(config);
+            var worker = new Worker(); // Worker | 
+
+            try
+            {
+                // Update worker node.
+                WorkerInfo result = apiInstance.UpdateWorker(worker);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling AdminApi.UpdateWorker: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the UpdateWorkerWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Update worker node.
+    ApiResponse<WorkerInfo> response = apiInstance.UpdateWorkerWithHttpInfo(worker);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling AdminApi.UpdateWorkerWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **worker** | [**Worker**](Worker.md) |  |  |
+
+### Return type
+
+[**WorkerInfo**](WorkerInfo.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
 
 
 ### HTTP response details

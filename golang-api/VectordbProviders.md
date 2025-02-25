@@ -9,6 +9,8 @@
 
 * `MONGODB_VECTORDB` (value: `3`)
 
+* `POSTGRESQL_VECTORDB` (value: `4`)
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

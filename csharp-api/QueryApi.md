@@ -4,24 +4,27 @@ All URIs are relative to *http://localhost:/25001*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
-| [**CreateChatHistory**](QueryApi.md#createchathistory) | **POST** /chat_history | Create a chat history. |
+| [**CreateChatInfo**](QueryApi.md#createchatinfo) | **POST** /chat_info | Create a chat info entry. |
+| [**CreateChatMessage**](QueryApi.md#createchatmessage) | **POST** /chat_messages | Create a chat message entry. |
 | [**CreateQueryPipeline**](QueryApi.md#createquerypipeline) | **POST** /query_pipelines | Create query pipeline. |
 | [**DataStoreQuery**](QueryApi.md#datastorequery) | **POST** /data_store_query | Query data store. |
-| [**DeleteChatHistory**](QueryApi.md#deletechathistory) | **DELETE** /chat_history | Delete chat history. |
+| [**DeleteChatInfo**](QueryApi.md#deletechatinfo) | **DELETE** /chat_info | Delete chat info entry. |
+| [**DeleteChatMessages**](QueryApi.md#deletechatmessages) | **DELETE** /chat_messages | Delete a specific chat message |
 | [**DeleteQueryPipelines**](QueryApi.md#deletequerypipelines) | **DELETE** /query_pipelines | Delete query pipelines. |
-| [**GetChatHistory**](QueryApi.md#getchathistory) | **GET** /chat_history | Chat history information for a user. |
+| [**GetChatInfo**](QueryApi.md#getchatinfo) | **GET** /chat_info | Chat info information for a user. |
+| [**GetChatMessages**](QueryApi.md#getchatmessages) | **GET** /chat_messages | Chat message information for a particular chat. |
 | [**GetQueryPipelines**](QueryApi.md#getquerypipelines) | **GET** /query_pipelines | Get query pipelines. |
-| [**RunQueryPipeline**](QueryApi.md#runquerypipeline) | **POST** /query_pipeline_run/workspace/{workspace}/name/{name}/query/{query_string} | Run query pipeline. |
-| [**UpdateChatHistory**](QueryApi.md#updatechathistory) | **PUT** /chat_history | Update chat history parameters. |
+| [**RunQueryPipeline**](QueryApi.md#runquerypipeline) | **POST** /query_pipeline_run | Run query pipeline. |
+| [**UpdateChatInfo**](QueryApi.md#updatechatinfo) | **PUT** /chat_info | Update chat info parameters such as name or add a bunch of chat messages. |
 | [**UpdateQueryPipeline**](QueryApi.md#updatequerypipeline) | **PUT** /query_pipelines | Update query pipeline. |
 
-<a id="createchathistory"></a>
-# **CreateChatHistory**
-> ChatHistoryInfo CreateChatHistory (ChatHistory chatHistory)
+<a id="createchatinfo"></a>
+# **CreateChatInfo**
+> ChatInfoResponse CreateChatInfo (ChatInfo chatInfo)
 
-Create a chat history.
+Create a chat info entry.
 
-Create an new chat history.
+Create an new chat info entry.
 
 ### Example
 ```csharp
@@ -33,7 +36,7 @@ using Org.OpenAPITools.Model;
 
 namespace Example
 {
-    public class CreateChatHistoryExample
+    public class CreateChatInfoExample
     {
         public static void Main()
         {
@@ -43,17 +46,17 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new QueryApi(config);
-            var chatHistory = new ChatHistory(); // ChatHistory | 
+            var chatInfo = new ChatInfo(); // ChatInfo | 
 
             try
             {
-                // Create a chat history.
-                ChatHistoryInfo result = apiInstance.CreateChatHistory(chatHistory);
+                // Create a chat info entry.
+                ChatInfoResponse result = apiInstance.CreateChatInfo(chatInfo);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling QueryApi.CreateChatHistory: " + e.Message);
+                Debug.Print("Exception when calling QueryApi.CreateChatInfo: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -62,21 +65,21 @@ namespace Example
 }
 ```
 
-#### Using the CreateChatHistoryWithHttpInfo variant
+#### Using the CreateChatInfoWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
-    // Create a chat history.
-    ApiResponse<ChatHistoryInfo> response = apiInstance.CreateChatHistoryWithHttpInfo(chatHistory);
+    // Create a chat info entry.
+    ApiResponse<ChatInfoResponse> response = apiInstance.CreateChatInfoWithHttpInfo(chatInfo);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling QueryApi.CreateChatHistoryWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling QueryApi.CreateChatInfoWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -86,11 +89,106 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **chatHistory** | [**ChatHistory**](ChatHistory.md) |  |  |
+| **chatInfo** | [**ChatInfo**](ChatInfo.md) |  |  |
 
 ### Return type
 
-[**ChatHistoryInfo**](ChatHistoryInfo.md)
+[**ChatInfoResponse**](ChatInfoResponse.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | successful operation |  -  |
+| **422** | Invalid input |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="createchatmessage"></a>
+# **CreateChatMessage**
+> ChatMessage CreateChatMessage (ChatEntry chatEntry)
+
+Create a chat message entry.
+
+Create an new chat message entry.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using Org.OpenAPITools.Api;
+using Org.OpenAPITools.Client;
+using Org.OpenAPITools.Model;
+
+namespace Example
+{
+    public class CreateChatMessageExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "http://localhost:/25001";
+            // Configure Bearer token for authorization: bearerAuth
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new QueryApi(config);
+            var chatEntry = new ChatEntry(); // ChatEntry | 
+
+            try
+            {
+                // Create a chat message entry.
+                ChatMessage result = apiInstance.CreateChatMessage(chatEntry);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling QueryApi.CreateChatMessage: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the CreateChatMessageWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Create a chat message entry.
+    ApiResponse<ChatMessage> response = apiInstance.CreateChatMessageWithHttpInfo(chatEntry);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling QueryApi.CreateChatMessageWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **chatEntry** | [**ChatEntry**](ChatEntry.md) |  |  |
+
+### Return type
+
+[**ChatMessage**](ChatMessage.md)
 
 ### Authorization
 
@@ -300,13 +398,13 @@ catch (ApiException e)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a id="deletechathistory"></a>
-# **DeleteChatHistory**
-> DeleteResponse DeleteChatHistory (string? name = null, string? uid = null)
+<a id="deletechatinfo"></a>
+# **DeleteChatInfo**
+> DeleteResponse DeleteChatInfo (string? chatId = null)
 
-Delete chat history.
+Delete chat info entry.
 
-Delete the chat history.
+Delete the chat info entry.
 
 ### Example
 ```csharp
@@ -318,7 +416,7 @@ using Org.OpenAPITools.Model;
 
 namespace Example
 {
-    public class DeleteChatHistoryExample
+    public class DeleteChatInfoExample
     {
         public static void Main()
         {
@@ -328,18 +426,17 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new QueryApi(config);
-            var name = "name_example";  // string? | The name of the chat history to delete. (optional) 
-            var uid = "uid_example";  // string? | The unique identifier for the particular chat conversation which is to be deleted. (optional) 
+            var chatId = "chatId_example";  // string? | The unique identifier for the chat info. (optional) 
 
             try
             {
-                // Delete chat history.
-                DeleteResponse result = apiInstance.DeleteChatHistory(name, uid);
+                // Delete chat info entry.
+                DeleteResponse result = apiInstance.DeleteChatInfo(chatId);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling QueryApi.DeleteChatHistory: " + e.Message);
+                Debug.Print("Exception when calling QueryApi.DeleteChatInfo: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -348,21 +445,21 @@ namespace Example
 }
 ```
 
-#### Using the DeleteChatHistoryWithHttpInfo variant
+#### Using the DeleteChatInfoWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
-    // Delete chat history.
-    ApiResponse<DeleteResponse> response = apiInstance.DeleteChatHistoryWithHttpInfo(name, uid);
+    // Delete chat info entry.
+    ApiResponse<DeleteResponse> response = apiInstance.DeleteChatInfoWithHttpInfo(chatId);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling QueryApi.DeleteChatHistoryWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling QueryApi.DeleteChatInfoWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -372,8 +469,7 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **name** | **string?** | The name of the chat history to delete. | [optional]  |
-| **uid** | **string?** | The unique identifier for the particular chat conversation which is to be deleted. | [optional]  |
+| **chatId** | **string?** | The unique identifier for the chat info. | [optional]  |
 
 ### Return type
 
@@ -395,6 +491,104 @@ catch (ApiException e)
 | **200** | successful operation |  -  |
 | **422** | Invalid input. |  -  |
 | **401** | Unauthorized access. This is most likely because the access token has expired or the user API key is invalid. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="deletechatmessages"></a>
+# **DeleteChatMessages**
+> DeleteResponse DeleteChatMessages (string chatId, long? messageId = null)
+
+Delete a specific chat message
+
+Delete a specific chat message from the history.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using Org.OpenAPITools.Api;
+using Org.OpenAPITools.Client;
+using Org.OpenAPITools.Model;
+
+namespace Example
+{
+    public class DeleteChatMessagesExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "http://localhost:/25001";
+            // Configure Bearer token for authorization: bearerAuth
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new QueryApi(config);
+            var chatId = "chatId_example";  // string | The unique identifier for the chat history.
+            var messageId = 789L;  // long? | The particular message within a chat that has to be deleted. (optional) 
+
+            try
+            {
+                // Delete a specific chat message
+                DeleteResponse result = apiInstance.DeleteChatMessages(chatId, messageId);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling QueryApi.DeleteChatMessages: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the DeleteChatMessagesWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Delete a specific chat message
+    ApiResponse<DeleteResponse> response = apiInstance.DeleteChatMessagesWithHttpInfo(chatId, messageId);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling QueryApi.DeleteChatMessagesWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **chatId** | **string** | The unique identifier for the chat history. |  |
+| **messageId** | **long?** | The particular message within a chat that has to be deleted. | [optional]  |
+
+### Return type
+
+[**DeleteResponse**](DeleteResponse.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | successful operation |  -  |
+| **422** | Invalid input. |  -  |
+| **401** | Unauthorized access. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -496,11 +690,106 @@ catch (ApiException e)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a id="getchathistory"></a>
-# **GetChatHistory**
-> ChatHistoryList GetChatHistory (string? name = null)
+<a id="getchatinfo"></a>
+# **GetChatInfo**
+> ChatInfoList GetChatInfo (string? chatId = null)
 
-Chat history information for a user.
+Chat info information for a user.
+
+The details of a chat info saved under a particular name by the user.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using Org.OpenAPITools.Api;
+using Org.OpenAPITools.Client;
+using Org.OpenAPITools.Model;
+
+namespace Example
+{
+    public class GetChatInfoExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "http://localhost:/25001";
+            // Configure Bearer token for authorization: bearerAuth
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new QueryApi(config);
+            var chatId = "chatId_example";  // string? | The unique identifier for the chat info. (optional) 
+
+            try
+            {
+                // Chat info information for a user.
+                ChatInfoList result = apiInstance.GetChatInfo(chatId);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling QueryApi.GetChatInfo: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the GetChatInfoWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Chat info information for a user.
+    ApiResponse<ChatInfoList> response = apiInstance.GetChatInfoWithHttpInfo(chatId);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling QueryApi.GetChatInfoWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **chatId** | **string?** | The unique identifier for the chat info. | [optional]  |
+
+### Return type
+
+[**ChatInfoList**](ChatInfoList.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | successful operation |  -  |
+| **422** | Invalid input |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="getchatmessages"></a>
+# **GetChatMessages**
+> ChatMessages GetChatMessages (string? chatId = null, long? messageId = null)
+
+Chat message information for a particular chat.
 
 The details of a chat history saved under a particular name by the user.
 
@@ -514,7 +803,7 @@ using Org.OpenAPITools.Model;
 
 namespace Example
 {
-    public class GetChatHistoryExample
+    public class GetChatMessagesExample
     {
         public static void Main()
         {
@@ -524,17 +813,18 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new QueryApi(config);
-            var name = "name_example";  // string? | The name of the chat history to retrieve. (optional) 
+            var chatId = "chatId_example";  // string? | The unique identifier for the chat history. (optional) 
+            var messageId = 789L;  // long? | The particular message within a chat that has to be retrieved. (optional) 
 
             try
             {
-                // Chat history information for a user.
-                ChatHistoryList result = apiInstance.GetChatHistory(name);
+                // Chat message information for a particular chat.
+                ChatMessages result = apiInstance.GetChatMessages(chatId, messageId);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling QueryApi.GetChatHistory: " + e.Message);
+                Debug.Print("Exception when calling QueryApi.GetChatMessages: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -543,21 +833,21 @@ namespace Example
 }
 ```
 
-#### Using the GetChatHistoryWithHttpInfo variant
+#### Using the GetChatMessagesWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
-    // Chat history information for a user.
-    ApiResponse<ChatHistoryList> response = apiInstance.GetChatHistoryWithHttpInfo(name);
+    // Chat message information for a particular chat.
+    ApiResponse<ChatMessages> response = apiInstance.GetChatMessagesWithHttpInfo(chatId, messageId);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling QueryApi.GetChatHistoryWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling QueryApi.GetChatMessagesWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -567,11 +857,12 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **name** | **string?** | The name of the chat history to retrieve. | [optional]  |
+| **chatId** | **string?** | The unique identifier for the chat history. | [optional]  |
+| **messageId** | **long?** | The particular message within a chat that has to be retrieved. | [optional]  |
 
 ### Return type
 
-[**ChatHistoryList**](ChatHistoryList.md)
+[**ChatMessages**](ChatMessages.md)
 
 ### Authorization
 
@@ -785,13 +1076,13 @@ catch (ApiException e)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a id="updatechathistory"></a>
-# **UpdateChatHistory**
-> ChatHistoryInfo UpdateChatHistory (ChatHistory chatHistory)
+<a id="updatechatinfo"></a>
+# **UpdateChatInfo**
+> ChatInfoResponse UpdateChatInfo (ChatInfo chatInfo)
 
-Update chat history parameters.
+Update chat info parameters such as name or add a bunch of chat messages.
 
-Update an existing chat history.
+Update an existing chat info.
 
 ### Example
 ```csharp
@@ -803,7 +1094,7 @@ using Org.OpenAPITools.Model;
 
 namespace Example
 {
-    public class UpdateChatHistoryExample
+    public class UpdateChatInfoExample
     {
         public static void Main()
         {
@@ -813,17 +1104,17 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new QueryApi(config);
-            var chatHistory = new ChatHistory(); // ChatHistory | 
+            var chatInfo = new ChatInfo(); // ChatInfo | 
 
             try
             {
-                // Update chat history parameters.
-                ChatHistoryInfo result = apiInstance.UpdateChatHistory(chatHistory);
+                // Update chat info parameters such as name or add a bunch of chat messages.
+                ChatInfoResponse result = apiInstance.UpdateChatInfo(chatInfo);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling QueryApi.UpdateChatHistory: " + e.Message);
+                Debug.Print("Exception when calling QueryApi.UpdateChatInfo: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -832,21 +1123,21 @@ namespace Example
 }
 ```
 
-#### Using the UpdateChatHistoryWithHttpInfo variant
+#### Using the UpdateChatInfoWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
-    // Update chat history parameters.
-    ApiResponse<ChatHistoryInfo> response = apiInstance.UpdateChatHistoryWithHttpInfo(chatHistory);
+    // Update chat info parameters such as name or add a bunch of chat messages.
+    ApiResponse<ChatInfoResponse> response = apiInstance.UpdateChatInfoWithHttpInfo(chatInfo);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling QueryApi.UpdateChatHistoryWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling QueryApi.UpdateChatInfoWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -856,11 +1147,11 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **chatHistory** | [**ChatHistory**](ChatHistory.md) |  |  |
+| **chatInfo** | [**ChatInfo**](ChatInfo.md) |  |  |
 
 ### Return type
 
-[**ChatHistoryInfo**](ChatHistoryInfo.md)
+[**ChatInfoResponse**](ChatInfoResponse.md)
 
 ### Authorization
 

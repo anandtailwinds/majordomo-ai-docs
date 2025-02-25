@@ -4,24 +4,27 @@ All URIs are relative to *http://localhost:/25001*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateChatHistory**](QueryAPI.md#CreateChatHistory) | **Post** /chat_history | Create a chat history.
+[**CreateChatInfo**](QueryAPI.md#CreateChatInfo) | **Post** /chat_info | Create a chat info entry.
+[**CreateChatMessage**](QueryAPI.md#CreateChatMessage) | **Post** /chat_messages | Create a chat message entry.
 [**CreateQueryPipeline**](QueryAPI.md#CreateQueryPipeline) | **Post** /query_pipelines | Create query pipeline.
 [**DataStoreQuery**](QueryAPI.md#DataStoreQuery) | **Post** /data_store_query | Query data store.
-[**DeleteChatHistory**](QueryAPI.md#DeleteChatHistory) | **Delete** /chat_history | Delete chat history.
+[**DeleteChatInfo**](QueryAPI.md#DeleteChatInfo) | **Delete** /chat_info | Delete chat info entry.
+[**DeleteChatMessages**](QueryAPI.md#DeleteChatMessages) | **Delete** /chat_messages | Delete a specific chat message
 [**DeleteQueryPipelines**](QueryAPI.md#DeleteQueryPipelines) | **Delete** /query_pipelines | Delete query pipelines.
-[**GetChatHistory**](QueryAPI.md#GetChatHistory) | **Get** /chat_history | Chat history information for a user.
+[**GetChatInfo**](QueryAPI.md#GetChatInfo) | **Get** /chat_info | Chat info information for a user.
+[**GetChatMessages**](QueryAPI.md#GetChatMessages) | **Get** /chat_messages | Chat message information for a particular chat.
 [**GetQueryPipelines**](QueryAPI.md#GetQueryPipelines) | **Get** /query_pipelines | Get query pipelines.
-[**RunQueryPipeline**](QueryAPI.md#RunQueryPipeline) | **Post** /query_pipeline_run/workspace/{workspace}/name/{name}/query/{query_string} | Run query pipeline.
-[**UpdateChatHistory**](QueryAPI.md#UpdateChatHistory) | **Put** /chat_history | Update chat history parameters.
+[**RunQueryPipeline**](QueryAPI.md#RunQueryPipeline) | **Post** /query_pipeline_run | Run query pipeline.
+[**UpdateChatInfo**](QueryAPI.md#UpdateChatInfo) | **Put** /chat_info | Update chat info parameters such as name or add a bunch of chat messages.
 [**UpdateQueryPipeline**](QueryAPI.md#UpdateQueryPipeline) | **Put** /query_pipelines | Update query pipeline.
 
 
 
-## CreateChatHistory
+## CreateChatInfo
 
-> ChatHistoryInfo CreateChatHistory(ctx).ChatHistory(chatHistory).Execute()
+> ChatInfoResponse CreateChatInfo(ctx).ChatInfo(chatInfo).Execute()
 
-Create a chat history.
+Create a chat info entry.
 
 
 
@@ -38,17 +41,17 @@ import (
 )
 
 func main() {
-	chatHistory := *openapiclient.NewChatHistory("Name_example") // ChatHistory | 
+	chatInfo := *openapiclient.NewChatInfo("ChatId_example") // ChatInfo | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.QueryAPI.CreateChatHistory(context.Background()).ChatHistory(chatHistory).Execute()
+	resp, r, err := apiClient.QueryAPI.CreateChatInfo(context.Background()).ChatInfo(chatInfo).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `QueryAPI.CreateChatHistory``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `QueryAPI.CreateChatInfo``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `CreateChatHistory`: ChatHistoryInfo
-	fmt.Fprintf(os.Stdout, "Response from `QueryAPI.CreateChatHistory`: %v\n", resp)
+	// response from `CreateChatInfo`: ChatInfoResponse
+	fmt.Fprintf(os.Stdout, "Response from `QueryAPI.CreateChatInfo`: %v\n", resp)
 }
 ```
 
@@ -58,16 +61,82 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiCreateChatHistoryRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiCreateChatInfoRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **chatHistory** | [**ChatHistory**](ChatHistory.md) |  | 
+ **chatInfo** | [**ChatInfo**](ChatInfo.md) |  | 
 
 ### Return type
 
-[**ChatHistoryInfo**](ChatHistoryInfo.md)
+[**ChatInfoResponse**](ChatInfoResponse.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## CreateChatMessage
+
+> ChatMessage CreateChatMessage(ctx).ChatEntry(chatEntry).Execute()
+
+Create a chat message entry.
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+)
+
+func main() {
+	chatEntry := *openapiclient.NewChatEntry("ChatId_example", []openapiclient.ChatMessage{*openapiclient.NewChatMessage("Question_example", "Answer_example")}) // ChatEntry | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.QueryAPI.CreateChatMessage(context.Background()).ChatEntry(chatEntry).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `QueryAPI.CreateChatMessage``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `CreateChatMessage`: ChatMessage
+	fmt.Fprintf(os.Stdout, "Response from `QueryAPI.CreateChatMessage`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCreateChatMessageRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **chatEntry** | [**ChatEntry**](ChatEntry.md) |  | 
+
+### Return type
+
+[**ChatMessage**](ChatMessage.md)
 
 ### Authorization
 
@@ -215,11 +284,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## DeleteChatHistory
+## DeleteChatInfo
 
-> DeleteResponse DeleteChatHistory(ctx).Name(name).Uid(uid).Execute()
+> DeleteResponse DeleteChatInfo(ctx).ChatId(chatId).Execute()
 
-Delete chat history.
+Delete chat info entry.
 
 
 
@@ -236,18 +305,17 @@ import (
 )
 
 func main() {
-	name := "name_example" // string | The name of the chat history to delete. (optional)
-	uid := "uid_example" // string | The unique identifier for the particular chat conversation which is to be deleted. (optional)
+	chatId := "chatId_example" // string | The unique identifier for the chat info. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.QueryAPI.DeleteChatHistory(context.Background()).Name(name).Uid(uid).Execute()
+	resp, r, err := apiClient.QueryAPI.DeleteChatInfo(context.Background()).ChatId(chatId).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `QueryAPI.DeleteChatHistory``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `QueryAPI.DeleteChatInfo``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `DeleteChatHistory`: DeleteResponse
-	fmt.Fprintf(os.Stdout, "Response from `QueryAPI.DeleteChatHistory`: %v\n", resp)
+	// response from `DeleteChatInfo`: DeleteResponse
+	fmt.Fprintf(os.Stdout, "Response from `QueryAPI.DeleteChatInfo`: %v\n", resp)
 }
 ```
 
@@ -257,13 +325,80 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiDeleteChatHistoryRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiDeleteChatInfoRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **name** | **string** | The name of the chat history to delete. | 
- **uid** | **string** | The unique identifier for the particular chat conversation which is to be deleted. | 
+ **chatId** | **string** | The unique identifier for the chat info. | 
+
+### Return type
+
+[**DeleteResponse**](DeleteResponse.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DeleteChatMessages
+
+> DeleteResponse DeleteChatMessages(ctx).ChatId(chatId).MessageId(messageId).Execute()
+
+Delete a specific chat message
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+)
+
+func main() {
+	chatId := "chatId_example" // string | The unique identifier for the chat history.
+	messageId := int64(789) // int64 | The particular message within a chat that has to be deleted. (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.QueryAPI.DeleteChatMessages(context.Background()).ChatId(chatId).MessageId(messageId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `QueryAPI.DeleteChatMessages``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `DeleteChatMessages`: DeleteResponse
+	fmt.Fprintf(os.Stdout, "Response from `QueryAPI.DeleteChatMessages`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDeleteChatMessagesRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **chatId** | **string** | The unique identifier for the chat history. | 
+ **messageId** | **int64** | The particular message within a chat that has to be deleted. | 
 
 ### Return type
 
@@ -351,11 +486,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetChatHistory
+## GetChatInfo
 
-> ChatHistoryList GetChatHistory(ctx).Name(name).Execute()
+> ChatInfoList GetChatInfo(ctx).ChatId(chatId).Execute()
 
-Chat history information for a user.
+Chat info information for a user.
 
 
 
@@ -372,17 +507,17 @@ import (
 )
 
 func main() {
-	name := "name_example" // string | The name of the chat history to retrieve. (optional)
+	chatId := "chatId_example" // string | The unique identifier for the chat info. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.QueryAPI.GetChatHistory(context.Background()).Name(name).Execute()
+	resp, r, err := apiClient.QueryAPI.GetChatInfo(context.Background()).ChatId(chatId).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `QueryAPI.GetChatHistory``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `QueryAPI.GetChatInfo``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GetChatHistory`: ChatHistoryList
-	fmt.Fprintf(os.Stdout, "Response from `QueryAPI.GetChatHistory`: %v\n", resp)
+	// response from `GetChatInfo`: ChatInfoList
+	fmt.Fprintf(os.Stdout, "Response from `QueryAPI.GetChatInfo`: %v\n", resp)
 }
 ```
 
@@ -392,16 +527,84 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiGetChatHistoryRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetChatInfoRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **name** | **string** | The name of the chat history to retrieve. | 
+ **chatId** | **string** | The unique identifier for the chat info. | 
 
 ### Return type
 
-[**ChatHistoryList**](ChatHistoryList.md)
+[**ChatInfoList**](ChatInfoList.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetChatMessages
+
+> ChatMessages GetChatMessages(ctx).ChatId(chatId).MessageId(messageId).Execute()
+
+Chat message information for a particular chat.
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+)
+
+func main() {
+	chatId := "chatId_example" // string | The unique identifier for the chat history. (optional)
+	messageId := int64(789) // int64 | The particular message within a chat that has to be retrieved. (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.QueryAPI.GetChatMessages(context.Background()).ChatId(chatId).MessageId(messageId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `QueryAPI.GetChatMessages``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetChatMessages`: ChatMessages
+	fmt.Fprintf(os.Stdout, "Response from `QueryAPI.GetChatMessages`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetChatMessagesRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **chatId** | **string** | The unique identifier for the chat history. | 
+ **messageId** | **int64** | The particular message within a chat that has to be retrieved. | 
+
+### Return type
+
+[**ChatMessages**](ChatMessages.md)
 
 ### Authorization
 
@@ -489,7 +692,7 @@ Name | Type | Description  | Notes
 
 ## RunQueryPipeline
 
-> QueryResponse RunQueryPipeline(ctx, workspace, name, queryString).Execute()
+> QueryResponse RunQueryPipeline(ctx).QueryPipelineRun(queryPipelineRun).Execute()
 
 Run query pipeline.
 
@@ -508,13 +711,11 @@ import (
 )
 
 func main() {
-	workspace := "workspace_example" // string | The name of the workspace in which the query pipeline is present.
-	name := "name_example" // string | The name of the query pipeline.
-	queryString := "queryString_example" // string | The user query for which an answer is sought using the query pipeline information.
+	queryPipelineRun := *openapiclient.NewQueryPipelineRun("Workspace_example", "Name_example", "QueryString_example") // QueryPipelineRun | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.QueryAPI.RunQueryPipeline(context.Background(), workspace, name, queryString).Execute()
+	resp, r, err := apiClient.QueryAPI.RunQueryPipeline(context.Background()).QueryPipelineRun(queryPipelineRun).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `QueryAPI.RunQueryPipeline``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -527,12 +728,6 @@ func main() {
 ### Path Parameters
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**workspace** | **string** | The name of the workspace in which the query pipeline is present. | 
-**name** | **string** | The name of the query pipeline. | 
-**queryString** | **string** | The user query for which an answer is sought using the query pipeline information. | 
 
 ### Other Parameters
 
@@ -541,9 +736,7 @@ Other parameters are passed through a pointer to a apiRunQueryPipelineRequest st
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-
-
-
+ **queryPipelineRun** | [**QueryPipelineRun**](QueryPipelineRun.md) |  | 
 
 ### Return type
 
@@ -555,7 +748,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -563,11 +756,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## UpdateChatHistory
+## UpdateChatInfo
 
-> ChatHistoryInfo UpdateChatHistory(ctx).ChatHistory(chatHistory).Execute()
+> ChatInfoResponse UpdateChatInfo(ctx).ChatInfo(chatInfo).Execute()
 
-Update chat history parameters.
+Update chat info parameters such as name or add a bunch of chat messages.
 
 
 
@@ -584,17 +777,17 @@ import (
 )
 
 func main() {
-	chatHistory := *openapiclient.NewChatHistory("Name_example") // ChatHistory | 
+	chatInfo := *openapiclient.NewChatInfo("ChatId_example") // ChatInfo | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.QueryAPI.UpdateChatHistory(context.Background()).ChatHistory(chatHistory).Execute()
+	resp, r, err := apiClient.QueryAPI.UpdateChatInfo(context.Background()).ChatInfo(chatInfo).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `QueryAPI.UpdateChatHistory``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `QueryAPI.UpdateChatInfo``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `UpdateChatHistory`: ChatHistoryInfo
-	fmt.Fprintf(os.Stdout, "Response from `QueryAPI.UpdateChatHistory`: %v\n", resp)
+	// response from `UpdateChatInfo`: ChatInfoResponse
+	fmt.Fprintf(os.Stdout, "Response from `QueryAPI.UpdateChatInfo`: %v\n", resp)
 }
 ```
 
@@ -604,16 +797,16 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiUpdateChatHistoryRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiUpdateChatInfoRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **chatHistory** | [**ChatHistory**](ChatHistory.md) |  | 
+ **chatInfo** | [**ChatInfo**](ChatInfo.md) |  | 
 
 ### Return type
 
-[**ChatHistoryInfo**](ChatHistoryInfo.md)
+[**ChatInfoResponse**](ChatInfoResponse.md)
 
 ### Authorization
 

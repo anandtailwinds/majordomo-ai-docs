@@ -7,13 +7,15 @@
 
 * `ANTHROPIC` (value: `2`)
 
-* `OLLAMA` (value: `3`)
+* `AZURE_OPENAI` (value: `3`)
 
-* `AZURE_OPENAI` (value: `4`)
+* `AWS_BEDROCK` (value: `4`)
 
-* `GEMINI` (value: `5`)
+* `OLLAMA` (value: `5`)
 
-* `AWS_BEDROCK` (value: `6`)
+* `OPENAI_LIKE` (value: `6`)
+
+* `VLLM` (value: `7`)
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Region** | Pointer to **string** | The region in case of cloud Provider. | [optional] 
+**BaseUrl** | Pointer to **string** | The base URL for a self-hosted model. | [optional] 
 
 ## Methods
 
@@ -49,6 +50,31 @@ SetRegion sets Region field to given value.
 `func (o *ModelAccessInfo) HasRegion() bool`
 
 HasRegion returns a boolean if a field has been set.
+
+### GetBaseUrl
+
+`func (o *ModelAccessInfo) GetBaseUrl() string`
+
+GetBaseUrl returns the BaseUrl field if non-nil, zero value otherwise.
+
+### GetBaseUrlOk
+
+`func (o *ModelAccessInfo) GetBaseUrlOk() (*string, bool)`
+
+GetBaseUrlOk returns a tuple with the BaseUrl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBaseUrl
+
+`func (o *ModelAccessInfo) SetBaseUrl(v string)`
+
+SetBaseUrl sets BaseUrl field to given value.
+
+### HasBaseUrl
+
+`func (o *ModelAccessInfo) HasBaseUrl() bool`
+
+HasBaseUrl returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

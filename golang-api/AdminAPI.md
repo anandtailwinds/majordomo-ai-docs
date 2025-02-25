@@ -24,6 +24,7 @@ Method | HTTP request | Description
 [**UpdateModelProfile**](AdminAPI.md#UpdateModelProfile) | **Put** /model_profiles | Update model profile.
 [**UpdateUser**](AdminAPI.md#UpdateUser) | **Put** /users | Update user.
 [**UpdateVectordbProfile**](AdminAPI.md#UpdateVectordbProfile) | **Put** /vectordb_profiles | Update vectordb profile.
+[**UpdateWorker**](AdminAPI.md#UpdateWorker) | **Put** /workers | Update worker node.
 [**UpdateWorkspace**](AdminAPI.md#UpdateWorkspace) | **Put** /workspaces | Update workspace.
 
 
@@ -832,7 +833,7 @@ Name | Type | Description  | Notes
 
 ## GetUserList
 
-> []string GetUserList(ctx).Name(name).Execute()
+> []string GetUserList(ctx).Name(name).Workspace(workspace).Execute()
 
 Get list of all users.
 
@@ -852,10 +853,11 @@ import (
 
 func main() {
 	name := "name_example" // string | Get information specific to a user. (optional)
+	workspace := "workspace_example" // string | Get list of active users in a workspace. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.AdminAPI.GetUserList(context.Background()).Name(name).Execute()
+	resp, r, err := apiClient.AdminAPI.GetUserList(context.Background()).Name(name).Workspace(workspace).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `AdminAPI.GetUserList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -877,6 +879,7 @@ Other parameters are passed through a pointer to a apiGetUserListRequest struct 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **string** | Get information specific to a user. | 
+ **workspace** | **string** | Get list of active users in a workspace. | 
 
 ### Return type
 
@@ -1356,6 +1359,72 @@ Name | Type | Description  | Notes
 
 - **Content-Type**: application/json
 - **Accept**: application/xml, application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## UpdateWorker
+
+> WorkerInfo UpdateWorker(ctx).Worker(worker).Execute()
+
+Update worker node.
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+)
+
+func main() {
+	worker := *openapiclient.NewWorker("Name_example") // Worker | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AdminAPI.UpdateWorker(context.Background()).Worker(worker).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AdminAPI.UpdateWorker``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `UpdateWorker`: WorkerInfo
+	fmt.Fprintf(os.Stdout, "Response from `AdminAPI.UpdateWorker`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUpdateWorkerRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **worker** | [**Worker**](Worker.md) |  | 
+
+### Return type
+
+[**WorkerInfo**](WorkerInfo.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)

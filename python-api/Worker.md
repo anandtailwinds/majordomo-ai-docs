@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **str** | Name of the worker. | 
 **client_url** | **str** | The static registered endpoint for the worker. This will bypass proxy. | [optional] 
+**chat_worker** | **bool** | The worker is used as a means to access a chat server. | [optional] 
 
 ## Example
 

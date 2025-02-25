@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **AccessKey** | **string** | The client secret that is used to authenticate the worker. This needs to be provided when a worker tries to join Majordomo director. | 
 **ClientStatus** | **bool** | Indicates whether the worker is currently connected to the director. | 
 **ClientUrl** | Pointer to **string** | The registered endpoint for the worker. | [optional] 
+**ChatWorker** | Pointer to **bool** | The worker is used as a means to access a chat server. | [optional] 
 **CreatedAt** | **int64** | Timestamp of the worker creation. | 
 **LastUpdate** | **int64** | Timestamp of the last update to the worker. | 
 
@@ -135,6 +136,31 @@ SetClientUrl sets ClientUrl field to given value.
 `func (o *WorkerInfo) HasClientUrl() bool`
 
 HasClientUrl returns a boolean if a field has been set.
+
+### GetChatWorker
+
+`func (o *WorkerInfo) GetChatWorker() bool`
+
+GetChatWorker returns the ChatWorker field if non-nil, zero value otherwise.
+
+### GetChatWorkerOk
+
+`func (o *WorkerInfo) GetChatWorkerOk() (*bool, bool)`
+
+GetChatWorkerOk returns a tuple with the ChatWorker field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetChatWorker
+
+`func (o *WorkerInfo) SetChatWorker(v bool)`
+
+SetChatWorker sets ChatWorker field to given value.
+
+### HasChatWorker
+
+`func (o *WorkerInfo) HasChatWorker() bool`
+
+HasChatWorker returns a boolean if a field has been set.
 
 ### GetCreatedAt
 

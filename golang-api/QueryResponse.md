@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Response** | Pointer to **string** | Response from LLM for the user query. | [optional] 
-**Metadata** | Pointer to [**QueryResponseMetadata**](QueryResponseMetadata.md) |  | [optional] 
+**Metadata** | Pointer to **map[string]string** |  | [optional] 
 
 ## Methods
 
@@ -53,20 +53,20 @@ HasResponse returns a boolean if a field has been set.
 
 ### GetMetadata
 
-`func (o *QueryResponse) GetMetadata() QueryResponseMetadata`
+`func (o *QueryResponse) GetMetadata() map[string]string`
 
 GetMetadata returns the Metadata field if non-nil, zero value otherwise.
 
 ### GetMetadataOk
 
-`func (o *QueryResponse) GetMetadataOk() (*QueryResponseMetadata, bool)`
+`func (o *QueryResponse) GetMetadataOk() (*map[string]string, bool)`
 
 GetMetadataOk returns a tuple with the Metadata field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMetadata
 
-`func (o *QueryResponse) SetMetadata(v QueryResponseMetadata)`
+`func (o *QueryResponse) SetMetadata(v map[string]string)`
 
 SetMetadata sets Metadata field to given value.
 

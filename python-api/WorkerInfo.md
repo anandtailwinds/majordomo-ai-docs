@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **access_key** | **str** | The client secret that is used to authenticate the worker. This needs to be provided when a worker tries to join Majordomo director. | 
 **client_status** | **bool** | Indicates whether the worker is currently connected to the director. | 
 **client_url** | **str** | The registered endpoint for the worker. | [optional] 
+**chat_worker** | **bool** | The worker is used as a means to access a chat server. | [optional] 
 **created_at** | **int** | Timestamp of the worker creation. | 
 **last_update** | **int** | Timestamp of the last update to the worker. | 
 

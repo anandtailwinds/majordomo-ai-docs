@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **EmbeddingModel** | Pointer to **string** | The embedding model to be used. | [optional] 
 **EmbeddingModelProfile** | Pointer to **string** | The name of the model profile to use for accessing the embedding models. | [optional] 
 **LlmModelProfile** | **string** | The name of the model profile to use for accessing the LLM models. | 
-**LlmModel** | **string** | The LLM model to be used. | [default to "gpt-3.5-turbo"]
+**LlmModel** | **string** | The LLM model to be used. | 
 **QueryParams** | Pointer to [**QueryParams**](QueryParams.md) |  | [optional] 
 **QueryString** | **string** | The actual query string for which the user wants a response to. | 
 

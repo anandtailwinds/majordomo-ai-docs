@@ -1,12 +1,12 @@
-# Org.OpenAPITools.Model.QueryResponse
-Query response
+# Org.OpenAPITools.Model.ChatEntry
+Information about a specific chat.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Response** | **string** | Response from LLM for the user query. | [optional] 
-**Metadata** | **Dictionary&lt;string, string&gt;** |  | [optional] 
+**ChatId** | **string** | Unique identifier for the chat. | 
+**Messages** | [**List&lt;ChatMessage&gt;**](ChatMessage.md) | The list of chat messages in this chat. | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

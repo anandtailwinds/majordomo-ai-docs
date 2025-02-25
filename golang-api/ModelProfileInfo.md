@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **Name** | **string** | Name of the model profile. | 
 **Provider** | Pointer to [**ModelProviders**](ModelProviders.md) |  | [optional] 
 **Workspace** | **string** | The workspace that contains the model profile. | 
+**Tags** | Pointer to **[]string** | Tags to describe the model where it is running or what its purpose is. | [optional] 
 **EmbeddingModels** | Pointer to **[]string** | List of embedding models allowed for a user who is associated to this profile. Incase list is empty all models available in the provider are allowed. | [optional] 
 **LlmModels** | Pointer to **[]string** | List of LLM models allowed for a user who is associated to this profile. Incase list is empty all models available in the provider are allowed. | [optional] 
 **AccessInfo** | Pointer to [**ModelAccessInfo**](ModelAccessInfo.md) |  | [optional] 
@@ -99,6 +100,31 @@ and a boolean to check if the value has been set.
 
 SetWorkspace sets Workspace field to given value.
 
+
+### GetTags
+
+`func (o *ModelProfileInfo) GetTags() []string`
+
+GetTags returns the Tags field if non-nil, zero value otherwise.
+
+### GetTagsOk
+
+`func (o *ModelProfileInfo) GetTagsOk() (*[]string, bool)`
+
+GetTagsOk returns a tuple with the Tags field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTags
+
+`func (o *ModelProfileInfo) SetTags(v []string)`
+
+SetTags sets Tags field to given value.
+
+### HasTags
+
+`func (o *ModelProfileInfo) HasTags() bool`
+
+HasTags returns a boolean if a field has been set.
 
 ### GetEmbeddingModels
 

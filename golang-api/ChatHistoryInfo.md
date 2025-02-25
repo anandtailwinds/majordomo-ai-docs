@@ -4,17 +4,16 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CreatedBy** | **string** | The user to whom these chats belong to. | 
+**Uid** | **string** | Unique identifier for the chat. | 
 **Name** | **string** | Name of the chat history. | 
-**QaList** | Pointer to [**[]ChatQA**](ChatQA.md) | History of question answer interactions of the user. | [optional] 
-**LastUpdate** | **int64** | Timestamp of the last update to the data store. | 
-**Notes** | Pointer to **string** | User notes for the chat history. This can contain information such as model used, parameters used etc. and can be populated upto 250 characters. | [optional] 
+**CreatedBy** | **string** | Name of the user who created the chat conversations. | 
+**LastUpdate** | **int64** | Timestamp of the last update to the chat history. | 
 
 ## Methods
 
 ### NewChatHistoryInfo
 
-`func NewChatHistoryInfo(createdBy string, name string, lastUpdate int64, ) *ChatHistoryInfo`
+`func NewChatHistoryInfo(uid string, name string, createdBy string, lastUpdate int64, ) *ChatHistoryInfo`
 
 NewChatHistoryInfo instantiates a new ChatHistoryInfo object
 This constructor will assign default values to properties that have it defined,
@@ -29,24 +28,24 @@ NewChatHistoryInfoWithDefaults instantiates a new ChatHistoryInfo object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetCreatedBy
+### GetUid
 
-`func (o *ChatHistoryInfo) GetCreatedBy() string`
+`func (o *ChatHistoryInfo) GetUid() string`
 
-GetCreatedBy returns the CreatedBy field if non-nil, zero value otherwise.
+GetUid returns the Uid field if non-nil, zero value otherwise.
 
-### GetCreatedByOk
+### GetUidOk
 
-`func (o *ChatHistoryInfo) GetCreatedByOk() (*string, bool)`
+`func (o *ChatHistoryInfo) GetUidOk() (*string, bool)`
 
-GetCreatedByOk returns a tuple with the CreatedBy field if it's non-nil, zero value otherwise
+GetUidOk returns a tuple with the Uid field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetCreatedBy
+### SetUid
 
-`func (o *ChatHistoryInfo) SetCreatedBy(v string)`
+`func (o *ChatHistoryInfo) SetUid(v string)`
 
-SetCreatedBy sets CreatedBy field to given value.
+SetUid sets Uid field to given value.
 
 
 ### GetName
@@ -69,30 +68,25 @@ and a boolean to check if the value has been set.
 SetName sets Name field to given value.
 
 
-### GetQaList
+### GetCreatedBy
 
-`func (o *ChatHistoryInfo) GetQaList() []ChatQA`
+`func (o *ChatHistoryInfo) GetCreatedBy() string`
 
-GetQaList returns the QaList field if non-nil, zero value otherwise.
+GetCreatedBy returns the CreatedBy field if non-nil, zero value otherwise.
 
-### GetQaListOk
+### GetCreatedByOk
 
-`func (o *ChatHistoryInfo) GetQaListOk() (*[]ChatQA, bool)`
+`func (o *ChatHistoryInfo) GetCreatedByOk() (*string, bool)`
 
-GetQaListOk returns a tuple with the QaList field if it's non-nil, zero value otherwise
+GetCreatedByOk returns a tuple with the CreatedBy field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetQaList
+### SetCreatedBy
 
-`func (o *ChatHistoryInfo) SetQaList(v []ChatQA)`
+`func (o *ChatHistoryInfo) SetCreatedBy(v string)`
 
-SetQaList sets QaList field to given value.
+SetCreatedBy sets CreatedBy field to given value.
 
-### HasQaList
-
-`func (o *ChatHistoryInfo) HasQaList() bool`
-
-HasQaList returns a boolean if a field has been set.
 
 ### GetLastUpdate
 
@@ -113,31 +107,6 @@ and a boolean to check if the value has been set.
 
 SetLastUpdate sets LastUpdate field to given value.
 
-
-### GetNotes
-
-`func (o *ChatHistoryInfo) GetNotes() string`
-
-GetNotes returns the Notes field if non-nil, zero value otherwise.
-
-### GetNotesOk
-
-`func (o *ChatHistoryInfo) GetNotesOk() (*string, bool)`
-
-GetNotesOk returns a tuple with the Notes field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetNotes
-
-`func (o *ChatHistoryInfo) SetNotes(v string)`
-
-SetNotes sets Notes field to given value.
-
-### HasNotes
-
-`func (o *ChatHistoryInfo) HasNotes() bool`
-
-HasNotes returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
