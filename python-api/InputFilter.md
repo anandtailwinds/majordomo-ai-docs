@@ -6,11 +6,10 @@ The parameters used to filter file(s) for ingestion.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**files_list** | **str** | Comma separated list of file name specification to be picked for ingestion. Supports wildcards. | [optional] 
-**recursive** | **bool** | Indicates that the file wildcards can be matched in sub-directories of the specified source. | [optional] 
-**az_blob** | **str** | Name of the blob incase of Azure storage. | [optional] 
-**az_account_url** | **str** | Name of the account URL incase of Azure storage. | [optional] 
-**s3_bucket** | **str** | Name of the S3 bucket in case of AWS storage. | [optional] 
+**azure_blob_input** | [**AzureBlobInput**](AzureBlobInput.md) |  | [optional] 
+**aws_s3_input** | [**AWSS3Input**](AWSS3Input.md) |  | [optional] 
+**webpage_input** | [**WebpageInput**](WebpageInput.md) |  | [optional] 
+**local_input** | [**LocalInput**](LocalInput.md) |  | [optional] 
 
 ## Example
 

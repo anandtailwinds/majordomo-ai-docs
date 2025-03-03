@@ -6,11 +6,8 @@ Security keys required to access the input files. Not recommended in production
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**az_client_id** | **str** | Azure Client ID. | [optional] 
-**az_client_secret** | **str** | Azure Client Secret. | [optional] 
-**az_tenant_id** | **str** | Azure Tenant ID. | [optional] 
-**aws_access_key** | **str** | AWS Access Key | [optional] 
-**aws_secret_token** | **str** | AWS Secret Token | [optional] 
+**azure_blob_credentials** | [**AzureBlobCredentials**](AzureBlobCredentials.md) |  | [optional] 
+**aws_s3_credentials** | [**AWSS3Credentials**](AWSS3Credentials.md) |  | [optional] 
 
 ## Example
 
