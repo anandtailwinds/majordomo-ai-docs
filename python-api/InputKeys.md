@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **azure_blob_credentials** | [**AzureBlobCredentials**](AzureBlobCredentials.md) |  | [optional] 
 **aws_s3_credentials** | [**AWSS3Credentials**](AWSS3Credentials.md) |  | [optional] 
+**confluence_credentials** | [**ConfluenceCredentials**](ConfluenceCredentials.md) |  | [optional] 
 
 ## Example
 

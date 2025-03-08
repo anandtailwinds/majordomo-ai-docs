@@ -6,9 +6,9 @@ The parameters used to access Azure Blob.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**az_client_id** | **str** | Azure Client ID. | [optional] 
-**az_client_secret** | **str** | Azure Client Secret. | [optional] 
-**az_tenant_id** | **str** | Azure Tenant ID. | [optional] 
+**az_client_id** | **str** | Azure Client ID. | 
+**az_client_secret** | **str** | Azure Client Secret. | 
+**az_tenant_id** | **str** | Azure Tenant ID. | 
 
 ## Example
 

@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **aws_s3_input** | [**AWSS3Input**](AWSS3Input.md) |  | [optional] 
 **webpage_input** | [**WebpageInput**](WebpageInput.md) |  | [optional] 
 **local_input** | [**LocalInput**](LocalInput.md) |  | [optional] 
+**confluence_input** | [**ConfluenceInput**](ConfluenceInput.md) |  | [optional] 
 
 ## Example
 

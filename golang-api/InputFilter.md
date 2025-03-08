@@ -4,11 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**FilesList** | Pointer to **string** | Comma separated list of file name specification to be picked for ingestion. Supports wildcards. | [optional] 
-**Recursive** | Pointer to **bool** | Indicates that the file wildcards can be matched in sub-directories of the specified source. | [optional] 
-**AzBlob** | Pointer to **string** | Name of the blob incase of Azure storage. | [optional] 
-**AzAccountUrl** | Pointer to **string** | Name of the account URL incase of Azure storage. | [optional] 
-**S3Bucket** | Pointer to **string** | Name of the S3 bucket in case of AWS storage. | [optional] 
+**AzureBlobInput** | Pointer to [**AzureBlobInput**](AzureBlobInput.md) |  | [optional] 
+**AwsS3Input** | Pointer to [**AWSS3Input**](AWSS3Input.md) |  | [optional] 
+**WebpageInput** | Pointer to [**WebpageInput**](WebpageInput.md) |  | [optional] 
+**LocalInput** | Pointer to [**LocalInput**](LocalInput.md) |  | [optional] 
+**ConfluenceInput** | Pointer to [**ConfluenceInput**](ConfluenceInput.md) |  | [optional] 
 
 ## Methods
 
@@ -29,130 +29,130 @@ NewInputFilterWithDefaults instantiates a new InputFilter object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetFilesList
+### GetAzureBlobInput
 
-`func (o *InputFilter) GetFilesList() string`
+`func (o *InputFilter) GetAzureBlobInput() AzureBlobInput`
 
-GetFilesList returns the FilesList field if non-nil, zero value otherwise.
+GetAzureBlobInput returns the AzureBlobInput field if non-nil, zero value otherwise.
 
-### GetFilesListOk
+### GetAzureBlobInputOk
 
-`func (o *InputFilter) GetFilesListOk() (*string, bool)`
+`func (o *InputFilter) GetAzureBlobInputOk() (*AzureBlobInput, bool)`
 
-GetFilesListOk returns a tuple with the FilesList field if it's non-nil, zero value otherwise
+GetAzureBlobInputOk returns a tuple with the AzureBlobInput field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetFilesList
+### SetAzureBlobInput
 
-`func (o *InputFilter) SetFilesList(v string)`
+`func (o *InputFilter) SetAzureBlobInput(v AzureBlobInput)`
 
-SetFilesList sets FilesList field to given value.
+SetAzureBlobInput sets AzureBlobInput field to given value.
 
-### HasFilesList
+### HasAzureBlobInput
 
-`func (o *InputFilter) HasFilesList() bool`
+`func (o *InputFilter) HasAzureBlobInput() bool`
 
-HasFilesList returns a boolean if a field has been set.
+HasAzureBlobInput returns a boolean if a field has been set.
 
-### GetRecursive
+### GetAwsS3Input
 
-`func (o *InputFilter) GetRecursive() bool`
+`func (o *InputFilter) GetAwsS3Input() AWSS3Input`
 
-GetRecursive returns the Recursive field if non-nil, zero value otherwise.
+GetAwsS3Input returns the AwsS3Input field if non-nil, zero value otherwise.
 
-### GetRecursiveOk
+### GetAwsS3InputOk
 
-`func (o *InputFilter) GetRecursiveOk() (*bool, bool)`
+`func (o *InputFilter) GetAwsS3InputOk() (*AWSS3Input, bool)`
 
-GetRecursiveOk returns a tuple with the Recursive field if it's non-nil, zero value otherwise
+GetAwsS3InputOk returns a tuple with the AwsS3Input field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetRecursive
+### SetAwsS3Input
 
-`func (o *InputFilter) SetRecursive(v bool)`
+`func (o *InputFilter) SetAwsS3Input(v AWSS3Input)`
 
-SetRecursive sets Recursive field to given value.
+SetAwsS3Input sets AwsS3Input field to given value.
 
-### HasRecursive
+### HasAwsS3Input
 
-`func (o *InputFilter) HasRecursive() bool`
+`func (o *InputFilter) HasAwsS3Input() bool`
 
-HasRecursive returns a boolean if a field has been set.
+HasAwsS3Input returns a boolean if a field has been set.
 
-### GetAzBlob
+### GetWebpageInput
 
-`func (o *InputFilter) GetAzBlob() string`
+`func (o *InputFilter) GetWebpageInput() WebpageInput`
 
-GetAzBlob returns the AzBlob field if non-nil, zero value otherwise.
+GetWebpageInput returns the WebpageInput field if non-nil, zero value otherwise.
 
-### GetAzBlobOk
+### GetWebpageInputOk
 
-`func (o *InputFilter) GetAzBlobOk() (*string, bool)`
+`func (o *InputFilter) GetWebpageInputOk() (*WebpageInput, bool)`
 
-GetAzBlobOk returns a tuple with the AzBlob field if it's non-nil, zero value otherwise
+GetWebpageInputOk returns a tuple with the WebpageInput field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetAzBlob
+### SetWebpageInput
 
-`func (o *InputFilter) SetAzBlob(v string)`
+`func (o *InputFilter) SetWebpageInput(v WebpageInput)`
 
-SetAzBlob sets AzBlob field to given value.
+SetWebpageInput sets WebpageInput field to given value.
 
-### HasAzBlob
+### HasWebpageInput
 
-`func (o *InputFilter) HasAzBlob() bool`
+`func (o *InputFilter) HasWebpageInput() bool`
 
-HasAzBlob returns a boolean if a field has been set.
+HasWebpageInput returns a boolean if a field has been set.
 
-### GetAzAccountUrl
+### GetLocalInput
 
-`func (o *InputFilter) GetAzAccountUrl() string`
+`func (o *InputFilter) GetLocalInput() LocalInput`
 
-GetAzAccountUrl returns the AzAccountUrl field if non-nil, zero value otherwise.
+GetLocalInput returns the LocalInput field if non-nil, zero value otherwise.
 
-### GetAzAccountUrlOk
+### GetLocalInputOk
 
-`func (o *InputFilter) GetAzAccountUrlOk() (*string, bool)`
+`func (o *InputFilter) GetLocalInputOk() (*LocalInput, bool)`
 
-GetAzAccountUrlOk returns a tuple with the AzAccountUrl field if it's non-nil, zero value otherwise
+GetLocalInputOk returns a tuple with the LocalInput field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetAzAccountUrl
+### SetLocalInput
 
-`func (o *InputFilter) SetAzAccountUrl(v string)`
+`func (o *InputFilter) SetLocalInput(v LocalInput)`
 
-SetAzAccountUrl sets AzAccountUrl field to given value.
+SetLocalInput sets LocalInput field to given value.
 
-### HasAzAccountUrl
+### HasLocalInput
 
-`func (o *InputFilter) HasAzAccountUrl() bool`
+`func (o *InputFilter) HasLocalInput() bool`
 
-HasAzAccountUrl returns a boolean if a field has been set.
+HasLocalInput returns a boolean if a field has been set.
 
-### GetS3Bucket
+### GetConfluenceInput
 
-`func (o *InputFilter) GetS3Bucket() string`
+`func (o *InputFilter) GetConfluenceInput() ConfluenceInput`
 
-GetS3Bucket returns the S3Bucket field if non-nil, zero value otherwise.
+GetConfluenceInput returns the ConfluenceInput field if non-nil, zero value otherwise.
 
-### GetS3BucketOk
+### GetConfluenceInputOk
 
-`func (o *InputFilter) GetS3BucketOk() (*string, bool)`
+`func (o *InputFilter) GetConfluenceInputOk() (*ConfluenceInput, bool)`
 
-GetS3BucketOk returns a tuple with the S3Bucket field if it's non-nil, zero value otherwise
+GetConfluenceInputOk returns a tuple with the ConfluenceInput field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetS3Bucket
+### SetConfluenceInput
 
-`func (o *InputFilter) SetS3Bucket(v string)`
+`func (o *InputFilter) SetConfluenceInput(v ConfluenceInput)`
 
-SetS3Bucket sets S3Bucket field to given value.
+SetConfluenceInput sets ConfluenceInput field to given value.
 
-### HasS3Bucket
+### HasConfluenceInput
 
-`func (o *InputFilter) HasS3Bucket() bool`
+`func (o *InputFilter) HasConfluenceInput() bool`
 
-HasS3Bucket returns a boolean if a field has been set.
+HasConfluenceInput returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

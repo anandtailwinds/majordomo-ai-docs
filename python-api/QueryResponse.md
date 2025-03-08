@@ -6,7 +6,9 @@ Query response
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**response** | **str** | Response from LLM for the user query. | [optional] 
+**text_response** | **str** | Response from LLM for the user query. | [optional] 
+**sql_response** | [**SQLResponse**](SQLResponse.md) |  | [optional] 
+**no_sql_response** | [**NoSQLResponse**](NoSQLResponse.md) |  | [optional] 
 **metadata** | **Dict[str, str]** |  | [optional] 
 
 ## Example

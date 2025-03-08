@@ -6,8 +6,8 @@ The parameters used to access AWS S3.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**aws_access_key** | **str** | AWS Access Key | [optional] 
-**aws_secret_token** | **str** | AWS Secret Token | [optional] 
+**aws_access_key** | **str** | AWS Access Key | 
+**aws_secret_token** | **str** | AWS Secret Token | 
 
 ## Example
 

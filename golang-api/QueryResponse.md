@@ -4,7 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Response** | Pointer to **string** | Response from LLM for the user query. | [optional] 
+**TextResponse** | Pointer to **string** | Response from LLM for the user query. | [optional] 
+**SqlResponse** | Pointer to [**SQLResponse**](SQLResponse.md) |  | [optional] 
+**NoSqlResponse** | Pointer to [**NoSQLResponse**](NoSQLResponse.md) |  | [optional] 
 **Metadata** | Pointer to **map[string]string** |  | [optional] 
 
 ## Methods
@@ -26,30 +28,80 @@ NewQueryResponseWithDefaults instantiates a new QueryResponse object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetResponse
+### GetTextResponse
 
-`func (o *QueryResponse) GetResponse() string`
+`func (o *QueryResponse) GetTextResponse() string`
 
-GetResponse returns the Response field if non-nil, zero value otherwise.
+GetTextResponse returns the TextResponse field if non-nil, zero value otherwise.
 
-### GetResponseOk
+### GetTextResponseOk
 
-`func (o *QueryResponse) GetResponseOk() (*string, bool)`
+`func (o *QueryResponse) GetTextResponseOk() (*string, bool)`
 
-GetResponseOk returns a tuple with the Response field if it's non-nil, zero value otherwise
+GetTextResponseOk returns a tuple with the TextResponse field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetResponse
+### SetTextResponse
 
-`func (o *QueryResponse) SetResponse(v string)`
+`func (o *QueryResponse) SetTextResponse(v string)`
 
-SetResponse sets Response field to given value.
+SetTextResponse sets TextResponse field to given value.
 
-### HasResponse
+### HasTextResponse
 
-`func (o *QueryResponse) HasResponse() bool`
+`func (o *QueryResponse) HasTextResponse() bool`
 
-HasResponse returns a boolean if a field has been set.
+HasTextResponse returns a boolean if a field has been set.
+
+### GetSqlResponse
+
+`func (o *QueryResponse) GetSqlResponse() SQLResponse`
+
+GetSqlResponse returns the SqlResponse field if non-nil, zero value otherwise.
+
+### GetSqlResponseOk
+
+`func (o *QueryResponse) GetSqlResponseOk() (*SQLResponse, bool)`
+
+GetSqlResponseOk returns a tuple with the SqlResponse field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSqlResponse
+
+`func (o *QueryResponse) SetSqlResponse(v SQLResponse)`
+
+SetSqlResponse sets SqlResponse field to given value.
+
+### HasSqlResponse
+
+`func (o *QueryResponse) HasSqlResponse() bool`
+
+HasSqlResponse returns a boolean if a field has been set.
+
+### GetNoSqlResponse
+
+`func (o *QueryResponse) GetNoSqlResponse() NoSQLResponse`
+
+GetNoSqlResponse returns the NoSqlResponse field if non-nil, zero value otherwise.
+
+### GetNoSqlResponseOk
+
+`func (o *QueryResponse) GetNoSqlResponseOk() (*NoSQLResponse, bool)`
+
+GetNoSqlResponseOk returns a tuple with the NoSqlResponse field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNoSqlResponse
+
+`func (o *QueryResponse) SetNoSqlResponse(v NoSQLResponse)`
+
+SetNoSqlResponse sets NoSqlResponse field to given value.
+
+### HasNoSqlResponse
+
+`func (o *QueryResponse) HasNoSqlResponse() bool`
+
+HasNoSqlResponse returns a boolean if a field has been set.
 
 ### GetMetadata
 
