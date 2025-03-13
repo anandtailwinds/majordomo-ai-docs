@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **file_list** | **List[str]** | File list to be ingested, wild cards are allowed. | 
 **s3_bucket** | **str** | Name of the S3 bucket in case of AWS storage. | 
+**region** | **str** | Name of the region in which the bucket is present. | [optional] 
 
 ## Example
 

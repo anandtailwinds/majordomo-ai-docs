@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **text_response** | **str** | Response from LLM for the user query. | [optional] 
 **sql_response** | [**SQLResponse**](SQLResponse.md) |  | [optional] 
 **no_sql_response** | [**NoSQLResponse**](NoSQLResponse.md) |  | [optional] 
+**text_nodes** | **List[str]** | Embedding nodes that are pertaining to the query. | [optional] 
 **metadata** | **Dict[str, str]** |  | [optional] 
 
 ## Example
