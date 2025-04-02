@@ -4,27 +4,31 @@ All URIs are relative to *http://localhost:/25001*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create_compute_profile**](AdminApi.md#create_compute_profile) | **POST** /compute_profilesj | Create compute profile.
+[**create_app_profile**](AdminApi.md#create_app_profile) | **POST** /app_profiles | Create app profile.
+[**create_infra_profile**](AdminApi.md#create_infra_profile) | **POST** /infra_profiles | Create infra profile.
 [**create_model_profile**](AdminApi.md#create_model_profile) | **POST** /model_profiles | Create model profile.
 [**create_user**](AdminApi.md#create_user) | **POST** /users | Add user.
 [**create_vectordb_profile**](AdminApi.md#create_vectordb_profile) | **POST** /vectordb_profiles | Create vectordb profile.
 [**create_worker**](AdminApi.md#create_worker) | **POST** /workers | Create worker node.
 [**create_workspace**](AdminApi.md#create_workspace) | **POST** /workspaces | Create workspace.
-[**delete_compute_profiles**](AdminApi.md#delete_compute_profiles) | **DELETE** /compute_profilesj | Delete compute profile.
+[**delete_app_profiles**](AdminApi.md#delete_app_profiles) | **DELETE** /app_profiles | Delete app profile.
+[**delete_infra_profiles**](AdminApi.md#delete_infra_profiles) | **DELETE** /infra_profiles | Delete infra profile.
 [**delete_model_profiles**](AdminApi.md#delete_model_profiles) | **DELETE** /model_profiles | Delete model profile.
 [**delete_user**](AdminApi.md#delete_user) | **DELETE** /users | Delete user.
 [**delete_vectordb_profiles**](AdminApi.md#delete_vectordb_profiles) | **DELETE** /vectordb_profiles | Delete vectordb profiles.
 [**delete_workers**](AdminApi.md#delete_workers) | **DELETE** /workers | Delete worker nodes.
 [**delete_workspaces**](AdminApi.md#delete_workspaces) | **DELETE** /workspaces | Delete workspace.
 [**get_allowed_profiles**](AdminApi.md#get_allowed_profiles) | **GET** /allowed_profiles | Get permitted profiles for a specific user.
-[**get_compute_profiles**](AdminApi.md#get_compute_profiles) | **GET** /compute_profilesj | Get compute profiles.
+[**get_app_profiles**](AdminApi.md#get_app_profiles) | **GET** /app_profiles | Get app profiles.
+[**get_infra_profiles**](AdminApi.md#get_infra_profiles) | **GET** /infra_profiles | Get infra profiles.
 [**get_model_profiles**](AdminApi.md#get_model_profiles) | **GET** /model_profiles | Get model profiles.
 [**get_user_list**](AdminApi.md#get_user_list) | **GET** /user_list | Get list of all users.
 [**get_users**](AdminApi.md#get_users) | **GET** /users | Get users list.
 [**get_vectordb_profiles**](AdminApi.md#get_vectordb_profiles) | **GET** /vectordb_profiles | Get vectordb profiles.
 [**get_workers**](AdminApi.md#get_workers) | **GET** /workers | Get worker nodes.
 [**get_workspaces**](AdminApi.md#get_workspaces) | **GET** /workspaces | Get workspaces.
-[**update_compute_profile**](AdminApi.md#update_compute_profile) | **PUT** /compute_profilesj | Update compute profile.
+[**update_app_profile**](AdminApi.md#update_app_profile) | **PUT** /app_profiles | Update app profile.
+[**update_infra_profile**](AdminApi.md#update_infra_profile) | **PUT** /infra_profiles | Update infra profile.
 [**update_model_profile**](AdminApi.md#update_model_profile) | **PUT** /model_profiles | Update model profile.
 [**update_user**](AdminApi.md#update_user) | **PUT** /users | Update user.
 [**update_vectordb_profile**](AdminApi.md#update_vectordb_profile) | **PUT** /vectordb_profiles | Update vectordb profile.
@@ -32,12 +36,12 @@ Method | HTTP request | Description
 [**update_workspace**](AdminApi.md#update_workspace) | **PUT** /workspaces | Update workspace.
 
 
-# **create_compute_profile**
-> ComputeProfile create_compute_profile(compute_profile)
+# **create_app_profile**
+> AppProfile create_app_profile(app_profile)
 
-Create compute profile.
+Create app profile.
 
-Create a new compute profile.
+Create a new app profile.
 
 ### Example
 
@@ -45,7 +49,7 @@ Create a new compute profile.
 
 ```python
 import majordomo_ai
-from majordomo_ai.models.compute_profile import ComputeProfile
+from majordomo_ai.models.app_profile import AppProfile
 from majordomo_ai.rest import ApiException
 from pprint import pprint
 
@@ -69,15 +73,15 @@ configuration = majordomo_ai.Configuration(
 with majordomo_ai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = majordomo_ai.AdminApi(api_client)
-    compute_profile = majordomo_ai.ComputeProfile() # ComputeProfile | 
+    app_profile = majordomo_ai.AppProfile() # AppProfile | 
 
     try:
-        # Create compute profile.
-        api_response = api_instance.create_compute_profile(compute_profile)
-        print("The response of AdminApi->create_compute_profile:\n")
+        # Create app profile.
+        api_response = api_instance.create_app_profile(app_profile)
+        print("The response of AdminApi->create_app_profile:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling AdminApi->create_compute_profile: %s\n" % e)
+        print("Exception when calling AdminApi->create_app_profile: %s\n" % e)
 ```
 
 
@@ -87,11 +91,90 @@ with majordomo_ai.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **compute_profile** | [**ComputeProfile**](ComputeProfile.md)|  | 
+ **app_profile** | [**AppProfile**](AppProfile.md)|  | 
 
 ### Return type
 
-[**ComputeProfile**](ComputeProfile.md)
+[**AppProfile**](AppProfile.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | successful operation |  -  |
+**422** | Invalid input |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **create_infra_profile**
+> InfraProfile create_infra_profile(infra_profile)
+
+Create infra profile.
+
+Create a new infra profile.
+
+### Example
+
+* Bearer (JWT) Authentication (bearerAuth):
+
+```python
+import majordomo_ai
+from majordomo_ai.models.infra_profile import InfraProfile
+from majordomo_ai.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost:/25001
+# See configuration.py for a list of all supported configuration parameters.
+configuration = majordomo_ai.Configuration(
+    host = "http://localhost:/25001"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (JWT): bearerAuth
+configuration = majordomo_ai.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with majordomo_ai.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = majordomo_ai.AdminApi(api_client)
+    infra_profile = majordomo_ai.InfraProfile() # InfraProfile | 
+
+    try:
+        # Create infra profile.
+        api_response = api_instance.create_infra_profile(infra_profile)
+        print("The response of AdminApi->create_infra_profile:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling AdminApi->create_infra_profile: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **infra_profile** | [**InfraProfile**](InfraProfile.md)|  | 
+
+### Return type
+
+[**InfraProfile**](InfraProfile.md)
 
 ### Authorization
 
@@ -509,12 +592,12 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **delete_compute_profiles**
-> DeleteResponse delete_compute_profiles(workspace=workspace, name=name, force=force)
+# **delete_app_profiles**
+> DeleteResponse delete_app_profiles(workspace=workspace, name=name, force=force)
 
-Delete compute profile.
+Delete app profile.
 
-Delete one or more configured compute profiles.
+Delete one or more configured app profiles.
 
 ### Example
 
@@ -547,16 +630,16 @@ with majordomo_ai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = majordomo_ai.AdminApi(api_client)
     workspace = 'workspace_example' # str | The name of the workspace in which the profile exists. (optional)
-    name = 'name_example' # str | The name of the compute profile to delete. (optional)
-    force = True # bool | Force delete all query pipelines or data stores that are referring to this compute profile. This will also delete all usages of compute profile done by users with whom the profile is shared. (optional)
+    name = 'name_example' # str | The name of the app profile to delete. (optional)
+    force = True # bool | Force delete all query pipelines or data stores that are referring to this app profile. This will also delete all usages of app profile done by users with whom the profile is shared. (optional)
 
     try:
-        # Delete compute profile.
-        api_response = api_instance.delete_compute_profiles(workspace=workspace, name=name, force=force)
-        print("The response of AdminApi->delete_compute_profiles:\n")
+        # Delete app profile.
+        api_response = api_instance.delete_app_profiles(workspace=workspace, name=name, force=force)
+        print("The response of AdminApi->delete_app_profiles:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling AdminApi->delete_compute_profiles: %s\n" % e)
+        print("Exception when calling AdminApi->delete_app_profiles: %s\n" % e)
 ```
 
 
@@ -567,8 +650,92 @@ with majordomo_ai.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **workspace** | **str**| The name of the workspace in which the profile exists. | [optional] 
- **name** | **str**| The name of the compute profile to delete. | [optional] 
- **force** | **bool**| Force delete all query pipelines or data stores that are referring to this compute profile. This will also delete all usages of compute profile done by users with whom the profile is shared. | [optional] 
+ **name** | **str**| The name of the app profile to delete. | [optional] 
+ **force** | **bool**| Force delete all query pipelines or data stores that are referring to this app profile. This will also delete all usages of app profile done by users with whom the profile is shared. | [optional] 
+
+### Return type
+
+[**DeleteResponse**](DeleteResponse.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | successful operation |  -  |
+**422** | Invalid input. |  -  |
+**401** | Unauthorized access. This is most likely because the access token has expired or the user API key is invalid. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **delete_infra_profiles**
+> DeleteResponse delete_infra_profiles(workspace=workspace, name=name, force=force)
+
+Delete infra profile.
+
+Delete one or more configured infra profiles.
+
+### Example
+
+* Bearer (JWT) Authentication (bearerAuth):
+
+```python
+import majordomo_ai
+from majordomo_ai.models.delete_response import DeleteResponse
+from majordomo_ai.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost:/25001
+# See configuration.py for a list of all supported configuration parameters.
+configuration = majordomo_ai.Configuration(
+    host = "http://localhost:/25001"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (JWT): bearerAuth
+configuration = majordomo_ai.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with majordomo_ai.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = majordomo_ai.AdminApi(api_client)
+    workspace = 'workspace_example' # str | The name of the workspace in which the profile exists. (optional)
+    name = 'name_example' # str | The name of the infra profile to delete. (optional)
+    force = True # bool | Force delete all query pipelines or data stores that are referring to this infra profile. This will also delete all usages of infra profile done by users with whom the profile is shared. (optional)
+
+    try:
+        # Delete infra profile.
+        api_response = api_instance.delete_infra_profiles(workspace=workspace, name=name, force=force)
+        print("The response of AdminApi->delete_infra_profiles:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling AdminApi->delete_infra_profiles: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **workspace** | **str**| The name of the workspace in which the profile exists. | [optional] 
+ **name** | **str**| The name of the infra profile to delete. | [optional] 
+ **force** | **bool**| Force delete all query pipelines or data stores that are referring to this infra profile. This will also delete all usages of infra profile done by users with whom the profile is shared. | [optional] 
 
 ### Return type
 
@@ -1069,12 +1236,12 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **get_compute_profiles**
-> ComputeProfiles get_compute_profiles(workspace=workspace, name=name, shared=shared)
+# **get_app_profiles**
+> AppProfiles get_app_profiles(workspace=workspace, name=name, shared=shared)
 
-Get compute profiles.
+Get app profiles.
 
-Get a list of existing compute profiles.
+Get a list of existing app profiles.
 
 ### Example
 
@@ -1082,7 +1249,7 @@ Get a list of existing compute profiles.
 
 ```python
 import majordomo_ai
-from majordomo_ai.models.compute_profiles import ComputeProfiles
+from majordomo_ai.models.app_profiles import AppProfiles
 from majordomo_ai.rest import ApiException
 from pprint import pprint
 
@@ -1106,17 +1273,17 @@ configuration = majordomo_ai.Configuration(
 with majordomo_ai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = majordomo_ai.AdminApi(api_client)
-    workspace = 'workspace_example' # str | Query a specific workspace for compute profiles. (optional)
-    name = 'name_example' # str | The name of the compute profile to retrieve. (optional)
+    workspace = 'workspace_example' # str | Query a specific workspace for app profiles. (optional)
+    name = 'name_example' # str | The name of the app profile to retrieve. (optional)
     shared = True # bool | Retrieve the profiles that are shared with this user by other users. (optional)
 
     try:
-        # Get compute profiles.
-        api_response = api_instance.get_compute_profiles(workspace=workspace, name=name, shared=shared)
-        print("The response of AdminApi->get_compute_profiles:\n")
+        # Get app profiles.
+        api_response = api_instance.get_app_profiles(workspace=workspace, name=name, shared=shared)
+        print("The response of AdminApi->get_app_profiles:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling AdminApi->get_compute_profiles: %s\n" % e)
+        print("Exception when calling AdminApi->get_app_profiles: %s\n" % e)
 ```
 
 
@@ -1126,13 +1293,96 @@ with majordomo_ai.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **workspace** | **str**| Query a specific workspace for compute profiles. | [optional] 
- **name** | **str**| The name of the compute profile to retrieve. | [optional] 
+ **workspace** | **str**| Query a specific workspace for app profiles. | [optional] 
+ **name** | **str**| The name of the app profile to retrieve. | [optional] 
  **shared** | **bool**| Retrieve the profiles that are shared with this user by other users. | [optional] 
 
 ### Return type
 
-[**ComputeProfiles**](ComputeProfiles.md)
+[**AppProfiles**](AppProfiles.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | successful operation |  -  |
+**422** | Invalid input |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_infra_profiles**
+> InfraProfiles get_infra_profiles(workspace=workspace, name=name, shared=shared)
+
+Get infra profiles.
+
+Get a list of existing infra profiles.
+
+### Example
+
+* Bearer (JWT) Authentication (bearerAuth):
+
+```python
+import majordomo_ai
+from majordomo_ai.models.infra_profiles import InfraProfiles
+from majordomo_ai.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost:/25001
+# See configuration.py for a list of all supported configuration parameters.
+configuration = majordomo_ai.Configuration(
+    host = "http://localhost:/25001"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (JWT): bearerAuth
+configuration = majordomo_ai.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with majordomo_ai.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = majordomo_ai.AdminApi(api_client)
+    workspace = 'workspace_example' # str | Query a specific workspace for infra profiles. (optional)
+    name = 'name_example' # str | The name of the infra profile to retrieve. (optional)
+    shared = True # bool | Retrieve the profiles that are shared with this user by other users. (optional)
+
+    try:
+        # Get infra profiles.
+        api_response = api_instance.get_infra_profiles(workspace=workspace, name=name, shared=shared)
+        print("The response of AdminApi->get_infra_profiles:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling AdminApi->get_infra_profiles: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **workspace** | **str**| Query a specific workspace for infra profiles. | [optional] 
+ **name** | **str**| The name of the infra profile to retrieve. | [optional] 
+ **shared** | **bool**| Retrieve the profiles that are shared with this user by other users. | [optional] 
+
+### Return type
+
+[**InfraProfiles**](InfraProfiles.md)
 
 ### Authorization
 
@@ -1635,12 +1885,12 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **update_compute_profile**
-> ComputeProfile update_compute_profile(compute_profile)
+# **update_app_profile**
+> AppProfile update_app_profile(app_profile)
 
-Update compute profile.
+Update app profile.
 
-Update an existing compute profile.
+Update an existing app profile.
 
 ### Example
 
@@ -1648,7 +1898,7 @@ Update an existing compute profile.
 
 ```python
 import majordomo_ai
-from majordomo_ai.models.compute_profile import ComputeProfile
+from majordomo_ai.models.app_profile import AppProfile
 from majordomo_ai.rest import ApiException
 from pprint import pprint
 
@@ -1672,15 +1922,15 @@ configuration = majordomo_ai.Configuration(
 with majordomo_ai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = majordomo_ai.AdminApi(api_client)
-    compute_profile = majordomo_ai.ComputeProfile() # ComputeProfile | 
+    app_profile = majordomo_ai.AppProfile() # AppProfile | 
 
     try:
-        # Update compute profile.
-        api_response = api_instance.update_compute_profile(compute_profile)
-        print("The response of AdminApi->update_compute_profile:\n")
+        # Update app profile.
+        api_response = api_instance.update_app_profile(app_profile)
+        print("The response of AdminApi->update_app_profile:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling AdminApi->update_compute_profile: %s\n" % e)
+        print("Exception when calling AdminApi->update_app_profile: %s\n" % e)
 ```
 
 
@@ -1690,11 +1940,90 @@ with majordomo_ai.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **compute_profile** | [**ComputeProfile**](ComputeProfile.md)|  | 
+ **app_profile** | [**AppProfile**](AppProfile.md)|  | 
 
 ### Return type
 
-[**ComputeProfile**](ComputeProfile.md)
+[**AppProfile**](AppProfile.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/xml, application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | successful operation |  -  |
+**422** | Invalid input |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **update_infra_profile**
+> InfraProfile update_infra_profile(infra_profile)
+
+Update infra profile.
+
+Update an existing infra profile.
+
+### Example
+
+* Bearer (JWT) Authentication (bearerAuth):
+
+```python
+import majordomo_ai
+from majordomo_ai.models.infra_profile import InfraProfile
+from majordomo_ai.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost:/25001
+# See configuration.py for a list of all supported configuration parameters.
+configuration = majordomo_ai.Configuration(
+    host = "http://localhost:/25001"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (JWT): bearerAuth
+configuration = majordomo_ai.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with majordomo_ai.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = majordomo_ai.AdminApi(api_client)
+    infra_profile = majordomo_ai.InfraProfile() # InfraProfile | 
+
+    try:
+        # Update infra profile.
+        api_response = api_instance.update_infra_profile(infra_profile)
+        print("The response of AdminApi->update_infra_profile:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling AdminApi->update_infra_profile: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **infra_profile** | [**InfraProfile**](InfraProfile.md)|  | 
+
+### Return type
+
+[**InfraProfile**](InfraProfile.md)
 
 ### Authorization
 

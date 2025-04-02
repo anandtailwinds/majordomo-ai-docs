@@ -1,10 +1,10 @@
 # DeploymentStatus
 
-The list of deployment status of model in compute resource.
+The list of deployment status of model in infra resource.
 
 ## Enum
 
-* `DEPLOYMENT_NOT_REQUESTED` (value: `1`)
+* `DEPLOYMENT_STOPPED` (value: `1`)
 
 * `DEPLOYMENT_IN_PROGRESS` (value: `2`)
 
