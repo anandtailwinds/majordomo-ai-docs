@@ -15,6 +15,9 @@ Name | Type | Description | Notes
 **current_status** | [**DeploymentStatus**](DeploymentStatus.md) |  | [optional] 
 **access_info** | **Dict[str, object]** | Any access information required for downloading the model container from container registry. | [optional] 
 **shared_users** | **List[str]** | The list of users this profile is shared with. | [optional] 
+**created_by** | **str** | The username who created this model profile | 
+**created_at** | **int** | Timestamp of the model profile creation | 
+**last_update** | **int** | Timestamp of the last update to the model profile | 
 
 ## Example
 

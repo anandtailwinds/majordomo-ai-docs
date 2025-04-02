@@ -11,7 +11,8 @@ Name | Type | Description | Notes
 **tags** | **List[str]** | Tags to describe the compute where it is running or what its purpose is. | [optional] 
 **workspace** | **str** | The workspace that contains the compute profile. | 
 **requested_status** | [**DeploymentStatus**](DeploymentStatus.md) |  | [optional] 
-**container** | [**ContainerReference**](ContainerReference.md) |  | [optional] 
+**container_image** | **str** | Container image path (e.g., &#x60;docker.io/library/image:tag&#x60;, &#x60;123456789012.dkr.ecr.us-east-1.amazonaws.com/model:latest&#x60;) | [optional] 
+**container_registry** | **str** | Name of configured registry profile | [optional] 
 **access_info** | **Dict[str, object]** | Access information for contacting the compute node including location of keys etc. | [optional] 
 **shared_users** | **List[str]** | The list of users this profile is shared with. | [optional] 
 
