@@ -5,14 +5,14 @@ All URIs are relative to *http://localhost:/25001*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**create_app_profile**](AdminApi.md#create_app_profile) | **POST** /app_profiles | Create app profile.
-[**create_infra_profile**](AdminApi.md#create_infra_profile) | **POST** /infra_profiles | Create infra profile.
+[**create_inference_profile**](AdminApi.md#create_inference_profile) | **POST** /inference_profiles | Create inference profile.
 [**create_model_profile**](AdminApi.md#create_model_profile) | **POST** /model_profiles | Create model profile.
 [**create_user**](AdminApi.md#create_user) | **POST** /users | Add user.
 [**create_vectordb_profile**](AdminApi.md#create_vectordb_profile) | **POST** /vectordb_profiles | Create vectordb profile.
 [**create_worker**](AdminApi.md#create_worker) | **POST** /workers | Create worker node.
 [**create_workspace**](AdminApi.md#create_workspace) | **POST** /workspaces | Create workspace.
 [**delete_app_profiles**](AdminApi.md#delete_app_profiles) | **DELETE** /app_profiles | Delete app profile.
-[**delete_infra_profiles**](AdminApi.md#delete_infra_profiles) | **DELETE** /infra_profiles | Delete infra profile.
+[**delete_inference_profiles**](AdminApi.md#delete_inference_profiles) | **DELETE** /inference_profiles | Delete inference profile.
 [**delete_model_profiles**](AdminApi.md#delete_model_profiles) | **DELETE** /model_profiles | Delete model profile.
 [**delete_user**](AdminApi.md#delete_user) | **DELETE** /users | Delete user.
 [**delete_vectordb_profiles**](AdminApi.md#delete_vectordb_profiles) | **DELETE** /vectordb_profiles | Delete vectordb profiles.
@@ -20,7 +20,7 @@ Method | HTTP request | Description
 [**delete_workspaces**](AdminApi.md#delete_workspaces) | **DELETE** /workspaces | Delete workspace.
 [**get_allowed_profiles**](AdminApi.md#get_allowed_profiles) | **GET** /allowed_profiles | Get permitted profiles for a specific user.
 [**get_app_profiles**](AdminApi.md#get_app_profiles) | **GET** /app_profiles | Get app profiles.
-[**get_infra_profiles**](AdminApi.md#get_infra_profiles) | **GET** /infra_profiles | Get infra profiles.
+[**get_inference_profiles**](AdminApi.md#get_inference_profiles) | **GET** /inference_profiles | Get inference profiles.
 [**get_model_profiles**](AdminApi.md#get_model_profiles) | **GET** /model_profiles | Get model profiles.
 [**get_user_list**](AdminApi.md#get_user_list) | **GET** /user_list | Get list of all users.
 [**get_users**](AdminApi.md#get_users) | **GET** /users | Get users list.
@@ -28,7 +28,7 @@ Method | HTTP request | Description
 [**get_workers**](AdminApi.md#get_workers) | **GET** /workers | Get worker nodes.
 [**get_workspaces**](AdminApi.md#get_workspaces) | **GET** /workspaces | Get workspaces.
 [**update_app_profile**](AdminApi.md#update_app_profile) | **PUT** /app_profiles | Update app profile.
-[**update_infra_profile**](AdminApi.md#update_infra_profile) | **PUT** /infra_profiles | Update infra profile.
+[**update_inference_profile**](AdminApi.md#update_inference_profile) | **PUT** /inference_profiles | Update inference profile.
 [**update_model_profile**](AdminApi.md#update_model_profile) | **PUT** /model_profiles | Update model profile.
 [**update_user**](AdminApi.md#update_user) | **PUT** /users | Update user.
 [**update_vectordb_profile**](AdminApi.md#update_vectordb_profile) | **PUT** /vectordb_profiles | Update vectordb profile.
@@ -115,12 +115,12 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **create_infra_profile**
-> InfraProfile create_infra_profile(infra_profile)
+# **create_inference_profile**
+> InferenceProfileInfo create_inference_profile(inference_profile)
 
-Create infra profile.
+Create inference profile.
 
-Create a new infra profile.
+Create a new inference profile.
 
 ### Example
 
@@ -128,7 +128,8 @@ Create a new infra profile.
 
 ```python
 import majordomo_ai
-from majordomo_ai.models.infra_profile import InfraProfile
+from majordomo_ai.models.inference_profile import InferenceProfile
+from majordomo_ai.models.inference_profile_info import InferenceProfileInfo
 from majordomo_ai.rest import ApiException
 from pprint import pprint
 
@@ -152,15 +153,15 @@ configuration = majordomo_ai.Configuration(
 with majordomo_ai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = majordomo_ai.AdminApi(api_client)
-    infra_profile = majordomo_ai.InfraProfile() # InfraProfile | 
+    inference_profile = majordomo_ai.InferenceProfile() # InferenceProfile | 
 
     try:
-        # Create infra profile.
-        api_response = api_instance.create_infra_profile(infra_profile)
-        print("The response of AdminApi->create_infra_profile:\n")
+        # Create inference profile.
+        api_response = api_instance.create_inference_profile(inference_profile)
+        print("The response of AdminApi->create_inference_profile:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling AdminApi->create_infra_profile: %s\n" % e)
+        print("Exception when calling AdminApi->create_inference_profile: %s\n" % e)
 ```
 
 
@@ -170,11 +171,11 @@ with majordomo_ai.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **infra_profile** | [**InfraProfile**](InfraProfile.md)|  | 
+ **inference_profile** | [**InferenceProfile**](InferenceProfile.md)|  | 
 
 ### Return type
 
-[**InfraProfile**](InfraProfile.md)
+[**InferenceProfileInfo**](InferenceProfileInfo.md)
 
 ### Authorization
 
@@ -676,12 +677,12 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **delete_infra_profiles**
-> DeleteResponse delete_infra_profiles(workspace=workspace, name=name, force=force)
+# **delete_inference_profiles**
+> DeleteResponse delete_inference_profiles(workspace=workspace, name=name, force=force)
 
-Delete infra profile.
+Delete inference profile.
 
-Delete one or more configured infra profiles.
+Delete one or more configured inference profiles.
 
 ### Example
 
@@ -714,16 +715,16 @@ with majordomo_ai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = majordomo_ai.AdminApi(api_client)
     workspace = 'workspace_example' # str | The name of the workspace in which the profile exists. (optional)
-    name = 'name_example' # str | The name of the infra profile to delete. (optional)
-    force = True # bool | Force delete all query pipelines or data stores that are referring to this infra profile. This will also delete all usages of infra profile done by users with whom the profile is shared. (optional)
+    name = 'name_example' # str | The name of the inference profile to delete. (optional)
+    force = True # bool | Force delete all query pipelines or data stores that are referring to this inference profile. This will also delete all usages of inference profile done by users with whom the profile is shared. (optional)
 
     try:
-        # Delete infra profile.
-        api_response = api_instance.delete_infra_profiles(workspace=workspace, name=name, force=force)
-        print("The response of AdminApi->delete_infra_profiles:\n")
+        # Delete inference profile.
+        api_response = api_instance.delete_inference_profiles(workspace=workspace, name=name, force=force)
+        print("The response of AdminApi->delete_inference_profiles:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling AdminApi->delete_infra_profiles: %s\n" % e)
+        print("Exception when calling AdminApi->delete_inference_profiles: %s\n" % e)
 ```
 
 
@@ -734,8 +735,8 @@ with majordomo_ai.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **workspace** | **str**| The name of the workspace in which the profile exists. | [optional] 
- **name** | **str**| The name of the infra profile to delete. | [optional] 
- **force** | **bool**| Force delete all query pipelines or data stores that are referring to this infra profile. This will also delete all usages of infra profile done by users with whom the profile is shared. | [optional] 
+ **name** | **str**| The name of the inference profile to delete. | [optional] 
+ **force** | **bool**| Force delete all query pipelines or data stores that are referring to this inference profile. This will also delete all usages of inference profile done by users with whom the profile is shared. | [optional] 
 
 ### Return type
 
@@ -1319,12 +1320,12 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **get_infra_profiles**
-> InfraProfiles get_infra_profiles(workspace=workspace, name=name, shared=shared)
+# **get_inference_profiles**
+> InferenceProfiles get_inference_profiles(workspace=workspace, name=name, shared=shared)
 
-Get infra profiles.
+Get inference profiles.
 
-Get a list of existing infra profiles.
+Get a list of existing inference profiles.
 
 ### Example
 
@@ -1332,7 +1333,7 @@ Get a list of existing infra profiles.
 
 ```python
 import majordomo_ai
-from majordomo_ai.models.infra_profiles import InfraProfiles
+from majordomo_ai.models.inference_profiles import InferenceProfiles
 from majordomo_ai.rest import ApiException
 from pprint import pprint
 
@@ -1356,17 +1357,17 @@ configuration = majordomo_ai.Configuration(
 with majordomo_ai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = majordomo_ai.AdminApi(api_client)
-    workspace = 'workspace_example' # str | Query a specific workspace for infra profiles. (optional)
-    name = 'name_example' # str | The name of the infra profile to retrieve. (optional)
+    workspace = 'workspace_example' # str | Query a specific workspace for inference profiles. (optional)
+    name = 'name_example' # str | The name of the inference profile to retrieve. (optional)
     shared = True # bool | Retrieve the profiles that are shared with this user by other users. (optional)
 
     try:
-        # Get infra profiles.
-        api_response = api_instance.get_infra_profiles(workspace=workspace, name=name, shared=shared)
-        print("The response of AdminApi->get_infra_profiles:\n")
+        # Get inference profiles.
+        api_response = api_instance.get_inference_profiles(workspace=workspace, name=name, shared=shared)
+        print("The response of AdminApi->get_inference_profiles:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling AdminApi->get_infra_profiles: %s\n" % e)
+        print("Exception when calling AdminApi->get_inference_profiles: %s\n" % e)
 ```
 
 
@@ -1376,13 +1377,13 @@ with majordomo_ai.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **workspace** | **str**| Query a specific workspace for infra profiles. | [optional] 
- **name** | **str**| The name of the infra profile to retrieve. | [optional] 
+ **workspace** | **str**| Query a specific workspace for inference profiles. | [optional] 
+ **name** | **str**| The name of the inference profile to retrieve. | [optional] 
  **shared** | **bool**| Retrieve the profiles that are shared with this user by other users. | [optional] 
 
 ### Return type
 
-[**InfraProfiles**](InfraProfiles.md)
+[**InferenceProfiles**](InferenceProfiles.md)
 
 ### Authorization
 
@@ -1964,12 +1965,12 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **update_infra_profile**
-> InfraProfile update_infra_profile(infra_profile)
+# **update_inference_profile**
+> InferenceProfileInfo update_inference_profile(inference_profile)
 
-Update infra profile.
+Update inference profile.
 
-Update an existing infra profile.
+Update an existing inference profile.
 
 ### Example
 
@@ -1977,7 +1978,8 @@ Update an existing infra profile.
 
 ```python
 import majordomo_ai
-from majordomo_ai.models.infra_profile import InfraProfile
+from majordomo_ai.models.inference_profile import InferenceProfile
+from majordomo_ai.models.inference_profile_info import InferenceProfileInfo
 from majordomo_ai.rest import ApiException
 from pprint import pprint
 
@@ -2001,15 +2003,15 @@ configuration = majordomo_ai.Configuration(
 with majordomo_ai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = majordomo_ai.AdminApi(api_client)
-    infra_profile = majordomo_ai.InfraProfile() # InfraProfile | 
+    inference_profile = majordomo_ai.InferenceProfile() # InferenceProfile | 
 
     try:
-        # Update infra profile.
-        api_response = api_instance.update_infra_profile(infra_profile)
-        print("The response of AdminApi->update_infra_profile:\n")
+        # Update inference profile.
+        api_response = api_instance.update_inference_profile(inference_profile)
+        print("The response of AdminApi->update_inference_profile:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling AdminApi->update_infra_profile: %s\n" % e)
+        print("Exception when calling AdminApi->update_inference_profile: %s\n" % e)
 ```
 
 
@@ -2019,11 +2021,11 @@ with majordomo_ai.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **infra_profile** | [**InfraProfile**](InfraProfile.md)|  | 
+ **inference_profile** | [**InferenceProfile**](InferenceProfile.md)|  | 
 
 ### Return type
 
-[**InfraProfile**](InfraProfile.md)
+[**InferenceProfileInfo**](InferenceProfileInfo.md)
 
 ### Authorization
 
