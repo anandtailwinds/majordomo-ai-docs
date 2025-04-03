@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **config** | [**InferenceProfile**](InferenceProfile.md) |  | 
 **current_status** | [**DeploymentStatus**](DeploymentStatus.md) |  | 
+**logs** | **List[str]** | The logs from the deployment. | [optional] 
 **created_by** | **str** | The username who created this model profile | 
 **created_at** | **int** | Timestamp of the model profile creation | 
 **last_update** | **int** | Timestamp of the last update to the model profile | 

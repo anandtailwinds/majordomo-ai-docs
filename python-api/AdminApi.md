@@ -5,6 +5,7 @@ All URIs are relative to *http://localhost:/25001*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**create_app_profile**](AdminApi.md#create_app_profile) | **POST** /app_profiles | Create app profile.
+[**create_connector_profile**](AdminApi.md#create_connector_profile) | **POST** /connector_profiles | Create connector profile.
 [**create_inference_profile**](AdminApi.md#create_inference_profile) | **POST** /inference_profiles | Create inference profile.
 [**create_model_profile**](AdminApi.md#create_model_profile) | **POST** /model_profiles | Create model profile.
 [**create_user**](AdminApi.md#create_user) | **POST** /users | Add user.
@@ -12,6 +13,7 @@ Method | HTTP request | Description
 [**create_worker**](AdminApi.md#create_worker) | **POST** /workers | Create worker node.
 [**create_workspace**](AdminApi.md#create_workspace) | **POST** /workspaces | Create workspace.
 [**delete_app_profiles**](AdminApi.md#delete_app_profiles) | **DELETE** /app_profiles | Delete app profile.
+[**delete_connector_profiles**](AdminApi.md#delete_connector_profiles) | **DELETE** /connector_profiles | Delete connector profile.
 [**delete_inference_profiles**](AdminApi.md#delete_inference_profiles) | **DELETE** /inference_profiles | Delete inference profile.
 [**delete_model_profiles**](AdminApi.md#delete_model_profiles) | **DELETE** /model_profiles | Delete model profile.
 [**delete_user**](AdminApi.md#delete_user) | **DELETE** /users | Delete user.
@@ -20,6 +22,7 @@ Method | HTTP request | Description
 [**delete_workspaces**](AdminApi.md#delete_workspaces) | **DELETE** /workspaces | Delete workspace.
 [**get_allowed_profiles**](AdminApi.md#get_allowed_profiles) | **GET** /allowed_profiles | Get permitted profiles for a specific user.
 [**get_app_profiles**](AdminApi.md#get_app_profiles) | **GET** /app_profiles | Get app profiles.
+[**get_connector_profiles**](AdminApi.md#get_connector_profiles) | **GET** /connector_profiles | Get connector profiles.
 [**get_inference_profiles**](AdminApi.md#get_inference_profiles) | **GET** /inference_profiles | Get inference profiles.
 [**get_model_profiles**](AdminApi.md#get_model_profiles) | **GET** /model_profiles | Get model profiles.
 [**get_user_list**](AdminApi.md#get_user_list) | **GET** /user_list | Get list of all users.
@@ -28,6 +31,7 @@ Method | HTTP request | Description
 [**get_workers**](AdminApi.md#get_workers) | **GET** /workers | Get worker nodes.
 [**get_workspaces**](AdminApi.md#get_workspaces) | **GET** /workspaces | Get workspaces.
 [**update_app_profile**](AdminApi.md#update_app_profile) | **PUT** /app_profiles | Update app profile.
+[**update_connector_profile**](AdminApi.md#update_connector_profile) | **PUT** /connector_profiles | Update connector profile.
 [**update_inference_profile**](AdminApi.md#update_inference_profile) | **PUT** /inference_profiles | Update inference profile.
 [**update_model_profile**](AdminApi.md#update_model_profile) | **PUT** /model_profiles | Update model profile.
 [**update_user**](AdminApi.md#update_user) | **PUT** /users | Update user.
@@ -105,6 +109,85 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/json
  - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | successful operation |  -  |
+**422** | Invalid input |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **create_connector_profile**
+> ConnectorProfile create_connector_profile(connector_profile)
+
+Create connector profile.
+
+Create a new connector profile.
+
+### Example
+
+* Bearer (JWT) Authentication (bearerAuth):
+
+```python
+import majordomo_ai
+from majordomo_ai.models.connector_profile import ConnectorProfile
+from majordomo_ai.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost:/25001
+# See configuration.py for a list of all supported configuration parameters.
+configuration = majordomo_ai.Configuration(
+    host = "http://localhost:/25001"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (JWT): bearerAuth
+configuration = majordomo_ai.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with majordomo_ai.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = majordomo_ai.AdminApi(api_client)
+    connector_profile = majordomo_ai.ConnectorProfile() # ConnectorProfile | 
+
+    try:
+        # Create connector profile.
+        api_response = api_instance.create_connector_profile(connector_profile)
+        print("The response of AdminApi->create_connector_profile:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling AdminApi->create_connector_profile: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **connector_profile** | [**ConnectorProfile**](ConnectorProfile.md)|  | 
+
+### Return type
+
+[**ConnectorProfile**](ConnectorProfile.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: connectorlication/json
 
 ### HTTP response details
 
@@ -666,6 +749,90 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | successful operation |  -  |
+**422** | Invalid input. |  -  |
+**401** | Unauthorized access. This is most likely because the access token has expired or the user API key is invalid. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **delete_connector_profiles**
+> DeleteResponse delete_connector_profiles(workspace=workspace, name=name, force=force)
+
+Delete connector profile.
+
+Delete one or more configured connector profiles.
+
+### Example
+
+* Bearer (JWT) Authentication (bearerAuth):
+
+```python
+import majordomo_ai
+from majordomo_ai.models.delete_response import DeleteResponse
+from majordomo_ai.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost:/25001
+# See configuration.py for a list of all supported configuration parameters.
+configuration = majordomo_ai.Configuration(
+    host = "http://localhost:/25001"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (JWT): bearerAuth
+configuration = majordomo_ai.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with majordomo_ai.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = majordomo_ai.AdminApi(api_client)
+    workspace = 'workspace_example' # str | The name of the workspace in which the profile exists. (optional)
+    name = 'name_example' # str | The name of the connector profile to delete. (optional)
+    force = True # bool | Force delete all query pipelines or data stores that are referring to this connector profile. This will also delete all usages of connector profile done by users with whom the profile is shared. (optional)
+
+    try:
+        # Delete connector profile.
+        api_response = api_instance.delete_connector_profiles(workspace=workspace, name=name, force=force)
+        print("The response of AdminApi->delete_connector_profiles:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling AdminApi->delete_connector_profiles: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **workspace** | **str**| The name of the workspace in which the profile exists. | [optional] 
+ **name** | **str**| The name of the connector profile to delete. | [optional] 
+ **force** | **bool**| Force delete all query pipelines or data stores that are referring to this connector profile. This will also delete all usages of connector profile done by users with whom the profile is shared. | [optional] 
+
+### Return type
+
+[**DeleteResponse**](DeleteResponse.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: connectorlication/json
 
 ### HTTP response details
 
@@ -1320,6 +1487,89 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **get_connector_profiles**
+> ConnectorProfiles get_connector_profiles(workspace=workspace, name=name, shared=shared)
+
+Get connector profiles.
+
+Get a list of existing connector profiles.
+
+### Example
+
+* Bearer (JWT) Authentication (bearerAuth):
+
+```python
+import majordomo_ai
+from majordomo_ai.models.connector_profiles import ConnectorProfiles
+from majordomo_ai.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost:/25001
+# See configuration.py for a list of all supported configuration parameters.
+configuration = majordomo_ai.Configuration(
+    host = "http://localhost:/25001"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (JWT): bearerAuth
+configuration = majordomo_ai.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with majordomo_ai.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = majordomo_ai.AdminApi(api_client)
+    workspace = 'workspace_example' # str | Query a specific workspace for connector profiles. (optional)
+    name = 'name_example' # str | The name of the connector profile to retrieve. (optional)
+    shared = True # bool | Retrieve the profiles that are shared with this user by other users. (optional)
+
+    try:
+        # Get connector profiles.
+        api_response = api_instance.get_connector_profiles(workspace=workspace, name=name, shared=shared)
+        print("The response of AdminApi->get_connector_profiles:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling AdminApi->get_connector_profiles: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **workspace** | **str**| Query a specific workspace for connector profiles. | [optional] 
+ **name** | **str**| The name of the connector profile to retrieve. | [optional] 
+ **shared** | **bool**| Retrieve the profiles that are shared with this user by other users. | [optional] 
+
+### Return type
+
+[**ConnectorProfiles**](ConnectorProfiles.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: connectorlication/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | successful operation |  -  |
+**422** | Invalid input |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **get_inference_profiles**
 > InferenceProfiles get_inference_profiles(workspace=workspace, name=name, shared=shared)
 
@@ -1955,6 +2205,85 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/json
  - **Accept**: application/xml, application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | successful operation |  -  |
+**422** | Invalid input |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **update_connector_profile**
+> ConnectorProfile update_connector_profile(connector_profile)
+
+Update connector profile.
+
+Update an existing connector profile.
+
+### Example
+
+* Bearer (JWT) Authentication (bearerAuth):
+
+```python
+import majordomo_ai
+from majordomo_ai.models.connector_profile import ConnectorProfile
+from majordomo_ai.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost:/25001
+# See configuration.py for a list of all supported configuration parameters.
+configuration = majordomo_ai.Configuration(
+    host = "http://localhost:/25001"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (JWT): bearerAuth
+configuration = majordomo_ai.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with majordomo_ai.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = majordomo_ai.AdminApi(api_client)
+    connector_profile = majordomo_ai.ConnectorProfile() # ConnectorProfile | 
+
+    try:
+        # Update connector profile.
+        api_response = api_instance.update_connector_profile(connector_profile)
+        print("The response of AdminApi->update_connector_profile:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling AdminApi->update_connector_profile: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **connector_profile** | [**ConnectorProfile**](ConnectorProfile.md)|  | 
+
+### Return type
+
+[**ConnectorProfile**](ConnectorProfile.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: connectorlication/xml, connectorlication/json
 
 ### HTTP response details
 

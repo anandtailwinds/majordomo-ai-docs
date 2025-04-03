@@ -6,8 +6,9 @@ Information about the model to be deployed.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**model_source** | [**ModelSources**](ModelSources.md) |  | 
-**access_info** | **Dict[str, object]** | Credentials and location of model to be pulled for deployment. | 
+**source_type** | [**ModelSources**](ModelSources.md) |  | [optional] 
+**model_runtime** | [**ModelRuntimes**](ModelRuntimes.md) |  | [optional] 
+**connector_name** | **str** | The name of the connector from where the model files are to be obtained. | 
 
 ## Example
 

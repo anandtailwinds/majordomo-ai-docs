@@ -9,12 +9,9 @@ Name | Type | Description | Notes
 **name** | **str** | Name of the inference deployment. | 
 **workspace** | **str** | Workspace in which the data store is present. | 
 **model_spec** | [**ModelSpec**](ModelSpec.md) |  | 
-**model_runtime** | [**ModelRuntimes**](ModelRuntimes.md) |  | [optional] 
-**deployment_type** | [**DeploymentTypes**](DeploymentTypes.md) |  | 
-**deployment_info** | [**InferenceDeploymentInfo**](InferenceDeploymentInfo.md) |  | 
+**deployment_spec** | [**DeploymentSpec**](DeploymentSpec.md) |  | 
 **tags** | **List[str]** | Tags to describe the infra where it is running or what its purpose is. | [optional] 
-**requested_status** | [**DeploymentStatus**](DeploymentStatus.md) |  | 
-**current_status** | [**DeploymentStatus**](DeploymentStatus.md) |  | [optional] 
+**deployment_state** | **bool** | The status of whether this deployment is to be deployed or not. | 
 
 ## Example
 

@@ -1,12 +1,10 @@
-# ModelSources
+# ConnectorTypes
 
-The different status denominators for the vector store in the provider.
+The type of connectorlications supported
 
 ## Enum
 
-* `MODEL_SOURCE_CONTAINER` (value: `1`)
-
-* `MODEL_SOURCE_WEIGHTS` (value: `2`)
+* `CONNECTOR_TYPE_CONTAINER_REGISTRY` (value: `1`)
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
