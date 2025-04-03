@@ -6,11 +6,7 @@ Application profile Information
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**name** | **str** | Name of the application profile. | 
-**workspace** | **str** | The workspace that contains the model profile. | 
-**app_type** | [**AppTypes**](AppTypes.md) |  | 
-**access_info** | **Dict[str, object]** | Credentials for application. | 
-**shared_users** | **List[str]** | The list of users this profile is shared with. | [optional] 
+**config** | [**AppProfile**](AppProfile.md) |  | [optional] 
 **created_by** | **str** | The username who created this model profile | [optional] 
 **created_at** | **int** | Timestamp of the model profile creation | [optional] 
 **last_update** | **int** | Timestamp of the last update to the model profile | [optional] 

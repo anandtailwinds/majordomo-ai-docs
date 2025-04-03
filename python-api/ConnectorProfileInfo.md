@@ -6,11 +6,7 @@ Connectorlication profile Information
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**name** | **str** | Name of the connectorlication profile. | 
-**workspace** | **str** | The workspace that contains the model profile. | 
-**connector_type** | [**ConnectorTypes**](ConnectorTypes.md) |  | 
-**access_info** | **Dict[str, object]** | Credentials for connectorlication. | 
-**shared_users** | **List[str]** | The list of users this profile is shared with. | [optional] 
+**config** | [**ConnectorProfile**](ConnectorProfile.md) |  | [optional] 
 **created_by** | **str** | The username who created this model profile | [optional] 
 **created_at** | **int** | Timestamp of the model profile creation | [optional] 
 **last_update** | **int** | Timestamp of the last update to the model profile | [optional] 
