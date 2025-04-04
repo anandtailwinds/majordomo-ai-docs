@@ -6,15 +6,8 @@ This contains configuration and operational information about a single data stor
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**workspace** | **str** | Workspace in which the data store is present. | 
-**name** | **str** | Name of the data store. | 
-**contents** | **str** | Description of the data store. This can be optionally included in queries. | [optional] 
+**config** | [**DataStore**](DataStore.md) |  | 
 **created_by** | **str** | The user who created the data store. | 
-**shared_users** | **List[str]** | The list of users this profile is shared with. | [optional] 
-**read_only** | **bool** | Flag to indicate whether the data store is read-only. | [optional] 
-**store_type** | [**DataStoreTypes**](DataStoreTypes.md) |  | 
-**vectordb_store** | [**VectordbStore**](VectordbStore.md) |  | [optional] 
-**structdb_store** | [**StructdbStore**](StructdbStore.md) |  | [optional] 
 **created_at** | **int** | Timestamp of the data store creation. | 
 **last_update** | **int** | Timestamp of the last update to the data store. | 
 **last_query** | **int** | Timestamp of last query using the data store. | 

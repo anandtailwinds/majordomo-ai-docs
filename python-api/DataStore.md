@@ -8,10 +8,10 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **workspace** | **str** | Workspace in which the data store is present. | 
 **name** | **str** | Name of the data store. | 
-**contents** | **str** | Description of the data store. This can be optionally included in queries. | [optional] 
 **store_type** | [**DataStoreTypes**](DataStoreTypes.md) |  | 
-**vectordb_store** | [**VectordbStore**](VectordbStore.md) |  | [optional] 
-**structdb_store** | [**StructdbStore**](StructdbStore.md) |  | [optional] 
+**app_profile_name** | **str** | Name of the application profile. | 
+**contents** | **str** | Description of the data store. This can be optionally included in queries. | [optional] 
+**instance_info** | **Dict[str, object]** | Information about the vector data store. | [optional] 
 **shared_users** | **List[str]** | The list of users this profile is shared with. | [optional] 
 
 ## Example

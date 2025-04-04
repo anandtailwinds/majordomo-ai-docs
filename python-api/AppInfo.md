@@ -6,7 +6,7 @@ Application connection information.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**app_type** | [**DataStoreSubTypes**](DataStoreSubTypes.md) |  | 
+**app_type** | [**AppTypes**](AppTypes.md) |  | 
 **access_info** | **Dict[str, object]** | Any endpoint that is to be specified to reach the data store. | 
 **instance_info** | **Dict[str, object]** | Information specific to the instance of the application. | [optional] 
 **contents** | **str** | A description of the contents of the application store. This may be used to specify schema aor other nuances of a database etc. and is used during queries if present. | [optional] 
