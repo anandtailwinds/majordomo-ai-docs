@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **name** | **str** | Name of the application profile. | 
 **workspace** | **str** | The workspace that contains the model profile. | 
 **app_type** | [**AppTypes**](AppTypes.md) |  | 
+**supported_operations** | [**List[SupportedOperations]**](SupportedOperations.md) | Application operations supported. | [optional] 
 **access_info** | **Dict[str, object]** | Credentials for application. | 
 **shared_users** | **List[str]** | The list of users this profile is shared with. | [optional] 
 

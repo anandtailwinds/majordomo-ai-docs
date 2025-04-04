@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **source_type** | [**ModelSources**](ModelSources.md) |  | [optional] 
 **model_runtime** | [**ModelRuntimes**](ModelRuntimes.md) |  | [optional] 
-**connector_name** | **str** | The name of the connector from where the model files are to be obtained. | 
+**registry_name** | **str** | The name of the registry application from where the model files are to be obtained.  | [optional] 
 
 ## Example
 

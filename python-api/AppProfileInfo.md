@@ -6,10 +6,10 @@ Application profile Information
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**config** | [**AppProfile**](AppProfile.md) |  | [optional] 
-**created_by** | **str** | The username who created this model profile | [optional] 
-**created_at** | **int** | Timestamp of the model profile creation | [optional] 
-**last_update** | **int** | Timestamp of the last update to the model profile | [optional] 
+**config** | [**AppProfile**](AppProfile.md) |  | 
+**created_by** | **str** | The username who created this model profile | 
+**created_at** | **int** | Timestamp of the model profile creation | 
+**last_update** | **int** | Timestamp of the last update to the model profile | 
 
 ## Example
 
