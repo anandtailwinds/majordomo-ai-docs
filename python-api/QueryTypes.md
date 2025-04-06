@@ -1,6 +1,6 @@
 # QueryTypes
 
-Defines the handling of scenarios where the context cannot fit the entire query with vector retrievals.
+Defines the handling of scenarios where the context cannot fit the entire  query with vector retrievals. 
 
 ## Enum
 

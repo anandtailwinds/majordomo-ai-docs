@@ -7,7 +7,7 @@ Vectordb connection information.
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **index_name** | **str** | Name of the vector database index. | 
-**vectordb_provider** | [**VectordbProviders**](VectordbProviders.md) |  | 
+**vectordb_provider** | [**AppTypes**](AppTypes.md) |  | 
 **access_info** | **Dict[str, object]** | Any endpoint that is to be specified to reach the provider. | [optional] 
 
 ## Example

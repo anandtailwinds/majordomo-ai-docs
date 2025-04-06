@@ -6,9 +6,10 @@ Download and parse file step.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**app_type** | [**AppTypes**](AppTypes.md) |  | [optional] 
 **input_filter** | **object** | Input information like file list. | 
 **ingest_params** | [**IngestParams**](IngestParams.md) |  | [optional] 
-**input_type** | [**InputTypes**](InputTypes.md) |  | 
+**ingest_type** | [**IngestTypes**](IngestTypes.md) |  | 
 **access_info** | **object** | Access information. | 
 
 ## Example

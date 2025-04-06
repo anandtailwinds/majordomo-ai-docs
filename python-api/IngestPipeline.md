@@ -1,6 +1,6 @@
 # IngestPipeline
 
-Describes the configurable attributes of an ingest pipeline that is to be created or updated. The ingest pipeline is always a part of a parent data store.
+Describes the configurable attributes of an ingest pipeline that is to be  created or updated. The ingest pipeline is always a part of a parent data store. 
 
 ## Properties
 
@@ -9,12 +9,11 @@ Name | Type | Description | Notes
 **workspace** | **str** | The workspace this ingest pipeline belongs to. | 
 **name** | **str** | Name of the ingest pipeline. | 
 **data_store_name** | **str** | The name of the parent data store in which this ingest pipeline is present. | 
-**input_filter** | [**InputFilter**](InputFilter.md) |  | 
-**input_keys** | [**InputKeys**](InputKeys.md) |  | [optional] 
-**input_type** | [**InputTypes**](InputTypes.md) |  | 
+**input_filter** | **Dict[str, object]** | The set of parameters describing the source location and filters for accessing  the input files. The specific parameters vary depending on the type of source,  for example an S3 bucket will require a bucket name to be specified.  | 
+**app_profile_name** | **str** | The name of the application profile from which to download. | [optional] 
 **ingest_type** | [**IngestTypes**](IngestTypes.md) |  | 
 **ingest_params** | [**IngestParams**](IngestParams.md) |  | [optional] 
-**timer_on** | **bool** | Turn on the ingestion timer, once the timer expires the specified ingestion action is performed. | [optional] 
+**timer_on** | **bool** | Turn on the ingestion timer, once the timer expires the specified ingestion  action is performed.  | [optional] 
 **timer_interval** | **int** | Specify the timer interval for the ingestion action in minutes. | [optional] 
 
 ## Example

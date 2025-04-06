@@ -1,22 +1,13 @@
 # IngestPipelineInfo
 
-Ingest Pipeline configuration and operation information that is returned in GET requests.
+Ingest Pipeline configuration and operation information that is returned in GET requests. 
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**workspace** | **str** | Workspace in which the data store is present. | 
 **created_by** | **str** | The user who created the ingest pipeline. | 
-**name** | **str** | Name of the ingest pipeline. | 
-**data_store_name** | **str** | The name of the parent data store in which this ingest pipeline is present. | 
-**input_filter** | [**InputFilter**](InputFilter.md) |  | 
-**input_keys** | [**InputKeys**](InputKeys.md) |  | [optional] 
-**input_type** | [**InputTypes**](InputTypes.md) |  | 
-**ingest_type** | [**IngestTypes**](IngestTypes.md) |  | 
-**ingest_params** | [**IngestParams**](IngestParams.md) |  | [optional] 
-**timer_on** | **bool** |  | [optional] 
-**timer_interval** | **int** |  | [optional] 
+**config** | [**IngestPipeline**](IngestPipeline.md) |  | 
 **created_at** | **int** | Timestamp of the ingest pipeline creation. | 
 **last_update** | **int** | Timestamp of the last update to the ingest pipeline. | 
 

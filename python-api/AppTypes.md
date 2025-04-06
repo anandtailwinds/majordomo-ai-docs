@@ -16,15 +16,17 @@ The type of applications supported
 
 * `APP_TYPE_WEBPAGE` (value: `6`)
 
-* `APP_TYPE_PINECONE` (value: `7`)
+* `APP_TYPE_LOCAL` (value: `7`)
 
-* `APP_TYPE_MONGO_VECTORDB` (value: `8`)
+* `APP_TYPE_PINECONE` (value: `8`)
 
-* `APP_TYPE_PGVECTOR_STORE` (value: `9`)
+* `APP_TYPE_MONGO_VECTORDB` (value: `9`)
 
-* `APP_TYPE_SQL` (value: `10`)
+* `APP_TYPE_POSTGRES_VECTORDB` (value: `10`)
 
-* `APP_TYPE_MONGODB` (value: `11`)
+* `APP_TYPE_SQL` (value: `11`)
+
+* `APP_TYPE_MONGODB` (value: `12`)
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

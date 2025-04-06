@@ -8,9 +8,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **workspace** | **str** | The workspace the data store belongs to. | 
 **data_store_name** | **str** | Name of the data store | 
-**input_filter** | [**InputFilter**](InputFilter.md) |  | 
-**input_keys** | [**InputKeys**](InputKeys.md) |  | [optional] 
-**input_type** | [**InputTypes**](InputTypes.md) |  | 
+**app_profile_name** | **str** | Name of the application profile | [optional] 
+**input_filter** | **Dict[str, object]** | The set of parameters describing the source location and filters for accessing  the input files. The specific parameters vary depending on the type of source,  for example an S3 bucket will require a bucket name to be specified.  | 
 **ingest_type** | [**IngestTypes**](IngestTypes.md) |  | 
 **ingest_params** | [**IngestParams**](IngestParams.md) |  | [optional] 
 

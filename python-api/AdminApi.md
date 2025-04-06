@@ -8,14 +8,12 @@ Method | HTTP request | Description
 [**create_inference_profile**](AdminApi.md#create_inference_profile) | **POST** /inference_profiles | Create inference profile.
 [**create_model_profile**](AdminApi.md#create_model_profile) | **POST** /model_profiles | Create model profile.
 [**create_user**](AdminApi.md#create_user) | **POST** /users | Add user.
-[**create_vectordb_profile**](AdminApi.md#create_vectordb_profile) | **POST** /vectordb_profiles | Create vectordb profile.
 [**create_worker**](AdminApi.md#create_worker) | **POST** /workers | Create worker node.
 [**create_workspace**](AdminApi.md#create_workspace) | **POST** /workspaces | Create workspace.
 [**delete_app_profiles**](AdminApi.md#delete_app_profiles) | **DELETE** /app_profiles | Delete app profile.
 [**delete_inference_profiles**](AdminApi.md#delete_inference_profiles) | **DELETE** /inference_profiles | Delete inference profile.
 [**delete_model_profiles**](AdminApi.md#delete_model_profiles) | **DELETE** /model_profiles | Delete model profile.
 [**delete_user**](AdminApi.md#delete_user) | **DELETE** /users | Delete user.
-[**delete_vectordb_profiles**](AdminApi.md#delete_vectordb_profiles) | **DELETE** /vectordb_profiles | Delete vectordb profiles.
 [**delete_workers**](AdminApi.md#delete_workers) | **DELETE** /workers | Delete worker nodes.
 [**delete_workspaces**](AdminApi.md#delete_workspaces) | **DELETE** /workspaces | Delete workspace.
 [**get_allowed_profiles**](AdminApi.md#get_allowed_profiles) | **GET** /allowed_profiles | Get permitted profiles for a specific user.
@@ -24,14 +22,12 @@ Method | HTTP request | Description
 [**get_model_profiles**](AdminApi.md#get_model_profiles) | **GET** /model_profiles | Get model profiles.
 [**get_user_list**](AdminApi.md#get_user_list) | **GET** /user_list | Get list of all users.
 [**get_users**](AdminApi.md#get_users) | **GET** /users | Get users list.
-[**get_vectordb_profiles**](AdminApi.md#get_vectordb_profiles) | **GET** /vectordb_profiles | Get vectordb profiles.
 [**get_workers**](AdminApi.md#get_workers) | **GET** /workers | Get worker nodes.
 [**get_workspaces**](AdminApi.md#get_workspaces) | **GET** /workspaces | Get workspaces.
 [**update_app_profile**](AdminApi.md#update_app_profile) | **PUT** /app_profiles | Update app profile.
 [**update_inference_profile**](AdminApi.md#update_inference_profile) | **PUT** /inference_profiles | Update inference profile.
 [**update_model_profile**](AdminApi.md#update_model_profile) | **PUT** /model_profiles | Update model profile.
 [**update_user**](AdminApi.md#update_user) | **PUT** /users | Update user.
-[**update_vectordb_profile**](AdminApi.md#update_vectordb_profile) | **PUT** /vectordb_profiles | Update vectordb profile.
 [**update_worker**](AdminApi.md#update_worker) | **PUT** /workers | Update worker node.
 [**update_workspace**](AdminApi.md#update_workspace) | **PUT** /workspaces | Update workspace.
 
@@ -336,85 +332,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**UserInfo**](UserInfo.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | successful operation |  -  |
-**422** | Invalid input |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **create_vectordb_profile**
-> VectordbProfile create_vectordb_profile(vectordb_profile)
-
-Create vectordb profile.
-
-Create a vectordb profile.
-
-### Example
-
-* Bearer (JWT) Authentication (bearerAuth):
-
-```python
-import majordomo_ai
-from majordomo_ai.models.vectordb_profile import VectordbProfile
-from majordomo_ai.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to http://localhost:/25001
-# See configuration.py for a list of all supported configuration parameters.
-configuration = majordomo_ai.Configuration(
-    host = "http://localhost:/25001"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure Bearer authorization (JWT): bearerAuth
-configuration = majordomo_ai.Configuration(
-    access_token = os.environ["BEARER_TOKEN"]
-)
-
-# Enter a context with an instance of the API client
-with majordomo_ai.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = majordomo_ai.AdminApi(api_client)
-    vectordb_profile = majordomo_ai.VectordbProfile() # VectordbProfile | 
-
-    try:
-        # Create vectordb profile.
-        api_response = api_instance.create_vectordb_profile(vectordb_profile)
-        print("The response of AdminApi->create_vectordb_profile:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling AdminApi->create_vectordb_profile: %s\n" % e)
-```
-
-
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **vectordb_profile** | [**VectordbProfile**](VectordbProfile.md)|  | 
-
-### Return type
-
-[**VectordbProfile**](VectordbProfile.md)
 
 ### Authorization
 
@@ -922,90 +839,6 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | successful operation |  -  |
 **422** | Invalid input |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **delete_vectordb_profiles**
-> DeleteResponse delete_vectordb_profiles(workspace=workspace, name=name, force=force)
-
-Delete vectordb profiles.
-
-Delete one or more existing vectordb profiles.
-
-### Example
-
-* Bearer (JWT) Authentication (bearerAuth):
-
-```python
-import majordomo_ai
-from majordomo_ai.models.delete_response import DeleteResponse
-from majordomo_ai.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to http://localhost:/25001
-# See configuration.py for a list of all supported configuration parameters.
-configuration = majordomo_ai.Configuration(
-    host = "http://localhost:/25001"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure Bearer authorization (JWT): bearerAuth
-configuration = majordomo_ai.Configuration(
-    access_token = os.environ["BEARER_TOKEN"]
-)
-
-# Enter a context with an instance of the API client
-with majordomo_ai.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = majordomo_ai.AdminApi(api_client)
-    workspace = 'workspace_example' # str | The name of the workspace in which the profile exists. (optional)
-    name = 'name_example' # str | The name of the vectordb profile to delete. (optional)
-    force = True # bool | Force delete all query pipelines or data stores that are referring to this vectordb profile. This will also delete all usages of vectordb profile done by users with whom the profile is shared. (optional)
-
-    try:
-        # Delete vectordb profiles.
-        api_response = api_instance.delete_vectordb_profiles(workspace=workspace, name=name, force=force)
-        print("The response of AdminApi->delete_vectordb_profiles:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling AdminApi->delete_vectordb_profiles: %s\n" % e)
-```
-
-
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **workspace** | **str**| The name of the workspace in which the profile exists. | [optional] 
- **name** | **str**| The name of the vectordb profile to delete. | [optional] 
- **force** | **bool**| Force delete all query pipelines or data stores that are referring to this vectordb profile. This will also delete all usages of vectordb profile done by users with whom the profile is shared. | [optional] 
-
-### Return type
-
-[**DeleteResponse**](DeleteResponse.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | successful operation |  -  |
-**422** | Invalid input. |  -  |
-**401** | Unauthorized access. This is most likely because the access token has expired or the user API key is invalid. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1646,89 +1479,6 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **get_vectordb_profiles**
-> VectordbProfiles get_vectordb_profiles(workspace=workspace, name=name, shared=shared)
-
-Get vectordb profiles.
-
-Get a list of existing vectordb profiles.
-
-### Example
-
-* Bearer (JWT) Authentication (bearerAuth):
-
-```python
-import majordomo_ai
-from majordomo_ai.models.vectordb_profiles import VectordbProfiles
-from majordomo_ai.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to http://localhost:/25001
-# See configuration.py for a list of all supported configuration parameters.
-configuration = majordomo_ai.Configuration(
-    host = "http://localhost:/25001"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure Bearer authorization (JWT): bearerAuth
-configuration = majordomo_ai.Configuration(
-    access_token = os.environ["BEARER_TOKEN"]
-)
-
-# Enter a context with an instance of the API client
-with majordomo_ai.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = majordomo_ai.AdminApi(api_client)
-    workspace = 'workspace_example' # str | Query a specific workspace for model profiles. (optional)
-    name = 'name_example' # str | The name of the vectordb profile to retrieve. (optional)
-    shared = True # bool | Retrieve the profiles that are shared with this user by other users. (optional)
-
-    try:
-        # Get vectordb profiles.
-        api_response = api_instance.get_vectordb_profiles(workspace=workspace, name=name, shared=shared)
-        print("The response of AdminApi->get_vectordb_profiles:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling AdminApi->get_vectordb_profiles: %s\n" % e)
-```
-
-
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **workspace** | **str**| Query a specific workspace for model profiles. | [optional] 
- **name** | **str**| The name of the vectordb profile to retrieve. | [optional] 
- **shared** | **bool**| Retrieve the profiles that are shared with this user by other users. | [optional] 
-
-### Return type
-
-[**VectordbProfiles**](VectordbProfiles.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | successful operation |  -  |
-**422** | Invalid input |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 # **get_workers**
 > Workers get_workers(name=name)
 
@@ -2196,85 +1946,6 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/json
  - **Accept**: application/json
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | successful operation |  -  |
-**422** | Invalid input |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **update_vectordb_profile**
-> VectordbProfile update_vectordb_profile(vectordb_profile)
-
-Update vectordb profile.
-
-Update an existing vectordb profile.
-
-### Example
-
-* Bearer (JWT) Authentication (bearerAuth):
-
-```python
-import majordomo_ai
-from majordomo_ai.models.vectordb_profile import VectordbProfile
-from majordomo_ai.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to http://localhost:/25001
-# See configuration.py for a list of all supported configuration parameters.
-configuration = majordomo_ai.Configuration(
-    host = "http://localhost:/25001"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure Bearer authorization (JWT): bearerAuth
-configuration = majordomo_ai.Configuration(
-    access_token = os.environ["BEARER_TOKEN"]
-)
-
-# Enter a context with an instance of the API client
-with majordomo_ai.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = majordomo_ai.AdminApi(api_client)
-    vectordb_profile = majordomo_ai.VectordbProfile() # VectordbProfile | 
-
-    try:
-        # Update vectordb profile.
-        api_response = api_instance.update_vectordb_profile(vectordb_profile)
-        print("The response of AdminApi->update_vectordb_profile:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling AdminApi->update_vectordb_profile: %s\n" % e)
-```
-
-
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **vectordb_profile** | [**VectordbProfile**](VectordbProfile.md)|  | 
-
-### Return type
-
-[**VectordbProfile**](VectordbProfile.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/xml, application/json
 
 ### HTTP response details
 

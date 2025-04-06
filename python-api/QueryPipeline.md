@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 **llm_model_profile** | **str** | The name of the model profile to use for accessing the LLM models. | 
 **llm_model** | **str** | The LLM model to be used. | 
 **var_query_params** | [**QueryParams**](QueryParams.md) |  | [optional] 
-**extra_info** | **str** | For any queries that are performed using this pipeline, this content will be used to augment the context that is provided along with the question. For example, by default the context for SQL tables will contain the table schemas, however if we want to detail more information about the tables for all the queries, then it can be added here instead of repeating for each query. | [optional] 
+**extra_info** | **str** | For any queries that are performed using this pipeline, this content will be  used to augment the context that is provided along with the question. For example,  by default the context for SQL tables will contain the table schemas, however if we  want to detail more information about the tables for all the queries, then it can  be added here instead of repeating for each query.  | [optional] 
 **shared_users** | **List[str]** | The list of users this profile is shared with. | [optional] 
 
 ## Example
