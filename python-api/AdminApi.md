@@ -1072,7 +1072,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_app_profiles**
-> AppProfiles get_app_profiles(workspace=workspace, name=name, shared=shared)
+> AppProfiles get_app_profiles(workspace=workspace, name=name, shared=shared, operation=operation)
 
 Get app profiles.
 
@@ -1085,6 +1085,7 @@ Get a list of existing app profiles.
 ```python
 import majordomo_ai
 from majordomo_ai.models.app_profiles import AppProfiles
+from majordomo_ai.models.supported_operations import SupportedOperations
 from majordomo_ai.rest import ApiException
 from pprint import pprint
 
@@ -1111,10 +1112,11 @@ with majordomo_ai.ApiClient(configuration) as api_client:
     workspace = 'workspace_example' # str | Query a specific workspace for app profiles. (optional)
     name = 'name_example' # str | The name of the app profile to retrieve. (optional)
     shared = True # bool | Retrieve the profiles that are shared with this user by other users. (optional)
+    operation = majordomo_ai.SupportedOperations() # SupportedOperations | Retrieve the profiles that are support the operation. (optional)
 
     try:
         # Get app profiles.
-        api_response = api_instance.get_app_profiles(workspace=workspace, name=name, shared=shared)
+        api_response = api_instance.get_app_profiles(workspace=workspace, name=name, shared=shared, operation=operation)
         print("The response of AdminApi->get_app_profiles:\n")
         pprint(api_response)
     except Exception as e:
@@ -1131,6 +1133,7 @@ Name | Type | Description  | Notes
  **workspace** | **str**| Query a specific workspace for app profiles. | [optional] 
  **name** | **str**| The name of the app profile to retrieve. | [optional] 
  **shared** | **bool**| Retrieve the profiles that are shared with this user by other users. | [optional] 
+ **operation** | [**SupportedOperations**](.md)| Retrieve the profiles that are support the operation. | [optional] 
 
 ### Return type
 
