@@ -6,9 +6,9 @@ Information about the model to be deployed.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**source_type** | [**ModelSources**](ModelSources.md) |  | [optional] 
-**model_runtime** | [**ModelRuntimes**](ModelRuntimes.md) |  | [optional] 
-**registry_name** | **str** | The name of the registry application from where the model files are to be obtained.  | [optional] 
+**source_type** | [**ModelSources**](ModelSources.md) |  | 
+**app_profile_name** | **str** | Application profile containing the model files.  | [optional] 
+**model_info** | **Dict[str, object]** | Access information for the model. | [optional] 
 
 ## Example
 

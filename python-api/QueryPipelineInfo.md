@@ -7,7 +7,7 @@ Query Pipeline configuration and operation information.
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **config** | [**QueryPipeline**](QueryPipeline.md) |  | 
-**created_by** | **str** | The user who created the ingest pipeline. | 
+**created_by** | **str** | The user who created the query pipeline. | 
 **created_at** | **int** | Timestamp of the query pipeline creation. | 
 **last_update** | **int** | Timestamp of the last update to the query pipeline. | 
 

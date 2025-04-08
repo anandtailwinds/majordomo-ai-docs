@@ -11,7 +11,6 @@ Name | Type | Description | Notes
 **model_spec** | [**ModelSpec**](ModelSpec.md) |  | 
 **deployment_spec** | [**DeploymentSpec**](DeploymentSpec.md) |  | 
 **tags** | **List[str]** | Tags to describe the infra where it is running or what its purpose is. | [optional] 
-**deployment_state** | **bool** | The status of whether this deployment is to be deployed or not. | 
 
 ## Example
 

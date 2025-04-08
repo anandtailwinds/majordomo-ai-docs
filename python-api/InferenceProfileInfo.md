@@ -7,6 +7,7 @@ This contains information specific to an inference.
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **config** | [**InferenceProfile**](InferenceProfile.md) |  | 
+**last_command** | [**DeploymentCommands**](DeploymentCommands.md) |  | 
 **current_status** | [**DeploymentStatus**](DeploymentStatus.md) |  | 
 **logs** | **List[str]** | The logs from the deployment. | [optional] 
 **created_by** | **str** | The username who created this model profile | 

@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **model_name** | **str** | Name of the model. | 
 **model_provider** | [**ModelProviders**](ModelProviders.md) |  | 
+**inference_api** | [**InferenceApis**](InferenceApis.md) |  | [optional] 
 **access_info** | **Dict[str, object]** | Any endpoint that is to be specified to reach the provider. | [optional] 
 
 ## Example
