@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **TextResponse** | Pointer to **string** | Response from LLM for the user query. | [optional] 
 **SqlResponse** | Pointer to [**SQLResponse**](SQLResponse.md) |  | [optional] 
 **NoSqlResponse** | Pointer to [**NoSQLResponse**](NoSQLResponse.md) |  | [optional] 
+**TextNodes** | Pointer to **[]string** | Embedding nodes that are pertaining to the query. | [optional] 
 **Metadata** | Pointer to **map[string]string** |  | [optional] 
 
 ## Methods
@@ -102,6 +103,31 @@ SetNoSqlResponse sets NoSqlResponse field to given value.
 `func (o *QueryResponse) HasNoSqlResponse() bool`
 
 HasNoSqlResponse returns a boolean if a field has been set.
+
+### GetTextNodes
+
+`func (o *QueryResponse) GetTextNodes() []string`
+
+GetTextNodes returns the TextNodes field if non-nil, zero value otherwise.
+
+### GetTextNodesOk
+
+`func (o *QueryResponse) GetTextNodesOk() (*[]string, bool)`
+
+GetTextNodesOk returns a tuple with the TextNodes field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTextNodes
+
+`func (o *QueryResponse) SetTextNodes(v []string)`
+
+SetTextNodes sets TextNodes field to given value.
+
+### HasTextNodes
+
+`func (o *QueryResponse) HasTextNodes() bool`
+
+HasTextNodes returns a boolean if a field has been set.
 
 ### GetMetadata
 

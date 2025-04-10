@@ -6,17 +6,17 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Workspace** | **string** | Workspace in which the data store is present. | 
 **Name** | **string** | Name of the data store. | 
-**Contents** | Pointer to **string** | Description of the data store. This can be optionally included in queries. | [optional] 
 **StoreType** | [**DataStoreTypes**](DataStoreTypes.md) |  | 
-**VectordbStore** | Pointer to [**VectordbStore**](VectordbStore.md) |  | [optional] 
-**StructdbStore** | Pointer to [**StructdbStore**](StructdbStore.md) |  | [optional] 
+**AppProfileName** | **string** | Name of the application profile. | 
+**Contents** | Pointer to **string** | Description of the data store. This can be optionally included in queries. | [optional] 
+**InstanceInfo** | Pointer to **map[string]interface{}** | Information about the vector data store. | [optional] 
 **SharedUsers** | Pointer to **[]string** | The list of users this profile is shared with. | [optional] 
 
 ## Methods
 
 ### NewDataStore
 
-`func NewDataStore(workspace string, name string, storeType DataStoreTypes, ) *DataStore`
+`func NewDataStore(workspace string, name string, storeType DataStoreTypes, appProfileName string, ) *DataStore`
 
 NewDataStore instantiates a new DataStore object
 This constructor will assign default values to properties that have it defined,
@@ -71,6 +71,46 @@ and a boolean to check if the value has been set.
 SetName sets Name field to given value.
 
 
+### GetStoreType
+
+`func (o *DataStore) GetStoreType() DataStoreTypes`
+
+GetStoreType returns the StoreType field if non-nil, zero value otherwise.
+
+### GetStoreTypeOk
+
+`func (o *DataStore) GetStoreTypeOk() (*DataStoreTypes, bool)`
+
+GetStoreTypeOk returns a tuple with the StoreType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetStoreType
+
+`func (o *DataStore) SetStoreType(v DataStoreTypes)`
+
+SetStoreType sets StoreType field to given value.
+
+
+### GetAppProfileName
+
+`func (o *DataStore) GetAppProfileName() string`
+
+GetAppProfileName returns the AppProfileName field if non-nil, zero value otherwise.
+
+### GetAppProfileNameOk
+
+`func (o *DataStore) GetAppProfileNameOk() (*string, bool)`
+
+GetAppProfileNameOk returns a tuple with the AppProfileName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAppProfileName
+
+`func (o *DataStore) SetAppProfileName(v string)`
+
+SetAppProfileName sets AppProfileName field to given value.
+
+
 ### GetContents
 
 `func (o *DataStore) GetContents() string`
@@ -96,75 +136,30 @@ SetContents sets Contents field to given value.
 
 HasContents returns a boolean if a field has been set.
 
-### GetStoreType
+### GetInstanceInfo
 
-`func (o *DataStore) GetStoreType() DataStoreTypes`
+`func (o *DataStore) GetInstanceInfo() map[string]interface{}`
 
-GetStoreType returns the StoreType field if non-nil, zero value otherwise.
+GetInstanceInfo returns the InstanceInfo field if non-nil, zero value otherwise.
 
-### GetStoreTypeOk
+### GetInstanceInfoOk
 
-`func (o *DataStore) GetStoreTypeOk() (*DataStoreTypes, bool)`
+`func (o *DataStore) GetInstanceInfoOk() (*map[string]interface{}, bool)`
 
-GetStoreTypeOk returns a tuple with the StoreType field if it's non-nil, zero value otherwise
+GetInstanceInfoOk returns a tuple with the InstanceInfo field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetStoreType
+### SetInstanceInfo
 
-`func (o *DataStore) SetStoreType(v DataStoreTypes)`
+`func (o *DataStore) SetInstanceInfo(v map[string]interface{})`
 
-SetStoreType sets StoreType field to given value.
+SetInstanceInfo sets InstanceInfo field to given value.
 
+### HasInstanceInfo
 
-### GetVectordbStore
+`func (o *DataStore) HasInstanceInfo() bool`
 
-`func (o *DataStore) GetVectordbStore() VectordbStore`
-
-GetVectordbStore returns the VectordbStore field if non-nil, zero value otherwise.
-
-### GetVectordbStoreOk
-
-`func (o *DataStore) GetVectordbStoreOk() (*VectordbStore, bool)`
-
-GetVectordbStoreOk returns a tuple with the VectordbStore field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetVectordbStore
-
-`func (o *DataStore) SetVectordbStore(v VectordbStore)`
-
-SetVectordbStore sets VectordbStore field to given value.
-
-### HasVectordbStore
-
-`func (o *DataStore) HasVectordbStore() bool`
-
-HasVectordbStore returns a boolean if a field has been set.
-
-### GetStructdbStore
-
-`func (o *DataStore) GetStructdbStore() StructdbStore`
-
-GetStructdbStore returns the StructdbStore field if non-nil, zero value otherwise.
-
-### GetStructdbStoreOk
-
-`func (o *DataStore) GetStructdbStoreOk() (*StructdbStore, bool)`
-
-GetStructdbStoreOk returns a tuple with the StructdbStore field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetStructdbStore
-
-`func (o *DataStore) SetStructdbStore(v StructdbStore)`
-
-SetStructdbStore sets StructdbStore field to given value.
-
-### HasStructdbStore
-
-`func (o *DataStore) HasStructdbStore() bool`
-
-HasStructdbStore returns a boolean if a field has been set.
+HasInstanceInfo returns a boolean if a field has been set.
 
 ### GetSharedUsers
 

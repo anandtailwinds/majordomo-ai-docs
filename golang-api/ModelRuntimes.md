@@ -1,14 +1,10 @@
-# ModelInferenceApis
-
-The list of model inference APIs supported.
+# ModelRuntimes
 
 ## Enum
 
-* `API_OPENAI` (value: `1`)
 
-* `API_OLLAMA` (value: `2`)
+* `MODEL_RUNTIME_VLLM` (value: `1`)
 
-* `API_VLLM` (value: `3`)
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

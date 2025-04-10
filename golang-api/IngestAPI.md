@@ -41,7 +41,7 @@ import (
 )
 
 func main() {
-	dataStore := *openapiclient.NewDataStore("Development", "SalesDocuments", openapiclient.DataStoreTypes(1)) // DataStore | 
+	dataStore := *openapiclient.NewDataStore("Development", "SalesDocuments", openapiclient.DataStoreTypes(1), "The name of the application profile, that will also determine the type.") // DataStore | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -107,7 +107,7 @@ import (
 )
 
 func main() {
-	ingestPipeline := *openapiclient.NewIngestPipeline("Development", "my_ingest", "Customers", *openapiclient.NewInputFilter(), openapiclient.InputTypes(1), openapiclient.IngestTypes(1)) // IngestPipeline | 
+	ingestPipeline := *openapiclient.NewIngestPipeline("Development", "my_ingest", "Customers", map[string]interface{}{"key": interface{}(123)}, openapiclient.IngestTypes(1)) // IngestPipeline | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -173,7 +173,7 @@ import (
 )
 
 func main() {
-	dataStoreIngest := *openapiclient.NewDataStoreIngest("Engineering", "Customers", *openapiclient.NewInputFilter(), openapiclient.InputTypes(1), openapiclient.IngestTypes(1)) // DataStoreIngest | 
+	dataStoreIngest := *openapiclient.NewDataStoreIngest("Engineering", "Customers", map[string]interface{}{"key": interface{}(123)}, openapiclient.IngestTypes(1)) // DataStoreIngest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -817,7 +817,7 @@ import (
 )
 
 func main() {
-	dataStore := *openapiclient.NewDataStore("Development", "SalesDocuments", openapiclient.DataStoreTypes(1)) // DataStore | 
+	dataStore := *openapiclient.NewDataStore("Development", "SalesDocuments", openapiclient.DataStoreTypes(1), "The name of the application profile, that will also determine the type.") // DataStore | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -883,7 +883,7 @@ import (
 )
 
 func main() {
-	ingestPipeline := *openapiclient.NewIngestPipeline("Development", "my_ingest", "Customers", *openapiclient.NewInputFilter(), openapiclient.InputTypes(1), openapiclient.IngestTypes(1)) // IngestPipeline | 
+	ingestPipeline := *openapiclient.NewIngestPipeline("Development", "my_ingest", "Customers", map[string]interface{}{"key": interface{}(123)}, openapiclient.IngestTypes(1)) // IngestPipeline | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)

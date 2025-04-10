@@ -6,9 +6,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Workspace** | **string** | The workspace the data store belongs to. | 
 **DataStoreName** | **string** | Name of the data store | 
-**InputFilter** | [**InputFilter**](InputFilter.md) |  | 
-**InputKeys** | Pointer to [**InputKeys**](InputKeys.md) |  | [optional] 
-**InputType** | [**InputTypes**](InputTypes.md) |  | 
+**AppProfileName** | Pointer to **string** | Name of the application profile | [optional] 
+**InputFilter** | **map[string]interface{}** | The set of parameters describing the source location and filters for accessing  the input files. The specific parameters vary depending on the type of source,  for example an S3 bucket will require a bucket name to be specified.  | 
 **IngestType** | [**IngestTypes**](IngestTypes.md) |  | 
 **IngestParams** | Pointer to [**IngestParams**](IngestParams.md) |  | [optional] 
 
@@ -16,7 +15,7 @@ Name | Type | Description | Notes
 
 ### NewDataStoreIngest
 
-`func NewDataStoreIngest(workspace string, dataStoreName string, inputFilter InputFilter, inputType InputTypes, ingestType IngestTypes, ) *DataStoreIngest`
+`func NewDataStoreIngest(workspace string, dataStoreName string, inputFilter map[string]interface{}, ingestType IngestTypes, ) *DataStoreIngest`
 
 NewDataStoreIngest instantiates a new DataStoreIngest object
 This constructor will assign default values to properties that have it defined,
@@ -71,69 +70,49 @@ and a boolean to check if the value has been set.
 SetDataStoreName sets DataStoreName field to given value.
 
 
+### GetAppProfileName
+
+`func (o *DataStoreIngest) GetAppProfileName() string`
+
+GetAppProfileName returns the AppProfileName field if non-nil, zero value otherwise.
+
+### GetAppProfileNameOk
+
+`func (o *DataStoreIngest) GetAppProfileNameOk() (*string, bool)`
+
+GetAppProfileNameOk returns a tuple with the AppProfileName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAppProfileName
+
+`func (o *DataStoreIngest) SetAppProfileName(v string)`
+
+SetAppProfileName sets AppProfileName field to given value.
+
+### HasAppProfileName
+
+`func (o *DataStoreIngest) HasAppProfileName() bool`
+
+HasAppProfileName returns a boolean if a field has been set.
+
 ### GetInputFilter
 
-`func (o *DataStoreIngest) GetInputFilter() InputFilter`
+`func (o *DataStoreIngest) GetInputFilter() map[string]interface{}`
 
 GetInputFilter returns the InputFilter field if non-nil, zero value otherwise.
 
 ### GetInputFilterOk
 
-`func (o *DataStoreIngest) GetInputFilterOk() (*InputFilter, bool)`
+`func (o *DataStoreIngest) GetInputFilterOk() (*map[string]interface{}, bool)`
 
 GetInputFilterOk returns a tuple with the InputFilter field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetInputFilter
 
-`func (o *DataStoreIngest) SetInputFilter(v InputFilter)`
+`func (o *DataStoreIngest) SetInputFilter(v map[string]interface{})`
 
 SetInputFilter sets InputFilter field to given value.
-
-
-### GetInputKeys
-
-`func (o *DataStoreIngest) GetInputKeys() InputKeys`
-
-GetInputKeys returns the InputKeys field if non-nil, zero value otherwise.
-
-### GetInputKeysOk
-
-`func (o *DataStoreIngest) GetInputKeysOk() (*InputKeys, bool)`
-
-GetInputKeysOk returns a tuple with the InputKeys field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetInputKeys
-
-`func (o *DataStoreIngest) SetInputKeys(v InputKeys)`
-
-SetInputKeys sets InputKeys field to given value.
-
-### HasInputKeys
-
-`func (o *DataStoreIngest) HasInputKeys() bool`
-
-HasInputKeys returns a boolean if a field has been set.
-
-### GetInputType
-
-`func (o *DataStoreIngest) GetInputType() InputTypes`
-
-GetInputType returns the InputType field if non-nil, zero value otherwise.
-
-### GetInputTypeOk
-
-`func (o *DataStoreIngest) GetInputTypeOk() (*InputTypes, bool)`
-
-GetInputTypeOk returns a tuple with the InputType field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetInputType
-
-`func (o *DataStoreIngest) SetInputType(v InputTypes)`
-
-SetInputType sets InputType field to given value.
 
 
 ### GetIngestType

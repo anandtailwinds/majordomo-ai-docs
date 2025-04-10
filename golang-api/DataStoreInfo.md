@@ -4,15 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Workspace** | **string** | Workspace in which the data store is present. | 
-**Name** | **string** | Name of the data store. | 
-**Contents** | Pointer to **string** | Description of the data store. This can be optionally included in queries. | [optional] 
+**Config** | [**DataStore**](DataStore.md) |  | 
 **CreatedBy** | **string** | The user who created the data store. | 
-**SharedUsers** | Pointer to **[]string** | The list of users this profile is shared with. | [optional] 
-**ReadOnly** | Pointer to **bool** | Flag to indicate whether the data store is read-only. | [optional] 
-**StoreType** | [**DataStoreTypes**](DataStoreTypes.md) |  | 
-**VectordbStore** | Pointer to [**VectordbStore**](VectordbStore.md) |  | [optional] 
-**StructdbStore** | Pointer to [**StructdbStore**](StructdbStore.md) |  | [optional] 
 **CreatedAt** | **int64** | Timestamp of the data store creation. | 
 **LastUpdate** | **int64** | Timestamp of the last update to the data store. | 
 **LastQuery** | **int64** | Timestamp of last query using the data store. | 
@@ -25,7 +18,7 @@ Name | Type | Description | Notes
 
 ### NewDataStoreInfo
 
-`func NewDataStoreInfo(workspace string, name string, createdBy string, storeType DataStoreTypes, createdAt int64, lastUpdate int64, lastQuery int64, lastIngest int64, directIngestCount int64, pipelineIngestCount int64, errorIngestCount int64, ) *DataStoreInfo`
+`func NewDataStoreInfo(config DataStore, createdBy string, createdAt int64, lastUpdate int64, lastQuery int64, lastIngest int64, directIngestCount int64, pipelineIngestCount int64, errorIngestCount int64, ) *DataStoreInfo`
 
 NewDataStoreInfo instantiates a new DataStoreInfo object
 This constructor will assign default values to properties that have it defined,
@@ -40,70 +33,25 @@ NewDataStoreInfoWithDefaults instantiates a new DataStoreInfo object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetWorkspace
+### GetConfig
 
-`func (o *DataStoreInfo) GetWorkspace() string`
+`func (o *DataStoreInfo) GetConfig() DataStore`
 
-GetWorkspace returns the Workspace field if non-nil, zero value otherwise.
+GetConfig returns the Config field if non-nil, zero value otherwise.
 
-### GetWorkspaceOk
+### GetConfigOk
 
-`func (o *DataStoreInfo) GetWorkspaceOk() (*string, bool)`
+`func (o *DataStoreInfo) GetConfigOk() (*DataStore, bool)`
 
-GetWorkspaceOk returns a tuple with the Workspace field if it's non-nil, zero value otherwise
+GetConfigOk returns a tuple with the Config field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetWorkspace
+### SetConfig
 
-`func (o *DataStoreInfo) SetWorkspace(v string)`
+`func (o *DataStoreInfo) SetConfig(v DataStore)`
 
-SetWorkspace sets Workspace field to given value.
+SetConfig sets Config field to given value.
 
-
-### GetName
-
-`func (o *DataStoreInfo) GetName() string`
-
-GetName returns the Name field if non-nil, zero value otherwise.
-
-### GetNameOk
-
-`func (o *DataStoreInfo) GetNameOk() (*string, bool)`
-
-GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetName
-
-`func (o *DataStoreInfo) SetName(v string)`
-
-SetName sets Name field to given value.
-
-
-### GetContents
-
-`func (o *DataStoreInfo) GetContents() string`
-
-GetContents returns the Contents field if non-nil, zero value otherwise.
-
-### GetContentsOk
-
-`func (o *DataStoreInfo) GetContentsOk() (*string, bool)`
-
-GetContentsOk returns a tuple with the Contents field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetContents
-
-`func (o *DataStoreInfo) SetContents(v string)`
-
-SetContents sets Contents field to given value.
-
-### HasContents
-
-`func (o *DataStoreInfo) HasContents() bool`
-
-HasContents returns a boolean if a field has been set.
 
 ### GetCreatedBy
 
@@ -124,126 +72,6 @@ and a boolean to check if the value has been set.
 
 SetCreatedBy sets CreatedBy field to given value.
 
-
-### GetSharedUsers
-
-`func (o *DataStoreInfo) GetSharedUsers() []string`
-
-GetSharedUsers returns the SharedUsers field if non-nil, zero value otherwise.
-
-### GetSharedUsersOk
-
-`func (o *DataStoreInfo) GetSharedUsersOk() (*[]string, bool)`
-
-GetSharedUsersOk returns a tuple with the SharedUsers field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetSharedUsers
-
-`func (o *DataStoreInfo) SetSharedUsers(v []string)`
-
-SetSharedUsers sets SharedUsers field to given value.
-
-### HasSharedUsers
-
-`func (o *DataStoreInfo) HasSharedUsers() bool`
-
-HasSharedUsers returns a boolean if a field has been set.
-
-### GetReadOnly
-
-`func (o *DataStoreInfo) GetReadOnly() bool`
-
-GetReadOnly returns the ReadOnly field if non-nil, zero value otherwise.
-
-### GetReadOnlyOk
-
-`func (o *DataStoreInfo) GetReadOnlyOk() (*bool, bool)`
-
-GetReadOnlyOk returns a tuple with the ReadOnly field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetReadOnly
-
-`func (o *DataStoreInfo) SetReadOnly(v bool)`
-
-SetReadOnly sets ReadOnly field to given value.
-
-### HasReadOnly
-
-`func (o *DataStoreInfo) HasReadOnly() bool`
-
-HasReadOnly returns a boolean if a field has been set.
-
-### GetStoreType
-
-`func (o *DataStoreInfo) GetStoreType() DataStoreTypes`
-
-GetStoreType returns the StoreType field if non-nil, zero value otherwise.
-
-### GetStoreTypeOk
-
-`func (o *DataStoreInfo) GetStoreTypeOk() (*DataStoreTypes, bool)`
-
-GetStoreTypeOk returns a tuple with the StoreType field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetStoreType
-
-`func (o *DataStoreInfo) SetStoreType(v DataStoreTypes)`
-
-SetStoreType sets StoreType field to given value.
-
-
-### GetVectordbStore
-
-`func (o *DataStoreInfo) GetVectordbStore() VectordbStore`
-
-GetVectordbStore returns the VectordbStore field if non-nil, zero value otherwise.
-
-### GetVectordbStoreOk
-
-`func (o *DataStoreInfo) GetVectordbStoreOk() (*VectordbStore, bool)`
-
-GetVectordbStoreOk returns a tuple with the VectordbStore field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetVectordbStore
-
-`func (o *DataStoreInfo) SetVectordbStore(v VectordbStore)`
-
-SetVectordbStore sets VectordbStore field to given value.
-
-### HasVectordbStore
-
-`func (o *DataStoreInfo) HasVectordbStore() bool`
-
-HasVectordbStore returns a boolean if a field has been set.
-
-### GetStructdbStore
-
-`func (o *DataStoreInfo) GetStructdbStore() StructdbStore`
-
-GetStructdbStore returns the StructdbStore field if non-nil, zero value otherwise.
-
-### GetStructdbStoreOk
-
-`func (o *DataStoreInfo) GetStructdbStoreOk() (*StructdbStore, bool)`
-
-GetStructdbStoreOk returns a tuple with the StructdbStore field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetStructdbStore
-
-`func (o *DataStoreInfo) SetStructdbStore(v StructdbStore)`
-
-SetStructdbStore sets StructdbStore field to given value.
-
-### HasStructdbStore
-
-`func (o *DataStoreInfo) HasStructdbStore() bool`
-
-HasStructdbStore returns a boolean if a field has been set.
 
 ### GetCreatedAt
 

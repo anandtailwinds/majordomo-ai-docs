@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **LlmModelProfile** | **string** | The name of the model profile to use for accessing the LLM models. | 
 **LlmModel** | **string** | The LLM model to be used. | 
 **QueryParams** | Pointer to [**QueryParams**](QueryParams.md) |  | [optional] 
-**ExtraInfo** | Pointer to **string** | For any queries that are performed using this pipeline, this content will be used to augment the context that is provided along with the question. For example, by default the context for SQL tables will contain the table schemas, however if we want to detail more information about the tables for all the queries, then it can be added here instead of repeating for each query. | [optional] 
+**ExtraInfo** | Pointer to **string** | For any queries that are performed using this pipeline, this content will be  used to augment the context that is provided along with the question. For example,  by default the context for SQL tables will contain the table schemas, however if we  want to detail more information about the tables for all the queries, then it can  be added here instead of repeating for each query.  | [optional] 
 **SharedUsers** | Pointer to **[]string** | The list of users this profile is shared with. | [optional] 
 
 ## Methods

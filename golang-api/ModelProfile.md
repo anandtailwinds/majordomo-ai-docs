@@ -6,12 +6,12 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | **string** | Name of the model profile. | 
 **Provider** | [**ModelProviders**](ModelProviders.md) |  | 
+**InferenceApi** | Pointer to [**InferenceApis**](InferenceApis.md) |  | [optional] 
 **Tags** | Pointer to **[]string** | Tags to describe the model where it is running or what its purpose is. | [optional] 
 **Workspace** | **string** | The workspace that contains the model profile. | 
 **EmbeddingModels** | Pointer to **[]string** | List of embedding models allowed for a user who is associated to this profile. Incase list is empty all models available in the provider are allowed. | [optional] 
 **LlmModels** | Pointer to **[]string** | List of embedding models allowed for a user who is associated to this profile. Incase list is empty all models available in the provider are allowed. | [optional] 
-**AccessInfo** | Pointer to [**ModelAccessInfo**](ModelAccessInfo.md) |  | [optional] 
-**AccessKey** | Pointer to [**ModelAccessKey**](ModelAccessKey.md) |  | [optional] 
+**AccessInfo** | Pointer to **map[string]interface{}** | Credentials for application. | [optional] 
 **SharedUsers** | Pointer to **[]string** | The list of users this profile is shared with. | [optional] 
 
 ## Methods
@@ -72,6 +72,31 @@ and a boolean to check if the value has been set.
 
 SetProvider sets Provider field to given value.
 
+
+### GetInferenceApi
+
+`func (o *ModelProfile) GetInferenceApi() InferenceApis`
+
+GetInferenceApi returns the InferenceApi field if non-nil, zero value otherwise.
+
+### GetInferenceApiOk
+
+`func (o *ModelProfile) GetInferenceApiOk() (*InferenceApis, bool)`
+
+GetInferenceApiOk returns a tuple with the InferenceApi field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetInferenceApi
+
+`func (o *ModelProfile) SetInferenceApi(v InferenceApis)`
+
+SetInferenceApi sets InferenceApi field to given value.
+
+### HasInferenceApi
+
+`func (o *ModelProfile) HasInferenceApi() bool`
+
+HasInferenceApi returns a boolean if a field has been set.
 
 ### GetTags
 
@@ -170,20 +195,20 @@ HasLlmModels returns a boolean if a field has been set.
 
 ### GetAccessInfo
 
-`func (o *ModelProfile) GetAccessInfo() ModelAccessInfo`
+`func (o *ModelProfile) GetAccessInfo() map[string]interface{}`
 
 GetAccessInfo returns the AccessInfo field if non-nil, zero value otherwise.
 
 ### GetAccessInfoOk
 
-`func (o *ModelProfile) GetAccessInfoOk() (*ModelAccessInfo, bool)`
+`func (o *ModelProfile) GetAccessInfoOk() (*map[string]interface{}, bool)`
 
 GetAccessInfoOk returns a tuple with the AccessInfo field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAccessInfo
 
-`func (o *ModelProfile) SetAccessInfo(v ModelAccessInfo)`
+`func (o *ModelProfile) SetAccessInfo(v map[string]interface{})`
 
 SetAccessInfo sets AccessInfo field to given value.
 
@@ -192,31 +217,6 @@ SetAccessInfo sets AccessInfo field to given value.
 `func (o *ModelProfile) HasAccessInfo() bool`
 
 HasAccessInfo returns a boolean if a field has been set.
-
-### GetAccessKey
-
-`func (o *ModelProfile) GetAccessKey() ModelAccessKey`
-
-GetAccessKey returns the AccessKey field if non-nil, zero value otherwise.
-
-### GetAccessKeyOk
-
-`func (o *ModelProfile) GetAccessKeyOk() (*ModelAccessKey, bool)`
-
-GetAccessKeyOk returns a tuple with the AccessKey field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAccessKey
-
-`func (o *ModelProfile) SetAccessKey(v ModelAccessKey)`
-
-SetAccessKey sets AccessKey field to given value.
-
-### HasAccessKey
-
-`func (o *ModelProfile) HasAccessKey() bool`
-
-HasAccessKey returns a boolean if a field has been set.
 
 ### GetSharedUsers
 

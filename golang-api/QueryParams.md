@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **TopK** | Pointer to **int32** | The number of vector db matches to consider for llm context | [optional] [default to 2]
 **Temperature** | Pointer to **float32** | The temperature of the LLM processing, the higher the more creative the LLM is. | [optional] 
-**DocMetadata** | Pointer to [**[]Metadata**](Metadata.md) | Dictionary of metadata key/value pairs that are to be inserted into the vector database along with the chunks. This is useful while retrieval to restrict the relevant chunks. | [optional] 
+**DocMetadata** | Pointer to [**[]Metadata**](Metadata.md) | Dictionary of metadata key/value pairs that are to be inserted into the vector  database along with the chunks. This is useful while retrieval to restrict the  relevant chunks.  | [optional] 
 **QueryMode** | Pointer to [**QueryModes**](QueryModes.md) |  | [optional] 
 **DebugMode** | Pointer to **bool** | Query results will include debug information. | [optional] [default to false]
 

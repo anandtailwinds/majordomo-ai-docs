@@ -7,8 +7,8 @@ Information about the model to be deployed.
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **source_type** | [**ModelSources**](ModelSources.md) |  | 
-**app_profile_name** | **str** | Application profile containing the model files.  | [optional] 
-**model_info** | **Dict[str, object]** | Access information for the model. | [optional] 
+**app_profile_name** | **str** | Application profile containing the model files.  | 
+**model_info** | **Dict[str, object]** | Access information for the model. | 
 
 ## Example
 

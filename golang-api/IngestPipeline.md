@@ -7,19 +7,18 @@ Name | Type | Description | Notes
 **Workspace** | **string** | The workspace this ingest pipeline belongs to. | 
 **Name** | **string** | Name of the ingest pipeline. | 
 **DataStoreName** | **string** | The name of the parent data store in which this ingest pipeline is present. | 
-**InputFilter** | [**InputFilter**](InputFilter.md) |  | 
-**InputKeys** | Pointer to [**InputKeys**](InputKeys.md) |  | [optional] 
-**InputType** | [**InputTypes**](InputTypes.md) |  | 
+**InputFilter** | **map[string]interface{}** | The set of parameters describing the source location and filters for accessing  the input files. The specific parameters vary depending on the type of source,  for example an S3 bucket will require a bucket name to be specified.  | 
+**AppProfileName** | Pointer to **string** | The name of the application profile from which to download. | [optional] 
 **IngestType** | [**IngestTypes**](IngestTypes.md) |  | 
 **IngestParams** | Pointer to [**IngestParams**](IngestParams.md) |  | [optional] 
-**TimerOn** | Pointer to **bool** | Turn on the ingestion timer, once the timer expires the specified ingestion action is performed. | [optional] 
+**TimerOn** | Pointer to **bool** | Turn on the ingestion timer, once the timer expires the specified ingestion  action is performed.  | [optional] 
 **TimerInterval** | Pointer to **int64** | Specify the timer interval for the ingestion action in minutes. | [optional] 
 
 ## Methods
 
 ### NewIngestPipeline
 
-`func NewIngestPipeline(workspace string, name string, dataStoreName string, inputFilter InputFilter, inputType InputTypes, ingestType IngestTypes, ) *IngestPipeline`
+`func NewIngestPipeline(workspace string, name string, dataStoreName string, inputFilter map[string]interface{}, ingestType IngestTypes, ) *IngestPipeline`
 
 NewIngestPipeline instantiates a new IngestPipeline object
 This constructor will assign default values to properties that have it defined,
@@ -96,68 +95,48 @@ SetDataStoreName sets DataStoreName field to given value.
 
 ### GetInputFilter
 
-`func (o *IngestPipeline) GetInputFilter() InputFilter`
+`func (o *IngestPipeline) GetInputFilter() map[string]interface{}`
 
 GetInputFilter returns the InputFilter field if non-nil, zero value otherwise.
 
 ### GetInputFilterOk
 
-`func (o *IngestPipeline) GetInputFilterOk() (*InputFilter, bool)`
+`func (o *IngestPipeline) GetInputFilterOk() (*map[string]interface{}, bool)`
 
 GetInputFilterOk returns a tuple with the InputFilter field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetInputFilter
 
-`func (o *IngestPipeline) SetInputFilter(v InputFilter)`
+`func (o *IngestPipeline) SetInputFilter(v map[string]interface{})`
 
 SetInputFilter sets InputFilter field to given value.
 
 
-### GetInputKeys
+### GetAppProfileName
 
-`func (o *IngestPipeline) GetInputKeys() InputKeys`
+`func (o *IngestPipeline) GetAppProfileName() string`
 
-GetInputKeys returns the InputKeys field if non-nil, zero value otherwise.
+GetAppProfileName returns the AppProfileName field if non-nil, zero value otherwise.
 
-### GetInputKeysOk
+### GetAppProfileNameOk
 
-`func (o *IngestPipeline) GetInputKeysOk() (*InputKeys, bool)`
+`func (o *IngestPipeline) GetAppProfileNameOk() (*string, bool)`
 
-GetInputKeysOk returns a tuple with the InputKeys field if it's non-nil, zero value otherwise
+GetAppProfileNameOk returns a tuple with the AppProfileName field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetInputKeys
+### SetAppProfileName
 
-`func (o *IngestPipeline) SetInputKeys(v InputKeys)`
+`func (o *IngestPipeline) SetAppProfileName(v string)`
 
-SetInputKeys sets InputKeys field to given value.
+SetAppProfileName sets AppProfileName field to given value.
 
-### HasInputKeys
+### HasAppProfileName
 
-`func (o *IngestPipeline) HasInputKeys() bool`
+`func (o *IngestPipeline) HasAppProfileName() bool`
 
-HasInputKeys returns a boolean if a field has been set.
-
-### GetInputType
-
-`func (o *IngestPipeline) GetInputType() InputTypes`
-
-GetInputType returns the InputType field if non-nil, zero value otherwise.
-
-### GetInputTypeOk
-
-`func (o *IngestPipeline) GetInputTypeOk() (*InputTypes, bool)`
-
-GetInputTypeOk returns a tuple with the InputType field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetInputType
-
-`func (o *IngestPipeline) SetInputType(v InputTypes)`
-
-SetInputType sets InputType field to given value.
-
+HasAppProfileName returns a boolean if a field has been set.
 
 ### GetIngestType
 

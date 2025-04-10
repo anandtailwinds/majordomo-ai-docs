@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **FileList** | **[]string** | File list to be ingested, wild cards are allowed. | 
 **S3Bucket** | **string** | Name of the S3 bucket in case of AWS storage. | 
+**Region** | Pointer to **string** | Name of the region in which the bucket is present. | [optional] 
 
 ## Methods
 
@@ -65,6 +66,31 @@ and a boolean to check if the value has been set.
 
 SetS3Bucket sets S3Bucket field to given value.
 
+
+### GetRegion
+
+`func (o *AWSS3Input) GetRegion() string`
+
+GetRegion returns the Region field if non-nil, zero value otherwise.
+
+### GetRegionOk
+
+`func (o *AWSS3Input) GetRegionOk() (*string, bool)`
+
+GetRegionOk returns a tuple with the Region field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRegion
+
+`func (o *AWSS3Input) SetRegion(v string)`
+
+SetRegion sets Region field to given value.
+
+### HasRegion
+
+`func (o *AWSS3Input) HasRegion() bool`
+
+HasRegion returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

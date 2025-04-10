@@ -4,34 +4,100 @@ All URIs are relative to *http://localhost:/25001*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**CreateAppProfile**](AdminAPI.md#CreateAppProfile) | **Post** /app_profiles | Create app profile.
 [**CreateModelProfile**](AdminAPI.md#CreateModelProfile) | **Post** /model_profiles | Create model profile.
 [**CreateUser**](AdminAPI.md#CreateUser) | **Post** /users | Add user.
-[**CreateVectordbProfile**](AdminAPI.md#CreateVectordbProfile) | **Post** /vectordb_profiles | Create vectordb profile.
 [**CreateWorker**](AdminAPI.md#CreateWorker) | **Post** /workers | Create worker node.
 [**CreateWorkspace**](AdminAPI.md#CreateWorkspace) | **Post** /workspaces | Create workspace.
+[**DeleteAppProfiles**](AdminAPI.md#DeleteAppProfiles) | **Delete** /app_profiles | Delete app profile.
 [**DeleteModelProfiles**](AdminAPI.md#DeleteModelProfiles) | **Delete** /model_profiles | Delete model profile.
 [**DeleteUser**](AdminAPI.md#DeleteUser) | **Delete** /users | Delete user.
-[**DeleteVectordbProfiles**](AdminAPI.md#DeleteVectordbProfiles) | **Delete** /vectordb_profiles | Delete vectordb profiles.
 [**DeleteWorkers**](AdminAPI.md#DeleteWorkers) | **Delete** /workers | Delete worker nodes.
 [**DeleteWorkspaces**](AdminAPI.md#DeleteWorkspaces) | **Delete** /workspaces | Delete workspace.
 [**GetAllowedProfiles**](AdminAPI.md#GetAllowedProfiles) | **Get** /allowed_profiles | Get permitted profiles for a specific user.
+[**GetAppProfiles**](AdminAPI.md#GetAppProfiles) | **Get** /app_profiles | Get app profiles.
 [**GetModelProfiles**](AdminAPI.md#GetModelProfiles) | **Get** /model_profiles | Get model profiles.
 [**GetUserList**](AdminAPI.md#GetUserList) | **Get** /user_list | Get list of all users.
 [**GetUsers**](AdminAPI.md#GetUsers) | **Get** /users | Get users list.
-[**GetVectordbProfiles**](AdminAPI.md#GetVectordbProfiles) | **Get** /vectordb_profiles | Get vectordb profiles.
 [**GetWorkers**](AdminAPI.md#GetWorkers) | **Get** /workers | Get worker nodes.
 [**GetWorkspaces**](AdminAPI.md#GetWorkspaces) | **Get** /workspaces | Get workspaces.
+[**UpdateAppProfile**](AdminAPI.md#UpdateAppProfile) | **Put** /app_profiles | Update app profile.
 [**UpdateModelProfile**](AdminAPI.md#UpdateModelProfile) | **Put** /model_profiles | Update model profile.
 [**UpdateUser**](AdminAPI.md#UpdateUser) | **Put** /users | Update user.
-[**UpdateVectordbProfile**](AdminAPI.md#UpdateVectordbProfile) | **Put** /vectordb_profiles | Update vectordb profile.
 [**UpdateWorker**](AdminAPI.md#UpdateWorker) | **Put** /workers | Update worker node.
 [**UpdateWorkspace**](AdminAPI.md#UpdateWorkspace) | **Put** /workspaces | Update workspace.
 
 
 
+## CreateAppProfile
+
+> AppProfileInfo CreateAppProfile(ctx).AppProfile(appProfile).Execute()
+
+Create app profile.
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+)
+
+func main() {
+	appProfile := *openapiclient.NewAppProfile("Name_example", "{"name":"Engineering"}", openapiclient.AppTypes(1), map[string]interface{}{"key": interface{}(123)}) // AppProfile | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AdminAPI.CreateAppProfile(context.Background()).AppProfile(appProfile).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AdminAPI.CreateAppProfile``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `CreateAppProfile`: AppProfileInfo
+	fmt.Fprintf(os.Stdout, "Response from `AdminAPI.CreateAppProfile`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCreateAppProfileRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **appProfile** | [**AppProfile**](AppProfile.md) |  | 
+
+### Return type
+
+[**AppProfileInfo**](AppProfileInfo.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## CreateModelProfile
 
-> ModelProfile CreateModelProfile(ctx).ModelProfile(modelProfile).Execute()
+> ModelProfileInfo CreateModelProfile(ctx).ModelProfile(modelProfile).Execute()
 
 Create model profile.
 
@@ -59,7 +125,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `AdminAPI.CreateModelProfile``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `CreateModelProfile`: ModelProfile
+	// response from `CreateModelProfile`: ModelProfileInfo
 	fmt.Fprintf(os.Stdout, "Response from `AdminAPI.CreateModelProfile`: %v\n", resp)
 }
 ```
@@ -79,7 +145,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ModelProfile**](ModelProfile.md)
+[**ModelProfileInfo**](ModelProfileInfo.md)
 
 ### Authorization
 
@@ -146,72 +212,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**UserInfo**](UserInfo.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## CreateVectordbProfile
-
-> VectordbProfile CreateVectordbProfile(ctx).VectordbProfile(vectordbProfile).Execute()
-
-Create vectordb profile.
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
-)
-
-func main() {
-	vectordbProfile := *openapiclient.NewVectordbProfile("Name_example", openapiclient.VectordbProviders(1), "{"name":"Engineering"}") // VectordbProfile | 
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.AdminAPI.CreateVectordbProfile(context.Background()).VectordbProfile(vectordbProfile).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AdminAPI.CreateVectordbProfile``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `CreateVectordbProfile`: VectordbProfile
-	fmt.Fprintf(os.Stdout, "Response from `AdminAPI.CreateVectordbProfile`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiCreateVectordbProfileRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **vectordbProfile** | [**VectordbProfile**](VectordbProfile.md) |  | 
-
-### Return type
-
-[**VectordbProfile**](VectordbProfile.md)
 
 ### Authorization
 
@@ -359,6 +359,76 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## DeleteAppProfiles
+
+> DeleteResponse DeleteAppProfiles(ctx).Workspace(workspace).Name(name).Force(force).Execute()
+
+Delete app profile.
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+)
+
+func main() {
+	workspace := "workspace_example" // string | The name of the workspace in which the profile exists. (optional)
+	name := "name_example" // string | The name of the app profile to delete. (optional)
+	force := true // bool | Force delete all query pipelines or data stores that are referring to this app profile. This will also delete all usages of app profile done by users with whom the profile is shared. (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AdminAPI.DeleteAppProfiles(context.Background()).Workspace(workspace).Name(name).Force(force).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AdminAPI.DeleteAppProfiles``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `DeleteAppProfiles`: DeleteResponse
+	fmt.Fprintf(os.Stdout, "Response from `AdminAPI.DeleteAppProfiles`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDeleteAppProfilesRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **workspace** | **string** | The name of the workspace in which the profile exists. | 
+ **name** | **string** | The name of the app profile to delete. | 
+ **force** | **bool** | Force delete all query pipelines or data stores that are referring to this app profile. This will also delete all usages of app profile done by users with whom the profile is shared. | 
+
+### Return type
+
+[**DeleteResponse**](DeleteResponse.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## DeleteModelProfiles
 
 > DeleteResponse DeleteModelProfiles(ctx).Workspace(workspace).Name(name).Force(force).Execute()
@@ -476,76 +546,6 @@ Other parameters are passed through a pointer to a apiDeleteUserRequest struct v
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **string** | The name of the user to delete. | 
-
-### Return type
-
-[**DeleteResponse**](DeleteResponse.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## DeleteVectordbProfiles
-
-> DeleteResponse DeleteVectordbProfiles(ctx).Workspace(workspace).Name(name).Force(force).Execute()
-
-Delete vectordb profiles.
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
-)
-
-func main() {
-	workspace := "workspace_example" // string | The name of the workspace in which the profile exists. (optional)
-	name := "name_example" // string | The name of the vectordb profile to delete. (optional)
-	force := true // bool | Force delete all query pipelines or data stores that are referring to this vectordb profile. This will also delete all usages of vectordb profile done by users with whom the profile is shared. (optional)
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.AdminAPI.DeleteVectordbProfiles(context.Background()).Workspace(workspace).Name(name).Force(force).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AdminAPI.DeleteVectordbProfiles``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `DeleteVectordbProfiles`: DeleteResponse
-	fmt.Fprintf(os.Stdout, "Response from `AdminAPI.DeleteVectordbProfiles`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiDeleteVectordbProfilesRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **workspace** | **string** | The name of the workspace in which the profile exists. | 
- **name** | **string** | The name of the vectordb profile to delete. | 
- **force** | **bool** | Force delete all query pipelines or data stores that are referring to this vectordb profile. This will also delete all usages of vectordb profile done by users with whom the profile is shared. | 
 
 ### Return type
 
@@ -746,6 +746,78 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**AllowedProfiles**](AllowedProfiles.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetAppProfiles
+
+> AppProfiles GetAppProfiles(ctx).Workspace(workspace).Name(name).Shared(shared).Operation(operation).Execute()
+
+Get app profiles.
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+)
+
+func main() {
+	workspace := "workspace_example" // string | Query a specific workspace for app profiles. (optional)
+	name := "name_example" // string | The name of the app profile to retrieve. (optional)
+	shared := true // bool | Retrieve the profiles that are shared with this user by other users. (optional)
+	operation := openapiclient.SupportedOperations(1) // SupportedOperations | Retrieve the profiles that are support the operation. (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AdminAPI.GetAppProfiles(context.Background()).Workspace(workspace).Name(name).Shared(shared).Operation(operation).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AdminAPI.GetAppProfiles``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetAppProfiles`: AppProfiles
+	fmt.Fprintf(os.Stdout, "Response from `AdminAPI.GetAppProfiles`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetAppProfilesRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **workspace** | **string** | Query a specific workspace for app profiles. | 
+ **name** | **string** | The name of the app profile to retrieve. | 
+ **shared** | **bool** | Retrieve the profiles that are shared with this user by other users. | 
+ **operation** | [**SupportedOperations**](SupportedOperations.md) | Retrieve the profiles that are support the operation. | 
+
+### Return type
+
+[**AppProfiles**](AppProfiles.md)
 
 ### Authorization
 
@@ -965,76 +1037,6 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetVectordbProfiles
-
-> VectordbProfiles GetVectordbProfiles(ctx).Workspace(workspace).Name(name).Shared(shared).Execute()
-
-Get vectordb profiles.
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
-)
-
-func main() {
-	workspace := "workspace_example" // string | Query a specific workspace for model profiles. (optional)
-	name := "name_example" // string | The name of the vectordb profile to retrieve. (optional)
-	shared := true // bool | Retrieve the profiles that are shared with this user by other users. (optional)
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.AdminAPI.GetVectordbProfiles(context.Background()).Workspace(workspace).Name(name).Shared(shared).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AdminAPI.GetVectordbProfiles``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `GetVectordbProfiles`: VectordbProfiles
-	fmt.Fprintf(os.Stdout, "Response from `AdminAPI.GetVectordbProfiles`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetVectordbProfilesRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **workspace** | **string** | Query a specific workspace for model profiles. | 
- **name** | **string** | The name of the vectordb profile to retrieve. | 
- **shared** | **bool** | Retrieve the profiles that are shared with this user by other users. | 
-
-### Return type
-
-[**VectordbProfiles**](VectordbProfiles.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
 ## GetWorkers
 
 > Workers GetWorkers(ctx).Name(name).Execute()
@@ -1167,9 +1169,75 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## UpdateAppProfile
+
+> AppProfileInfo UpdateAppProfile(ctx).AppProfile(appProfile).Execute()
+
+Update app profile.
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+)
+
+func main() {
+	appProfile := *openapiclient.NewAppProfile("Name_example", "{"name":"Engineering"}", openapiclient.AppTypes(1), map[string]interface{}{"key": interface{}(123)}) // AppProfile | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AdminAPI.UpdateAppProfile(context.Background()).AppProfile(appProfile).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AdminAPI.UpdateAppProfile``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `UpdateAppProfile`: AppProfileInfo
+	fmt.Fprintf(os.Stdout, "Response from `AdminAPI.UpdateAppProfile`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUpdateAppProfileRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **appProfile** | [**AppProfile**](AppProfile.md) |  | 
+
+### Return type
+
+[**AppProfileInfo**](AppProfileInfo.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/xml, application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## UpdateModelProfile
 
-> ModelProfile UpdateModelProfile(ctx).ModelProfile(modelProfile).Execute()
+> ModelProfileInfo UpdateModelProfile(ctx).ModelProfile(modelProfile).Execute()
 
 Update model profile.
 
@@ -1197,7 +1265,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `AdminAPI.UpdateModelProfile``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `UpdateModelProfile`: ModelProfile
+	// response from `UpdateModelProfile`: ModelProfileInfo
 	fmt.Fprintf(os.Stdout, "Response from `AdminAPI.UpdateModelProfile`: %v\n", resp)
 }
 ```
@@ -1217,7 +1285,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ModelProfile**](ModelProfile.md)
+[**ModelProfileInfo**](ModelProfileInfo.md)
 
 ### Authorization
 
@@ -1293,72 +1361,6 @@ Name | Type | Description  | Notes
 
 - **Content-Type**: application/json
 - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## UpdateVectordbProfile
-
-> VectordbProfile UpdateVectordbProfile(ctx).VectordbProfile(vectordbProfile).Execute()
-
-Update vectordb profile.
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
-)
-
-func main() {
-	vectordbProfile := *openapiclient.NewVectordbProfile("Name_example", openapiclient.VectordbProviders(1), "{"name":"Engineering"}") // VectordbProfile | 
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.AdminAPI.UpdateVectordbProfile(context.Background()).VectordbProfile(vectordbProfile).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AdminAPI.UpdateVectordbProfile``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `UpdateVectordbProfile`: VectordbProfile
-	fmt.Fprintf(os.Stdout, "Response from `AdminAPI.UpdateVectordbProfile`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiUpdateVectordbProfileRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **vectordbProfile** | [**VectordbProfile**](VectordbProfile.md) |  | 
-
-### Return type
-
-[**VectordbProfile**](VectordbProfile.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/xml, application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
