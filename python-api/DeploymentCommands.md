@@ -10,6 +10,8 @@ The types of deployment commands.
 
 * `DEPLOYMENT_COMMAND_STOP` (value: `3`)
 
+* `DEPLOYMENT_COMMAND_ABORT` (value: `4`)
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
 

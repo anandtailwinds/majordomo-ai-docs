@@ -92,7 +92,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_inference_profiles**
-> DeleteResponse delete_inference_profiles(workspace=workspace, name=name, force=force)
+> DeleteResponse delete_inference_profiles(workspace=workspace, name=name, logs=logs)
 
 Delete inference profile.
 
@@ -130,11 +130,11 @@ with majordomo_ai.ApiClient(configuration) as api_client:
     api_instance = majordomo_ai.InferenceApi(api_client)
     workspace = 'workspace_example' # str | The name of the workspace in which the profile exists. (optional)
     name = 'name_example' # str | The name of the inference profile to delete. (optional)
-    force = True # bool | Force delete all query pipelines or data stores that are referring to this inference profile. This will also delete all usages of inference profile done by users with whom the profile is shared. (optional)
+    logs = True # bool | Delete only logs of the matching entries. (optional)
 
     try:
         # Delete inference profile.
-        api_response = api_instance.delete_inference_profiles(workspace=workspace, name=name, force=force)
+        api_response = api_instance.delete_inference_profiles(workspace=workspace, name=name, logs=logs)
         print("The response of InferenceApi->delete_inference_profiles:\n")
         pprint(api_response)
     except Exception as e:
@@ -150,7 +150,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **workspace** | **str**| The name of the workspace in which the profile exists. | [optional] 
  **name** | **str**| The name of the inference profile to delete. | [optional] 
- **force** | **bool**| Force delete all query pipelines or data stores that are referring to this inference profile. This will also delete all usages of inference profile done by users with whom the profile is shared. | [optional] 
+ **logs** | **bool**| Delete only logs of the matching entries. | [optional] 
 
 ### Return type
 
@@ -176,7 +176,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_inference_profiles**
-> InferenceProfiles get_inference_profiles(workspace=workspace, name=name, shared=shared)
+> InferenceProfiles get_inference_profiles(workspace=workspace, name=name)
 
 Get inference profiles.
 
@@ -214,11 +214,10 @@ with majordomo_ai.ApiClient(configuration) as api_client:
     api_instance = majordomo_ai.InferenceApi(api_client)
     workspace = 'workspace_example' # str | Query a specific workspace for inference profiles. (optional)
     name = 'name_example' # str | The name of the inference profile to retrieve. (optional)
-    shared = True # bool | Retrieve the profiles that are shared with this user by other users. (optional)
 
     try:
         # Get inference profiles.
-        api_response = api_instance.get_inference_profiles(workspace=workspace, name=name, shared=shared)
+        api_response = api_instance.get_inference_profiles(workspace=workspace, name=name)
         print("The response of InferenceApi->get_inference_profiles:\n")
         pprint(api_response)
     except Exception as e:
@@ -234,7 +233,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **workspace** | **str**| Query a specific workspace for inference profiles. | [optional] 
  **name** | **str**| The name of the inference profile to retrieve. | [optional] 
- **shared** | **bool**| Retrieve the profiles that are shared with this user by other users. | [optional] 
 
 ### Return type
 

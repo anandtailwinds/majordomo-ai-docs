@@ -28,6 +28,10 @@ The type of applications supported
 
 * `APP_TYPE_MONGODB` (value: `12`)
 
+* `APP_TYPE_CONFLUENCE` (value: `13`)
+
+* `APP_TYPE_ELASTIC_SEARCH` (value: `14`)
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
 
