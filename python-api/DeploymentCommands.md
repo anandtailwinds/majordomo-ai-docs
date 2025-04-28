@@ -12,6 +12,8 @@ The types of deployment commands.
 
 * `DEPLOYMENT_COMMAND_ABORT` (value: `4`)
 
+* `DEPLOYMENT_COMMAND_HEALTH_CHECK` (value: `5`)
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
 

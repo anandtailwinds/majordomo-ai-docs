@@ -6,11 +6,10 @@ Download and parse file step.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**app_type** | [**AppTypes**](AppTypes.md) |  | [optional] 
+**app_profile_name** | **str** | The name of the application profile to access the content. | 
 **input_filter** | **object** | Input information like file list. | 
 **ingest_params** | [**IngestParams**](IngestParams.md) |  | [optional] 
 **ingest_type** | [**IngestTypes**](IngestTypes.md) |  | 
-**access_info** | **object** | Access information. | 
 
 ## Example
 

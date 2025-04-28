@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **last_command** | [**DeploymentCommands**](DeploymentCommands.md) |  | 
 **current_status** | [**DeploymentStatus**](DeploymentStatus.md) |  | 
 **execution_success** | **int** | The level of execution success in last run, updated after each message specifying the progress level from worker is received.  | 
+**endpoint_info** | **Dict[str, object]** | Endpoint information in case it is dynamically determined. | [optional] 
 **logs** | **List[str]** | The logs from the deployment. | [optional] 
 **created_by** | **str** | The username who created this model profile | 
 **created_at** | **int** | Timestamp of the model profile creation | 

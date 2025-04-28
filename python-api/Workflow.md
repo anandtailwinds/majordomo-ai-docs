@@ -6,12 +6,13 @@ Workflow information.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**name** | **str** |  | 
-**workflow_type** | [**WorkflowTypes**](WorkflowTypes.md) |  | 
-**contents** | **str** | Describes the work done by the workflow. | [optional] 
-**user_name** | **str** | Name of the user triggering the workflow. | 
 **workspace** | **str** | Workspace in which the workflow is triggered. | 
+**name** | **str** | The id that uniquely identifies this workflow. | 
+**workflow_type** | **str** | The type of workflow, custom types are allowed as long as it is  supported in the worker.  | 
+**workflow_provider** | [**WorkflowProviders**](WorkflowProviders.md) |  | [optional] 
+**contents** | **str** | Describes the work done by the workflow. | [optional] 
 **steps** | [**List[WorkflowStep]**](WorkflowStep.md) | Workflow specific data. | 
+**shared_users** | **List[str]** | The list of users this workflow is shared with. | [optional] 
 
 ## Example
 

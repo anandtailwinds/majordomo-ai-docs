@@ -6,8 +6,7 @@ Upload nodes to vector database.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**embedding_model_info** | [**ModelInfo**](ModelInfo.md) |  | 
-**vectordb_info** | [**VectordbInfo**](VectordbInfo.md) |  | 
+**data_store_name** | **str** | The name of the data store to lookup. | 
 
 ## Example
 

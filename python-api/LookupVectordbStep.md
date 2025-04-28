@@ -6,9 +6,7 @@ RAG Query vectordb lookup step.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**embedding_model_info** | [**ModelInfo**](ModelInfo.md) |  | 
-**vectordb_info** | [**VectordbInfo**](VectordbInfo.md) |  | 
-**query_string** | **str** | Query string | 
+**data_store_name** | **str** | The name of the data store to lookup. | 
 **var_query_params** | [**QueryParams**](QueryParams.md) |  | [optional] 
 
 ## Example

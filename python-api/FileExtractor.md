@@ -6,8 +6,8 @@ Mapping of file extractors.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**extension** | **str** | The extension for which the extractor has to be applied. | 
-**extractor** | [**FileExtractors**](FileExtractors.md) |  | 
+**extractor_type** | [**FileExtractors**](FileExtractors.md) |  | 
+**access_info** | **Dict[str, object]** | Parameters required for accessing the file extractor. | [optional] 
 
 ## Example
 

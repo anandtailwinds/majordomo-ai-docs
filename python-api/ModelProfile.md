@@ -11,9 +11,9 @@ Name | Type | Description | Notes
 **inference_api** | [**InferenceApis**](InferenceApis.md) |  | [optional] 
 **tags** | **List[str]** | Tags to describe the model where it is running or what its purpose is. | [optional] 
 **workspace** | **str** | The workspace that contains the model profile. | 
-**embedding_models** | **List[str]** | List of embedding models allowed for a user who is associated to this profile. Incase list is empty all models available in the provider are allowed. | [optional] 
-**llm_models** | **List[str]** | List of embedding models allowed for a user who is associated to this profile. Incase list is empty all models available in the provider are allowed. | [optional] 
-**access_info** | **Dict[str, object]** | Credentials for application. | [optional] 
+**embedding_models** | **List[str]** | List of embedding models allowed for a user who is associated to this profile.  Incase list is empty all models available in the provider are allowed.  | [optional] 
+**llm_models** | **List[str]** | List of LLM models allowed for a user who is associated to this profile.  Incase list is empty all models available in the provider are allowed.  | [optional] 
+**access_info** | **Dict[str, object]** | Parameters required for accessing the model. | [optional] 
 **shared_users** | **List[str]** | The list of users this profile is shared with. | [optional] 
 
 ## Example

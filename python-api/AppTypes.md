@@ -32,6 +32,8 @@ The type of applications supported
 
 * `APP_TYPE_ELASTIC_SEARCH` (value: `14`)
 
+* `APP_TYPE_JIRA` (value: `15`)
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
 

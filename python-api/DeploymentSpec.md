@@ -6,7 +6,7 @@ This contains information specific to an inference deployment.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**deployment_type** | [**DeploymentTypes**](DeploymentTypes.md) |  | [optional] 
+**deployment_type** | [**DeploymentTypes**](DeploymentTypes.md) |  | 
 **access_info** | **Dict[str, object]** | Access information for the deployment itself. | [optional] 
 **deployment_info** | **Dict[str, object]** | Optional parameters for deployment. | [optional] 
 

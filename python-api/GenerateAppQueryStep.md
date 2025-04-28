@@ -6,10 +6,9 @@ Application Database Query Generation
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**app_info** | [**AppInfo**](AppInfo.md) |  | 
-**embedding_model_info** | [**ModelInfo**](ModelInfo.md) |  | [optional] 
-**llm_model_info** | [**ModelInfo**](ModelInfo.md) |  | 
-**query_string** | **str** | Query string | 
+**data_store_name** | **str** | The name of the data store to lookup. | 
+**llm_model_profile** | **str** | The name of the LLM model profile to lookup. | 
+**llm_model_name** | **str** | The name of the LLM model to use. | 
 **var_query_params** | [**QueryParams**](QueryParams.md) |  | [optional] 
 
 ## Example

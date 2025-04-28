@@ -6,7 +6,7 @@ Application Database Query
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**app_info** | [**AppInfo**](AppInfo.md) |  | 
+**data_store_name** | **str** | The name of the data store to lookup. | 
 **var_query_params** | [**QueryParams**](QueryParams.md) |  | [optional] 
 
 ## Example

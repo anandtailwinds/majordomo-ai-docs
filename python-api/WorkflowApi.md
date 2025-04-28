@@ -1,22 +1,22 @@
-# majordomo_ai.InferenceApi
+# majordomo_ai.WorkflowApi
 
 All URIs are relative to *http://localhost:/25001*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create_inference_profile**](InferenceApi.md#create_inference_profile) | **POST** /inference_profiles | Create inference profile.
-[**delete_inference_profiles**](InferenceApi.md#delete_inference_profiles) | **DELETE** /inference_profiles | Delete inference profile.
-[**get_inference_profiles**](InferenceApi.md#get_inference_profiles) | **GET** /inference_profiles | Get inference profiles.
-[**inference_profile_command**](InferenceApi.md#inference_profile_command) | **POST** /inference_profile_command/workspace/{workspace}/name/{name}/command/{command} | Send a command to inference pipeline.
-[**update_inference_profile**](InferenceApi.md#update_inference_profile) | **PUT** /inference_profiles | Update inference profile.
+[**create_workflow**](WorkflowApi.md#create_workflow) | **POST** /workflows | Create workflow.
+[**delete_workflows**](WorkflowApi.md#delete_workflows) | **DELETE** /workflows | Delete workflow.
+[**get_workflows**](WorkflowApi.md#get_workflows) | **GET** /workflows | Get workflows.
+[**run_workflow**](WorkflowApi.md#run_workflow) | **POST** /workflow_run | Run query pipeline.
+[**update_workflow**](WorkflowApi.md#update_workflow) | **PUT** /workflows | Update workflow.
 
 
-# **create_inference_profile**
-> InferenceProfileInfo create_inference_profile(inference_profile)
+# **create_workflow**
+> WorkflowInfo create_workflow(workflow)
 
-Create inference profile.
+Create workflow.
 
-Create a new inference profile.
+Create a new workflow.
 
 ### Example
 
@@ -24,8 +24,8 @@ Create a new inference profile.
 
 ```python
 import majordomo_ai
-from majordomo_ai.models.inference_profile import InferenceProfile
-from majordomo_ai.models.inference_profile_info import InferenceProfileInfo
+from majordomo_ai.models.workflow import Workflow
+from majordomo_ai.models.workflow_info import WorkflowInfo
 from majordomo_ai.rest import ApiException
 from pprint import pprint
 
@@ -48,16 +48,16 @@ configuration = majordomo_ai.Configuration(
 # Enter a context with an instance of the API client
 with majordomo_ai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = majordomo_ai.InferenceApi(api_client)
-    inference_profile = majordomo_ai.InferenceProfile() # InferenceProfile | 
+    api_instance = majordomo_ai.WorkflowApi(api_client)
+    workflow = majordomo_ai.Workflow() # Workflow | 
 
     try:
-        # Create inference profile.
-        api_response = api_instance.create_inference_profile(inference_profile)
-        print("The response of InferenceApi->create_inference_profile:\n")
+        # Create workflow.
+        api_response = api_instance.create_workflow(workflow)
+        print("The response of WorkflowApi->create_workflow:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling InferenceApi->create_inference_profile: %s\n" % e)
+        print("Exception when calling WorkflowApi->create_workflow: %s\n" % e)
 ```
 
 
@@ -67,11 +67,11 @@ with majordomo_ai.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **inference_profile** | [**InferenceProfile**](InferenceProfile.md)|  | 
+ **workflow** | [**Workflow**](Workflow.md)|  | 
 
 ### Return type
 
-[**InferenceProfileInfo**](InferenceProfileInfo.md)
+[**WorkflowInfo**](WorkflowInfo.md)
 
 ### Authorization
 
@@ -91,12 +91,12 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **delete_inference_profiles**
-> DeleteResponse delete_inference_profiles(workspace=workspace, name=name, logs=logs)
+# **delete_workflows**
+> DeleteResponse delete_workflows(workspace=workspace, name=name)
 
-Delete inference profile.
+Delete workflow.
 
-Delete one or more configured inference profiles.
+Delete one or more configured workflows.
 
 ### Example
 
@@ -127,18 +127,17 @@ configuration = majordomo_ai.Configuration(
 # Enter a context with an instance of the API client
 with majordomo_ai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = majordomo_ai.InferenceApi(api_client)
+    api_instance = majordomo_ai.WorkflowApi(api_client)
     workspace = 'workspace_example' # str | The name of the workspace in which the profile exists. (optional)
-    name = 'name_example' # str | The name of the inference profile to delete. (optional)
-    logs = True # bool | Delete only logs of the matching entries. (optional)
+    name = 'name_example' # str | The name of the workflow to delete. (optional)
 
     try:
-        # Delete inference profile.
-        api_response = api_instance.delete_inference_profiles(workspace=workspace, name=name, logs=logs)
-        print("The response of InferenceApi->delete_inference_profiles:\n")
+        # Delete workflow.
+        api_response = api_instance.delete_workflows(workspace=workspace, name=name)
+        print("The response of WorkflowApi->delete_workflows:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling InferenceApi->delete_inference_profiles: %s\n" % e)
+        print("Exception when calling WorkflowApi->delete_workflows: %s\n" % e)
 ```
 
 
@@ -149,8 +148,7 @@ with majordomo_ai.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **workspace** | **str**| The name of the workspace in which the profile exists. | [optional] 
- **name** | **str**| The name of the inference profile to delete. | [optional] 
- **logs** | **bool**| Delete only logs of the matching entries. | [optional] 
+ **name** | **str**| The name of the workflow to delete. | [optional] 
 
 ### Return type
 
@@ -175,12 +173,12 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **get_inference_profiles**
-> InferenceProfiles get_inference_profiles(workspace=workspace, name=name)
+# **get_workflows**
+> Workflows get_workflows(workspace=workspace, name=name, shared=shared)
 
-Get inference profiles.
+Get workflows.
 
-Get a list of existing inference profiles.
+Get a list of existing workflows.
 
 ### Example
 
@@ -188,7 +186,7 @@ Get a list of existing inference profiles.
 
 ```python
 import majordomo_ai
-from majordomo_ai.models.inference_profiles import InferenceProfiles
+from majordomo_ai.models.workflows import Workflows
 from majordomo_ai.rest import ApiException
 from pprint import pprint
 
@@ -211,17 +209,18 @@ configuration = majordomo_ai.Configuration(
 # Enter a context with an instance of the API client
 with majordomo_ai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = majordomo_ai.InferenceApi(api_client)
-    workspace = 'workspace_example' # str | Query a specific workspace for inference profiles. (optional)
-    name = 'name_example' # str | The name of the inference profile to retrieve. (optional)
+    api_instance = majordomo_ai.WorkflowApi(api_client)
+    workspace = 'workspace_example' # str | Query a specific workspace for workflows. (optional)
+    name = 'name_example' # str | The name of the workflow to retrieve. (optional)
+    shared = True # bool | Retrieve the profiles that are shared with this user by other users. (optional)
 
     try:
-        # Get inference profiles.
-        api_response = api_instance.get_inference_profiles(workspace=workspace, name=name)
-        print("The response of InferenceApi->get_inference_profiles:\n")
+        # Get workflows.
+        api_response = api_instance.get_workflows(workspace=workspace, name=name, shared=shared)
+        print("The response of WorkflowApi->get_workflows:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling InferenceApi->get_inference_profiles: %s\n" % e)
+        print("Exception when calling WorkflowApi->get_workflows: %s\n" % e)
 ```
 
 
@@ -231,12 +230,13 @@ with majordomo_ai.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **workspace** | **str**| Query a specific workspace for inference profiles. | [optional] 
- **name** | **str**| The name of the inference profile to retrieve. | [optional] 
+ **workspace** | **str**| Query a specific workspace for workflows. | [optional] 
+ **name** | **str**| The name of the workflow to retrieve. | [optional] 
+ **shared** | **bool**| Retrieve the profiles that are shared with this user by other users. | [optional] 
 
 ### Return type
 
-[**InferenceProfiles**](InferenceProfiles.md)
+[**Workflows**](Workflows.md)
 
 ### Authorization
 
@@ -256,12 +256,12 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **inference_profile_command**
-> InferenceProfileCommandResponse inference_profile_command(workspace, name, command)
+# **run_workflow**
+> QueryResponse run_workflow(workflow_run)
 
-Send a command to inference pipeline.
+Run query pipeline.
 
-Trigger a single run of an already created inference pipeline.
+Run an already defined workflow.
 
 ### Example
 
@@ -269,8 +269,8 @@ Trigger a single run of an already created inference pipeline.
 
 ```python
 import majordomo_ai
-from majordomo_ai.models.deployment_commands import DeploymentCommands
-from majordomo_ai.models.inference_profile_command_response import InferenceProfileCommandResponse
+from majordomo_ai.models.query_response import QueryResponse
+from majordomo_ai.models.workflow_run import WorkflowRun
 from majordomo_ai.rest import ApiException
 from pprint import pprint
 
@@ -293,18 +293,16 @@ configuration = majordomo_ai.Configuration(
 # Enter a context with an instance of the API client
 with majordomo_ai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = majordomo_ai.InferenceApi(api_client)
-    workspace = 'workspace_example' # str | The name of the workspace in which the inference pipeline is present.
-    name = 'name_example' # str | The name of the inference pipeline.
-    command = majordomo_ai.DeploymentCommands() # DeploymentCommands | The command to be executed on the inference pipeline.
+    api_instance = majordomo_ai.WorkflowApi(api_client)
+    workflow_run = majordomo_ai.WorkflowRun() # WorkflowRun | 
 
     try:
-        # Send a command to inference pipeline.
-        api_response = api_instance.inference_profile_command(workspace, name, command)
-        print("The response of InferenceApi->inference_profile_command:\n")
+        # Run query pipeline.
+        api_response = api_instance.run_workflow(workflow_run)
+        print("The response of WorkflowApi->run_workflow:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling InferenceApi->inference_profile_command: %s\n" % e)
+        print("Exception when calling WorkflowApi->run_workflow: %s\n" % e)
 ```
 
 
@@ -314,13 +312,11 @@ with majordomo_ai.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **workspace** | **str**| The name of the workspace in which the inference pipeline is present. | 
- **name** | **str**| The name of the inference pipeline. | 
- **command** | [**DeploymentCommands**](.md)| The command to be executed on the inference pipeline. | 
+ **workflow_run** | [**WorkflowRun**](WorkflowRun.md)|  | 
 
 ### Return type
 
-[**InferenceProfileCommandResponse**](InferenceProfileCommandResponse.md)
+[**QueryResponse**](QueryResponse.md)
 
 ### Authorization
 
@@ -328,8 +324,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: text/plain
+ - **Content-Type**: application/json
+ - **Accept**: application/json
 
 ### HTTP response details
 
@@ -340,12 +336,12 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **update_inference_profile**
-> InferenceProfileInfo update_inference_profile(inference_profile)
+# **update_workflow**
+> WorkflowInfo update_workflow(workflow)
 
-Update inference profile.
+Update workflow.
 
-Update an existing inference profile.
+Update an existing workflow.
 
 ### Example
 
@@ -353,8 +349,8 @@ Update an existing inference profile.
 
 ```python
 import majordomo_ai
-from majordomo_ai.models.inference_profile import InferenceProfile
-from majordomo_ai.models.inference_profile_info import InferenceProfileInfo
+from majordomo_ai.models.workflow import Workflow
+from majordomo_ai.models.workflow_info import WorkflowInfo
 from majordomo_ai.rest import ApiException
 from pprint import pprint
 
@@ -377,16 +373,16 @@ configuration = majordomo_ai.Configuration(
 # Enter a context with an instance of the API client
 with majordomo_ai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = majordomo_ai.InferenceApi(api_client)
-    inference_profile = majordomo_ai.InferenceProfile() # InferenceProfile | 
+    api_instance = majordomo_ai.WorkflowApi(api_client)
+    workflow = majordomo_ai.Workflow() # Workflow | 
 
     try:
-        # Update inference profile.
-        api_response = api_instance.update_inference_profile(inference_profile)
-        print("The response of InferenceApi->update_inference_profile:\n")
+        # Update workflow.
+        api_response = api_instance.update_workflow(workflow)
+        print("The response of WorkflowApi->update_workflow:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling InferenceApi->update_inference_profile: %s\n" % e)
+        print("Exception when calling WorkflowApi->update_workflow: %s\n" % e)
 ```
 
 
@@ -396,11 +392,11 @@ with majordomo_ai.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **inference_profile** | [**InferenceProfile**](InferenceProfile.md)|  | 
+ **workflow** | [**Workflow**](Workflow.md)|  | 
 
 ### Return type
 
-[**InferenceProfileInfo**](InferenceProfileInfo.md)
+[**WorkflowInfo**](WorkflowInfo.md)
 
 ### Authorization
 
