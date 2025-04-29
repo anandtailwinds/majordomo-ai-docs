@@ -2,33 +2,33 @@
 
 All URIs are relative to *http://localhost:/25001*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**create_app_profile**](AdminApi.md#create_app_profile) | **POST** /app_profiles | Create app profile.
-[**create_model_profile**](AdminApi.md#create_model_profile) | **POST** /model_profiles | Create model profile.
-[**create_user**](AdminApi.md#create_user) | **POST** /users | Add user.
-[**create_worker**](AdminApi.md#create_worker) | **POST** /workers | Create worker node.
-[**create_workspace**](AdminApi.md#create_workspace) | **POST** /workspaces | Create workspace.
-[**delete_app_profiles**](AdminApi.md#delete_app_profiles) | **DELETE** /app_profiles | Delete app profile.
-[**delete_model_profiles**](AdminApi.md#delete_model_profiles) | **DELETE** /model_profiles | Delete model profile.
-[**delete_user**](AdminApi.md#delete_user) | **DELETE** /users | Delete user.
-[**delete_workers**](AdminApi.md#delete_workers) | **DELETE** /workers | Delete worker nodes.
-[**delete_workspaces**](AdminApi.md#delete_workspaces) | **DELETE** /workspaces | Delete workspace.
-[**get_allowed_profiles**](AdminApi.md#get_allowed_profiles) | **GET** /allowed_profiles | Get permitted profiles for a specific user.
-[**get_app_profiles**](AdminApi.md#get_app_profiles) | **GET** /app_profiles | Get app profiles.
-[**get_model_profiles**](AdminApi.md#get_model_profiles) | **GET** /model_profiles | Get model profiles.
-[**get_user_list**](AdminApi.md#get_user_list) | **GET** /user_list | Get list of all users.
-[**get_users**](AdminApi.md#get_users) | **GET** /users | Get users list.
-[**get_workers**](AdminApi.md#get_workers) | **GET** /workers | Get worker nodes.
-[**get_workspaces**](AdminApi.md#get_workspaces) | **GET** /workspaces | Get workspaces.
-[**update_app_profile**](AdminApi.md#update_app_profile) | **PUT** /app_profiles | Update app profile.
-[**update_model_profile**](AdminApi.md#update_model_profile) | **PUT** /model_profiles | Update model profile.
-[**update_user**](AdminApi.md#update_user) | **PUT** /users | Update user.
-[**update_worker**](AdminApi.md#update_worker) | **PUT** /workers | Update worker node.
-[**update_workspace**](AdminApi.md#update_workspace) | **PUT** /workspaces | Update workspace.
-
+| Method                                                         | HTTP request               | Description                                 |
+| -------------------------------------------------------------- | -------------------------- | ------------------------------------------- |
+| [**create_app_profile**](AdminApi.md#create_app_profile)       | **POST** /app_profiles     | Create app profile.                         |
+| [**create_model_profile**](AdminApi.md#create_model_profile)   | **POST** /model_profiles   | Create model profile.                       |
+| [**create_user**](AdminApi.md#create_user)                     | **POST** /users            | Add user.                                   |
+| [**create_worker**](AdminApi.md#create_worker)                 | **POST** /workers          | Create worker node.                         |
+| [**create_workspace**](AdminApi.md#create_workspace)           | **POST** /workspaces       | Create workspace.                           |
+| [**delete_app_profiles**](AdminApi.md#delete_app_profiles)     | **DELETE** /app_profiles   | Delete app profile.                         |
+| [**delete_model_profiles**](AdminApi.md#delete_model_profiles) | **DELETE** /model_profiles | Delete model profile.                       |
+| [**delete_user**](AdminApi.md#delete_user)                     | **DELETE** /users          | Delete user.                                |
+| [**delete_workers**](AdminApi.md#delete_workers)               | **DELETE** /workers        | Delete worker nodes.                        |
+| [**delete_workspaces**](AdminApi.md#delete_workspaces)         | **DELETE** /workspaces     | Delete workspace.                           |
+| [**get_allowed_profiles**](AdminApi.md#get_allowed_profiles)   | **GET** /allowed_profiles  | Get permitted profiles for a specific user. |
+| [**get_app_profiles**](AdminApi.md#get_app_profiles)           | **GET** /app_profiles      | Get app profiles.                           |
+| [**get_model_profiles**](AdminApi.md#get_model_profiles)       | **GET** /model_profiles    | Get model profiles.                         |
+| [**get_user_list**](AdminApi.md#get_user_list)                 | **GET** /user_list         | Get list of all users.                      |
+| [**get_users**](AdminApi.md#get_users)                         | **GET** /users             | Get users list.                             |
+| [**get_workers**](AdminApi.md#get_workers)                     | **GET** /workers           | Get worker nodes.                           |
+| [**get_workspaces**](AdminApi.md#get_workspaces)               | **GET** /workspaces        | Get workspaces.                             |
+| [**update_app_profile**](AdminApi.md#update_app_profile)       | **PUT** /app_profiles      | Update app profile.                         |
+| [**update_model_profile**](AdminApi.md#update_model_profile)   | **PUT** /model_profiles    | Update model profile.                       |
+| [**update_user**](AdminApi.md#update_user)                     | **PUT** /users             | Update user.                                |
+| [**update_worker**](AdminApi.md#update_worker)                 | **PUT** /workers           | Update worker node.                         |
+| [**update_workspace**](AdminApi.md#update_workspace)           | **PUT** /workspaces        | Update workspace.                           |
 
 # **create_app_profile**
+
 > AppProfileInfo create_app_profile(app_profile)
 
 Create app profile.
@@ -77,14 +77,11 @@ with majordomo_ai.ApiClient(configuration) as api_client:
         print("Exception when calling AdminApi->create_app_profile: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **app_profile** | [**AppProfile**](AppProfile.md)|  | 
+| Name            | Type                            | Description | Notes |
+| --------------- | ------------------------------- | ----------- | ----- |
+| **app_profile** | [**AppProfile**](AppProfile.md) |             |       |
 
 ### Return type
 
@@ -96,19 +93,20 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 ### HTTP response details
 
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | successful operation |  -  |
-**422** | Invalid input |  -  |
+| Status code | Description          | Response headers |
+| ----------- | -------------------- | ---------------- |
+| **200**     | successful operation | -                |
+| **422**     | Invalid input        | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_model_profile**
+
 > ModelProfileInfo create_model_profile(model_profile)
 
 Create model profile.
@@ -157,14 +155,11 @@ with majordomo_ai.ApiClient(configuration) as api_client:
         print("Exception when calling AdminApi->create_model_profile: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **model_profile** | [**ModelProfile**](ModelProfile.md)|  | 
+| Name              | Type                                | Description | Notes |
+| ----------------- | ----------------------------------- | ----------- | ----- |
+| **model_profile** | [**ModelProfile**](ModelProfile.md) |             |       |
 
 ### Return type
 
@@ -176,19 +171,20 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 ### HTTP response details
 
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | successful operation |  -  |
-**422** | Invalid input |  -  |
+| Status code | Description          | Response headers |
+| ----------- | -------------------- | ---------------- |
+| **200**     | successful operation | -                |
+| **422**     | Invalid input        | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_user**
+
 > UserInfo create_user(user)
 
 Add user.
@@ -237,14 +233,11 @@ with majordomo_ai.ApiClient(configuration) as api_client:
         print("Exception when calling AdminApi->create_user: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **user** | [**User**](User.md)|  | 
+| Name     | Type                | Description | Notes |
+| -------- | ------------------- | ----------- | ----- |
+| **user** | [**User**](User.md) |             |       |
 
 ### Return type
 
@@ -256,19 +249,20 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 ### HTTP response details
 
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | successful operation |  -  |
-**422** | Invalid input |  -  |
+| Status code | Description          | Response headers |
+| ----------- | -------------------- | ---------------- |
+| **200**     | successful operation | -                |
+| **422**     | Invalid input        | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_worker**
+
 > WorkerInfo create_worker(worker)
 
 Create worker node.
@@ -317,14 +311,11 @@ with majordomo_ai.ApiClient(configuration) as api_client:
         print("Exception when calling AdminApi->create_worker: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **worker** | [**Worker**](Worker.md)|  | 
+| Name       | Type                    | Description | Notes |
+| ---------- | ----------------------- | ----------- | ----- |
+| **worker** | [**Worker**](Worker.md) |             |       |
 
 ### Return type
 
@@ -336,19 +327,20 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 ### HTTP response details
 
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | successful operation |  -  |
-**422** | Invalid input |  -  |
+| Status code | Description          | Response headers |
+| ----------- | -------------------- | ---------------- |
+| **200**     | successful operation | -                |
+| **422**     | Invalid input        | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_workspace**
+
 > WorkspaceInfo create_workspace(workspace)
 
 Create workspace.
@@ -397,14 +389,11 @@ with majordomo_ai.ApiClient(configuration) as api_client:
         print("Exception when calling AdminApi->create_workspace: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **workspace** | [**Workspace**](Workspace.md)|  | 
+| Name          | Type                          | Description | Notes |
+| ------------- | ----------------------------- | ----------- | ----- |
+| **workspace** | [**Workspace**](Workspace.md) |             |       |
 
 ### Return type
 
@@ -416,19 +405,20 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 ### HTTP response details
 
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | successful operation |  -  |
-**422** | Invalid input |  -  |
+| Status code | Description          | Response headers |
+| ----------- | -------------------- | ---------------- |
+| **200**     | successful operation | -                |
+| **422**     | Invalid input        | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_app_profiles**
+
 > DeleteResponse delete_app_profiles(workspace=workspace, name=name, force=force)
 
 Delete app profile.
@@ -478,16 +468,13 @@ with majordomo_ai.ApiClient(configuration) as api_client:
         print("Exception when calling AdminApi->delete_app_profiles: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **workspace** | **str**| The name of the workspace in which the profile exists. | [optional] 
- **name** | **str**| The name of the app profile to delete. | [optional] 
- **force** | **bool**| Force delete all query pipelines or data stores that are referring to this app profile. This will also delete all usages of app profile done by users with whom the profile is shared. | [optional] 
+| Name          | Type     | Description                                                                                                                                                                            | Notes      |
+| ------------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------- |
+| **workspace** | **str**  | The name of the workspace in which the profile exists.                                                                                                                                 | [optional] |
+| **name**      | **str**  | The name of the app profile to delete.                                                                                                                                                 | [optional] |
+| **force**     | **bool** | Force delete all query pipelines or data stores that are referring to this app profile. This will also delete all usages of app profile done by users with whom the profile is shared. | [optional] |
 
 ### Return type
 
@@ -499,20 +486,21 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 ### HTTP response details
 
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | successful operation |  -  |
-**422** | Invalid input. |  -  |
-**401** | Unauthorized access. This is most likely because the access token has expired or the user API key is invalid. |  -  |
+| Status code | Description                                                                                                   | Response headers |
+| ----------- | ------------------------------------------------------------------------------------------------------------- | ---------------- |
+| **200**     | successful operation                                                                                          | -                |
+| **422**     | Invalid input.                                                                                                | -                |
+| **401**     | Unauthorized access. This is most likely because the access token has expired or the user API key is invalid. | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_model_profiles**
+
 > DeleteResponse delete_model_profiles(workspace=workspace, name=name, force=force)
 
 Delete model profile.
@@ -562,16 +550,13 @@ with majordomo_ai.ApiClient(configuration) as api_client:
         print("Exception when calling AdminApi->delete_model_profiles: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **workspace** | **str**| The name of the workspace in which the profile exists. | [optional] 
- **name** | **str**| The name of the model profile to delete. | [optional] 
- **force** | **bool**| Force delete all query pipelines or data stores that are referring to this model profile. This will also delete all usages of model profile done by users with whom the profile is shared. | [optional] 
+| Name          | Type     | Description                                                                                                                                                                                | Notes      |
+| ------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- |
+| **workspace** | **str**  | The name of the workspace in which the profile exists.                                                                                                                                     | [optional] |
+| **name**      | **str**  | The name of the model profile to delete.                                                                                                                                                   | [optional] |
+| **force**     | **bool** | Force delete all query pipelines or data stores that are referring to this model profile. This will also delete all usages of model profile done by users with whom the profile is shared. | [optional] |
 
 ### Return type
 
@@ -583,20 +568,21 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 ### HTTP response details
 
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | successful operation |  -  |
-**422** | Invalid input. |  -  |
-**401** | Unauthorized access. This is most likely because the access token has expired or the user API key is invalid. |  -  |
+| Status code | Description                                                                                                   | Response headers |
+| ----------- | ------------------------------------------------------------------------------------------------------------- | ---------------- |
+| **200**     | successful operation                                                                                          | -                |
+| **422**     | Invalid input.                                                                                                | -                |
+| **401**     | Unauthorized access. This is most likely because the access token has expired or the user API key is invalid. | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_user**
+
 > DeleteResponse delete_user(name=name)
 
 Delete user.
@@ -644,14 +630,11 @@ with majordomo_ai.ApiClient(configuration) as api_client:
         print("Exception when calling AdminApi->delete_user: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **name** | **str**| The name of the user to delete. | [optional] 
+| Name     | Type    | Description                     | Notes      |
+| -------- | ------- | ------------------------------- | ---------- |
+| **name** | **str** | The name of the user to delete. | [optional] |
 
 ### Return type
 
@@ -663,19 +646,20 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 ### HTTP response details
 
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | successful operation |  -  |
-**422** | Invalid input |  -  |
+| Status code | Description          | Response headers |
+| ----------- | -------------------- | ---------------- |
+| **200**     | successful operation | -                |
+| **422**     | Invalid input        | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_workers**
+
 > delete_workers(name)
 
 Delete worker nodes.
@@ -720,14 +704,11 @@ with majordomo_ai.ApiClient(configuration) as api_client:
         print("Exception when calling AdminApi->delete_workers: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **name** | **str**| Name of the worker to delete. Any references to this worker need to be deleted first before this operation can succeed. | 
+| Name     | Type    | Description                                                                                                             | Notes |
+| -------- | ------- | ----------------------------------------------------------------------------------------------------------------------- | ----- |
+| **name** | **str** | Name of the worker to delete. Any references to this worker need to be deleted first before this operation can succeed. |       |
 
 ### Return type
 
@@ -739,13 +720,13 @@ void (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
-
+- **Content-Type**: Not defined
+- **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_workspaces**
+
 > DeleteResponse delete_workspaces(name)
 
 Delete workspace.
@@ -793,14 +774,11 @@ with majordomo_ai.ApiClient(configuration) as api_client:
         print("Exception when calling AdminApi->delete_workspaces: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **name** | **str**| Name of the workspaces to delete. Any references to this workspace need to be deleted first before this operation can succeed. | 
+| Name     | Type    | Description                                                                                                                    | Notes |
+| -------- | ------- | ------------------------------------------------------------------------------------------------------------------------------ | ----- |
+| **name** | **str** | Name of the workspaces to delete. Any references to this workspace need to be deleted first before this operation can succeed. |       |
 
 ### Return type
 
@@ -812,20 +790,21 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 ### HTTP response details
 
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | successful operation |  -  |
-**422** | Invalid input. |  -  |
-**401** | Unauthorized access. This is most likely because the access token has expired or the user API key is invalid. |  -  |
+| Status code | Description                                                                                                   | Response headers |
+| ----------- | ------------------------------------------------------------------------------------------------------------- | ---------------- |
+| **200**     | successful operation                                                                                          | -                |
+| **422**     | Invalid input.                                                                                                | -                |
+| **401**     | Unauthorized access. This is most likely because the access token has expired or the user API key is invalid. | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_allowed_profiles**
+
 > AllowedProfiles get_allowed_profiles(workspace)
 
 Get permitted profiles for a specific user.
@@ -873,14 +852,11 @@ with majordomo_ai.ApiClient(configuration) as api_client:
         print("Exception when calling AdminApi->get_allowed_profiles: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **workspace** | **str**| The name of the workspace to retrieve the information for. | 
+| Name          | Type    | Description                                                | Notes |
+| ------------- | ------- | ---------------------------------------------------------- | ----- |
+| **workspace** | **str** | The name of the workspace to retrieve the information for. |       |
 
 ### Return type
 
@@ -892,19 +868,20 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 ### HTTP response details
 
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | successful operation |  -  |
-**422** | Invalid input |  -  |
+| Status code | Description          | Response headers |
+| ----------- | -------------------- | ---------------- |
+| **200**     | successful operation | -                |
+| **422**     | Invalid input        | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_app_profiles**
+
 > AppProfiles get_app_profiles(workspace=workspace, name=name, shared=shared, operation=operation)
 
 Get app profiles.
@@ -956,17 +933,14 @@ with majordomo_ai.ApiClient(configuration) as api_client:
         print("Exception when calling AdminApi->get_app_profiles: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **workspace** | **str**| Query a specific workspace for app profiles. | [optional] 
- **name** | **str**| The name of the app profile to retrieve. | [optional] 
- **shared** | **bool**| Retrieve the profiles that are shared with this user by other users. | [optional] 
- **operation** | [**SupportedOperations**](.md)| Retrieve the profiles that are support the operation. | [optional] 
+| Name          | Type                           | Description                                                          | Notes      |
+| ------------- | ------------------------------ | -------------------------------------------------------------------- | ---------- |
+| **workspace** | **str**                        | Query a specific workspace for app profiles.                         | [optional] |
+| **name**      | **str**                        | The name of the app profile to retrieve.                             | [optional] |
+| **shared**    | **bool**                       | Retrieve the profiles that are shared with this user by other users. | [optional] |
+| **operation** | [**SupportedOperations**](.md) | Retrieve the profiles that are support the operation.                | [optional] |
 
 ### Return type
 
@@ -978,19 +952,20 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 ### HTTP response details
 
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | successful operation |  -  |
-**422** | Invalid input |  -  |
+| Status code | Description          | Response headers |
+| ----------- | -------------------- | ---------------- |
+| **200**     | successful operation | -                |
+| **422**     | Invalid input        | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_model_profiles**
+
 > ModelProfiles get_model_profiles(workspace=workspace, name=name, shared=shared)
 
 Get model profiles.
@@ -1040,16 +1015,13 @@ with majordomo_ai.ApiClient(configuration) as api_client:
         print("Exception when calling AdminApi->get_model_profiles: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **workspace** | **str**| Query a specific workspace for model profiles. | [optional] 
- **name** | **str**| The name of the model profile to retrieve. | [optional] 
- **shared** | **bool**| Retrieve the profiles that are shared with this user by other users. | [optional] 
+| Name          | Type     | Description                                                          | Notes      |
+| ------------- | -------- | -------------------------------------------------------------------- | ---------- |
+| **workspace** | **str**  | Query a specific workspace for model profiles.                       | [optional] |
+| **name**      | **str**  | The name of the model profile to retrieve.                           | [optional] |
+| **shared**    | **bool** | Retrieve the profiles that are shared with this user by other users. | [optional] |
 
 ### Return type
 
@@ -1061,19 +1033,20 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 ### HTTP response details
 
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | successful operation |  -  |
-**422** | Invalid input |  -  |
+| Status code | Description          | Response headers |
+| ----------- | -------------------- | ---------------- |
+| **200**     | successful operation | -                |
+| **422**     | Invalid input        | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_user_list**
+
 > List[str] get_user_list(name=name, workspace=workspace)
 
 Get list of all users.
@@ -1121,15 +1094,12 @@ with majordomo_ai.ApiClient(configuration) as api_client:
         print("Exception when calling AdminApi->get_user_list: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **name** | **str**| Get information specific to a user. | [optional] 
- **workspace** | **str**| Get list of active users in a workspace. | [optional] 
+| Name          | Type    | Description                              | Notes      |
+| ------------- | ------- | ---------------------------------------- | ---------- |
+| **name**      | **str** | Get information specific to a user.      | [optional] |
+| **workspace** | **str** | Get list of active users in a workspace. | [optional] |
 
 ### Return type
 
@@ -1141,19 +1111,20 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 ### HTTP response details
 
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | successful operation |  -  |
-**422** | Invalid input |  -  |
+| Status code | Description          | Response headers |
+| ----------- | -------------------- | ---------------- |
+| **200**     | successful operation | -                |
+| **422**     | Invalid input        | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_users**
+
 > Users get_users(name=name)
 
 Get users list.
@@ -1201,14 +1172,11 @@ with majordomo_ai.ApiClient(configuration) as api_client:
         print("Exception when calling AdminApi->get_users: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **name** | **str**| Get information specific to a user. | [optional] 
+| Name     | Type    | Description                         | Notes      |
+| -------- | ------- | ----------------------------------- | ---------- |
+| **name** | **str** | Get information specific to a user. | [optional] |
 
 ### Return type
 
@@ -1220,19 +1188,20 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 ### HTTP response details
 
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | successful operation |  -  |
-**422** | Invalid input |  -  |
+| Status code | Description          | Response headers |
+| ----------- | -------------------- | ---------------- |
+| **200**     | successful operation | -                |
+| **422**     | Invalid input        | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_workers**
+
 > Workers get_workers(name=name)
 
 Get worker nodes.
@@ -1280,14 +1249,11 @@ with majordomo_ai.ApiClient(configuration) as api_client:
         print("Exception when calling AdminApi->get_workers: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **name** | **str**| Name of the specific worker to retrieve. | [optional] 
+| Name     | Type    | Description                              | Notes      |
+| -------- | ------- | ---------------------------------------- | ---------- |
+| **name** | **str** | Name of the specific worker to retrieve. | [optional] |
 
 ### Return type
 
@@ -1299,19 +1265,20 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 ### HTTP response details
 
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | successful operation |  -  |
-**422** | Invalid input |  -  |
+| Status code | Description          | Response headers |
+| ----------- | -------------------- | ---------------- |
+| **200**     | successful operation | -                |
+| **422**     | Invalid input        | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_workspaces**
+
 > Workspaces get_workspaces(name=name)
 
 Get workspaces.
@@ -1359,14 +1326,11 @@ with majordomo_ai.ApiClient(configuration) as api_client:
         print("Exception when calling AdminApi->get_workspaces: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **name** | **str**| Name of the workspace | [optional] 
+| Name     | Type    | Description           | Notes      |
+| -------- | ------- | --------------------- | ---------- |
+| **name** | **str** | Name of the workspace | [optional] |
 
 ### Return type
 
@@ -1378,19 +1342,20 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 ### HTTP response details
 
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | successful operation |  -  |
-**422** | Invalid input |  -  |
+| Status code | Description          | Response headers |
+| ----------- | -------------------- | ---------------- |
+| **200**     | successful operation | -                |
+| **422**     | Invalid input        | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_app_profile**
+
 > AppProfileInfo update_app_profile(app_profile)
 
 Update app profile.
@@ -1439,14 +1404,11 @@ with majordomo_ai.ApiClient(configuration) as api_client:
         print("Exception when calling AdminApi->update_app_profile: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **app_profile** | [**AppProfile**](AppProfile.md)|  | 
+| Name            | Type                            | Description | Notes |
+| --------------- | ------------------------------- | ----------- | ----- |
+| **app_profile** | [**AppProfile**](AppProfile.md) |             |       |
 
 ### Return type
 
@@ -1458,19 +1420,20 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/xml, application/json
+- **Content-Type**: application/json
+- **Accept**: application/xml, application/json
 
 ### HTTP response details
 
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | successful operation |  -  |
-**422** | Invalid input |  -  |
+| Status code | Description          | Response headers |
+| ----------- | -------------------- | ---------------- |
+| **200**     | successful operation | -                |
+| **422**     | Invalid input        | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_model_profile**
+
 > ModelProfileInfo update_model_profile(model_profile)
 
 Update model profile.
@@ -1519,14 +1482,11 @@ with majordomo_ai.ApiClient(configuration) as api_client:
         print("Exception when calling AdminApi->update_model_profile: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **model_profile** | [**ModelProfile**](ModelProfile.md)|  | 
+| Name              | Type                                | Description | Notes |
+| ----------------- | ----------------------------------- | ----------- | ----- |
+| **model_profile** | [**ModelProfile**](ModelProfile.md) |             |       |
 
 ### Return type
 
@@ -1538,19 +1498,20 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/xml, application/json
+- **Content-Type**: application/json
+- **Accept**: application/xml, application/json
 
 ### HTTP response details
 
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | successful operation |  -  |
-**422** | Invalid input |  -  |
+| Status code | Description          | Response headers |
+| ----------- | -------------------- | ---------------- |
+| **200**     | successful operation | -                |
+| **422**     | Invalid input        | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_user**
+
 > UserInfo update_user(user)
 
 Update user.
@@ -1599,14 +1560,11 @@ with majordomo_ai.ApiClient(configuration) as api_client:
         print("Exception when calling AdminApi->update_user: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **user** | [**User**](User.md)|  | 
+| Name     | Type                | Description | Notes |
+| -------- | ------------------- | ----------- | ----- |
+| **user** | [**User**](User.md) |             |       |
 
 ### Return type
 
@@ -1618,19 +1576,20 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 ### HTTP response details
 
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | successful operation |  -  |
-**422** | Invalid input |  -  |
+| Status code | Description          | Response headers |
+| ----------- | -------------------- | ---------------- |
+| **200**     | successful operation | -                |
+| **422**     | Invalid input        | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_worker**
+
 > WorkerInfo update_worker(worker)
 
 Update worker node.
@@ -1679,14 +1638,11 @@ with majordomo_ai.ApiClient(configuration) as api_client:
         print("Exception when calling AdminApi->update_worker: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **worker** | [**Worker**](Worker.md)|  | 
+| Name       | Type                    | Description | Notes |
+| ---------- | ----------------------- | ----------- | ----- |
+| **worker** | [**Worker**](Worker.md) |             |       |
 
 ### Return type
 
@@ -1698,19 +1654,20 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 ### HTTP response details
 
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | successful operation |  -  |
-**422** | Invalid input |  -  |
+| Status code | Description          | Response headers |
+| ----------- | -------------------- | ---------------- |
+| **200**     | successful operation | -                |
+| **422**     | Invalid input        | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_workspace**
+
 > WorkspaceInfo update_workspace(workspace)
 
 Update workspace.
@@ -1759,14 +1716,11 @@ with majordomo_ai.ApiClient(configuration) as api_client:
         print("Exception when calling AdminApi->update_workspace: %s\n" % e)
 ```
 
-
-
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **workspace** | [**Workspace**](Workspace.md)|  | 
+| Name          | Type                          | Description | Notes |
+| ------------- | ----------------------------- | ----------- | ----- |
+| **workspace** | [**Workspace**](Workspace.md) |             |       |
 
 ### Return type
 
@@ -1778,15 +1732,14 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 ### HTTP response details
 
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | successful operation |  -  |
-**422** | Invalid input |  -  |
+| Status code | Description          | Response headers |
+| ----------- | -------------------- | ---------------- |
+| **200**     | successful operation | -                |
+| **422**     | Invalid input        | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
