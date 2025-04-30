@@ -15,5 +15,3 @@ The list of model providers supported
 * `PROVIDER_SELF_HOSTED` (value: `5`)
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-
