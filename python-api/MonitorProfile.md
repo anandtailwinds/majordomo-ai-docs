@@ -7,9 +7,9 @@ This describes the details of a particular monitor profile.
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **str** | Name of the monitor profile. | 
+**workspace** | **str** | The workspace for the monitor profile. | 
 **provider** | [**MonitorProviders**](MonitorProviders.md) |  | 
-**access_key** | [**MonitorAccessKey**](MonitorAccessKey.md) |  | [optional] 
-**access_info** | [**MonitorAccessInfo**](MonitorAccessInfo.md) |  | [optional] 
+**access_info** | **Dict[str, object]** | The information to access the monitoring tool. | 
 
 ## Example
 

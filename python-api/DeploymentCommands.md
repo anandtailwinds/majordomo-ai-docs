@@ -14,6 +14,14 @@ The types of deployment commands.
 
 * `DEPLOYMENT_COMMAND_HEALTH_CHECK` (value: `5`)
 
+* `DEPLOYMENT_COMMAND_INFERENCE_STATUS` (value: `6`)
+
+* `DEPLOYMENT_COMMAND_KSERVE_STATUS` (value: `7`)
+
+* `DEPLOYMENT_COMMAND_INFERENCE_PODS` (value: `8`)
+
+* `DEPLOYMENT_COMMAND_POD_LOGS` (value: `9`)
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
 

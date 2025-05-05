@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 
 # **create_monitor_profile**
-> MonitorProfile create_monitor_profile(monitor_profile)
+> MonitorProfileInfo create_monitor_profile(monitor_profile)
 
 Create monitor profile.
 
@@ -29,6 +29,7 @@ Create a new monitor profile.
 ```python
 import majordomo_ai
 from majordomo_ai.models.monitor_profile import MonitorProfile
+from majordomo_ai.models.monitor_profile_info import MonitorProfileInfo
 from majordomo_ai.rest import ApiException
 from pprint import pprint
 
@@ -74,7 +75,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**MonitorProfile**](MonitorProfile.md)
+[**MonitorProfileInfo**](MonitorProfileInfo.md)
 
 ### Authorization
 
@@ -95,7 +96,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_monitor_profiles**
-> DeleteResponse delete_monitor_profiles(name=name)
+> DeleteResponse delete_monitor_profiles(workspace=workspace, name=name)
 
 Delete monitor profiles.
 
@@ -131,11 +132,12 @@ configuration = majordomo_ai.Configuration(
 with majordomo_ai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = majordomo_ai.MonitorApi(api_client)
+    workspace = 'workspace_example' # str | The name of the workspace in which the monitor profile is present.  (optional)
     name = 'name_example' # str | The name of the monitor profile to delete. (optional)
 
     try:
         # Delete monitor profiles.
-        api_response = api_instance.delete_monitor_profiles(name=name)
+        api_response = api_instance.delete_monitor_profiles(workspace=workspace, name=name)
         print("The response of MonitorApi->delete_monitor_profiles:\n")
         pprint(api_response)
     except Exception as e:
@@ -149,6 +151,7 @@ with majordomo_ai.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **workspace** | **str**| The name of the workspace in which the monitor profile is present.  | [optional] 
  **name** | **str**| The name of the monitor profile to delete. | [optional] 
 
 ### Return type
@@ -170,7 +173,7 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | successful operation |  -  |
 **422** | Invalid input |  -  |
-**401** | Unauthorized access. This is most likely because the access token has expired or the user API key is invalid. |  -  |
+**401** | Unauthorized access. This is most likely because the access token has  expired or the user API key is invalid.  |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -431,7 +434,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_monitor_profiles**
-> MonitorProfiles get_monitor_profiles(name=name)
+> MonitorProfiles get_monitor_profiles(workspace=workspace, name=name)
 
 Get monitor profiles.
 
@@ -467,11 +470,12 @@ configuration = majordomo_ai.Configuration(
 with majordomo_ai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = majordomo_ai.MonitorApi(api_client)
-    name = 'name_example' # str | The name of the monitor profile to retrieve. If none is provided all monitor profiles are retrieved. (optional)
+    workspace = 'workspace_example' # str | The name of the workspace in which the monitor profile is present.  (optional)
+    name = 'name_example' # str | The name of the monitor profile to retrieve. If none is provided all  monitor profiles are retrieved.  (optional)
 
     try:
         # Get monitor profiles.
-        api_response = api_instance.get_monitor_profiles(name=name)
+        api_response = api_instance.get_monitor_profiles(workspace=workspace, name=name)
         print("The response of MonitorApi->get_monitor_profiles:\n")
         pprint(api_response)
     except Exception as e:
@@ -485,7 +489,8 @@ with majordomo_ai.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **name** | **str**| The name of the monitor profile to retrieve. If none is provided all monitor profiles are retrieved. | [optional] 
+ **workspace** | **str**| The name of the workspace in which the monitor profile is present.  | [optional] 
+ **name** | **str**| The name of the monitor profile to retrieve. If none is provided all  monitor profiles are retrieved.  | [optional] 
 
 ### Return type
 
@@ -682,7 +687,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_monitor_profile**
-> MonitorProfile update_monitor_profile(monitor_profile)
+> MonitorProfileInfo update_monitor_profile(monitor_profile)
 
 Update monitor profile.
 
@@ -695,6 +700,7 @@ Update an existing monitor profile.
 ```python
 import majordomo_ai
 from majordomo_ai.models.monitor_profile import MonitorProfile
+from majordomo_ai.models.monitor_profile_info import MonitorProfileInfo
 from majordomo_ai.rest import ApiException
 from pprint import pprint
 
@@ -740,7 +746,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**MonitorProfile**](MonitorProfile.md)
+[**MonitorProfileInfo**](MonitorProfileInfo.md)
 
 ### Authorization
 
@@ -749,7 +755,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: application/xml, application/json
+ - **Accept**: application/json
 
 ### HTTP response details
 

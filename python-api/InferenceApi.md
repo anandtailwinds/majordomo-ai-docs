@@ -257,7 +257,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **inference_profile_command**
-> InferenceProfileCommandResponse inference_profile_command(workspace, name, command)
+> InferenceProfileCommand200Response inference_profile_command(inference_profile_command)
 
 Send a command to inference pipeline.
 
@@ -269,8 +269,8 @@ Trigger a single run of an already created inference pipeline.
 
 ```python
 import majordomo_ai
-from majordomo_ai.models.deployment_commands import DeploymentCommands
-from majordomo_ai.models.inference_profile_command_response import InferenceProfileCommandResponse
+from majordomo_ai.models.inference_profile_command import InferenceProfileCommand
+from majordomo_ai.models.inference_profile_command200_response import InferenceProfileCommand200Response
 from majordomo_ai.rest import ApiException
 from pprint import pprint
 
@@ -294,13 +294,11 @@ configuration = majordomo_ai.Configuration(
 with majordomo_ai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = majordomo_ai.InferenceApi(api_client)
-    workspace = 'workspace_example' # str | The name of the workspace in which the inference pipeline is present.
-    name = 'name_example' # str | The name of the inference pipeline.
-    command = majordomo_ai.DeploymentCommands() # DeploymentCommands | The command to be executed on the inference pipeline.
+    inference_profile_command = majordomo_ai.InferenceProfileCommand() # InferenceProfileCommand | 
 
     try:
         # Send a command to inference pipeline.
-        api_response = api_instance.inference_profile_command(workspace, name, command)
+        api_response = api_instance.inference_profile_command(inference_profile_command)
         print("The response of InferenceApi->inference_profile_command:\n")
         pprint(api_response)
     except Exception as e:
@@ -314,13 +312,11 @@ with majordomo_ai.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **workspace** | **str**| The name of the workspace in which the inference pipeline is present. | 
- **name** | **str**| The name of the inference pipeline. | 
- **command** | [**DeploymentCommands**](.md)| The command to be executed on the inference pipeline. | 
+ **inference_profile_command** | [**InferenceProfileCommand**](InferenceProfileCommand.md)|  | 
 
 ### Return type
 
-[**InferenceProfileCommandResponse**](InferenceProfileCommandResponse.md)
+[**InferenceProfileCommand200Response**](InferenceProfileCommand200Response.md)
 
 ### Authorization
 
@@ -328,7 +324,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: text/plain
 
 ### HTTP response details
