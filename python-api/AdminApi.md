@@ -5,32 +5,24 @@ All URIs are relative to *http://localhost:/25001*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**create_app_profile**](AdminApi.md#create_app_profile) | **POST** /app_profiles | Create app profile.
-[**create_model_catalog**](AdminApi.md#create_model_catalog) | **POST** /model_catalog | Create model catalog.
 [**create_model_profile**](AdminApi.md#create_model_profile) | **POST** /model_profiles | Create model profile.
-[**create_target_resource**](AdminApi.md#create_target_resource) | **POST** /target_resource | Create target resource.
 [**create_user**](AdminApi.md#create_user) | **POST** /users | Add user.
 [**create_worker**](AdminApi.md#create_worker) | **POST** /workers | Create worker node.
 [**create_workspace**](AdminApi.md#create_workspace) | **POST** /workspaces | Create workspace.
 [**delete_app_profiles**](AdminApi.md#delete_app_profiles) | **DELETE** /app_profiles | Delete app profile.
-[**delete_model_catalog**](AdminApi.md#delete_model_catalog) | **DELETE** /model_catalog | Delete model catalog.
 [**delete_model_profiles**](AdminApi.md#delete_model_profiles) | **DELETE** /model_profiles | Delete model profile.
-[**delete_target_resources**](AdminApi.md#delete_target_resources) | **DELETE** /target_resource | Delete target resource.
 [**delete_user**](AdminApi.md#delete_user) | **DELETE** /users | Delete user.
 [**delete_workers**](AdminApi.md#delete_workers) | **DELETE** /workers | Delete worker nodes.
 [**delete_workspaces**](AdminApi.md#delete_workspaces) | **DELETE** /workspaces | Delete workspace.
 [**get_allowed_profiles**](AdminApi.md#get_allowed_profiles) | **GET** /allowed_profiles | Get permitted profiles for a specific user.
 [**get_app_profiles**](AdminApi.md#get_app_profiles) | **GET** /app_profiles | Get app profiles.
-[**get_model_catalog**](AdminApi.md#get_model_catalog) | **GET** /model_catalog | Get model catalog.
 [**get_model_profiles**](AdminApi.md#get_model_profiles) | **GET** /model_profiles | Get model profiles.
-[**get_target_resources**](AdminApi.md#get_target_resources) | **GET** /target_resource | Get target resources.
 [**get_user_list**](AdminApi.md#get_user_list) | **GET** /user_list | Get list of all users.
 [**get_users**](AdminApi.md#get_users) | **GET** /users | Get users list.
 [**get_workers**](AdminApi.md#get_workers) | **GET** /workers | Get worker nodes.
 [**get_workspaces**](AdminApi.md#get_workspaces) | **GET** /workspaces | Get workspaces.
 [**update_app_profile**](AdminApi.md#update_app_profile) | **PUT** /app_profiles | Update app profile.
-[**update_model_catalog**](AdminApi.md#update_model_catalog) | **PUT** /model_catalog | Update model catalog.
 [**update_model_profile**](AdminApi.md#update_model_profile) | **PUT** /model_profiles | Update model profile.
-[**update_target_resource**](AdminApi.md#update_target_resource) | **PUT** /target_resource | Update target resource.
 [**update_user**](AdminApi.md#update_user) | **PUT** /users | Update user.
 [**update_worker**](AdminApi.md#update_worker) | **PUT** /workers | Update worker node.
 [**update_workspace**](AdminApi.md#update_workspace) | **PUT** /workspaces | Update workspace.
@@ -116,86 +108,6 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **create_model_catalog**
-> ModelInfo create_model_catalog(model_config)
-
-Create model catalog.
-
-Create a new model catalog.
-
-### Example
-
-* Bearer (JWT) Authentication (bearerAuth):
-
-```python
-import majordomo_ai
-from majordomo_ai.models.model_config import ModelConfig
-from majordomo_ai.models.model_info import ModelInfo
-from majordomo_ai.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to http://localhost:/25001
-# See configuration.py for a list of all supported configuration parameters.
-configuration = majordomo_ai.Configuration(
-    host = "http://localhost:/25001"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure Bearer authorization (JWT): bearerAuth
-configuration = majordomo_ai.Configuration(
-    access_token = os.environ["BEARER_TOKEN"]
-)
-
-# Enter a context with an instance of the API client
-with majordomo_ai.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = majordomo_ai.AdminApi(api_client)
-    model_config = majordomo_ai.ModelConfig() # ModelConfig | 
-
-    try:
-        # Create model catalog.
-        api_response = api_instance.create_model_catalog(model_config)
-        print("The response of AdminApi->create_model_catalog:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling AdminApi->create_model_catalog: %s\n" % e)
-```
-
-
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **model_config** | [**ModelConfig**](ModelConfig.md)|  | 
-
-### Return type
-
-[**ModelInfo**](ModelInfo.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | successful operation |  -  |
-**422** | Invalid input |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 # **create_model_profile**
 > ModelProfileInfo create_model_profile(model_profile)
 
@@ -257,86 +169,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ModelProfileInfo**](ModelProfileInfo.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | successful operation |  -  |
-**422** | Invalid input |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **create_target_resource**
-> TargetResourceInfo create_target_resource(target_resource)
-
-Create target resource.
-
-Create a new target resource.
-
-### Example
-
-* Bearer (JWT) Authentication (bearerAuth):
-
-```python
-import majordomo_ai
-from majordomo_ai.models.target_resource import TargetResource
-from majordomo_ai.models.target_resource_info import TargetResourceInfo
-from majordomo_ai.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to http://localhost:/25001
-# See configuration.py for a list of all supported configuration parameters.
-configuration = majordomo_ai.Configuration(
-    host = "http://localhost:/25001"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure Bearer authorization (JWT): bearerAuth
-configuration = majordomo_ai.Configuration(
-    access_token = os.environ["BEARER_TOKEN"]
-)
-
-# Enter a context with an instance of the API client
-with majordomo_ai.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = majordomo_ai.AdminApi(api_client)
-    target_resource = majordomo_ai.TargetResource() # TargetResource | 
-
-    try:
-        # Create target resource.
-        api_response = api_instance.create_target_resource(target_resource)
-        print("The response of AdminApi->create_target_resource:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling AdminApi->create_target_resource: %s\n" % e)
-```
-
-
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **target_resource** | [**TargetResource**](TargetResource.md)|  | 
-
-### Return type
-
-[**TargetResourceInfo**](TargetResourceInfo.md)
 
 ### Authorization
 
@@ -678,88 +510,6 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **delete_model_catalog**
-> DeleteResponse delete_model_catalog(workspace=workspace, name=name)
-
-Delete model catalog.
-
-Delete one or more configured model catalog.
-
-### Example
-
-* Bearer (JWT) Authentication (bearerAuth):
-
-```python
-import majordomo_ai
-from majordomo_ai.models.delete_response import DeleteResponse
-from majordomo_ai.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to http://localhost:/25001
-# See configuration.py for a list of all supported configuration parameters.
-configuration = majordomo_ai.Configuration(
-    host = "http://localhost:/25001"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure Bearer authorization (JWT): bearerAuth
-configuration = majordomo_ai.Configuration(
-    access_token = os.environ["BEARER_TOKEN"]
-)
-
-# Enter a context with an instance of the API client
-with majordomo_ai.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = majordomo_ai.AdminApi(api_client)
-    workspace = 'workspace_example' # str | The name of the workspace in which the catalog exists. (optional)
-    name = 'name_example' # str | The name of the model catalog to delete. (optional)
-
-    try:
-        # Delete model catalog.
-        api_response = api_instance.delete_model_catalog(workspace=workspace, name=name)
-        print("The response of AdminApi->delete_model_catalog:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling AdminApi->delete_model_catalog: %s\n" % e)
-```
-
-
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **workspace** | **str**| The name of the workspace in which the catalog exists. | [optional] 
- **name** | **str**| The name of the model catalog to delete. | [optional] 
-
-### Return type
-
-[**DeleteResponse**](DeleteResponse.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | successful operation |  -  |
-**422** | Invalid input. |  -  |
-**401** | Unauthorized access. This is most likely because the access token has expired or the user API key is invalid. |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 # **delete_model_profiles**
 > DeleteResponse delete_model_profiles(workspace=workspace, name=name)
 
@@ -839,88 +589,6 @@ Name | Type | Description  | Notes
 **200** | successful operation |  -  |
 **422** | Invalid input. |  -  |
 **401** | Unauthorized access. This is most likely because the access token has expired or the user API key is invalid. |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **delete_target_resources**
-> DeleteResponse delete_target_resources(workspace=workspace, name=name)
-
-Delete target resource.
-
-Delete one or more configured target resources.
-
-### Example
-
-* Bearer (JWT) Authentication (bearerAuth):
-
-```python
-import majordomo_ai
-from majordomo_ai.models.delete_response import DeleteResponse
-from majordomo_ai.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to http://localhost:/25001
-# See configuration.py for a list of all supported configuration parameters.
-configuration = majordomo_ai.Configuration(
-    host = "http://localhost:/25001"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure Bearer authorization (JWT): bearerAuth
-configuration = majordomo_ai.Configuration(
-    access_token = os.environ["BEARER_TOKEN"]
-)
-
-# Enter a context with an instance of the API client
-with majordomo_ai.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = majordomo_ai.AdminApi(api_client)
-    workspace = 'workspace_example' # str | The name of the workspace in which the profile exists. (optional)
-    name = 'name_example' # str | The name of the target resource to delete. (optional)
-
-    try:
-        # Delete target resource.
-        api_response = api_instance.delete_target_resources(workspace=workspace, name=name)
-        print("The response of AdminApi->delete_target_resources:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling AdminApi->delete_target_resources: %s\n" % e)
-```
-
-
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **workspace** | **str**| The name of the workspace in which the profile exists. | [optional] 
- **name** | **str**| The name of the target resource to delete. | [optional] 
-
-### Return type
-
-[**DeleteResponse**](DeleteResponse.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | successful operation |  -  |
-**422** | Invalid input. |  -  |
-**401** | Unauthorized access. This is most likely because the access token has  expired or the user API key is invalid.  |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1318,89 +986,6 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **get_model_catalog**
-> ModelCatalog get_model_catalog(workspace=workspace, name=name, shared=shared)
-
-Get model catalog.
-
-Get a list of existing model catalog.
-
-### Example
-
-* Bearer (JWT) Authentication (bearerAuth):
-
-```python
-import majordomo_ai
-from majordomo_ai.models.model_catalog import ModelCatalog
-from majordomo_ai.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to http://localhost:/25001
-# See configuration.py for a list of all supported configuration parameters.
-configuration = majordomo_ai.Configuration(
-    host = "http://localhost:/25001"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure Bearer authorization (JWT): bearerAuth
-configuration = majordomo_ai.Configuration(
-    access_token = os.environ["BEARER_TOKEN"]
-)
-
-# Enter a context with an instance of the API client
-with majordomo_ai.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = majordomo_ai.AdminApi(api_client)
-    workspace = 'workspace_example' # str | Query a specific workspace for model catalog. (optional)
-    name = 'name_example' # str | The name of the model catalog to retrieve. (optional)
-    shared = True # bool | Retrieve the catalog that are shared with this user by other users. (optional)
-
-    try:
-        # Get model catalog.
-        api_response = api_instance.get_model_catalog(workspace=workspace, name=name, shared=shared)
-        print("The response of AdminApi->get_model_catalog:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling AdminApi->get_model_catalog: %s\n" % e)
-```
-
-
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **workspace** | **str**| Query a specific workspace for model catalog. | [optional] 
- **name** | **str**| The name of the model catalog to retrieve. | [optional] 
- **shared** | **bool**| Retrieve the catalog that are shared with this user by other users. | [optional] 
-
-### Return type
-
-[**ModelCatalog**](ModelCatalog.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | successful operation |  -  |
-**422** | Invalid input |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 # **get_model_profiles**
 > ModelProfiles get_model_profiles(workspace=workspace, name=name, shared=shared)
 
@@ -1465,89 +1050,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ModelProfiles**](ModelProfiles.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | successful operation |  -  |
-**422** | Invalid input |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **get_target_resources**
-> TargetResources get_target_resources(workspace=workspace, name=name, shared=shared)
-
-Get target resources.
-
-Get a list of existing target resources.
-
-### Example
-
-* Bearer (JWT) Authentication (bearerAuth):
-
-```python
-import majordomo_ai
-from majordomo_ai.models.target_resources import TargetResources
-from majordomo_ai.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to http://localhost:/25001
-# See configuration.py for a list of all supported configuration parameters.
-configuration = majordomo_ai.Configuration(
-    host = "http://localhost:/25001"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure Bearer authorization (JWT): bearerAuth
-configuration = majordomo_ai.Configuration(
-    access_token = os.environ["BEARER_TOKEN"]
-)
-
-# Enter a context with an instance of the API client
-with majordomo_ai.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = majordomo_ai.AdminApi(api_client)
-    workspace = 'workspace_example' # str | Query a specific workspace for target resources. (optional)
-    name = 'name_example' # str | The name of the target resource to retrieve. (optional)
-    shared = True # bool | Retrieve the profiles that are shared with this user by other users. (optional)
-
-    try:
-        # Get target resources.
-        api_response = api_instance.get_target_resources(workspace=workspace, name=name, shared=shared)
-        print("The response of AdminApi->get_target_resources:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling AdminApi->get_target_resources: %s\n" % e)
-```
-
-
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **workspace** | **str**| Query a specific workspace for target resources. | [optional] 
- **name** | **str**| The name of the target resource to retrieve. | [optional] 
- **shared** | **bool**| Retrieve the profiles that are shared with this user by other users. | [optional] 
-
-### Return type
-
-[**TargetResources**](TargetResources.md)
 
 ### Authorization
 
@@ -1964,86 +1466,6 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **update_model_catalog**
-> ModelInfo update_model_catalog(model_config)
-
-Update model catalog.
-
-Update an existing model catalog.
-
-### Example
-
-* Bearer (JWT) Authentication (bearerAuth):
-
-```python
-import majordomo_ai
-from majordomo_ai.models.model_config import ModelConfig
-from majordomo_ai.models.model_info import ModelInfo
-from majordomo_ai.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to http://localhost:/25001
-# See configuration.py for a list of all supported configuration parameters.
-configuration = majordomo_ai.Configuration(
-    host = "http://localhost:/25001"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure Bearer authorization (JWT): bearerAuth
-configuration = majordomo_ai.Configuration(
-    access_token = os.environ["BEARER_TOKEN"]
-)
-
-# Enter a context with an instance of the API client
-with majordomo_ai.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = majordomo_ai.AdminApi(api_client)
-    model_config = majordomo_ai.ModelConfig() # ModelConfig | 
-
-    try:
-        # Update model catalog.
-        api_response = api_instance.update_model_catalog(model_config)
-        print("The response of AdminApi->update_model_catalog:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling AdminApi->update_model_catalog: %s\n" % e)
-```
-
-
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **model_config** | [**ModelConfig**](ModelConfig.md)|  | 
-
-### Return type
-
-[**ModelInfo**](ModelInfo.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/xml, application/json
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | successful operation |  -  |
-**422** | Invalid input |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 # **update_model_profile**
 > ModelProfileInfo update_model_profile(model_profile)
 
@@ -2105,86 +1527,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ModelProfileInfo**](ModelProfileInfo.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/xml, application/json
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | successful operation |  -  |
-**422** | Invalid input |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **update_target_resource**
-> TargetResourceInfo update_target_resource(target_resource)
-
-Update target resource.
-
-Update an existing target resource.
-
-### Example
-
-* Bearer (JWT) Authentication (bearerAuth):
-
-```python
-import majordomo_ai
-from majordomo_ai.models.target_resource import TargetResource
-from majordomo_ai.models.target_resource_info import TargetResourceInfo
-from majordomo_ai.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to http://localhost:/25001
-# See configuration.py for a list of all supported configuration parameters.
-configuration = majordomo_ai.Configuration(
-    host = "http://localhost:/25001"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure Bearer authorization (JWT): bearerAuth
-configuration = majordomo_ai.Configuration(
-    access_token = os.environ["BEARER_TOKEN"]
-)
-
-# Enter a context with an instance of the API client
-with majordomo_ai.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = majordomo_ai.AdminApi(api_client)
-    target_resource = majordomo_ai.TargetResource() # TargetResource | 
-
-    try:
-        # Update target resource.
-        api_response = api_instance.update_target_resource(target_resource)
-        print("The response of AdminApi->update_target_resource:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling AdminApi->update_target_resource: %s\n" % e)
-```
-
-
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **target_resource** | [**TargetResource**](TargetResource.md)|  | 
-
-### Return type
-
-[**TargetResourceInfo**](TargetResourceInfo.md)
 
 ### Authorization
 
