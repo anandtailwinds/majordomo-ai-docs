@@ -22,6 +22,8 @@ The types of deployment commands.
 
 * `DEPLOYMENT_COMMAND_POD_LOGS` (value: `9`)
 
+* `DEPLOYMENT_COMMAND_KSERVE_LOGS` (value: `10`)
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
 

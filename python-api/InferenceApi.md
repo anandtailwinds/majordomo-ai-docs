@@ -7,7 +7,7 @@ Method | HTTP request | Description
 [**create_inference_profile**](InferenceApi.md#create_inference_profile) | **POST** /inference_profiles | Create inference profile.
 [**delete_inference_profiles**](InferenceApi.md#delete_inference_profiles) | **DELETE** /inference_profiles | Delete inference profile.
 [**get_inference_profiles**](InferenceApi.md#get_inference_profiles) | **GET** /inference_profiles | Get inference profiles.
-[**inference_profile_command**](InferenceApi.md#inference_profile_command) | **POST** /inference_profile_command/workspace/{workspace}/name/{name}/command/{command} | Send a command to inference pipeline.
+[**inference_profile_command**](InferenceApi.md#inference_profile_command) | **POST** /inference_profile_command | Send a command to inference pipeline.
 [**update_inference_profile**](InferenceApi.md#update_inference_profile) | **PUT** /inference_profiles | Update inference profile.
 
 

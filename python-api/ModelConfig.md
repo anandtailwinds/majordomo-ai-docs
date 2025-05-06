@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **str** | Name of the model catalog. | 
 **workspace** | **str** | The workspace that contains the model catalog. | 
+**description** | **str** | Describe the model and its use here. | 
 **model_package** | [**ModelPackages**](ModelPackages.md) |  | 
 **app_profile_name** | **str** | The application profile containing information about the model storage.  | [optional] 
 **storage_profile_name** | **str** | The storage profile containing information about the model storage.  | [optional] 
