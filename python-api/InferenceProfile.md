@@ -8,11 +8,9 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **str** | Name of the inference deployment. | 
 **workspace** | **str** | Workspace in which the data store is present. | 
-**model_name** | **str** | Details of the model in the model catalog to be deployed.  | [optional] 
-**target_resource_name** | **str** | Details of the target resource in which the model is deployed.  | [optional] 
+**model_name** | **str** | Details of the model in the model catalog to be deployed.  | 
+**target_resource_name** | **str** | Details of the target resource in which the model is deployed.  | 
 **runtime_info** | **Dict[str, object]** | Optional parameters for deployment. | [optional] 
-**model_spec** | [**ModelSpec**](ModelSpec.md) |  | 
-**deployment_spec** | [**DeploymentSpec**](DeploymentSpec.md) |  | 
 **tags** | **List[str]** | Tags to describe the infra where it is running or what its purpose is. | [optional] 
 
 ## Example

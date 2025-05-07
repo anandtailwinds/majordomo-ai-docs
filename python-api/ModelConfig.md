@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **model_package** | [**ModelPackages**](ModelPackages.md) |  | 
 **app_profile_name** | **str** | The application profile containing information about the model storage.  | [optional] 
 **storage_profile_name** | **str** | The storage profile containing information about the model storage.  | [optional] 
-**access_info** | **Dict[str, object]** | Parameters required for accessing the model. | [optional] 
+**model_info** | **Dict[str, object]** | Parameters required for accessing the model. | [optional] 
 **shared_users** | **List[str]** | The list of users this profile is shared with. | [optional] 
 
 ## Example

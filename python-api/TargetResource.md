@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **workspace** | **str** | The workspace that contains the target resource. | 
 **name** | **str** | Name of the target resource. | 
-**target_type** | [**TargetResourceTypes**](TargetResourceTypes.md) |  | [optional] 
+**target_type** | [**TargetResourceTypes**](TargetResourceTypes.md) |  | 
 **access_info** | **Dict[str, object]** | Parameters required for accessing the model. | 
 **shared_users** | **List[str]** | The list of users this profile is shared with. | [optional] 
 

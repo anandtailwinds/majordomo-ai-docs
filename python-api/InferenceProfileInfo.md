@@ -12,6 +12,11 @@ Name | Type | Description | Notes
 **execution_success** | **int** | The level of execution success in last run, updated after each message specifying the progress level from worker is received.  | 
 **endpoint_info** | **Dict[str, object]** | Endpoint information in case it is dynamically determined. | [optional] 
 **logs** | **List[str]** | The logs from the deployment. | [optional] 
+**model_package** | [**ModelPackages**](ModelPackages.md) |  | [optional] 
+**model_name** | **str** | Name of the model catalog. | [optional] 
+**model_info** | **Dict[str, object]** | Parameters describing the model. | [optional] 
+**target_type** | [**TargetResourceTypes**](TargetResourceTypes.md) |  | [optional] 
+**target_access_info** | **Dict[str, object]** | Parameters required for accessing the model. | [optional] 
 **created_by** | **str** | The username who created this model profile | 
 **created_at** | **int** | Timestamp of the model profile creation | 
 **last_update** | **int** | Timestamp of the last update to the model profile | 
