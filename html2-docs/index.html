@@ -965,7 +965,7 @@ ul.nav-tabs {
     "access_info" : {
       "type" : "object",
       "additionalProperties" : { },
-      "description" : "Key value pairs with information required to access the application.\nThe possible values for the different types are given below.\n\nAPP_TYPE_DOCKER_REGISTRY<br>\n  registry_name : Name of the registry<br>\n\nAPP_TYPE_ACR  \n  registry_name : Name of the registry  \n\nAPP_TYPE_ECR\n  registry_name : Name of the registry\n\nAPP_TYPE_AWS_S3\n  access_key : The AWS access key for accessing S3.\n  secret_token : The AWS secret token for accessing S3.\n  region :  AWS region.\n\nAPP_TYPE_AZURE_BLOB\n  client_id : The Azure client ID.\n  client_secret : The Azure client secret.\n  tenant_id : The Azure tenant ID.\n\nAPP_TYPE_WEBPAGE\n  None\n\nAPP_TYPE_PINECONE\n  cloud : The cloud in which the vector database is running.\n  region : The region in which the vector database is running.\n  api_key : API Key for accessing the Pinecone.\n\nAPP_TYPE_MONGO_VECTORDB\n  connect_string : The connect string to contact the Mongo Vector database.\n  database_name : The database name.\n\nAPP_TYPE_POSTGRES_VECTORDB\n  connect_string : The connect string to contact the Mongo Vector database.\n  database_name : The database name.\n\nAPP_TYPE_SQL\n  connect_string : The connect string to contact the Mongo Vector database. \n                   Format: postgres://\n  database_name : The database name.\n\nAPP_TYPE_MONGODB\n  connect_string : The connect string to contact the Mongo Vector database.\n  database_name : The database name.\n\nAPP_TYPE_CONFLUENCE\n  user_name : The user name for accessing the Confluence server.\n  api_token : API Token for accessing the server.\n  space_key : The key required to access the Confluence space.\n\nAPP_TYPE_ELASTIC_SEARCH\n  None\n"
+      "description" : "Key value pairs with information required to access the application.\nThe possible values for the different types are given below.\n\nAPP_TYPE_DOCKER_REGISTRY\n\n  registry_name : Name of the registry\n\nAPP_TYPE_ACR\n\n  registry_name : Name of the registry\n\nAPP_TYPE_ECR\n\n  registry_name : Name of the registry\n\nAPP_TYPE_AWS_S3\n\n  access_key : The AWS access key for accessing S3.\n\n  secret_token : The AWS secret token for accessing S3.\n\n  region :  AWS region.\n\nAPP_TYPE_AZURE_BLOB\n\n  client_id : The Azure client ID.\n\n  client_secret : The Azure client secret.\n\n  tenant_id : The Azure tenant ID.\n\nAPP_TYPE_WEBPAGE\n\n  None\n\nAPP_TYPE_PINECONE\n\n  cloud : The cloud in which the vector database is running.\n\n  region : The region in which the vector database is running.\n\n  api_key : API Key for accessing the Pinecone.\n\nAPP_TYPE_MONGO_VECTORDB\n\n  connect_string : The connect string to contact the Mongo Vector database.\n\n  database_name : The database name.\n\nAPP_TYPE_POSTGRES_VECTORDB\n\n  connect_string : The connect string to contact the Mongo Vector database.\n\n  database_name : The database name.\n\nAPP_TYPE_SQL\n\n  connect_string : The connect string to contact the Mongo Vector database. \n                   Format: postgres://\n\n  database_name : The database name.\n\nAPP_TYPE_MONGODB\n\n  connect_string : The connect string to contact the Mongo Vector database.\n\n  database_name : The database name.\n\nAPP_TYPE_CONFLUENCE\n\n  user_name : The user name for accessing the Confluence server.\n\n  api_token : API Token for accessing the server.\n\n  space_key : The key required to access the Confluence space.\n\nAPP_TYPE_ELASTIC_SEARCH\n  \n  connect_string : The connect string to contact the Elastic search.\n\n  user_name : The database name.\n\n  password : The database name.\n\nAPP_TYPE_JIRA\n\n  connect_string : The connect string to contact the Elastic search.\n\n  user_name : The database name.\n\n  password : The database name.\n"
     },
     "shared_users" : {
       "type" : "array",
@@ -1327,7 +1327,7 @@ ul.nav-tabs {
     "input_filter" : {
       "type" : "object",
       "additionalProperties" : { },
-      "description" : "The set of parameters describing the source location and filters for accessing \nthe input files. The specific parameters vary depending on the type of source, \nfor example an S3 bucket will require a bucket name to be specified.\n"
+      "description" : "The set of parameters describing the source location and filters for accessing \nthe input files. The parameters for each type of data source is listed below.\n\n<b>APP_TYPE_AWS_S3</b>\n\nfile_list : Comma separated list of files, can contain wildcards. If the files are in a directory format the entire directory key should be specified. \n  \n<b>APP_TYPE_AZURE_BLOB</b>\n\nfile_list : Comma separated list of files, can contain wildcards. If the files are in a directory format the entire directory key should be specified. \n  \n<b>APP_TYPE_WEBPAGE</b>\n\nurl : The webpage URL.\n"
     },
     "ingest_type" : {
       "$ref" : "#/components/schemas/IngestTypes"
@@ -1461,7 +1461,7 @@ ul.nav-tabs {
     },
     "input_filter" : {
       "type" : "object",
-      "description" : "Input information like file list."
+      "description" : "Input filter specification for accessing the source content.\n\nThe set of parameters describing the source location and filters for accessing \nthe input files. The parameters for each type of data source is listed below.\n\n<b>APP_TYPE_AWS_S3</b>\n\nfile_list : Comma separated list of files, can contain wildcards. If the files are in a directory format the entire directory key should be specified. \n  \n<b>APP_TYPE_AZURE_BLOB</b>\n\nfile_list : Comma separated list of files, can contain wildcards. If the files are in a directory format the entire directory key should be specified. \n  \n<b>APP_TYPE_WEBPAGE</b>\n\nurl : The webpage URL.\n"
     },
     "ingest_params" : {
       "$ref" : "#/components/schemas/IngestParams"
@@ -1499,14 +1499,14 @@ ul.nav-tabs {
     "access_info" : {
       "type" : "object",
       "additionalProperties" : { },
-      "description" : "Parameters required for accessing the file extractor."
+      "description" : "Parameters required for accessing the file extractor.\n\n<b>LLAMAPARSE</b>\n\napi_key : The API Key required to access LlamaParse.\n"
     }
   },
   "description" : "Mapping of file extractors."
 };
     defs["FileExtractors"] = {
   "type" : "integer",
-  "description" : "The type of file extractors available.",
+  "description" : "The type of file extractors available.\n\n1 : EXTRACTOR_PYMUPDF\n\n2 : EXTRACTOR_LLAMAPARSE\n",
   "enum" : [ 1, 2 ],
   "x-enum-varnames" : [ "EXTRACTOR_PYMUPDF", "EXTRACTOR_LLAMAPARSE" ],
   "x-enum-descriptions" : [ "PyMuPDF extractor", "LlamaParse extractor, this requires an api_key to be passed additionally to work. Obtain your API key from http://www.llamaparse.org" ]
@@ -1580,7 +1580,7 @@ ul.nav-tabs {
     "runtime_info" : {
       "type" : "object",
       "additionalProperties" : { },
-      "description" : "Optional parameters for deployment."
+      "description" : "\nOptional parameters for deployment.\n\n<b>Target type is TARGET_TYPE_CPU or TARGET_TYPE_GPU</b>:\n\ncontainer_name: The name of the run time container that will be running the model.\n\nports: The list of ports to expose for the model container.\n\nvolumes: The volumes to mount onto the model container. The volume should be present in the compute resource that runs the container.\n\n<b>Common for all target types</b>\n\nenvironment: The env vars to be added to the model container.\n\ncmd_override: The new command to override the CMD of the model container.\n\n<b>Target type is TARGET_TYPE_KSERVE_CLUSTER</b>:\n\nnamespace: The Kubernetes namespace in which to run the inference.\n\nmin_scale: The minimum number of instances of the model to be run in the cluster.\n\nmax_scale: The maximum number of instances of the model to be run in the cluster.\n\ntarget: The number of concurrent requests a pod can handle before scaling occurs.\n"
     },
     "tags" : {
       "type" : "array",
@@ -1610,7 +1610,7 @@ ul.nav-tabs {
     "params" : {
       "type" : "object",
       "additionalProperties" : { },
-      "description" : "The parameters for the command, depends on each command."
+      "description" : "The additional arameters for the command, depends on each command. \n\n<b>DEPLOYMENT_COMMAND_POD_LOGS</b>\n\npod_name : The name of the POD for which to retrieve the logs.\n"
     }
   }
 };
@@ -1666,7 +1666,7 @@ ul.nav-tabs {
     "model_info" : {
       "type" : "object",
       "additionalProperties" : { },
-      "description" : "Parameters describing the model."
+      "description" : "Parameters required for accessing the model.\n\nimage_name:  Name of the container image that serves the model.\n"
     },
     "target_type" : {
       "$ref" : "#/components/schemas/TargetResourceTypes"
@@ -2029,7 +2029,7 @@ ul.nav-tabs {
     "model_info" : {
       "type" : "object",
       "additionalProperties" : { },
-      "description" : "Parameters required for accessing the model."
+      "description" : "Parameters required for accessing the model.\n\nimage_name:  Name of the container image that serves the model.\n"
     },
     "shared_users" : {
       "type" : "array",
@@ -2118,7 +2118,7 @@ ul.nav-tabs {
     "access_info" : {
       "type" : "object",
       "additionalProperties" : { },
-      "description" : "Parameters required for accessing the model."
+      "description" : "Parameters required for accessing the model. \n\n<b>PROVIDER_OPENAI</b>\n\napi_key : OpenAI API key.\n\n<b>PROVIDER_ANTHROPIC</b>\n\napi_key : Claude API key.\n\n<b>PROVIDER_SELF_HOSTED</b>\n\napi_key : Self hosted model API key.\n\nbase_url : The URL at which the self hosted model is reachable.\n\nhost : The host name to use in HTTP header while trying to send requests to the model. This is typically required for models running behind a service gateway like Istio.\n"
     },
     "shared_users" : {
       "type" : "array",
@@ -2199,7 +2199,7 @@ ul.nav-tabs {
 };
     defs["ModelProviders"] = {
   "type" : "integer",
-  "description" : "The list of model providers supported",
+  "description" : "\nThe list of model providers supported.\n\n1 : OpenAI\n\n2 : Anthropic\n\n3 : Azure OpenAI\n\n4 : AWS Bedrock\n\n5 : Self Hosted models\n",
   "enum" : [ 1, 2, 3, 4, 5 ],
   "x-enum-varnames" : [ "PROVIDER_OPENAI", "PROVIDER_ANTHROPIC", "PROVIDER_AZURE_OPENAI", "PROVIDER_AWS_BEDROCK", "PROVIDER_SELF_HOSTED" ],
   "x-enum-descriptions" : [ "OpenAI", "Anthropic", "Azure OpenAI", "AWS Bedrock", "Self Hosted" ]
@@ -2223,7 +2223,7 @@ ul.nav-tabs {
     "access_info" : {
       "type" : "object",
       "additionalProperties" : true,
-      "description" : "The information to access the monitoring tool."
+      "description" : "The information to access the monitoring tool. The parameters required for \nspecific tools are given below.\n\n<b>LANGFUSE</b>\n\nhost :  The host name where the Langfuse server is running.\n\npublic_key :  The public key used to access the monitoring tool.\n\nsecret_key :  The secret key used to access the monitoring tool.\n"
     }
   },
   "description" : "This describes the details of a particular monitor profile."
@@ -2606,7 +2606,7 @@ ul.nav-tabs {
     "access_info" : {
       "type" : "object",
       "additionalProperties" : { },
-      "description" : "Parameters required for accessing the model."
+      "description" : "Parameters required for accessing the target resource.\n\n<b>Target type is TARGET_TYPE_CPU or TARGET_TYPE_GPU</b>:\n\nhost_name: Specify the hostname or IP address of the resource.\n\nuser_name: The username to use while doing a SSH connection to the resource.\n\nssh_key: The SSH key to use while connecting with the resource. Can be a pointer to a keyvault containing the credentials.\n\n<b>Target type is TARGET_TYPE_KSERVE_CLUSTER (Azure)</b>:\n\nsubcription_id: The subscription ID to use while accessing the cluster. This is optional if the subscription_id is same as the one where the worker is provisioned.\n\nresource_group: The name of the resource group in which the cluster is present.\n\ncluster_name: The name of the Kubernetes cluster.\n\ncluster_access_id: The cluster access ID.\n\ncluster_access_rg: The resource group of the Managed Profile to use for accessing the cluster.\n\ncluster_access_client_id: The Managed Profile name to use while accessing the cluster. The worker should be able to assume this role.\n\n<b>Target type is TARGET_TYPE_KSERVE_CLUSTER (AWS)</b>:\n\ncluster_role: The name of the IAM role to use while accessing the cluster.\n\ncluster_name: The name of the Kubernetes cluster.\n\nregion: The region in which the cluster is present.\n\naccess_key_id: The access key id to use while trying to assume the cluster_role IAM role.\n\nsecret_access_key: The secret access key to use while trying to assume the cluster_role IAM role.\n"
     },
     "shared_users" : {
       "type" : "array",
@@ -2645,7 +2645,7 @@ ul.nav-tabs {
 };
     defs["TargetResourceTypes"] = {
   "type" : "integer",
-  "description" : "The types of target resources.",
+  "description" : "The types of target resources.\n\n1 : TARGET_TYPE_CPU\n\n2 : TARGET_TYPE_GPU\n\n3 : TARGET_TYPE_KSERVE_CLUSTER\n",
   "enum" : [ 1, 2, 3 ],
   "x-enum-varnames" : [ "TARGET_TYPE_CPU", "TARGET_TYPE_GPU", "TARGET_TYPE_KSERVE_CLUSTER" ]
 };
