@@ -8,11 +8,9 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **str** | Name of the inference deployment. | 
 **workspace** | **str** | Workspace in which the data store is present. | 
-**model_name** | **str** | Details of the model in the model catalog to be deployed.  | [optional] 
-**target_resource_name** | **str** | Details of the target resource in which the model is deployed.  | [optional] 
-**runtime_info** | **Dict[str, object]** | Optional parameters for deployment. | [optional] 
-**model_spec** | [**ModelSpec**](ModelSpec.md) |  | 
-**deployment_spec** | [**DeploymentSpec**](DeploymentSpec.md) |  | 
+**model_name** | **str** | Details of the model in the model catalog to be deployed.  | 
+**target_resource_name** | **str** | Details of the target resource in which the model is deployed.  | 
+**runtime_info** | **Dict[str, object]** |  Optional parameters for deployment.  &lt;b&gt;Target type is TARGET_TYPE_CPU or TARGET_TYPE_GPU&lt;/b&gt;:  container_name: The name of the run time container that will be running the model.  ports: The list of ports to expose for the model container.  volumes: The volumes to mount onto the model container. The volume should be present in the compute resource that runs the container.  &lt;b&gt;Common for all target types&lt;/b&gt;  environment: The env vars to be added to the model container.  cmd_override: The new command to override the CMD of the model container.  &lt;b&gt;Target type is TARGET_TYPE_KSERVE_CLUSTER&lt;/b&gt;:  namespace: The Kubernetes namespace in which to run the inference.  min_scale: The minimum number of instances of the model to be run in the cluster.  max_scale: The maximum number of instances of the model to be run in the cluster.  target: The number of concurrent requests a pod can handle before scaling occurs.  | [optional] 
 **tags** | **List[str]** | Tags to describe the infra where it is running or what its purpose is. | [optional] 
 
 ## Example

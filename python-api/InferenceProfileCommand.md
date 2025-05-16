@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **workspace** | **str** | The workspace to run the command in. | 
 **name** | **str** | The name of the inference profile. | 
 **command** | [**DeploymentCommands**](DeploymentCommands.md) |  | 
-**params** | **Dict[str, object]** | The parameters for the command, depends on each command. | [optional] 
+**params** | **Dict[str, object]** | The additional arameters for the command, depends on each command.   &lt;b&gt;DEPLOYMENT_COMMAND_POD_LOGS&lt;/b&gt;  pod_name : The name of the POD for which to retrieve the logs.  | [optional] 
 
 ## Example
 

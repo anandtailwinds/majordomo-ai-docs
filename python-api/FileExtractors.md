@@ -1,6 +1,6 @@
 # FileExtractors
 
-The type of file extractors available.
+The type of file extractors available.  1 : EXTRACTOR_PYMUPDF  2 : EXTRACTOR_LLAMAPARSE 
 
 ## Enum
 

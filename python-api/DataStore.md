@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **workspace** | **str** | Workspace in which the data store is present. | 
 **name** | **str** | Name of the data store. | 
 **store_type** | [**DataStoreTypes**](DataStoreTypes.md) |  | 
-**app_profile_name** | **str** | Name of the application profile. | 
+**tool_name** | **str** | Name of the application profile. | 
 **contents** | **str** | Description of the data store. This can be included in queries as an additional hint to LLM models.  | [optional] 
 **instance_info** | **Dict[str, object]** | Information about the specific data store data store instance. | [optional] 
 **shared_users** | **List[str]** | The list of users this profile is shared with. | [optional] 

@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **workspace** | **str** | The workspace that contains the model profile. | 
 **embedding_models** | **List[str]** | List of embedding models allowed for a user who is associated to this profile.  Incase list is empty all models available in the provider are allowed.  | [optional] 
 **llm_models** | **List[str]** | List of LLM models allowed for a user who is associated to this profile.  Incase list is empty all models available in the provider are allowed.  | [optional] 
-**access_info** | **Dict[str, object]** | Parameters required for accessing the model. | [optional] 
+**access_info** | **Dict[str, object]** | Parameters required for accessing the model.   &lt;b&gt;PROVIDER_OPENAI&lt;/b&gt;  api_key : OpenAI API key.  &lt;b&gt;PROVIDER_ANTHROPIC&lt;/b&gt;  api_key : Claude API key.  &lt;b&gt;PROVIDER_SELF_HOSTED&lt;/b&gt;  api_key : Self hosted model API key.  base_url : The URL at which the self hosted model is reachable.  host : The host name to use in HTTP header while trying to send requests to the model. This is typically required for models running behind a service gateway like Istio.  | [optional] 
 **shared_users** | **List[str]** | The list of users this profile is shared with. | [optional] 
 
 ## Example

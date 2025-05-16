@@ -1,6 +1,6 @@
 # ModelProviders
 
-The list of model providers supported
+ The list of model providers supported.  1 : OpenAI  2 : Anthropic  3 : Azure OpenAI  4 : AWS Bedrock  5 : Self Hosted models 
 
 ## Enum
 

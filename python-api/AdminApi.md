@@ -4,109 +4,29 @@ All URIs are relative to *http://localhost:/25001*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create_app_profile**](AdminApi.md#create_app_profile) | **POST** /app_profiles | Create app profile.
 [**create_model_profile**](AdminApi.md#create_model_profile) | **POST** /model_profiles | Create model profile.
+[**create_tool**](AdminApi.md#create_tool) | **POST** /tools | Create tool.
 [**create_user**](AdminApi.md#create_user) | **POST** /users | Add user.
 [**create_worker**](AdminApi.md#create_worker) | **POST** /workers | Create worker node.
 [**create_workspace**](AdminApi.md#create_workspace) | **POST** /workspaces | Create workspace.
-[**delete_app_profiles**](AdminApi.md#delete_app_profiles) | **DELETE** /app_profiles | Delete app profile.
 [**delete_model_profiles**](AdminApi.md#delete_model_profiles) | **DELETE** /model_profiles | Delete model profile.
+[**delete_tools**](AdminApi.md#delete_tools) | **DELETE** /tools | Delete tool.
 [**delete_user**](AdminApi.md#delete_user) | **DELETE** /users | Delete user.
 [**delete_workers**](AdminApi.md#delete_workers) | **DELETE** /workers | Delete worker nodes.
 [**delete_workspaces**](AdminApi.md#delete_workspaces) | **DELETE** /workspaces | Delete workspace.
 [**get_allowed_profiles**](AdminApi.md#get_allowed_profiles) | **GET** /allowed_profiles | Get permitted profiles for a specific user.
-[**get_app_profiles**](AdminApi.md#get_app_profiles) | **GET** /app_profiles | Get app profiles.
 [**get_model_profiles**](AdminApi.md#get_model_profiles) | **GET** /model_profiles | Get model profiles.
+[**get_tools**](AdminApi.md#get_tools) | **GET** /tools | Get tools.
 [**get_user_list**](AdminApi.md#get_user_list) | **GET** /user_list | Get list of all users.
 [**get_users**](AdminApi.md#get_users) | **GET** /users | Get users list.
 [**get_workers**](AdminApi.md#get_workers) | **GET** /workers | Get worker nodes.
 [**get_workspaces**](AdminApi.md#get_workspaces) | **GET** /workspaces | Get workspaces.
-[**update_app_profile**](AdminApi.md#update_app_profile) | **PUT** /app_profiles | Update app profile.
 [**update_model_profile**](AdminApi.md#update_model_profile) | **PUT** /model_profiles | Update model profile.
+[**update_tool**](AdminApi.md#update_tool) | **PUT** /tools | Update tool.
 [**update_user**](AdminApi.md#update_user) | **PUT** /users | Update user.
 [**update_worker**](AdminApi.md#update_worker) | **PUT** /workers | Update worker node.
 [**update_workspace**](AdminApi.md#update_workspace) | **PUT** /workspaces | Update workspace.
 
-
-# **create_app_profile**
-> AppProfileInfo create_app_profile(app_profile)
-
-Create app profile.
-
-Create a new app profile.
-
-### Example
-
-* Bearer (JWT) Authentication (bearerAuth):
-
-```python
-import majordomo_ai
-from majordomo_ai.models.app_profile import AppProfile
-from majordomo_ai.models.app_profile_info import AppProfileInfo
-from majordomo_ai.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to http://localhost:/25001
-# See configuration.py for a list of all supported configuration parameters.
-configuration = majordomo_ai.Configuration(
-    host = "http://localhost:/25001"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure Bearer authorization (JWT): bearerAuth
-configuration = majordomo_ai.Configuration(
-    access_token = os.environ["BEARER_TOKEN"]
-)
-
-# Enter a context with an instance of the API client
-with majordomo_ai.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = majordomo_ai.AdminApi(api_client)
-    app_profile = majordomo_ai.AppProfile() # AppProfile | 
-
-    try:
-        # Create app profile.
-        api_response = api_instance.create_app_profile(app_profile)
-        print("The response of AdminApi->create_app_profile:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling AdminApi->create_app_profile: %s\n" % e)
-```
-
-
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **app_profile** | [**AppProfile**](AppProfile.md)|  | 
-
-### Return type
-
-[**AppProfileInfo**](AppProfileInfo.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | successful operation |  -  |
-**422** | Invalid input |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_model_profile**
 > ModelProfileInfo create_model_profile(model_profile)
@@ -169,6 +89,86 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ModelProfileInfo**](ModelProfileInfo.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | successful operation |  -  |
+**422** | Invalid input |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **create_tool**
+> ToolInfo create_tool(tool)
+
+Create tool.
+
+Create a new tool.
+
+### Example
+
+* Bearer (JWT) Authentication (bearerAuth):
+
+```python
+import majordomo_ai
+from majordomo_ai.models.tool import Tool
+from majordomo_ai.models.tool_info import ToolInfo
+from majordomo_ai.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost:/25001
+# See configuration.py for a list of all supported configuration parameters.
+configuration = majordomo_ai.Configuration(
+    host = "http://localhost:/25001"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (JWT): bearerAuth
+configuration = majordomo_ai.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with majordomo_ai.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = majordomo_ai.AdminApi(api_client)
+    tool = majordomo_ai.Tool() # Tool | 
+
+    try:
+        # Create tool.
+        api_response = api_instance.create_tool(tool)
+        print("The response of AdminApi->create_tool:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling AdminApi->create_tool: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tool** | [**Tool**](Tool.md)|  | 
+
+### Return type
+
+[**ToolInfo**](ToolInfo.md)
 
 ### Authorization
 
@@ -428,88 +428,6 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **delete_app_profiles**
-> DeleteResponse delete_app_profiles(workspace=workspace, name=name)
-
-Delete app profile.
-
-Delete one or more configured app profiles.
-
-### Example
-
-* Bearer (JWT) Authentication (bearerAuth):
-
-```python
-import majordomo_ai
-from majordomo_ai.models.delete_response import DeleteResponse
-from majordomo_ai.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to http://localhost:/25001
-# See configuration.py for a list of all supported configuration parameters.
-configuration = majordomo_ai.Configuration(
-    host = "http://localhost:/25001"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure Bearer authorization (JWT): bearerAuth
-configuration = majordomo_ai.Configuration(
-    access_token = os.environ["BEARER_TOKEN"]
-)
-
-# Enter a context with an instance of the API client
-with majordomo_ai.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = majordomo_ai.AdminApi(api_client)
-    workspace = 'workspace_example' # str | The name of the workspace in which the profile exists. (optional)
-    name = 'name_example' # str | The name of the app profile to delete. (optional)
-
-    try:
-        # Delete app profile.
-        api_response = api_instance.delete_app_profiles(workspace=workspace, name=name)
-        print("The response of AdminApi->delete_app_profiles:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling AdminApi->delete_app_profiles: %s\n" % e)
-```
-
-
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **workspace** | **str**| The name of the workspace in which the profile exists. | [optional] 
- **name** | **str**| The name of the app profile to delete. | [optional] 
-
-### Return type
-
-[**DeleteResponse**](DeleteResponse.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | successful operation |  -  |
-**422** | Invalid input. |  -  |
-**401** | Unauthorized access. This is most likely because the access token has expired or the user API key is invalid. |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 # **delete_model_profiles**
 > DeleteResponse delete_model_profiles(workspace=workspace, name=name)
 
@@ -568,6 +486,88 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **workspace** | **str**| The name of the workspace in which the profile exists. | [optional] 
  **name** | **str**| The name of the model profile to delete. | [optional] 
+
+### Return type
+
+[**DeleteResponse**](DeleteResponse.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | successful operation |  -  |
+**422** | Invalid input. |  -  |
+**401** | Unauthorized access. This is most likely because the access token has expired or the user API key is invalid. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **delete_tools**
+> DeleteResponse delete_tools(workspace=workspace, name=name)
+
+Delete tool.
+
+Delete one or more configured tools.
+
+### Example
+
+* Bearer (JWT) Authentication (bearerAuth):
+
+```python
+import majordomo_ai
+from majordomo_ai.models.delete_response import DeleteResponse
+from majordomo_ai.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost:/25001
+# See configuration.py for a list of all supported configuration parameters.
+configuration = majordomo_ai.Configuration(
+    host = "http://localhost:/25001"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (JWT): bearerAuth
+configuration = majordomo_ai.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with majordomo_ai.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = majordomo_ai.AdminApi(api_client)
+    workspace = 'workspace_example' # str | The name of the workspace in which the profile exists. (optional)
+    name = 'name_example' # str | The name of the tool to delete. (optional)
+
+    try:
+        # Delete tool.
+        api_response = api_instance.delete_tools(workspace=workspace, name=name)
+        print("The response of AdminApi->delete_tools:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling AdminApi->delete_tools: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **workspace** | **str**| The name of the workspace in which the profile exists. | [optional] 
+ **name** | **str**| The name of the tool to delete. | [optional] 
 
 ### Return type
 
@@ -900,92 +900,6 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **get_app_profiles**
-> AppProfiles get_app_profiles(workspace=workspace, name=name, shared=shared, operation=operation)
-
-Get app profiles.
-
-Get a list of existing app profiles.
-
-### Example
-
-* Bearer (JWT) Authentication (bearerAuth):
-
-```python
-import majordomo_ai
-from majordomo_ai.models.app_profiles import AppProfiles
-from majordomo_ai.models.supported_operations import SupportedOperations
-from majordomo_ai.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to http://localhost:/25001
-# See configuration.py for a list of all supported configuration parameters.
-configuration = majordomo_ai.Configuration(
-    host = "http://localhost:/25001"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure Bearer authorization (JWT): bearerAuth
-configuration = majordomo_ai.Configuration(
-    access_token = os.environ["BEARER_TOKEN"]
-)
-
-# Enter a context with an instance of the API client
-with majordomo_ai.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = majordomo_ai.AdminApi(api_client)
-    workspace = 'workspace_example' # str | Query a specific workspace for app profiles. (optional)
-    name = 'name_example' # str | The name of the app profile to retrieve. (optional)
-    shared = True # bool | Retrieve the profiles that are shared with this user by other users. (optional)
-    operation = majordomo_ai.SupportedOperations() # SupportedOperations | Retrieve the profiles that are support the operation. (optional)
-
-    try:
-        # Get app profiles.
-        api_response = api_instance.get_app_profiles(workspace=workspace, name=name, shared=shared, operation=operation)
-        print("The response of AdminApi->get_app_profiles:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling AdminApi->get_app_profiles: %s\n" % e)
-```
-
-
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **workspace** | **str**| Query a specific workspace for app profiles. | [optional] 
- **name** | **str**| The name of the app profile to retrieve. | [optional] 
- **shared** | **bool**| Retrieve the profiles that are shared with this user by other users. | [optional] 
- **operation** | [**SupportedOperations**](.md)| Retrieve the profiles that are support the operation. | [optional] 
-
-### Return type
-
-[**AppProfiles**](AppProfiles.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | successful operation |  -  |
-**422** | Invalid input |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 # **get_model_profiles**
 > ModelProfiles get_model_profiles(workspace=workspace, name=name, shared=shared)
 
@@ -1050,6 +964,92 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ModelProfiles**](ModelProfiles.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | successful operation |  -  |
+**422** | Invalid input |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_tools**
+> Tools get_tools(workspace=workspace, name=name, shared=shared, operation=operation)
+
+Get tools.
+
+Get a list of existing tools.
+
+### Example
+
+* Bearer (JWT) Authentication (bearerAuth):
+
+```python
+import majordomo_ai
+from majordomo_ai.models.supported_operations import SupportedOperations
+from majordomo_ai.models.tools import Tools
+from majordomo_ai.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost:/25001
+# See configuration.py for a list of all supported configuration parameters.
+configuration = majordomo_ai.Configuration(
+    host = "http://localhost:/25001"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (JWT): bearerAuth
+configuration = majordomo_ai.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with majordomo_ai.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = majordomo_ai.AdminApi(api_client)
+    workspace = 'workspace_example' # str | Query a specific workspace for tools. (optional)
+    name = 'name_example' # str | The name of the tool to retrieve. (optional)
+    shared = True # bool | Retrieve the profiles that are shared with this user by other users. (optional)
+    operation = majordomo_ai.SupportedOperations() # SupportedOperations | Retrieve the profiles that are support the operation. (optional)
+
+    try:
+        # Get tools.
+        api_response = api_instance.get_tools(workspace=workspace, name=name, shared=shared, operation=operation)
+        print("The response of AdminApi->get_tools:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling AdminApi->get_tools: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **workspace** | **str**| Query a specific workspace for tools. | [optional] 
+ **name** | **str**| The name of the tool to retrieve. | [optional] 
+ **shared** | **bool**| Retrieve the profiles that are shared with this user by other users. | [optional] 
+ **operation** | [**SupportedOperations**](.md)| Retrieve the profiles that are support the operation. | [optional] 
+
+### Return type
+
+[**Tools**](Tools.md)
 
 ### Authorization
 
@@ -1386,86 +1386,6 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **update_app_profile**
-> AppProfileInfo update_app_profile(app_profile)
-
-Update app profile.
-
-Update an existing app profile.
-
-### Example
-
-* Bearer (JWT) Authentication (bearerAuth):
-
-```python
-import majordomo_ai
-from majordomo_ai.models.app_profile import AppProfile
-from majordomo_ai.models.app_profile_info import AppProfileInfo
-from majordomo_ai.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to http://localhost:/25001
-# See configuration.py for a list of all supported configuration parameters.
-configuration = majordomo_ai.Configuration(
-    host = "http://localhost:/25001"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure Bearer authorization (JWT): bearerAuth
-configuration = majordomo_ai.Configuration(
-    access_token = os.environ["BEARER_TOKEN"]
-)
-
-# Enter a context with an instance of the API client
-with majordomo_ai.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = majordomo_ai.AdminApi(api_client)
-    app_profile = majordomo_ai.AppProfile() # AppProfile | 
-
-    try:
-        # Update app profile.
-        api_response = api_instance.update_app_profile(app_profile)
-        print("The response of AdminApi->update_app_profile:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling AdminApi->update_app_profile: %s\n" % e)
-```
-
-
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **app_profile** | [**AppProfile**](AppProfile.md)|  | 
-
-### Return type
-
-[**AppProfileInfo**](AppProfileInfo.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/xml, application/json
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | successful operation |  -  |
-**422** | Invalid input |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 # **update_model_profile**
 > ModelProfileInfo update_model_profile(model_profile)
 
@@ -1527,6 +1447,86 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ModelProfileInfo**](ModelProfileInfo.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/xml, application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | successful operation |  -  |
+**422** | Invalid input |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **update_tool**
+> ToolInfo update_tool(tool)
+
+Update tool.
+
+Update an existing tool.
+
+### Example
+
+* Bearer (JWT) Authentication (bearerAuth):
+
+```python
+import majordomo_ai
+from majordomo_ai.models.tool import Tool
+from majordomo_ai.models.tool_info import ToolInfo
+from majordomo_ai.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost:/25001
+# See configuration.py for a list of all supported configuration parameters.
+configuration = majordomo_ai.Configuration(
+    host = "http://localhost:/25001"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (JWT): bearerAuth
+configuration = majordomo_ai.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with majordomo_ai.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = majordomo_ai.AdminApi(api_client)
+    tool = majordomo_ai.Tool() # Tool | 
+
+    try:
+        # Update tool.
+        api_response = api_instance.update_tool(tool)
+        print("The response of AdminApi->update_tool:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling AdminApi->update_tool: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tool** | [**Tool**](Tool.md)|  | 
+
+### Return type
+
+[**ToolInfo**](ToolInfo.md)
 
 ### Authorization
 
