@@ -14,9 +14,8 @@ Name | Type | Description | Notes
 **logs** | **List[str]** | The logs from the deployment. | [optional] 
 **model_package** | [**ModelPackages**](ModelPackages.md) |  | [optional] 
 **model_name** | **str** | Name of the model catalog. | [optional] 
-**model_info** | **Dict[str, object]** | Parameters describing the model. | [optional] 
+**model_info** | **Dict[str, object]** | Parameters required for accessing the model.  image_name:  Name of the container image that serves the model.  | [optional] 
 **target_type** | [**TargetResourceTypes**](TargetResourceTypes.md) |  | [optional] 
-**target_access_info** | **Dict[str, object]** | Parameters required for accessing the model. | [optional] 
 **created_by** | **str** | The username who created this model profile | 
 **created_at** | **int** | Timestamp of the model profile creation | 
 **last_update** | **int** | Timestamp of the last update to the model profile | 

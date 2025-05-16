@@ -1,6 +1,6 @@
 # TargetResourceTypes
 
-The types of target resources.
+The types of target resources.  1 : TARGET_TYPE_CPU  2 : TARGET_TYPE_GPU  3 : TARGET_TYPE_KSERVE_CLUSTER 
 
 ## Enum
 

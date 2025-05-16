@@ -7,7 +7,7 @@ Mapping of file extractors.
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **extractor_type** | [**FileExtractors**](FileExtractors.md) |  | 
-**access_info** | **Dict[str, object]** | Parameters required for accessing the file extractor. | [optional] 
+**access_info** | **Dict[str, object]** | Parameters required for accessing the file extractor.  &lt;b&gt;LLAMAPARSE&lt;/b&gt;  api_key : The API Key required to access LlamaParse.  | [optional] 
 
 ## Example
 

@@ -6,8 +6,8 @@ Download and parse file step.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**app_profile_name** | **str** | The name of the application profile to access the content. | 
-**input_filter** | **object** | Input information like file list. | 
+**tool_name** | **str** | The name of the application profile to access the content. | 
+**input_filter** | **object** | Input filter specification for accessing the source content.  The set of parameters describing the source location and filters for accessing  the input files. The parameters for each type of data source is listed below.  &lt;b&gt;TOOL_TYPE_AWS_S3&lt;/b&gt;  file_list : Comma separated list of files, can contain wildcards. If the files are in a directory format the entire directory key should be specified.     &lt;b&gt;TOOL_TYPE_AZURE_BLOB&lt;/b&gt;  file_list : Comma separated list of files, can contain wildcards. If the files are in a directory format the entire directory key should be specified.     &lt;b&gt;TOOL_TYPE_WEBPAGE&lt;/b&gt;  url : The webpage URL.  | 
 **ingest_params** | [**IngestParams**](IngestParams.md) |  | [optional] 
 **ingest_type** | [**IngestTypes**](IngestTypes.md) |  | 
 

@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **name** | **str** | Name of the monitor profile. | 
 **workspace** | **str** | The workspace for the monitor profile. | 
 **provider** | [**MonitorProviders**](MonitorProviders.md) |  | 
-**access_info** | **Dict[str, object]** | The information to access the monitoring tool. | 
+**access_info** | **Dict[str, object]** | The information to access the monitoring tool. The parameters required for  specific tools are given below.  &lt;b&gt;LANGFUSE&lt;/b&gt;  host :  The host name where the Langfuse server is running.  public_key :  The public key used to access the monitoring tool.  secret_key :  The secret key used to access the monitoring tool.  | 
 
 ## Example
 

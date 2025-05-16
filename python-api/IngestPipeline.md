@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **name** | **str** | Name of the ingest pipeline. | 
 **data_store_name** | **str** | The name of the parent data store in which this ingest pipeline is present. | 
 **input_filter** | **Dict[str, object]** | The set of parameters describing the source location and filters for accessing  the input files. The specific parameters vary depending on the type of source,  for example an S3 bucket will require a bucket name to be specified.  | 
-**app_profile_name** | **str** | The name of the application profile from which to download. | [optional] 
+**tool_name** | **str** | The name of the application profile from which to download. | [optional] 
 **ingest_type** | [**IngestTypes**](IngestTypes.md) |  | 
 **ingest_params** | [**IngestParams**](IngestParams.md) |  | [optional] 
 **timer_on** | **bool** | Turn on the ingestion timer, once the timer expires the specified ingestion  action is performed.  | [optional] 
