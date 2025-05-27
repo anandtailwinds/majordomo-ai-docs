@@ -1364,6 +1364,9 @@ ul.nav-tabs {
       "type" : "string",
       "description" : "Name of the data store that points to the vector store."
     },
+    "match_condition" : {
+      "$ref" : "#/components/schemas/MetadataMatchConditions"
+    },
     "delete_metadata" : {
       "type" : "array",
       "description" : "Delete the nodes that match one of the metadata specified in this list.\n",
@@ -1918,6 +1921,13 @@ ul.nav-tabs {
     }
   },
   "description" : "Metadata to be added to vector database."
+};
+    defs["MetadataMatchConditions"] = {
+  "type" : "integer",
+  "description" : "Name of the data store that points to the vector store.",
+  "enum" : [ 1, 2 ],
+  "x-enum-varnames" : [ "METADATA_MATCH_CONDITION_AND", "METADATA_MATCH_CONDITION_OR" ],
+  "x-enum-description" : [ "Match all the conditions present in the delete_metadata list.", "Match atleast one field from the delete_metadata list." ]
 };
     defs["MetricData"] = {
   "required" : [ "metric", "values" ],
@@ -33946,7 +33956,8 @@ as it will be done when the corresponding data store is also deleted.
     &quot;match_type&quot; : &quot;eq&quot;,
     &quot;value&quot; : &quot;value&quot;,
     &quot;key&quot; : &quot;key&quot;
-  } ]
+  } ],
+  &quot;match_condition&quot; : 0
 }'
 </code></pre>
                           </div>
