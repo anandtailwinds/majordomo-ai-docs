@@ -1924,10 +1924,10 @@ ul.nav-tabs {
 };
     defs["MetadataMatchConditions"] = {
   "type" : "integer",
-  "description" : "Name of the data store that points to the vector store.",
+  "description" : "The type of the match condition to use while matching metadata.",
   "enum" : [ 1, 2 ],
   "x-enum-varnames" : [ "METADATA_MATCH_CONDITION_AND", "METADATA_MATCH_CONDITION_OR" ],
-  "x-enum-description" : [ "Match all the conditions present in the delete_metadata list.", "Match atleast one field from the delete_metadata list." ]
+  "x-enum-description" : [ "Match all the conditions present in the delete_metadata list.", "Match atleast one condition from the delete_metadata list." ]
 };
     defs["MetricData"] = {
   "required" : [ "metric", "values" ],
