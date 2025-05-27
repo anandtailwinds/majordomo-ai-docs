@@ -4,16 +4,16 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ModelName** | **string** | Name of the model. | 
-**ModelProvider** | [**ModelProviders**](ModelProviders.md) |  | 
-**InferenceApi** | Pointer to [**InferenceApis**](InferenceApis.md) |  | [optional] 
-**AccessInfo** | Pointer to **map[string]interface{}** | Any endpoint that is to be specified to reach the provider. | [optional] 
+**Config** | [**ModelConfig**](ModelConfig.md) |  | 
+**CreatedBy** | **string** | The username who created this model. | 
+**CreatedAt** | **int64** | Timestamp of the model creation. | 
+**LastUpdate** | **int64** | Timestamp of the last update to the model. | 
 
 ## Methods
 
 ### NewModelInfo
 
-`func NewModelInfo(modelName string, modelProvider ModelProviders, ) *ModelInfo`
+`func NewModelInfo(config ModelConfig, createdBy string, createdAt int64, lastUpdate int64, ) *ModelInfo`
 
 NewModelInfo instantiates a new ModelInfo object
 This constructor will assign default values to properties that have it defined,
@@ -28,95 +28,85 @@ NewModelInfoWithDefaults instantiates a new ModelInfo object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetModelName
+### GetConfig
 
-`func (o *ModelInfo) GetModelName() string`
+`func (o *ModelInfo) GetConfig() ModelConfig`
 
-GetModelName returns the ModelName field if non-nil, zero value otherwise.
+GetConfig returns the Config field if non-nil, zero value otherwise.
 
-### GetModelNameOk
+### GetConfigOk
 
-`func (o *ModelInfo) GetModelNameOk() (*string, bool)`
+`func (o *ModelInfo) GetConfigOk() (*ModelConfig, bool)`
 
-GetModelNameOk returns a tuple with the ModelName field if it's non-nil, zero value otherwise
+GetConfigOk returns a tuple with the Config field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetModelName
+### SetConfig
 
-`func (o *ModelInfo) SetModelName(v string)`
+`func (o *ModelInfo) SetConfig(v ModelConfig)`
 
-SetModelName sets ModelName field to given value.
+SetConfig sets Config field to given value.
 
 
-### GetModelProvider
+### GetCreatedBy
 
-`func (o *ModelInfo) GetModelProvider() ModelProviders`
+`func (o *ModelInfo) GetCreatedBy() string`
 
-GetModelProvider returns the ModelProvider field if non-nil, zero value otherwise.
+GetCreatedBy returns the CreatedBy field if non-nil, zero value otherwise.
 
-### GetModelProviderOk
+### GetCreatedByOk
 
-`func (o *ModelInfo) GetModelProviderOk() (*ModelProviders, bool)`
+`func (o *ModelInfo) GetCreatedByOk() (*string, bool)`
 
-GetModelProviderOk returns a tuple with the ModelProvider field if it's non-nil, zero value otherwise
+GetCreatedByOk returns a tuple with the CreatedBy field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetModelProvider
+### SetCreatedBy
 
-`func (o *ModelInfo) SetModelProvider(v ModelProviders)`
+`func (o *ModelInfo) SetCreatedBy(v string)`
 
-SetModelProvider sets ModelProvider field to given value.
+SetCreatedBy sets CreatedBy field to given value.
 
 
-### GetInferenceApi
+### GetCreatedAt
 
-`func (o *ModelInfo) GetInferenceApi() InferenceApis`
+`func (o *ModelInfo) GetCreatedAt() int64`
 
-GetInferenceApi returns the InferenceApi field if non-nil, zero value otherwise.
+GetCreatedAt returns the CreatedAt field if non-nil, zero value otherwise.
 
-### GetInferenceApiOk
+### GetCreatedAtOk
 
-`func (o *ModelInfo) GetInferenceApiOk() (*InferenceApis, bool)`
+`func (o *ModelInfo) GetCreatedAtOk() (*int64, bool)`
 
-GetInferenceApiOk returns a tuple with the InferenceApi field if it's non-nil, zero value otherwise
+GetCreatedAtOk returns a tuple with the CreatedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetInferenceApi
+### SetCreatedAt
 
-`func (o *ModelInfo) SetInferenceApi(v InferenceApis)`
+`func (o *ModelInfo) SetCreatedAt(v int64)`
 
-SetInferenceApi sets InferenceApi field to given value.
+SetCreatedAt sets CreatedAt field to given value.
 
-### HasInferenceApi
 
-`func (o *ModelInfo) HasInferenceApi() bool`
+### GetLastUpdate
 
-HasInferenceApi returns a boolean if a field has been set.
+`func (o *ModelInfo) GetLastUpdate() int64`
 
-### GetAccessInfo
+GetLastUpdate returns the LastUpdate field if non-nil, zero value otherwise.
 
-`func (o *ModelInfo) GetAccessInfo() map[string]interface{}`
+### GetLastUpdateOk
 
-GetAccessInfo returns the AccessInfo field if non-nil, zero value otherwise.
+`func (o *ModelInfo) GetLastUpdateOk() (*int64, bool)`
 
-### GetAccessInfoOk
-
-`func (o *ModelInfo) GetAccessInfoOk() (*map[string]interface{}, bool)`
-
-GetAccessInfoOk returns a tuple with the AccessInfo field if it's non-nil, zero value otherwise
+GetLastUpdateOk returns a tuple with the LastUpdate field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetAccessInfo
+### SetLastUpdate
 
-`func (o *ModelInfo) SetAccessInfo(v map[string]interface{})`
+`func (o *ModelInfo) SetLastUpdate(v int64)`
 
-SetAccessInfo sets AccessInfo field to given value.
+SetLastUpdate sets LastUpdate field to given value.
 
-### HasAccessInfo
-
-`func (o *ModelInfo) HasAccessInfo() bool`
-
-HasAccessInfo returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

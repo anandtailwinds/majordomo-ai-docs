@@ -10,6 +10,7 @@ Method | HTTP request | Description
 [**GetDataCount**](MonitorAPI.md#GetDataCount) | **Get** /data_count | Get the total count of various entities in the workspace.
 [**GetLogs**](MonitorAPI.md#GetLogs) | **Get** /logs | Get logs.
 [**GetMonitorProfiles**](MonitorAPI.md#GetMonitorProfiles) | **Get** /monitor_profiles | Get monitor profiles.
+[**GetNodeMetrics**](MonitorAPI.md#GetNodeMetrics) | **Post** /node_metrics | Get node metrics.
 [**GetTokenStats**](MonitorAPI.md#GetTokenStats) | **Get** /token_stats | Get token statistics.
 [**GetTopkStats**](MonitorAPI.md#GetTopkStats) | **Get** /topk_stats | Get token statistics.
 [**UpdateMonitorProfile**](MonitorAPI.md#UpdateMonitorProfile) | **Put** /monitor_profiles | Update monitor profile.
@@ -18,7 +19,7 @@ Method | HTTP request | Description
 
 ## CreateMonitorProfile
 
-> MonitorProfile CreateMonitorProfile(ctx).MonitorProfile(monitorProfile).Execute()
+> MonitorProfileInfo CreateMonitorProfile(ctx).MonitorProfile(monitorProfile).Execute()
 
 Create monitor profile.
 
@@ -37,7 +38,7 @@ import (
 )
 
 func main() {
-	monitorProfile := *openapiclient.NewMonitorProfile("Name_example", openapiclient.MonitorProviders(1)) // MonitorProfile | 
+	monitorProfile := *openapiclient.NewMonitorProfile("Name_example", "Workspace_example", openapiclient.MonitorProviders(1), map[string]interface{}{"key": interface{}(123)}) // MonitorProfile | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -46,7 +47,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `MonitorAPI.CreateMonitorProfile``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `CreateMonitorProfile`: MonitorProfile
+	// response from `CreateMonitorProfile`: MonitorProfileInfo
 	fmt.Fprintf(os.Stdout, "Response from `MonitorAPI.CreateMonitorProfile`: %v\n", resp)
 }
 ```
@@ -66,7 +67,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**MonitorProfile**](MonitorProfile.md)
+[**MonitorProfileInfo**](MonitorProfileInfo.md)
 
 ### Authorization
 
@@ -84,7 +85,7 @@ Name | Type | Description  | Notes
 
 ## DeleteMonitorProfiles
 
-> DeleteResponse DeleteMonitorProfiles(ctx).Name(name).Execute()
+> DeleteResponse DeleteMonitorProfiles(ctx).Workspace(workspace).Name(name).Execute()
 
 Delete monitor profiles.
 
@@ -103,11 +104,12 @@ import (
 )
 
 func main() {
+	workspace := "workspace_example" // string | The name of the workspace in which the monitor profile is present.  (optional)
 	name := "name_example" // string | The name of the monitor profile to delete. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.MonitorAPI.DeleteMonitorProfiles(context.Background()).Name(name).Execute()
+	resp, r, err := apiClient.MonitorAPI.DeleteMonitorProfiles(context.Background()).Workspace(workspace).Name(name).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `MonitorAPI.DeleteMonitorProfiles``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -128,6 +130,7 @@ Other parameters are passed through a pointer to a apiDeleteMonitorProfilesReque
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **workspace** | **string** | The name of the workspace in which the monitor profile is present.  | 
  **name** | **string** | The name of the monitor profile to delete. | 
 
 ### Return type
@@ -366,7 +369,7 @@ Name | Type | Description  | Notes
 
 ## GetMonitorProfiles
 
-> MonitorProfiles GetMonitorProfiles(ctx).Name(name).Execute()
+> MonitorProfiles GetMonitorProfiles(ctx).Workspace(workspace).Name(name).Execute()
 
 Get monitor profiles.
 
@@ -385,11 +388,12 @@ import (
 )
 
 func main() {
-	name := "name_example" // string | The name of the monitor profile to retrieve. If none is provided all monitor profiles are retrieved. (optional)
+	workspace := "workspace_example" // string | The name of the workspace in which the monitor profile is present.  (optional)
+	name := "name_example" // string | The name of the monitor profile to retrieve. If none is provided all  monitor profiles are retrieved.  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.MonitorAPI.GetMonitorProfiles(context.Background()).Name(name).Execute()
+	resp, r, err := apiClient.MonitorAPI.GetMonitorProfiles(context.Background()).Workspace(workspace).Name(name).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `MonitorAPI.GetMonitorProfiles``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -410,7 +414,8 @@ Other parameters are passed through a pointer to a apiGetMonitorProfilesRequest 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **name** | **string** | The name of the monitor profile to retrieve. If none is provided all monitor profiles are retrieved. | 
+ **workspace** | **string** | The name of the workspace in which the monitor profile is present.  | 
+ **name** | **string** | The name of the monitor profile to retrieve. If none is provided all  monitor profiles are retrieved.  | 
 
 ### Return type
 
@@ -423,6 +428,73 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetNodeMetrics
+
+> NodeMetricsResponse GetNodeMetrics(ctx).MetricsQueryRequest(metricsQueryRequest).Execute()
+
+Get node metrics.
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+    "time"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+)
+
+func main() {
+	metricsQueryRequest := *openapiclient.NewMetricsQueryRequest("Workspace_example", openapiclient.MetricType("NODE_METRICS"), map[string]interface{}{"key": interface{}(123)}, time.Now(), time.Now(), "Step_example") // MetricsQueryRequest | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.MonitorAPI.GetNodeMetrics(context.Background()).MetricsQueryRequest(metricsQueryRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `MonitorAPI.GetNodeMetrics``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetNodeMetrics`: NodeMetricsResponse
+	fmt.Fprintf(os.Stdout, "Response from `MonitorAPI.GetNodeMetrics`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetNodeMetricsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **metricsQueryRequest** | [**MetricsQueryRequest**](MetricsQueryRequest.md) |  | 
+
+### Return type
+
+[**NodeMetricsResponse**](NodeMetricsResponse.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -578,7 +650,7 @@ Name | Type | Description  | Notes
 
 ## UpdateMonitorProfile
 
-> MonitorProfile UpdateMonitorProfile(ctx).MonitorProfile(monitorProfile).Execute()
+> MonitorProfileInfo UpdateMonitorProfile(ctx).MonitorProfile(monitorProfile).Execute()
 
 Update monitor profile.
 
@@ -597,7 +669,7 @@ import (
 )
 
 func main() {
-	monitorProfile := *openapiclient.NewMonitorProfile("Name_example", openapiclient.MonitorProviders(1)) // MonitorProfile | 
+	monitorProfile := *openapiclient.NewMonitorProfile("Name_example", "Workspace_example", openapiclient.MonitorProviders(1), map[string]interface{}{"key": interface{}(123)}) // MonitorProfile | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -606,7 +678,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `MonitorAPI.UpdateMonitorProfile``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `UpdateMonitorProfile`: MonitorProfile
+	// response from `UpdateMonitorProfile`: MonitorProfileInfo
 	fmt.Fprintf(os.Stdout, "Response from `MonitorAPI.UpdateMonitorProfile`: %v\n", resp)
 }
 ```
@@ -626,7 +698,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**MonitorProfile**](MonitorProfile.md)
+[**MonitorProfileInfo**](MonitorProfileInfo.md)
 
 ### Authorization
 
@@ -635,7 +707,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/xml, application/json
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)

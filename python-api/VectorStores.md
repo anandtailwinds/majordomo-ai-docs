@@ -1,6 +1,6 @@
 # VectorStores
 
-This contains an configuration and operational information for an array of vector stores and is returned for GET operations.
+This contains an configuration and operational information for an array of  vector stores and is returned for GET operations. 
 
 ## Properties
 

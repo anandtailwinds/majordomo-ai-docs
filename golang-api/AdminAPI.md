@@ -4,95 +4,29 @@ All URIs are relative to *http://localhost:/25001*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateAppProfile**](AdminAPI.md#CreateAppProfile) | **Post** /app_profiles | Create app profile.
 [**CreateModelProfile**](AdminAPI.md#CreateModelProfile) | **Post** /model_profiles | Create model profile.
+[**CreateTool**](AdminAPI.md#CreateTool) | **Post** /tools | Create tool.
 [**CreateUser**](AdminAPI.md#CreateUser) | **Post** /users | Add user.
 [**CreateWorker**](AdminAPI.md#CreateWorker) | **Post** /workers | Create worker node.
 [**CreateWorkspace**](AdminAPI.md#CreateWorkspace) | **Post** /workspaces | Create workspace.
-[**DeleteAppProfiles**](AdminAPI.md#DeleteAppProfiles) | **Delete** /app_profiles | Delete app profile.
 [**DeleteModelProfiles**](AdminAPI.md#DeleteModelProfiles) | **Delete** /model_profiles | Delete model profile.
+[**DeleteTools**](AdminAPI.md#DeleteTools) | **Delete** /tools | Delete tool.
 [**DeleteUser**](AdminAPI.md#DeleteUser) | **Delete** /users | Delete user.
 [**DeleteWorkers**](AdminAPI.md#DeleteWorkers) | **Delete** /workers | Delete worker nodes.
 [**DeleteWorkspaces**](AdminAPI.md#DeleteWorkspaces) | **Delete** /workspaces | Delete workspace.
 [**GetAllowedProfiles**](AdminAPI.md#GetAllowedProfiles) | **Get** /allowed_profiles | Get permitted profiles for a specific user.
-[**GetAppProfiles**](AdminAPI.md#GetAppProfiles) | **Get** /app_profiles | Get app profiles.
 [**GetModelProfiles**](AdminAPI.md#GetModelProfiles) | **Get** /model_profiles | Get model profiles.
+[**GetTools**](AdminAPI.md#GetTools) | **Get** /tools | Get tools.
 [**GetUserList**](AdminAPI.md#GetUserList) | **Get** /user_list | Get list of all users.
 [**GetUsers**](AdminAPI.md#GetUsers) | **Get** /users | Get users list.
 [**GetWorkers**](AdminAPI.md#GetWorkers) | **Get** /workers | Get worker nodes.
 [**GetWorkspaces**](AdminAPI.md#GetWorkspaces) | **Get** /workspaces | Get workspaces.
-[**UpdateAppProfile**](AdminAPI.md#UpdateAppProfile) | **Put** /app_profiles | Update app profile.
 [**UpdateModelProfile**](AdminAPI.md#UpdateModelProfile) | **Put** /model_profiles | Update model profile.
+[**UpdateTool**](AdminAPI.md#UpdateTool) | **Put** /tools | Update tool.
 [**UpdateUser**](AdminAPI.md#UpdateUser) | **Put** /users | Update user.
 [**UpdateWorker**](AdminAPI.md#UpdateWorker) | **Put** /workers | Update worker node.
 [**UpdateWorkspace**](AdminAPI.md#UpdateWorkspace) | **Put** /workspaces | Update workspace.
 
-
-
-## CreateAppProfile
-
-> AppProfileInfo CreateAppProfile(ctx).AppProfile(appProfile).Execute()
-
-Create app profile.
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
-)
-
-func main() {
-	appProfile := *openapiclient.NewAppProfile("Name_example", "{"name":"Engineering"}", openapiclient.AppTypes(1), map[string]interface{}{"key": interface{}(123)}) // AppProfile | 
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.AdminAPI.CreateAppProfile(context.Background()).AppProfile(appProfile).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AdminAPI.CreateAppProfile``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `CreateAppProfile`: AppProfileInfo
-	fmt.Fprintf(os.Stdout, "Response from `AdminAPI.CreateAppProfile`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiCreateAppProfileRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **appProfile** | [**AppProfile**](AppProfile.md) |  | 
-
-### Return type
-
-[**AppProfileInfo**](AppProfileInfo.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
 
 
 ## CreateModelProfile
@@ -146,6 +80,72 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ModelProfileInfo**](ModelProfileInfo.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## CreateTool
+
+> ToolInfo CreateTool(ctx).Tool(tool).Execute()
+
+Create tool.
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+)
+
+func main() {
+	tool := *openapiclient.NewTool("Name_example", "{"name":"Engineering"}", openapiclient.ToolTypes(1), map[string]interface{}{"key": interface{}(123)}) // Tool | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AdminAPI.CreateTool(context.Background()).Tool(tool).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AdminAPI.CreateTool``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `CreateTool`: ToolInfo
+	fmt.Fprintf(os.Stdout, "Response from `AdminAPI.CreateTool`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCreateToolRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tool** | [**Tool**](Tool.md) |  | 
+
+### Return type
+
+[**ToolInfo**](ToolInfo.md)
 
 ### Authorization
 
@@ -359,79 +359,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## DeleteAppProfiles
-
-> DeleteResponse DeleteAppProfiles(ctx).Workspace(workspace).Name(name).Force(force).Execute()
-
-Delete app profile.
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
-)
-
-func main() {
-	workspace := "workspace_example" // string | The name of the workspace in which the profile exists. (optional)
-	name := "name_example" // string | The name of the app profile to delete. (optional)
-	force := true // bool | Force delete all query pipelines or data stores that are referring to this app profile. This will also delete all usages of app profile done by users with whom the profile is shared. (optional)
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.AdminAPI.DeleteAppProfiles(context.Background()).Workspace(workspace).Name(name).Force(force).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AdminAPI.DeleteAppProfiles``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `DeleteAppProfiles`: DeleteResponse
-	fmt.Fprintf(os.Stdout, "Response from `AdminAPI.DeleteAppProfiles`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiDeleteAppProfilesRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **workspace** | **string** | The name of the workspace in which the profile exists. | 
- **name** | **string** | The name of the app profile to delete. | 
- **force** | **bool** | Force delete all query pipelines or data stores that are referring to this app profile. This will also delete all usages of app profile done by users with whom the profile is shared. | 
-
-### Return type
-
-[**DeleteResponse**](DeleteResponse.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
 ## DeleteModelProfiles
 
-> DeleteResponse DeleteModelProfiles(ctx).Workspace(workspace).Name(name).Force(force).Execute()
+> DeleteResponse DeleteModelProfiles(ctx).Workspace(workspace).Name(name).Execute()
 
 Delete model profile.
 
@@ -452,11 +382,10 @@ import (
 func main() {
 	workspace := "workspace_example" // string | The name of the workspace in which the profile exists. (optional)
 	name := "name_example" // string | The name of the model profile to delete. (optional)
-	force := true // bool | Force delete all query pipelines or data stores that are referring to this model profile. This will also delete all usages of model profile done by users with whom the profile is shared. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.AdminAPI.DeleteModelProfiles(context.Background()).Workspace(workspace).Name(name).Force(force).Execute()
+	resp, r, err := apiClient.AdminAPI.DeleteModelProfiles(context.Background()).Workspace(workspace).Name(name).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `AdminAPI.DeleteModelProfiles``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -479,7 +408,74 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **workspace** | **string** | The name of the workspace in which the profile exists. | 
  **name** | **string** | The name of the model profile to delete. | 
- **force** | **bool** | Force delete all query pipelines or data stores that are referring to this model profile. This will also delete all usages of model profile done by users with whom the profile is shared. | 
+
+### Return type
+
+[**DeleteResponse**](DeleteResponse.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DeleteTools
+
+> DeleteResponse DeleteTools(ctx).Workspace(workspace).Name(name).Execute()
+
+Delete tool.
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+)
+
+func main() {
+	workspace := "workspace_example" // string | The name of the workspace in which the profile exists. (optional)
+	name := "name_example" // string | The name of the tool to delete. (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AdminAPI.DeleteTools(context.Background()).Workspace(workspace).Name(name).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AdminAPI.DeleteTools``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `DeleteTools`: DeleteResponse
+	fmt.Fprintf(os.Stdout, "Response from `AdminAPI.DeleteTools`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDeleteToolsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **workspace** | **string** | The name of the workspace in which the profile exists. | 
+ **name** | **string** | The name of the tool to delete. | 
 
 ### Return type
 
@@ -761,78 +757,6 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetAppProfiles
-
-> AppProfiles GetAppProfiles(ctx).Workspace(workspace).Name(name).Shared(shared).Operation(operation).Execute()
-
-Get app profiles.
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
-)
-
-func main() {
-	workspace := "workspace_example" // string | Query a specific workspace for app profiles. (optional)
-	name := "name_example" // string | The name of the app profile to retrieve. (optional)
-	shared := true // bool | Retrieve the profiles that are shared with this user by other users. (optional)
-	operation := openapiclient.SupportedOperations(1) // SupportedOperations | Retrieve the profiles that are support the operation. (optional)
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.AdminAPI.GetAppProfiles(context.Background()).Workspace(workspace).Name(name).Shared(shared).Operation(operation).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AdminAPI.GetAppProfiles``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `GetAppProfiles`: AppProfiles
-	fmt.Fprintf(os.Stdout, "Response from `AdminAPI.GetAppProfiles`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetAppProfilesRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **workspace** | **string** | Query a specific workspace for app profiles. | 
- **name** | **string** | The name of the app profile to retrieve. | 
- **shared** | **bool** | Retrieve the profiles that are shared with this user by other users. | 
- **operation** | [**SupportedOperations**](SupportedOperations.md) | Retrieve the profiles that are support the operation. | 
-
-### Return type
-
-[**AppProfiles**](AppProfiles.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
 ## GetModelProfiles
 
 > ModelProfiles GetModelProfiles(ctx).Workspace(workspace).Name(name).Shared(shared).Execute()
@@ -888,6 +812,78 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ModelProfiles**](ModelProfiles.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetTools
+
+> Tools GetTools(ctx).Workspace(workspace).Name(name).Shared(shared).Operation(operation).Execute()
+
+Get tools.
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+)
+
+func main() {
+	workspace := "workspace_example" // string | Query a specific workspace for tools. (optional)
+	name := "name_example" // string | The name of the tool to retrieve. (optional)
+	shared := true // bool | Retrieve the profiles that are shared with this user by other users. (optional)
+	operation := openapiclient.SupportedOperations(1) // SupportedOperations | Retrieve the profiles that are support the operation. (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AdminAPI.GetTools(context.Background()).Workspace(workspace).Name(name).Shared(shared).Operation(operation).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AdminAPI.GetTools``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetTools`: Tools
+	fmt.Fprintf(os.Stdout, "Response from `AdminAPI.GetTools`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetToolsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **workspace** | **string** | Query a specific workspace for tools. | 
+ **name** | **string** | The name of the tool to retrieve. | 
+ **shared** | **bool** | Retrieve the profiles that are shared with this user by other users. | 
+ **operation** | [**SupportedOperations**](SupportedOperations.md) | Retrieve the profiles that are support the operation. | 
+
+### Return type
+
+[**Tools**](Tools.md)
 
 ### Authorization
 
@@ -1169,72 +1165,6 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## UpdateAppProfile
-
-> AppProfileInfo UpdateAppProfile(ctx).AppProfile(appProfile).Execute()
-
-Update app profile.
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
-)
-
-func main() {
-	appProfile := *openapiclient.NewAppProfile("Name_example", "{"name":"Engineering"}", openapiclient.AppTypes(1), map[string]interface{}{"key": interface{}(123)}) // AppProfile | 
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.AdminAPI.UpdateAppProfile(context.Background()).AppProfile(appProfile).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AdminAPI.UpdateAppProfile``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `UpdateAppProfile`: AppProfileInfo
-	fmt.Fprintf(os.Stdout, "Response from `AdminAPI.UpdateAppProfile`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiUpdateAppProfileRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **appProfile** | [**AppProfile**](AppProfile.md) |  | 
-
-### Return type
-
-[**AppProfileInfo**](AppProfileInfo.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/xml, application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
 ## UpdateModelProfile
 
 > ModelProfileInfo UpdateModelProfile(ctx).ModelProfile(modelProfile).Execute()
@@ -1286,6 +1216,72 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ModelProfileInfo**](ModelProfileInfo.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/xml, application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## UpdateTool
+
+> ToolInfo UpdateTool(ctx).Tool(tool).Execute()
+
+Update tool.
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+)
+
+func main() {
+	tool := *openapiclient.NewTool("Name_example", "{"name":"Engineering"}", openapiclient.ToolTypes(1), map[string]interface{}{"key": interface{}(123)}) // Tool | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AdminAPI.UpdateTool(context.Background()).Tool(tool).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AdminAPI.UpdateTool``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `UpdateTool`: ToolInfo
+	fmt.Fprintf(os.Stdout, "Response from `AdminAPI.UpdateTool`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUpdateToolRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tool** | [**Tool**](Tool.md) |  | 
+
+### Return type
+
+[**ToolInfo**](ToolInfo.md)
 
 ### Authorization
 

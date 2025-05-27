@@ -10,6 +10,7 @@ Method | HTTP request | Description
 [**get_data_count**](MonitorApi.md#get_data_count) | **GET** /data_count | Get the total count of various entities in the workspace.
 [**get_logs**](MonitorApi.md#get_logs) | **GET** /logs | Get logs.
 [**get_monitor_profiles**](MonitorApi.md#get_monitor_profiles) | **GET** /monitor_profiles | Get monitor profiles.
+[**get_node_metrics**](MonitorApi.md#get_node_metrics) | **POST** /node_metrics | Get node metrics.
 [**get_token_stats**](MonitorApi.md#get_token_stats) | **GET** /token_stats | Get token statistics.
 [**get_topk_stats**](MonitorApi.md#get_topk_stats) | **GET** /topk_stats | Get token statistics.
 [**update_monitor_profile**](MonitorApi.md#update_monitor_profile) | **PUT** /monitor_profiles | Update monitor profile.
@@ -91,7 +92,10 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | successful operation |  -  |
-**422** | Invalid input |  -  |
+**422** | Unprocessable Entry |  -  |
+**401** | Unauthorized |  -  |
+**400** | Bad Request |  -  |
+**403** | Forbidden |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -172,8 +176,10 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | successful operation |  -  |
-**422** | Invalid input |  -  |
-**401** | Unauthorized access. This is most likely because the access token has  expired or the user API key is invalid.  |  -  |
+**422** | Unprocessable Entry |  -  |
+**401** | Unauthorized |  -  |
+**400** | Bad Request |  -  |
+**403** | Forbidden |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -260,7 +266,10 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | successful operation |  -  |
-**422** | Invalid input |  -  |
+**422** | Unprocessable Entry |  -  |
+**401** | Unauthorized |  -  |
+**400** | Bad Request |  -  |
+**403** | Forbidden |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -339,7 +348,10 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | successful operation |  -  |
-**422** | Invalid input |  -  |
+**422** | Unprocessable Entry |  -  |
+**401** | Unauthorized |  -  |
+**400** | Bad Request |  -  |
+**403** | Forbidden |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -429,7 +441,10 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | successful operation |  -  |
-**422** | Invalid input |  -  |
+**422** | Unprocessable Entry |  -  |
+**401** | Unauthorized |  -  |
+**400** | Bad Request |  -  |
+**403** | Forbidden |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -510,7 +525,93 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | successful operation |  -  |
-**422** | Invalid input |  -  |
+**422** | Unprocessable Entry |  -  |
+**401** | Unauthorized |  -  |
+**400** | Bad Request |  -  |
+**403** | Forbidden |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_node_metrics**
+> NodeMetricsResponse get_node_metrics(metrics_query_request)
+
+Get node metrics.
+
+Get metrics of a particular node used for inference.
+
+### Example
+
+* Bearer (JWT) Authentication (bearerAuth):
+
+```python
+import majordomo_ai
+from majordomo_ai.models.metrics_query_request import MetricsQueryRequest
+from majordomo_ai.models.node_metrics_response import NodeMetricsResponse
+from majordomo_ai.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost:/25001
+# See configuration.py for a list of all supported configuration parameters.
+configuration = majordomo_ai.Configuration(
+    host = "http://localhost:/25001"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (JWT): bearerAuth
+configuration = majordomo_ai.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with majordomo_ai.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = majordomo_ai.MonitorApi(api_client)
+    metrics_query_request = majordomo_ai.MetricsQueryRequest() # MetricsQueryRequest | 
+
+    try:
+        # Get node metrics.
+        api_response = api_instance.get_node_metrics(metrics_query_request)
+        print("The response of MonitorApi->get_node_metrics:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling MonitorApi->get_node_metrics: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **metrics_query_request** | [**MetricsQueryRequest**](MetricsQueryRequest.md)|  | 
+
+### Return type
+
+[**NodeMetricsResponse**](NodeMetricsResponse.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successful response with node metrics |  -  |
+**422** | Unprocessable Entry |  -  |
+**401** | Unauthorized |  -  |
+**400** | Bad Request |  -  |
+**403** | Forbidden |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -595,7 +696,10 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | successful operation |  -  |
-**422** | Invalid input |  -  |
+**422** | Unprocessable Entry |  -  |
+**401** | Unauthorized |  -  |
+**400** | Bad Request |  -  |
+**403** | Forbidden |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -682,7 +786,10 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | successful operation |  -  |
-**422** | Invalid input |  -  |
+**422** | Unprocessable Entry |  -  |
+**401** | Unauthorized |  -  |
+**400** | Bad Request |  -  |
+**403** | Forbidden |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -762,7 +869,10 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | successful operation |  -  |
-**422** | Invalid input |  -  |
+**422** | Unprocessable Entry |  -  |
+**401** | Unauthorized |  -  |
+**400** | Bad Request |  -  |
+**403** | Forbidden |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

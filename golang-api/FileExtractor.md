@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Extension** | **string** | The extension for which the extractor has to be applied. | 
-**Extractor** | [**FileExtractors**](FileExtractors.md) |  | 
+**ExtractorType** | [**FileExtractors**](FileExtractors.md) |  | 
+**AccessInfo** | Pointer to **map[string]interface{}** | Parameters required for accessing the file extractor.  &lt;b&gt;LLAMAPARSE&lt;/b&gt;  api_key : The API Key required to access LlamaParse.  | [optional] 
 
 ## Methods
 
 ### NewFileExtractor
 
-`func NewFileExtractor(extension string, extractor FileExtractors, ) *FileExtractor`
+`func NewFileExtractor(extractorType FileExtractors, ) *FileExtractor`
 
 NewFileExtractor instantiates a new FileExtractor object
 This constructor will assign default values to properties that have it defined,
@@ -26,45 +26,50 @@ NewFileExtractorWithDefaults instantiates a new FileExtractor object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetExtension
+### GetExtractorType
 
-`func (o *FileExtractor) GetExtension() string`
+`func (o *FileExtractor) GetExtractorType() FileExtractors`
 
-GetExtension returns the Extension field if non-nil, zero value otherwise.
+GetExtractorType returns the ExtractorType field if non-nil, zero value otherwise.
 
-### GetExtensionOk
+### GetExtractorTypeOk
 
-`func (o *FileExtractor) GetExtensionOk() (*string, bool)`
+`func (o *FileExtractor) GetExtractorTypeOk() (*FileExtractors, bool)`
 
-GetExtensionOk returns a tuple with the Extension field if it's non-nil, zero value otherwise
+GetExtractorTypeOk returns a tuple with the ExtractorType field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetExtension
+### SetExtractorType
 
-`func (o *FileExtractor) SetExtension(v string)`
+`func (o *FileExtractor) SetExtractorType(v FileExtractors)`
 
-SetExtension sets Extension field to given value.
+SetExtractorType sets ExtractorType field to given value.
 
 
-### GetExtractor
+### GetAccessInfo
 
-`func (o *FileExtractor) GetExtractor() FileExtractors`
+`func (o *FileExtractor) GetAccessInfo() map[string]interface{}`
 
-GetExtractor returns the Extractor field if non-nil, zero value otherwise.
+GetAccessInfo returns the AccessInfo field if non-nil, zero value otherwise.
 
-### GetExtractorOk
+### GetAccessInfoOk
 
-`func (o *FileExtractor) GetExtractorOk() (*FileExtractors, bool)`
+`func (o *FileExtractor) GetAccessInfoOk() (*map[string]interface{}, bool)`
 
-GetExtractorOk returns a tuple with the Extractor field if it's non-nil, zero value otherwise
+GetAccessInfoOk returns a tuple with the AccessInfo field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetExtractor
+### SetAccessInfo
 
-`func (o *FileExtractor) SetExtractor(v FileExtractors)`
+`func (o *FileExtractor) SetAccessInfo(v map[string]interface{})`
 
-SetExtractor sets Extractor field to given value.
+SetAccessInfo sets AccessInfo field to given value.
 
+### HasAccessInfo
+
+`func (o *FileExtractor) HasAccessInfo() bool`
+
+HasAccessInfo returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

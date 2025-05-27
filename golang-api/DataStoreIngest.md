@@ -6,8 +6,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Workspace** | **string** | The workspace the data store belongs to. | 
 **DataStoreName** | **string** | Name of the data store | 
-**AppProfileName** | Pointer to **string** | Name of the application profile | [optional] 
-**InputFilter** | **map[string]interface{}** | The set of parameters describing the source location and filters for accessing  the input files. The specific parameters vary depending on the type of source,  for example an S3 bucket will require a bucket name to be specified.  | 
+**ToolName** | Pointer to **string** | Name of the application profile | [optional] 
+**InputFilter** | **map[string]interface{}** | The set of parameters describing the source location and filters for accessing  the input files. The parameters for each type of data source is listed below.  &lt;b&gt;APP_TYPE_AWS_S3&lt;/b&gt;  file_list : Comma separated list of files, can contain wildcards. If the files are in a directory format the entire directory key should be specified.     &lt;b&gt;APP_TYPE_AZURE_BLOB&lt;/b&gt;  file_list : Comma separated list of files, can contain wildcards. If the files are in a directory format the entire directory key should be specified.     &lt;b&gt;APP_TYPE_WEBPAGE&lt;/b&gt;  url : The webpage URL.  | 
 **IngestType** | [**IngestTypes**](IngestTypes.md) |  | 
 **IngestParams** | Pointer to [**IngestParams**](IngestParams.md) |  | [optional] 
 
@@ -70,30 +70,30 @@ and a boolean to check if the value has been set.
 SetDataStoreName sets DataStoreName field to given value.
 
 
-### GetAppProfileName
+### GetToolName
 
-`func (o *DataStoreIngest) GetAppProfileName() string`
+`func (o *DataStoreIngest) GetToolName() string`
 
-GetAppProfileName returns the AppProfileName field if non-nil, zero value otherwise.
+GetToolName returns the ToolName field if non-nil, zero value otherwise.
 
-### GetAppProfileNameOk
+### GetToolNameOk
 
-`func (o *DataStoreIngest) GetAppProfileNameOk() (*string, bool)`
+`func (o *DataStoreIngest) GetToolNameOk() (*string, bool)`
 
-GetAppProfileNameOk returns a tuple with the AppProfileName field if it's non-nil, zero value otherwise
+GetToolNameOk returns a tuple with the ToolName field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetAppProfileName
+### SetToolName
 
-`func (o *DataStoreIngest) SetAppProfileName(v string)`
+`func (o *DataStoreIngest) SetToolName(v string)`
 
-SetAppProfileName sets AppProfileName field to given value.
+SetToolName sets ToolName field to given value.
 
-### HasAppProfileName
+### HasToolName
 
-`func (o *DataStoreIngest) HasAppProfileName() bool`
+`func (o *DataStoreIngest) HasToolName() bool`
 
-HasAppProfileName returns a boolean if a field has been set.
+HasToolName returns a boolean if a field has been set.
 
 ### GetInputFilter
 

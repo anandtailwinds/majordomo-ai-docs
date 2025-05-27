@@ -8,7 +8,12 @@ Name | Type | Description | Notes
 **LastCommand** | [**DeploymentCommands**](DeploymentCommands.md) |  | 
 **CurrentStatus** | [**DeploymentStatus**](DeploymentStatus.md) |  | 
 **ExecutionSuccess** | **int64** | The level of execution success in last run, updated after each message specifying the progress level from worker is received.  | 
+**EndpointInfo** | Pointer to **map[string]interface{}** | Endpoint information in case it is dynamically determined. | [optional] 
 **Logs** | Pointer to **[]string** | The logs from the deployment. | [optional] 
+**ModelPackage** | Pointer to [**ModelPackages**](ModelPackages.md) |  | [optional] 
+**ModelName** | Pointer to **string** | Name of the model catalog. | [optional] 
+**ModelInfo** | Pointer to **map[string]interface{}** | Parameters required for accessing the model.  image_name:  Name of the container image that serves the model.  | [optional] 
+**TargetType** | Pointer to [**TargetResourceTypes**](TargetResourceTypes.md) |  | [optional] 
 **CreatedBy** | **string** | The username who created this model profile | 
 **CreatedAt** | **int64** | Timestamp of the model profile creation | 
 **LastUpdate** | **int64** | Timestamp of the last update to the model profile | 
@@ -112,6 +117,31 @@ and a boolean to check if the value has been set.
 SetExecutionSuccess sets ExecutionSuccess field to given value.
 
 
+### GetEndpointInfo
+
+`func (o *InferenceProfileInfo) GetEndpointInfo() map[string]interface{}`
+
+GetEndpointInfo returns the EndpointInfo field if non-nil, zero value otherwise.
+
+### GetEndpointInfoOk
+
+`func (o *InferenceProfileInfo) GetEndpointInfoOk() (*map[string]interface{}, bool)`
+
+GetEndpointInfoOk returns a tuple with the EndpointInfo field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEndpointInfo
+
+`func (o *InferenceProfileInfo) SetEndpointInfo(v map[string]interface{})`
+
+SetEndpointInfo sets EndpointInfo field to given value.
+
+### HasEndpointInfo
+
+`func (o *InferenceProfileInfo) HasEndpointInfo() bool`
+
+HasEndpointInfo returns a boolean if a field has been set.
+
 ### GetLogs
 
 `func (o *InferenceProfileInfo) GetLogs() []string`
@@ -136,6 +166,106 @@ SetLogs sets Logs field to given value.
 `func (o *InferenceProfileInfo) HasLogs() bool`
 
 HasLogs returns a boolean if a field has been set.
+
+### GetModelPackage
+
+`func (o *InferenceProfileInfo) GetModelPackage() ModelPackages`
+
+GetModelPackage returns the ModelPackage field if non-nil, zero value otherwise.
+
+### GetModelPackageOk
+
+`func (o *InferenceProfileInfo) GetModelPackageOk() (*ModelPackages, bool)`
+
+GetModelPackageOk returns a tuple with the ModelPackage field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetModelPackage
+
+`func (o *InferenceProfileInfo) SetModelPackage(v ModelPackages)`
+
+SetModelPackage sets ModelPackage field to given value.
+
+### HasModelPackage
+
+`func (o *InferenceProfileInfo) HasModelPackage() bool`
+
+HasModelPackage returns a boolean if a field has been set.
+
+### GetModelName
+
+`func (o *InferenceProfileInfo) GetModelName() string`
+
+GetModelName returns the ModelName field if non-nil, zero value otherwise.
+
+### GetModelNameOk
+
+`func (o *InferenceProfileInfo) GetModelNameOk() (*string, bool)`
+
+GetModelNameOk returns a tuple with the ModelName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetModelName
+
+`func (o *InferenceProfileInfo) SetModelName(v string)`
+
+SetModelName sets ModelName field to given value.
+
+### HasModelName
+
+`func (o *InferenceProfileInfo) HasModelName() bool`
+
+HasModelName returns a boolean if a field has been set.
+
+### GetModelInfo
+
+`func (o *InferenceProfileInfo) GetModelInfo() map[string]interface{}`
+
+GetModelInfo returns the ModelInfo field if non-nil, zero value otherwise.
+
+### GetModelInfoOk
+
+`func (o *InferenceProfileInfo) GetModelInfoOk() (*map[string]interface{}, bool)`
+
+GetModelInfoOk returns a tuple with the ModelInfo field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetModelInfo
+
+`func (o *InferenceProfileInfo) SetModelInfo(v map[string]interface{})`
+
+SetModelInfo sets ModelInfo field to given value.
+
+### HasModelInfo
+
+`func (o *InferenceProfileInfo) HasModelInfo() bool`
+
+HasModelInfo returns a boolean if a field has been set.
+
+### GetTargetType
+
+`func (o *InferenceProfileInfo) GetTargetType() TargetResourceTypes`
+
+GetTargetType returns the TargetType field if non-nil, zero value otherwise.
+
+### GetTargetTypeOk
+
+`func (o *InferenceProfileInfo) GetTargetTypeOk() (*TargetResourceTypes, bool)`
+
+GetTargetTypeOk returns a tuple with the TargetType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTargetType
+
+`func (o *InferenceProfileInfo) SetTargetType(v TargetResourceTypes)`
+
+SetTargetType sets TargetType field to given value.
+
+### HasTargetType
+
+`func (o *InferenceProfileInfo) HasTargetType() bool`
+
+HasTargetType returns a boolean if a field has been set.
 
 ### GetCreatedBy
 

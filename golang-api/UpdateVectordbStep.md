@@ -4,14 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**EmbeddingModelInfo** | [**ModelInfo**](ModelInfo.md) |  | 
-**VectordbInfo** | [**VectordbInfo**](VectordbInfo.md) |  | 
+**DataStoreName** | **string** | The name of the data store to lookup. | 
 
 ## Methods
 
 ### NewUpdateVectordbStep
 
-`func NewUpdateVectordbStep(embeddingModelInfo ModelInfo, vectordbInfo VectordbInfo, ) *UpdateVectordbStep`
+`func NewUpdateVectordbStep(dataStoreName string, ) *UpdateVectordbStep`
 
 NewUpdateVectordbStep instantiates a new UpdateVectordbStep object
 This constructor will assign default values to properties that have it defined,
@@ -26,44 +25,24 @@ NewUpdateVectordbStepWithDefaults instantiates a new UpdateVectordbStep object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetEmbeddingModelInfo
+### GetDataStoreName
 
-`func (o *UpdateVectordbStep) GetEmbeddingModelInfo() ModelInfo`
+`func (o *UpdateVectordbStep) GetDataStoreName() string`
 
-GetEmbeddingModelInfo returns the EmbeddingModelInfo field if non-nil, zero value otherwise.
+GetDataStoreName returns the DataStoreName field if non-nil, zero value otherwise.
 
-### GetEmbeddingModelInfoOk
+### GetDataStoreNameOk
 
-`func (o *UpdateVectordbStep) GetEmbeddingModelInfoOk() (*ModelInfo, bool)`
+`func (o *UpdateVectordbStep) GetDataStoreNameOk() (*string, bool)`
 
-GetEmbeddingModelInfoOk returns a tuple with the EmbeddingModelInfo field if it's non-nil, zero value otherwise
+GetDataStoreNameOk returns a tuple with the DataStoreName field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetEmbeddingModelInfo
+### SetDataStoreName
 
-`func (o *UpdateVectordbStep) SetEmbeddingModelInfo(v ModelInfo)`
+`func (o *UpdateVectordbStep) SetDataStoreName(v string)`
 
-SetEmbeddingModelInfo sets EmbeddingModelInfo field to given value.
-
-
-### GetVectordbInfo
-
-`func (o *UpdateVectordbStep) GetVectordbInfo() VectordbInfo`
-
-GetVectordbInfo returns the VectordbInfo field if non-nil, zero value otherwise.
-
-### GetVectordbInfoOk
-
-`func (o *UpdateVectordbStep) GetVectordbInfoOk() (*VectordbInfo, bool)`
-
-GetVectordbInfoOk returns a tuple with the VectordbInfo field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetVectordbInfo
-
-`func (o *UpdateVectordbStep) SetVectordbInfo(v VectordbInfo)`
-
-SetVectordbInfo sets VectordbInfo field to given value.
+SetDataStoreName sets DataStoreName field to given value.
 
 
 

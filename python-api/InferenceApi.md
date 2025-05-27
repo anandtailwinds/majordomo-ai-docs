@@ -14,6 +14,7 @@ Method | HTTP request | Description
 [**get_model_catalog**](InferenceApi.md#get_model_catalog) | **GET** /model_catalog | Get model catalog.
 [**get_target_resources**](InferenceApi.md#get_target_resources) | **GET** /target_resource | Get target resources.
 [**inference_profile_command**](InferenceApi.md#inference_profile_command) | **POST** /inference_profile_command | Send a command to inference pipeline.
+[**test_inference**](InferenceApi.md#test_inference) | **POST** /test_inference | Process or terminate a test inference request.
 [**update_inference_profile**](InferenceApi.md#update_inference_profile) | **PUT** /inference_profiles | Update inference profile.
 [**update_model_catalog**](InferenceApi.md#update_model_catalog) | **PUT** /model_catalog | Update model catalog.
 [**update_target_resource**](InferenceApi.md#update_target_resource) | **PUT** /target_resource | Update target resource.
@@ -95,7 +96,10 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | successful operation |  -  |
-**422** | Invalid input |  -  |
+**422** | Unprocessable Entry |  -  |
+**401** | Unauthorized |  -  |
+**400** | Bad Request |  -  |
+**403** | Forbidden |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -175,7 +179,10 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | successful operation |  -  |
-**422** | Invalid input |  -  |
+**422** | Unprocessable Entry |  -  |
+**401** | Unauthorized |  -  |
+**400** | Bad Request |  -  |
+**403** | Forbidden |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -255,7 +262,10 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | successful operation |  -  |
-**422** | Invalid input |  -  |
+**422** | Unprocessable Entry |  -  |
+**401** | Unauthorized |  -  |
+**400** | Bad Request |  -  |
+**403** | Forbidden |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -338,8 +348,10 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | successful operation |  -  |
-**422** | Invalid input. |  -  |
-**401** | Unauthorized access. This is most likely because the access token has expired or the user API key is invalid. |  -  |
+**422** | Unprocessable Entry |  -  |
+**401** | Unauthorized |  -  |
+**400** | Bad Request |  -  |
+**403** | Forbidden |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -419,9 +431,11 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | successful operation |  -  |
-**422** | Invalid input. |  -  |
-**401** | Unauthorized access. This is most likely because the access token has expired or the user API key is invalid. |  -  |
+**200** |  |  -  |
+**422** | Unprocessable Entry |  -  |
+**401** | Unauthorized |  -  |
+**400** | Bad Request |  -  |
+**403** | Forbidden |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -502,8 +516,10 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | successful operation |  -  |
-**422** | Invalid input. |  -  |
-**401** | Unauthorized access. This is most likely because the access token has  expired or the user API key is invalid.  |  -  |
+**422** | Unprocessable Entry |  -  |
+**401** | Unauthorized |  -  |
+**400** | Bad Request |  -  |
+**403** | Forbidden |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -584,7 +600,10 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | successful operation |  -  |
-**422** | Invalid input |  -  |
+**422** | Unprocessable Entry |  -  |
+**401** | Unauthorized |  -  |
+**400** | Bad Request |  -  |
+**403** | Forbidden |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -667,7 +686,10 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | successful operation |  -  |
-**422** | Invalid input |  -  |
+**422** | Unprocessable Entry |  -  |
+**401** | Unauthorized |  -  |
+**400** | Bad Request |  -  |
+**403** | Forbidden |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -750,7 +772,10 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | successful operation |  -  |
-**422** | Invalid input |  -  |
+**422** | Unprocessable Entry |  -  |
+**401** | Unauthorized |  -  |
+**400** | Bad Request |  -  |
+**403** | Forbidden |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -823,14 +848,100 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: text/plain
+ - **Accept**: text/plain, application/json
 
 ### HTTP response details
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | successful operation |  -  |
-**422** | Invalid input |  -  |
+**422** | Unprocessable Entry |  -  |
+**401** | Unauthorized |  -  |
+**400** | Bad Request |  -  |
+**403** | Forbidden |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **test_inference**
+> TestInferenceInfo test_inference(test_inference)
+
+Process or terminate a test inference request.
+
+Process or terminate a test inference request.
+
+### Example
+
+* Bearer (JWT) Authentication (bearerAuth):
+
+```python
+import majordomo_ai
+from majordomo_ai.models.test_inference import TestInference
+from majordomo_ai.models.test_inference_info import TestInferenceInfo
+from majordomo_ai.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost:/25001
+# See configuration.py for a list of all supported configuration parameters.
+configuration = majordomo_ai.Configuration(
+    host = "http://localhost:/25001"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (JWT): bearerAuth
+configuration = majordomo_ai.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with majordomo_ai.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = majordomo_ai.InferenceApi(api_client)
+    test_inference = majordomo_ai.TestInference() # TestInference | 
+
+    try:
+        # Process or terminate a test inference request.
+        api_response = api_instance.test_inference(test_inference)
+        print("The response of InferenceApi->test_inference:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling InferenceApi->test_inference: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **test_inference** | [**TestInference**](TestInference.md)|  | 
+
+### Return type
+
+[**TestInferenceInfo**](TestInferenceInfo.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successful operation |  -  |
+**422** | Unprocessable Entry |  -  |
+**401** | Unauthorized |  -  |
+**400** | Bad Request |  -  |
+**403** | Forbidden |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -910,7 +1021,10 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | successful operation |  -  |
-**422** | Invalid input |  -  |
+**422** | Unprocessable Entry |  -  |
+**401** | Unauthorized |  -  |
+**400** | Bad Request |  -  |
+**403** | Forbidden |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -990,7 +1104,10 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | successful operation |  -  |
-**422** | Invalid input |  -  |
+**422** | Unprocessable Entry |  -  |
+**401** | Unauthorized |  -  |
+**400** | Bad Request |  -  |
+**403** | Forbidden |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1070,7 +1187,10 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | successful operation |  -  |
-**422** | Invalid input |  -  |
+**422** | Unprocessable Entry |  -  |
+**401** | Unauthorized |  -  |
+**400** | Bad Request |  -  |
+**403** | Forbidden |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

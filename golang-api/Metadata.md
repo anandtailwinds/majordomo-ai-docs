@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Key** | **string** | Key value for metadata. | 
+**MatchType** | Pointer to **string** | Match type for metadata | [optional] 
 **Value** | **string** | Value of metadata. | 
 
 ## Methods
@@ -45,6 +46,31 @@ and a boolean to check if the value has been set.
 
 SetKey sets Key field to given value.
 
+
+### GetMatchType
+
+`func (o *Metadata) GetMatchType() string`
+
+GetMatchType returns the MatchType field if non-nil, zero value otherwise.
+
+### GetMatchTypeOk
+
+`func (o *Metadata) GetMatchTypeOk() (*string, bool)`
+
+GetMatchTypeOk returns a tuple with the MatchType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMatchType
+
+`func (o *Metadata) SetMatchType(v string)`
+
+SetMatchType sets MatchType field to given value.
+
+### HasMatchType
+
+`func (o *Metadata) HasMatchType() bool`
+
+HasMatchType returns a boolean if a field has been set.
 
 ### GetValue
 

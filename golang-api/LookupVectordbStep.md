@@ -4,16 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**EmbeddingModelInfo** | [**ModelInfo**](ModelInfo.md) |  | 
-**VectordbInfo** | [**VectordbInfo**](VectordbInfo.md) |  | 
-**QueryString** | **string** | Query string | 
+**DataStoreName** | **string** | The name of the data store to lookup. | 
 **QueryParams** | Pointer to [**QueryParams**](QueryParams.md) |  | [optional] 
 
 ## Methods
 
 ### NewLookupVectordbStep
 
-`func NewLookupVectordbStep(embeddingModelInfo ModelInfo, vectordbInfo VectordbInfo, queryString string, ) *LookupVectordbStep`
+`func NewLookupVectordbStep(dataStoreName string, ) *LookupVectordbStep`
 
 NewLookupVectordbStep instantiates a new LookupVectordbStep object
 This constructor will assign default values to properties that have it defined,
@@ -28,64 +26,24 @@ NewLookupVectordbStepWithDefaults instantiates a new LookupVectordbStep object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetEmbeddingModelInfo
+### GetDataStoreName
 
-`func (o *LookupVectordbStep) GetEmbeddingModelInfo() ModelInfo`
+`func (o *LookupVectordbStep) GetDataStoreName() string`
 
-GetEmbeddingModelInfo returns the EmbeddingModelInfo field if non-nil, zero value otherwise.
+GetDataStoreName returns the DataStoreName field if non-nil, zero value otherwise.
 
-### GetEmbeddingModelInfoOk
+### GetDataStoreNameOk
 
-`func (o *LookupVectordbStep) GetEmbeddingModelInfoOk() (*ModelInfo, bool)`
+`func (o *LookupVectordbStep) GetDataStoreNameOk() (*string, bool)`
 
-GetEmbeddingModelInfoOk returns a tuple with the EmbeddingModelInfo field if it's non-nil, zero value otherwise
+GetDataStoreNameOk returns a tuple with the DataStoreName field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetEmbeddingModelInfo
+### SetDataStoreName
 
-`func (o *LookupVectordbStep) SetEmbeddingModelInfo(v ModelInfo)`
+`func (o *LookupVectordbStep) SetDataStoreName(v string)`
 
-SetEmbeddingModelInfo sets EmbeddingModelInfo field to given value.
-
-
-### GetVectordbInfo
-
-`func (o *LookupVectordbStep) GetVectordbInfo() VectordbInfo`
-
-GetVectordbInfo returns the VectordbInfo field if non-nil, zero value otherwise.
-
-### GetVectordbInfoOk
-
-`func (o *LookupVectordbStep) GetVectordbInfoOk() (*VectordbInfo, bool)`
-
-GetVectordbInfoOk returns a tuple with the VectordbInfo field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetVectordbInfo
-
-`func (o *LookupVectordbStep) SetVectordbInfo(v VectordbInfo)`
-
-SetVectordbInfo sets VectordbInfo field to given value.
-
-
-### GetQueryString
-
-`func (o *LookupVectordbStep) GetQueryString() string`
-
-GetQueryString returns the QueryString field if non-nil, zero value otherwise.
-
-### GetQueryStringOk
-
-`func (o *LookupVectordbStep) GetQueryStringOk() (*string, bool)`
-
-GetQueryStringOk returns a tuple with the QueryString field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetQueryString
-
-`func (o *LookupVectordbStep) SetQueryString(v string)`
-
-SetQueryString sets QueryString field to given value.
+SetDataStoreName sets DataStoreName field to given value.
 
 
 ### GetQueryParams

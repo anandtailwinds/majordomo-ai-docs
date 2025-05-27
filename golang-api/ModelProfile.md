@@ -9,9 +9,9 @@ Name | Type | Description | Notes
 **InferenceApi** | Pointer to [**InferenceApis**](InferenceApis.md) |  | [optional] 
 **Tags** | Pointer to **[]string** | Tags to describe the model where it is running or what its purpose is. | [optional] 
 **Workspace** | **string** | The workspace that contains the model profile. | 
-**EmbeddingModels** | Pointer to **[]string** | List of embedding models allowed for a user who is associated to this profile. Incase list is empty all models available in the provider are allowed. | [optional] 
-**LlmModels** | Pointer to **[]string** | List of embedding models allowed for a user who is associated to this profile. Incase list is empty all models available in the provider are allowed. | [optional] 
-**AccessInfo** | Pointer to **map[string]interface{}** | Credentials for application. | [optional] 
+**EmbeddingModels** | Pointer to **[]string** | List of embedding models allowed for a user who is associated to this profile.  Incase list is empty all models available in the provider are allowed.  | [optional] 
+**LlmModels** | Pointer to **[]string** | List of LLM models allowed for a user who is associated to this profile.  Incase list is empty all models available in the provider are allowed.  | [optional] 
+**AccessInfo** | Pointer to **map[string]interface{}** | Parameters required for accessing the model.   &lt;b&gt;PROVIDER_OPENAI&lt;/b&gt;  api_key : OpenAI API key.  &lt;b&gt;PROVIDER_ANTHROPIC&lt;/b&gt;  api_key : Claude API key.  &lt;b&gt;PROVIDER_SELF_HOSTED&lt;/b&gt;  api_key : Self hosted model API key.  base_url : The URL at which the self hosted model is reachable.  host : The host name to use in HTTP header while trying to send requests to the model. This is typically required for models running behind a service gateway like Istio.  | [optional] 
 **SharedUsers** | Pointer to **[]string** | The list of users this profile is shared with. | [optional] 
 
 ## Methods

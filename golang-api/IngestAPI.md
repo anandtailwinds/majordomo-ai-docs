@@ -10,7 +10,7 @@ Method | HTTP request | Description
 [**DataStoreUpload**](IngestAPI.md#DataStoreUpload) | **Post** /data_store_upload | Data store ingest local file.
 [**DeleteDataStores**](IngestAPI.md#DeleteDataStores) | **Delete** /data_stores | Delete data store.
 [**DeleteIngestPipelines**](IngestAPI.md#DeleteIngestPipelines) | **Delete** /ingest_pipelines | Delete ingest pipeline.
-[**DeleteVectorStoreFiles**](IngestAPI.md#DeleteVectorStoreFiles) | **Delete** /delete_vector_store_files/workspace/{workspace}/data-store-name/{data-store-name}/files/{files} | Delete vector stores information.
+[**DeleteVectorStoreContent**](IngestAPI.md#DeleteVectorStoreContent) | **Post** /delete_vector_store_content | Delete vector stores information.
 [**GetDataStores**](IngestAPI.md#GetDataStores) | **Get** /data_stores | List data stores.
 [**GetIngestPipelines**](IngestAPI.md#GetIngestPipelines) | **Get** /ingest_pipelines | Get ingest pipeline.
 [**GetVectorStores**](IngestAPI.md#GetVectorStores) | **Get** /vector_stores | Get vector stores information.
@@ -432,9 +432,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## DeleteVectorStoreFiles
+## DeleteVectorStoreContent
 
-> DeleteResponse DeleteVectorStoreFiles(ctx, workspace, dataStoreName, files).Execute()
+> DeleteResponse DeleteVectorStoreContent(ctx).DeleteVectorStoreContent(deleteVectorStoreContent).Execute()
 
 Delete vector stores information.
 
@@ -453,42 +453,32 @@ import (
 )
 
 func main() {
-	workspace := "workspace_example" // string | The workspace in which the data store corresponding to the vector store is present.
-	dataStoreName := "dataStoreName_example" // string | Name of the data store for which the corresponding vector store information is sought. If none specified, all matching data stores created by the user are scanned.
-	files := "files_example" // string | The list of files to delete from the vector store at the provider.
+	deleteVectorStoreContent := *openapiclient.NewDeleteVectorStoreContent("Workspace_example", "DataStoreName_example", []openapiclient.Metadata{*openapiclient.NewMetadata("Key_example", "Value_example")}) // DeleteVectorStoreContent | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.IngestAPI.DeleteVectorStoreFiles(context.Background(), workspace, dataStoreName, files).Execute()
+	resp, r, err := apiClient.IngestAPI.DeleteVectorStoreContent(context.Background()).DeleteVectorStoreContent(deleteVectorStoreContent).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `IngestAPI.DeleteVectorStoreFiles``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `IngestAPI.DeleteVectorStoreContent``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `DeleteVectorStoreFiles`: DeleteResponse
-	fmt.Fprintf(os.Stdout, "Response from `IngestAPI.DeleteVectorStoreFiles`: %v\n", resp)
+	// response from `DeleteVectorStoreContent`: DeleteResponse
+	fmt.Fprintf(os.Stdout, "Response from `IngestAPI.DeleteVectorStoreContent`: %v\n", resp)
 }
 ```
 
 ### Path Parameters
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**workspace** | **string** | The workspace in which the data store corresponding to the vector store is present. | 
-**dataStoreName** | **string** | Name of the data store for which the corresponding vector store information is sought. If none specified, all matching data stores created by the user are scanned. | 
-**files** | **string** | The list of files to delete from the vector store at the provider. | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiDeleteVectorStoreFilesRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiDeleteVectorStoreContentRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-
-
-
+ **deleteVectorStoreContent** | [**DeleteVectorStoreContent**](DeleteVectorStoreContent.md) |  | 
 
 ### Return type
 
@@ -500,7 +490,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -674,8 +664,8 @@ import (
 
 func main() {
 	workspace := "workspace_example" // string | The workspace in which the data store corresponding to the vector store is present.
-	dataStoreName := "dataStoreName_example" // string | Name of the data store for which the corresponding vector store information is sought. If none specified, all matching data stores created by the user are scanned. (optional)
-	files := true // bool | Obtain the list of files that are ingested into the vector store also. This option is very compute intensive as most vector databases dont provide a way to get this information without downloading the entire database. So this option can be excercised only for one data store at a time, and it is mandatory to provide a specific workspace and data store name. (optional)
+	dataStoreName := "dataStoreName_example" // string | Name of the data store for which the corresponding vector store information  is sought. If none specified, all matching data stores created by the user  are scanned.  (optional)
+	files := true // bool | Obtain the list of files that are ingested into the vector store also.  This option is very compute intensive as most vector databases dont provide  a way to get this information without downloading the entire database. So  this option can be excercised only for one data store at a time, and it  is mandatory to provide a specific workspace and data store name.  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -701,8 +691,8 @@ Other parameters are passed through a pointer to a apiGetVectorStoresRequest str
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **workspace** | **string** | The workspace in which the data store corresponding to the vector store is present. | 
- **dataStoreName** | **string** | Name of the data store for which the corresponding vector store information is sought. If none specified, all matching data stores created by the user are scanned. | 
- **files** | **bool** | Obtain the list of files that are ingested into the vector store also. This option is very compute intensive as most vector databases dont provide a way to get this information without downloading the entire database. So this option can be excercised only for one data store at a time, and it is mandatory to provide a specific workspace and data store name. | 
+ **dataStoreName** | **string** | Name of the data store for which the corresponding vector store information  is sought. If none specified, all matching data stores created by the user  are scanned.  | 
+ **files** | **bool** | Obtain the list of files that are ingested into the vector store also.  This option is very compute intensive as most vector databases dont provide  a way to get this information without downloading the entire database. So  this option can be excercised only for one data store at a time, and it  is mandatory to provide a specific workspace and data store name.  | 
 
 ### Return type
 
@@ -789,7 +779,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)

@@ -4,17 +4,16 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AppType** | Pointer to [**AppTypes**](AppTypes.md) |  | [optional] 
-**InputFilter** | **map[string]interface{}** | Input information like file list. | 
+**ToolName** | **string** | The name of the application profile to access the content. | 
+**InputFilter** | **map[string]interface{}** | Input filter specification for accessing the source content.  The set of parameters describing the source location and filters for accessing  the input files. The parameters for each type of data source is listed below.  &lt;b&gt;TOOL_TYPE_AWS_S3&lt;/b&gt;  file_list : Comma separated list of files, can contain wildcards. If the files are in a directory format the entire directory key should be specified.     &lt;b&gt;TOOL_TYPE_AZURE_BLOB&lt;/b&gt;  file_list : Comma separated list of files, can contain wildcards. If the files are in a directory format the entire directory key should be specified.     &lt;b&gt;TOOL_TYPE_WEBPAGE&lt;/b&gt;  url : The webpage URL.  | 
 **IngestParams** | Pointer to [**IngestParams**](IngestParams.md) |  | [optional] 
 **IngestType** | [**IngestTypes**](IngestTypes.md) |  | 
-**AccessInfo** | **map[string]interface{}** | Access information. | 
 
 ## Methods
 
 ### NewDownloadAndParseFileStep
 
-`func NewDownloadAndParseFileStep(inputFilter map[string]interface{}, ingestType IngestTypes, accessInfo map[string]interface{}, ) *DownloadAndParseFileStep`
+`func NewDownloadAndParseFileStep(toolName string, inputFilter map[string]interface{}, ingestType IngestTypes, ) *DownloadAndParseFileStep`
 
 NewDownloadAndParseFileStep instantiates a new DownloadAndParseFileStep object
 This constructor will assign default values to properties that have it defined,
@@ -29,30 +28,25 @@ NewDownloadAndParseFileStepWithDefaults instantiates a new DownloadAndParseFileS
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetAppType
+### GetToolName
 
-`func (o *DownloadAndParseFileStep) GetAppType() AppTypes`
+`func (o *DownloadAndParseFileStep) GetToolName() string`
 
-GetAppType returns the AppType field if non-nil, zero value otherwise.
+GetToolName returns the ToolName field if non-nil, zero value otherwise.
 
-### GetAppTypeOk
+### GetToolNameOk
 
-`func (o *DownloadAndParseFileStep) GetAppTypeOk() (*AppTypes, bool)`
+`func (o *DownloadAndParseFileStep) GetToolNameOk() (*string, bool)`
 
-GetAppTypeOk returns a tuple with the AppType field if it's non-nil, zero value otherwise
+GetToolNameOk returns a tuple with the ToolName field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetAppType
+### SetToolName
 
-`func (o *DownloadAndParseFileStep) SetAppType(v AppTypes)`
+`func (o *DownloadAndParseFileStep) SetToolName(v string)`
 
-SetAppType sets AppType field to given value.
+SetToolName sets ToolName field to given value.
 
-### HasAppType
-
-`func (o *DownloadAndParseFileStep) HasAppType() bool`
-
-HasAppType returns a boolean if a field has been set.
 
 ### GetInputFilter
 
@@ -117,26 +111,6 @@ and a boolean to check if the value has been set.
 `func (o *DownloadAndParseFileStep) SetIngestType(v IngestTypes)`
 
 SetIngestType sets IngestType field to given value.
-
-
-### GetAccessInfo
-
-`func (o *DownloadAndParseFileStep) GetAccessInfo() map[string]interface{}`
-
-GetAccessInfo returns the AccessInfo field if non-nil, zero value otherwise.
-
-### GetAccessInfoOk
-
-`func (o *DownloadAndParseFileStep) GetAccessInfoOk() (*map[string]interface{}, bool)`
-
-GetAccessInfoOk returns a tuple with the AccessInfo field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAccessInfo
-
-`func (o *DownloadAndParseFileStep) SetAccessInfo(v map[string]interface{})`
-
-SetAccessInfo sets AccessInfo field to given value.
 
 
 

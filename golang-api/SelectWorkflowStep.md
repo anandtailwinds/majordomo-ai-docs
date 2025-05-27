@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**LlmModelInfo** | [**ModelInfo**](ModelInfo.md) |  | 
-**QueryString** | **string** | Query string. | 
+**LlmModelProfile** | **string** | The name of the LLM model profile to lookup. | 
+**LlmModelName** | **string** | The name of the LLM model to use. | 
 **QueryParams** | Pointer to [**QueryParams**](QueryParams.md) |  | [optional] 
 **Workflows** | [**[]Workflow**](Workflow.md) | Workflow list | 
 
@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 
 ### NewSelectWorkflowStep
 
-`func NewSelectWorkflowStep(llmModelInfo ModelInfo, queryString string, workflows []Workflow, ) *SelectWorkflowStep`
+`func NewSelectWorkflowStep(llmModelProfile string, llmModelName string, workflows []Workflow, ) *SelectWorkflowStep`
 
 NewSelectWorkflowStep instantiates a new SelectWorkflowStep object
 This constructor will assign default values to properties that have it defined,
@@ -28,44 +28,44 @@ NewSelectWorkflowStepWithDefaults instantiates a new SelectWorkflowStep object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetLlmModelInfo
+### GetLlmModelProfile
 
-`func (o *SelectWorkflowStep) GetLlmModelInfo() ModelInfo`
+`func (o *SelectWorkflowStep) GetLlmModelProfile() string`
 
-GetLlmModelInfo returns the LlmModelInfo field if non-nil, zero value otherwise.
+GetLlmModelProfile returns the LlmModelProfile field if non-nil, zero value otherwise.
 
-### GetLlmModelInfoOk
+### GetLlmModelProfileOk
 
-`func (o *SelectWorkflowStep) GetLlmModelInfoOk() (*ModelInfo, bool)`
+`func (o *SelectWorkflowStep) GetLlmModelProfileOk() (*string, bool)`
 
-GetLlmModelInfoOk returns a tuple with the LlmModelInfo field if it's non-nil, zero value otherwise
+GetLlmModelProfileOk returns a tuple with the LlmModelProfile field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetLlmModelInfo
+### SetLlmModelProfile
 
-`func (o *SelectWorkflowStep) SetLlmModelInfo(v ModelInfo)`
+`func (o *SelectWorkflowStep) SetLlmModelProfile(v string)`
 
-SetLlmModelInfo sets LlmModelInfo field to given value.
+SetLlmModelProfile sets LlmModelProfile field to given value.
 
 
-### GetQueryString
+### GetLlmModelName
 
-`func (o *SelectWorkflowStep) GetQueryString() string`
+`func (o *SelectWorkflowStep) GetLlmModelName() string`
 
-GetQueryString returns the QueryString field if non-nil, zero value otherwise.
+GetLlmModelName returns the LlmModelName field if non-nil, zero value otherwise.
 
-### GetQueryStringOk
+### GetLlmModelNameOk
 
-`func (o *SelectWorkflowStep) GetQueryStringOk() (*string, bool)`
+`func (o *SelectWorkflowStep) GetLlmModelNameOk() (*string, bool)`
 
-GetQueryStringOk returns a tuple with the QueryString field if it's non-nil, zero value otherwise
+GetLlmModelNameOk returns a tuple with the LlmModelName field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetQueryString
+### SetLlmModelName
 
-`func (o *SelectWorkflowStep) SetQueryString(v string)`
+`func (o *SelectWorkflowStep) SetLlmModelName(v string)`
 
-SetQueryString sets QueryString field to given value.
+SetLlmModelName sets LlmModelName field to given value.
 
 
 ### GetQueryParams

@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **Name** | **string** | Name of the ingest pipeline. | 
 **DataStoreName** | **string** | The name of the parent data store in which this ingest pipeline is present. | 
 **InputFilter** | **map[string]interface{}** | The set of parameters describing the source location and filters for accessing  the input files. The specific parameters vary depending on the type of source,  for example an S3 bucket will require a bucket name to be specified.  | 
-**AppProfileName** | Pointer to **string** | The name of the application profile from which to download. | [optional] 
+**ToolName** | Pointer to **string** | The name of the application profile from which to download. | [optional] 
 **IngestType** | [**IngestTypes**](IngestTypes.md) |  | 
 **IngestParams** | Pointer to [**IngestParams**](IngestParams.md) |  | [optional] 
 **TimerOn** | Pointer to **bool** | Turn on the ingestion timer, once the timer expires the specified ingestion  action is performed.  | [optional] 
@@ -113,30 +113,30 @@ and a boolean to check if the value has been set.
 SetInputFilter sets InputFilter field to given value.
 
 
-### GetAppProfileName
+### GetToolName
 
-`func (o *IngestPipeline) GetAppProfileName() string`
+`func (o *IngestPipeline) GetToolName() string`
 
-GetAppProfileName returns the AppProfileName field if non-nil, zero value otherwise.
+GetToolName returns the ToolName field if non-nil, zero value otherwise.
 
-### GetAppProfileNameOk
+### GetToolNameOk
 
-`func (o *IngestPipeline) GetAppProfileNameOk() (*string, bool)`
+`func (o *IngestPipeline) GetToolNameOk() (*string, bool)`
 
-GetAppProfileNameOk returns a tuple with the AppProfileName field if it's non-nil, zero value otherwise
+GetToolNameOk returns a tuple with the ToolName field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetAppProfileName
+### SetToolName
 
-`func (o *IngestPipeline) SetAppProfileName(v string)`
+`func (o *IngestPipeline) SetToolName(v string)`
 
-SetAppProfileName sets AppProfileName field to given value.
+SetToolName sets ToolName field to given value.
 
-### HasAppProfileName
+### HasToolName
 
-`func (o *IngestPipeline) HasAppProfileName() bool`
+`func (o *IngestPipeline) HasToolName() bool`
 
-HasAppProfileName returns a boolean if a field has been set.
+HasToolName returns a boolean if a field has been set.
 
 ### GetIngestType
 

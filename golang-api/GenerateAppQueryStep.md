@@ -4,17 +4,16 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AppInfo** | [**AppInfo**](AppInfo.md) |  | 
-**EmbeddingModelInfo** | Pointer to [**ModelInfo**](ModelInfo.md) |  | [optional] 
-**LlmModelInfo** | [**ModelInfo**](ModelInfo.md) |  | 
-**QueryString** | **string** | Query string | 
+**DataStoreName** | **string** | The name of the data store to lookup. | 
+**LlmModelProfile** | **string** | The name of the LLM model profile to lookup. | 
+**LlmModelName** | **string** | The name of the LLM model to use. | 
 **QueryParams** | Pointer to [**QueryParams**](QueryParams.md) |  | [optional] 
 
 ## Methods
 
 ### NewGenerateAppQueryStep
 
-`func NewGenerateAppQueryStep(appInfo AppInfo, llmModelInfo ModelInfo, queryString string, ) *GenerateAppQueryStep`
+`func NewGenerateAppQueryStep(dataStoreName string, llmModelProfile string, llmModelName string, ) *GenerateAppQueryStep`
 
 NewGenerateAppQueryStep instantiates a new GenerateAppQueryStep object
 This constructor will assign default values to properties that have it defined,
@@ -29,89 +28,64 @@ NewGenerateAppQueryStepWithDefaults instantiates a new GenerateAppQueryStep obje
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetAppInfo
+### GetDataStoreName
 
-`func (o *GenerateAppQueryStep) GetAppInfo() AppInfo`
+`func (o *GenerateAppQueryStep) GetDataStoreName() string`
 
-GetAppInfo returns the AppInfo field if non-nil, zero value otherwise.
+GetDataStoreName returns the DataStoreName field if non-nil, zero value otherwise.
 
-### GetAppInfoOk
+### GetDataStoreNameOk
 
-`func (o *GenerateAppQueryStep) GetAppInfoOk() (*AppInfo, bool)`
+`func (o *GenerateAppQueryStep) GetDataStoreNameOk() (*string, bool)`
 
-GetAppInfoOk returns a tuple with the AppInfo field if it's non-nil, zero value otherwise
+GetDataStoreNameOk returns a tuple with the DataStoreName field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetAppInfo
+### SetDataStoreName
 
-`func (o *GenerateAppQueryStep) SetAppInfo(v AppInfo)`
+`func (o *GenerateAppQueryStep) SetDataStoreName(v string)`
 
-SetAppInfo sets AppInfo field to given value.
+SetDataStoreName sets DataStoreName field to given value.
 
 
-### GetEmbeddingModelInfo
+### GetLlmModelProfile
 
-`func (o *GenerateAppQueryStep) GetEmbeddingModelInfo() ModelInfo`
+`func (o *GenerateAppQueryStep) GetLlmModelProfile() string`
 
-GetEmbeddingModelInfo returns the EmbeddingModelInfo field if non-nil, zero value otherwise.
+GetLlmModelProfile returns the LlmModelProfile field if non-nil, zero value otherwise.
 
-### GetEmbeddingModelInfoOk
+### GetLlmModelProfileOk
 
-`func (o *GenerateAppQueryStep) GetEmbeddingModelInfoOk() (*ModelInfo, bool)`
+`func (o *GenerateAppQueryStep) GetLlmModelProfileOk() (*string, bool)`
 
-GetEmbeddingModelInfoOk returns a tuple with the EmbeddingModelInfo field if it's non-nil, zero value otherwise
+GetLlmModelProfileOk returns a tuple with the LlmModelProfile field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetEmbeddingModelInfo
+### SetLlmModelProfile
 
-`func (o *GenerateAppQueryStep) SetEmbeddingModelInfo(v ModelInfo)`
+`func (o *GenerateAppQueryStep) SetLlmModelProfile(v string)`
 
-SetEmbeddingModelInfo sets EmbeddingModelInfo field to given value.
+SetLlmModelProfile sets LlmModelProfile field to given value.
 
-### HasEmbeddingModelInfo
 
-`func (o *GenerateAppQueryStep) HasEmbeddingModelInfo() bool`
+### GetLlmModelName
 
-HasEmbeddingModelInfo returns a boolean if a field has been set.
+`func (o *GenerateAppQueryStep) GetLlmModelName() string`
 
-### GetLlmModelInfo
+GetLlmModelName returns the LlmModelName field if non-nil, zero value otherwise.
 
-`func (o *GenerateAppQueryStep) GetLlmModelInfo() ModelInfo`
+### GetLlmModelNameOk
 
-GetLlmModelInfo returns the LlmModelInfo field if non-nil, zero value otherwise.
+`func (o *GenerateAppQueryStep) GetLlmModelNameOk() (*string, bool)`
 
-### GetLlmModelInfoOk
-
-`func (o *GenerateAppQueryStep) GetLlmModelInfoOk() (*ModelInfo, bool)`
-
-GetLlmModelInfoOk returns a tuple with the LlmModelInfo field if it's non-nil, zero value otherwise
+GetLlmModelNameOk returns a tuple with the LlmModelName field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetLlmModelInfo
+### SetLlmModelName
 
-`func (o *GenerateAppQueryStep) SetLlmModelInfo(v ModelInfo)`
+`func (o *GenerateAppQueryStep) SetLlmModelName(v string)`
 
-SetLlmModelInfo sets LlmModelInfo field to given value.
-
-
-### GetQueryString
-
-`func (o *GenerateAppQueryStep) GetQueryString() string`
-
-GetQueryString returns the QueryString field if non-nil, zero value otherwise.
-
-### GetQueryStringOk
-
-`func (o *GenerateAppQueryStep) GetQueryStringOk() (*string, bool)`
-
-GetQueryStringOk returns a tuple with the QueryString field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetQueryString
-
-`func (o *GenerateAppQueryStep) SetQueryString(v string)`
-
-SetQueryString sets QueryString field to given value.
+SetLlmModelName sets LlmModelName field to given value.
 
 
 ### GetQueryParams

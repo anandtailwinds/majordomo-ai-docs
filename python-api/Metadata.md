@@ -7,6 +7,7 @@ Metadata to be added to vector database.
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **key** | **str** | Key value for metadata. | 
+**match_type** | **str** | Match type for metadata | [optional] 
 **value** | **str** | Value of metadata. | 
 
 ## Example

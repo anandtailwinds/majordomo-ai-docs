@@ -7,16 +7,16 @@ Name | Type | Description | Notes
 **Workspace** | **string** | Workspace in which the data store is present. | 
 **Name** | **string** | Name of the data store. | 
 **StoreType** | [**DataStoreTypes**](DataStoreTypes.md) |  | 
-**AppProfileName** | **string** | Name of the application profile. | 
-**Contents** | Pointer to **string** | Description of the data store. This can be optionally included in queries. | [optional] 
-**InstanceInfo** | Pointer to **map[string]interface{}** | Information about the vector data store. | [optional] 
+**ToolName** | **string** | Name of the application profile. | 
+**Contents** | Pointer to **string** | Description of the data store. This can be included in queries as an additional hint to LLM models.  | [optional] 
+**InstanceInfo** | Pointer to **map[string]interface{}** | Information about the specific data store data store instance. | [optional] 
 **SharedUsers** | Pointer to **[]string** | The list of users this profile is shared with. | [optional] 
 
 ## Methods
 
 ### NewDataStore
 
-`func NewDataStore(workspace string, name string, storeType DataStoreTypes, appProfileName string, ) *DataStore`
+`func NewDataStore(workspace string, name string, storeType DataStoreTypes, toolName string, ) *DataStore`
 
 NewDataStore instantiates a new DataStore object
 This constructor will assign default values to properties that have it defined,
@@ -91,24 +91,24 @@ and a boolean to check if the value has been set.
 SetStoreType sets StoreType field to given value.
 
 
-### GetAppProfileName
+### GetToolName
 
-`func (o *DataStore) GetAppProfileName() string`
+`func (o *DataStore) GetToolName() string`
 
-GetAppProfileName returns the AppProfileName field if non-nil, zero value otherwise.
+GetToolName returns the ToolName field if non-nil, zero value otherwise.
 
-### GetAppProfileNameOk
+### GetToolNameOk
 
-`func (o *DataStore) GetAppProfileNameOk() (*string, bool)`
+`func (o *DataStore) GetToolNameOk() (*string, bool)`
 
-GetAppProfileNameOk returns a tuple with the AppProfileName field if it's non-nil, zero value otherwise
+GetToolNameOk returns a tuple with the ToolName field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetAppProfileName
+### SetToolName
 
-`func (o *DataStore) SetAppProfileName(v string)`
+`func (o *DataStore) SetToolName(v string)`
 
-SetAppProfileName sets AppProfileName field to given value.
+SetToolName sets ToolName field to given value.
 
 
 ### GetContents

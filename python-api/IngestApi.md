@@ -10,7 +10,7 @@ Method | HTTP request | Description
 [**data_store_upload**](IngestApi.md#data_store_upload) | **POST** /data_store_upload | Data store ingest local file.
 [**delete_data_stores**](IngestApi.md#delete_data_stores) | **DELETE** /data_stores | Delete data store.
 [**delete_ingest_pipelines**](IngestApi.md#delete_ingest_pipelines) | **DELETE** /ingest_pipelines | Delete ingest pipeline.
-[**delete_vector_store_files**](IngestApi.md#delete_vector_store_files) | **DELETE** /delete_vector_store_files/workspace/{workspace}/data-store-name/{data-store-name}/files/{files} | Delete vector stores information.
+[**delete_vector_store_content**](IngestApi.md#delete_vector_store_content) | **POST** /delete_vector_store_content | Delete vector stores information.
 [**get_data_stores**](IngestApi.md#get_data_stores) | **GET** /data_stores | List data stores.
 [**get_ingest_pipelines**](IngestApi.md#get_ingest_pipelines) | **GET** /ingest_pipelines | Get ingest pipeline.
 [**get_vector_stores**](IngestApi.md#get_vector_stores) | **GET** /vector_stores | Get vector stores information.
@@ -95,7 +95,10 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | successful operation |  -  |
-**422** | Invalid input |  -  |
+**422** | Unprocessable Entry |  -  |
+**401** | Unauthorized |  -  |
+**400** | Bad Request |  -  |
+**403** | Forbidden |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -175,7 +178,10 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | successful operation |  -  |
-**422** | Invalid input |  -  |
+**422** | Unprocessable Entry |  -  |
+**401** | Unauthorized |  -  |
+**400** | Bad Request |  -  |
+**403** | Forbidden |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -255,7 +261,10 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | successful operation |  -  |
-**422** | Invalid input |  -  |
+**422** | Unprocessable Entry |  -  |
+**401** | Unauthorized |  -  |
+**400** | Bad Request |  -  |
+**403** | Forbidden |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -344,7 +353,10 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | successful operation |  -  |
-**422** | Invalid input |  -  |
+**422** | Unprocessable Entry |  -  |
+**401** | Unauthorized |  -  |
+**400** | Bad Request |  -  |
+**403** | Forbidden |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -427,8 +439,10 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | successful operation |  -  |
-**422** | Invalid input. |  -  |
-**401** | Unauthorized access. This is most likely because the access token has expired or the user API key is invalid. |  -  |
+**422** | Unprocessable Entry |  -  |
+**401** | Unauthorized |  -  |
+**400** | Bad Request |  -  |
+**403** | Forbidden |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -511,17 +525,22 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | successful operation |  -  |
-**422** | Invalid input. |  -  |
-**401** | Unauthorized access. This is most likely because the access token has expired or the user API key is invalid. |  -  |
+**422** | Unprocessable Entry |  -  |
+**401** | Unauthorized |  -  |
+**400** | Bad Request |  -  |
+**403** | Forbidden |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **delete_vector_store_files**
-> DeleteResponse delete_vector_store_files(workspace, data_store_name, files)
+# **delete_vector_store_content**
+> DeleteResponse delete_vector_store_content(delete_vector_store_content)
 
 Delete vector stores information.
 
-Delete a set of files from the vector database present in the vector database provider. The entire vector store cannot be deleted as it will be done when the corresponding data store is also deleted.
+Delete a set of entries from the vector database present in the vector database 
+provider based on the metadata specified. The entire vector store cannot be deleted 
+as it will be done when the corresponding data store is also deleted.
+
 
 ### Example
 
@@ -530,6 +549,7 @@ Delete a set of files from the vector database present in the vector database pr
 ```python
 import majordomo_ai
 from majordomo_ai.models.delete_response import DeleteResponse
+from majordomo_ai.models.delete_vector_store_content import DeleteVectorStoreContent
 from majordomo_ai.rest import ApiException
 from pprint import pprint
 
@@ -553,17 +573,15 @@ configuration = majordomo_ai.Configuration(
 with majordomo_ai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = majordomo_ai.IngestApi(api_client)
-    workspace = 'workspace_example' # str | The workspace in which the data store corresponding to the vector store is present.
-    data_store_name = 'data_store_name_example' # str | Name of the data store for which the corresponding vector store information is sought. If none specified, all matching data stores created by the user are scanned.
-    files = 'files_example' # str | The list of files to delete from the vector store at the provider.
+    delete_vector_store_content = majordomo_ai.DeleteVectorStoreContent() # DeleteVectorStoreContent | 
 
     try:
         # Delete vector stores information.
-        api_response = api_instance.delete_vector_store_files(workspace, data_store_name, files)
-        print("The response of IngestApi->delete_vector_store_files:\n")
+        api_response = api_instance.delete_vector_store_content(delete_vector_store_content)
+        print("The response of IngestApi->delete_vector_store_content:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling IngestApi->delete_vector_store_files: %s\n" % e)
+        print("Exception when calling IngestApi->delete_vector_store_content: %s\n" % e)
 ```
 
 
@@ -573,9 +591,7 @@ with majordomo_ai.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **workspace** | **str**| The workspace in which the data store corresponding to the vector store is present. | 
- **data_store_name** | **str**| Name of the data store for which the corresponding vector store information is sought. If none specified, all matching data stores created by the user are scanned. | 
- **files** | **str**| The list of files to delete from the vector store at the provider. | 
+ **delete_vector_store_content** | [**DeleteVectorStoreContent**](DeleteVectorStoreContent.md)|  | 
 
 ### Return type
 
@@ -587,7 +603,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 ### HTTP response details
@@ -595,7 +611,10 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | successful operation |  -  |
-**422** | Invalid input |  -  |
+**422** | Unprocessable Entry |  -  |
+**401** | Unauthorized |  -  |
+**400** | Bad Request |  -  |
+**403** | Forbidden |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -681,7 +700,10 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | successful operation |  -  |
-**422** | Invalid input |  -  |
+**422** | Unprocessable Entry |  -  |
+**401** | Unauthorized |  -  |
+**400** | Bad Request |  -  |
+**403** | Forbidden |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -767,7 +789,10 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | successful operation |  -  |
-**422** | Invalid input |  -  |
+**422** | Unprocessable Entry |  -  |
+**401** | Unauthorized |  -  |
+**400** | Bad Request |  -  |
+**403** | Forbidden |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -809,8 +834,8 @@ with majordomo_ai.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = majordomo_ai.IngestApi(api_client)
     workspace = 'workspace_example' # str | The workspace in which the data store corresponding to the vector store is present.
-    data_store_name = 'data_store_name_example' # str | Name of the data store for which the corresponding vector store information is sought. If none specified, all matching data stores created by the user are scanned. (optional)
-    files = True # bool | Obtain the list of files that are ingested into the vector store also. This option is very compute intensive as most vector databases dont provide a way to get this information without downloading the entire database. So this option can be excercised only for one data store at a time, and it is mandatory to provide a specific workspace and data store name. (optional)
+    data_store_name = 'data_store_name_example' # str | Name of the data store for which the corresponding vector store information  is sought. If none specified, all matching data stores created by the user  are scanned.  (optional)
+    files = True # bool | Obtain the list of files that are ingested into the vector store also.  This option is very compute intensive as most vector databases dont provide  a way to get this information without downloading the entire database. So  this option can be excercised only for one data store at a time, and it  is mandatory to provide a specific workspace and data store name.  (optional)
 
     try:
         # Get vector stores information.
@@ -829,8 +854,8 @@ with majordomo_ai.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **workspace** | **str**| The workspace in which the data store corresponding to the vector store is present. | 
- **data_store_name** | **str**| Name of the data store for which the corresponding vector store information is sought. If none specified, all matching data stores created by the user are scanned. | [optional] 
- **files** | **bool**| Obtain the list of files that are ingested into the vector store also. This option is very compute intensive as most vector databases dont provide a way to get this information without downloading the entire database. So this option can be excercised only for one data store at a time, and it is mandatory to provide a specific workspace and data store name. | [optional] 
+ **data_store_name** | **str**| Name of the data store for which the corresponding vector store information  is sought. If none specified, all matching data stores created by the user  are scanned.  | [optional] 
+ **files** | **bool**| Obtain the list of files that are ingested into the vector store also.  This option is very compute intensive as most vector databases dont provide  a way to get this information without downloading the entire database. So  this option can be excercised only for one data store at a time, and it  is mandatory to provide a specific workspace and data store name.  | [optional] 
 
 ### Return type
 
@@ -850,7 +875,10 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | successful operation |  -  |
-**422** | Invalid input |  -  |
+**422** | Unprocessable Entry |  -  |
+**401** | Unauthorized |  -  |
+**400** | Bad Request |  -  |
+**403** | Forbidden |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -923,14 +951,17 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 ### HTTP response details
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | successful operation |  -  |
-**422** | Invalid input |  -  |
+**422** | Unprocessable Entry |  -  |
+**401** | Unauthorized |  -  |
+**400** | Bad Request |  -  |
+**403** | Forbidden |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1010,7 +1041,10 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | successful operation |  -  |
-**422** | Invalid input |  -  |
+**422** | Unprocessable Entry |  -  |
+**401** | Unauthorized |  -  |
+**400** | Bad Request |  -  |
+**403** | Forbidden |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1090,7 +1124,10 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | successful operation |  -  |
-**422** | Invalid input |  -  |
+**422** | Unprocessable Entry |  -  |
+**401** | Unauthorized |  -  |
+**400** | Bad Request |  -  |
+**403** | Forbidden |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

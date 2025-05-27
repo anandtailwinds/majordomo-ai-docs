@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AppInfo** | [**AppInfo**](AppInfo.md) |  | 
+**DataStoreName** | **string** | The name of the data store to lookup. | 
 **QueryParams** | Pointer to [**QueryParams**](QueryParams.md) |  | [optional] 
 
 ## Methods
 
 ### NewRunAppQueryStep
 
-`func NewRunAppQueryStep(appInfo AppInfo, ) *RunAppQueryStep`
+`func NewRunAppQueryStep(dataStoreName string, ) *RunAppQueryStep`
 
 NewRunAppQueryStep instantiates a new RunAppQueryStep object
 This constructor will assign default values to properties that have it defined,
@@ -26,24 +26,24 @@ NewRunAppQueryStepWithDefaults instantiates a new RunAppQueryStep object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetAppInfo
+### GetDataStoreName
 
-`func (o *RunAppQueryStep) GetAppInfo() AppInfo`
+`func (o *RunAppQueryStep) GetDataStoreName() string`
 
-GetAppInfo returns the AppInfo field if non-nil, zero value otherwise.
+GetDataStoreName returns the DataStoreName field if non-nil, zero value otherwise.
 
-### GetAppInfoOk
+### GetDataStoreNameOk
 
-`func (o *RunAppQueryStep) GetAppInfoOk() (*AppInfo, bool)`
+`func (o *RunAppQueryStep) GetDataStoreNameOk() (*string, bool)`
 
-GetAppInfoOk returns a tuple with the AppInfo field if it's non-nil, zero value otherwise
+GetDataStoreNameOk returns a tuple with the DataStoreName field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetAppInfo
+### SetDataStoreName
 
-`func (o *RunAppQueryStep) SetAppInfo(v AppInfo)`
+`func (o *RunAppQueryStep) SetDataStoreName(v string)`
 
-SetAppInfo sets AppInfo field to given value.
+SetDataStoreName sets DataStoreName field to given value.
 
 
 ### GetQueryParams
