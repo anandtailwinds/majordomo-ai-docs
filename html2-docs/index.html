@@ -1366,7 +1366,6 @@ ul.nav-tabs {
     },
     "match_condition" : {
       "$ref" : "#/components/schemas/MetadataMatchConditions"
-      "description" : "The type of match condition to use while deleting metadata".
     },
     "delete_metadata" : {
       "type" : "array",
@@ -1972,9 +1971,11 @@ ul.nav-tabs {
     }
   }
 };
-    defs["MetricType"] = {
-  "type" : "string",
-  "enum" : [ "NODE_METRICS", "POD_METRICS" ]
+    defs["MetricTypes"] = {
+  "type" : "integer",
+  "enum" : [ 1, 2 ],
+  "x-enum-varnames" : [ "NODE_METRICS", "POD_METRICS" ],
+  "x-enum-description" : [ "Node metrics", "Pod Metrics" ]
 };
     defs["MetricsQueryRequest"] = {
   "required" : [ "end_time", "metrics_filter", "metrics_type", "start_time", "step", "workspace" ],
@@ -1985,7 +1986,7 @@ ul.nav-tabs {
       "description" : "The name of the workspace"
     },
     "metrics_type" : {
-      "$ref" : "#/components/schemas/MetricType"
+      "$ref" : "#/components/schemas/MetricTypes"
     },
     "metrics_filter" : {
       "type" : "object",
@@ -43925,7 +43926,7 @@ monitor profiles are retrieved.
  -d '{
   &quot;start_time&quot; : &quot;2000-01-23T04:56:07.000+00:00&quot;,
   &quot;workspace&quot; : &quot;workspace&quot;,
-  &quot;metrics_type&quot; : &quot;NODE_METRICS&quot;,
+  &quot;metrics_type&quot; : 0,
   &quot;end_time&quot; : &quot;2000-01-23T04:56:07.000+00:00&quot;,
   &quot;metrics_filter&quot; : {
     &quot;key&quot; : &quot;&quot;
