@@ -1084,6 +1084,42 @@ ul.nav-tabs {
   },
   "description" : "Parameters related to chunking operation."
 };
+    defs["ContainerStatus"] = {
+  "required" : [ "container_list" ],
+  "type" : "object",
+  "properties" : {
+    "container_list" : {
+      "type" : "array",
+      "description" : "The list of container status information.",
+      "items" : {
+        "$ref" : "#/components/schemas/ContainerStatusInfo"
+      }
+    }
+  }
+};
+    defs["ContainerStatusInfo"] = {
+  "required" : [ "image_name", "name", "status" ],
+  "type" : "object",
+  "properties" : {
+    "name" : {
+      "type" : "string",
+      "description" : "The name of the container."
+    },
+    "image_name" : {
+      "type" : "string",
+      "description" : "The name of the container image."
+    },
+    "started_at" : {
+      "type" : "string",
+      "description" : "The time at which the container was started.",
+      "format" : "date-time"
+    },
+    "status" : {
+      "type" : "string",
+      "description" : "The current status of the container."
+    }
+  }
+};
     defs["DataCount"] = {
   "title" : "DataCount",
   "required" : [ "ingestion_pipelines", "query_pipelines", "structdb_data_stores", "user_name", "vectordb_data_stores", "workspace" ],
@@ -1380,8 +1416,8 @@ ul.nav-tabs {
     defs["DeploymentCommands"] = {
   "type" : "integer",
   "description" : "The types of deployment commands.",
-  "enum" : [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ],
-  "x-enum-varnames" : [ "DEPLOYMENT_COMMAND_NONE", "DEPLOYMENT_COMMAND_START", "DEPLOYMENT_COMMAND_STOP", "DEPLOYMENT_COMMAND_ABORT", "DEPLOYMENT_COMMAND_HEALTH_CHECK", "DEPLOYMENT_COMMAND_INFERENCE_STATUS", "DEPLOYMENT_COMMAND_KSERVE_STATUS", "DEPLOYMENT_COMMAND_INFERENCE_PODS", "DEPLOYMENT_COMMAND_POD_LOGS", "DEPLOYMENT_COMMAND_KSERVE_LOGS" ]
+  "enum" : [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 ],
+  "x-enum-varnames" : [ "DEPLOYMENT_COMMAND_NONE", "DEPLOYMENT_COMMAND_START", "DEPLOYMENT_COMMAND_STOP", "DEPLOYMENT_COMMAND_ABORT", "DEPLOYMENT_COMMAND_HEALTH_CHECK", "DEPLOYMENT_COMMAND_INFERENCE_STATUS", "DEPLOYMENT_COMMAND_KSERVE_STATUS", "DEPLOYMENT_COMMAND_INFERENCE_PODS", "DEPLOYMENT_COMMAND_POD_LOGS", "DEPLOYMENT_COMMAND_KSERVE_LOGS", "DEPLOYMENT_COMMAND_CONTAINER_STATUS", "DEPLOYMENT_COMMAND_CONTAINER_LOGS" ]
 };
     defs["DeploymentStatus"] = {
   "type" : "integer",
@@ -1562,6 +1598,8 @@ ul.nav-tabs {
     "$ref" : "#/components/schemas/LogsList"
   }, {
     "$ref" : "#/components/schemas/InferenceStatus"
+  }, {
+    "$ref" : "#/components/schemas/ContainerStatus"
   } ]
 };
     defs["InferenceProfileInfo"] = {
@@ -1940,20 +1978,10 @@ ul.nav-tabs {
     "values" : {
       "type" : "array",
       "items" : {
-        "type" : "array",
-        "items" : {
-          "$ref" : "#/components/schemas/MetricData_values_inner_inner"
-        }
+        "$ref" : "#/components/schemas/MetricValue"
       }
     }
   }
-};
-    defs["MetricData_values_inner_inner"] = {
-  "oneOf" : [ {
-    "type" : "number"
-  }, {
-    "type" : "string"
-  } ]
 };
     defs["MetricResult"] = {
   "required" : [ "result", "result_type" ],
@@ -1977,6 +2005,19 @@ ul.nav-tabs {
   "x-enum-varnames" : [ "NODE_METRICS", "POD_METRICS" ],
   "x-enum-description" : [ "Node metrics", "Pod Metrics" ]
 };
+    defs["MetricValue"] = {
+  "required" : [ "timestamp", "value" ],
+  "type" : "object",
+  "properties" : {
+    "timestamp" : {
+      "type" : "number",
+      "format" : "double"
+    },
+    "value" : {
+      "type" : "string"
+    }
+  }
+};
     defs["MetricsQueryRequest"] = {
   "required" : [ "end_time", "metrics_filter", "metrics_type", "start_time", "step", "workspace" ],
   "type" : "object",
@@ -1995,13 +2036,11 @@ ul.nav-tabs {
     },
     "start_time" : {
       "type" : "string",
-      "description" : "Start time of the query range",
-      "format" : "date-time"
+      "description" : "Start time of the query range"
     },
     "end_time" : {
       "type" : "string",
-      "description" : "End time of the query range",
-      "format" : "date-time"
+      "description" : "End time of the query range"
     },
     "step" : {
       "type" : "string",
@@ -2368,7 +2407,7 @@ ul.nav-tabs {
   "description" : "The mode of LLM query.",
   "enum" : [ 1, 2, 3 ],
   "x-enum-varnames" : [ "REFINE_MODE", "COMPACT_MODE", "ACCUMULATE_MODE" ],
-  "x-enum-description" : [ "In this mode when there are many chunks to be presented to LLM that will not fit into one context, each split chunk response from LLM is accumalated back into the next split chunk to increase the context awareness for the model", "In this mode as much chunks are fitted into one context and the responses from multiple such contexts are accumulated to get a final response. This is most efficient in terms of cost.", "In this mode the responses to each chunk request are accumulated and sent to the user." ]
+  "x-enum-description" : [ "In this mode when there are many chunks to be presented to LLM \nthat will not fit into one context, each split chunk response from \nLLM is accumalated back into the next split chunk to increase the context \nawareness for the model\n", "In this mode as much chunks are fitted into one context and the responses \nfrom multiple such contexts are accumulated to get a final response. This is \nmost efficient in terms of cost.\n", "In this mode the responses to each chunk request are accumulated and sent to the user.\n" ]
 };
     defs["QueryParams"] = {
   "title" : "Data Store Query Params",
@@ -2376,12 +2415,12 @@ ul.nav-tabs {
   "properties" : {
     "top_k" : {
       "type" : "integer",
-      "description" : "The number of vector db matches to consider for llm context",
+      "description" : "The number of vector db matches to consider for llm context.",
       "default" : 2
     },
     "temperature" : {
       "type" : "number",
-      "description" : "The temperature of the LLM processing, the higher the more creative the LLM is.",
+      "description" : "The temperature of the LLM processing, the higher the more creative the LLM is.\n",
       "format" : "float"
     },
     "doc_metadata" : {
@@ -2390,6 +2429,9 @@ ul.nav-tabs {
       "items" : {
         "$ref" : "#/components/schemas/Metadata"
       }
+    },
+    "match_condition" : {
+      "$ref" : "#/components/schemas/MetadataMatchConditions"
     },
     "query_mode" : {
       "$ref" : "#/components/schemas/QueryModes"
@@ -2759,19 +2801,12 @@ ul.nav-tabs {
       "additionalProperties" : true,
       "description" : "The JSON payload to be used for testing."
     },
-    "query_params" : {
+    "header_options" : {
       "type" : "object",
       "additionalProperties" : {
         "type" : "string"
       },
-      "description" : "The JSON payload to be used for testing."
-    },
-    "path_params" : {
-      "type" : "object",
-      "additionalProperties" : {
-        "type" : "string"
-      },
-      "description" : "The JSON payload to be used for testing."
+      "description" : "The HTTP header options to set."
     },
     "timeout" : {
       "type" : "integer",
@@ -26415,11 +26450,8 @@ $(document).ready(function() {
   &quot;payload&quot; : {
     &quot;key&quot; : &quot;&quot;
   },
-  &quot;query_params&quot; : {
-    &quot;key&quot; : &quot;query_params&quot;
-  },
-  &quot;path_params&quot; : {
-    &quot;key&quot; : &quot;path_params&quot;
+  &quot;header_options&quot; : {
+    &quot;key&quot; : &quot;header_options&quot;
   },
   &quot;request_id&quot; : &quot;req_12345&quot;,
   &quot;request_url&quot; : &quot;http://1.2.3.4/v1/completion&quot;,
@@ -43924,10 +43956,10 @@ monitor profiles are retrieved.
  -H "Content-Type: application/json" \
  "http://localhost:/25001/node_metrics" \
  -d '{
-  &quot;start_time&quot; : &quot;2000-01-23T04:56:07.000+00:00&quot;,
+  &quot;start_time&quot; : &quot;start_time&quot;,
   &quot;workspace&quot; : &quot;workspace&quot;,
   &quot;metrics_type&quot; : 0,
-  &quot;end_time&quot; : &quot;2000-01-23T04:56:07.000+00:00&quot;,
+  &quot;end_time&quot; : &quot;end_time&quot;,
   &quot;metrics_filter&quot; : {
     &quot;key&quot; : &quot;&quot;
   },
