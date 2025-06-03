@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **data_store_name** | **str** | The name of the data store to lookup. | 
 **var_query_params** | [**QueryParams**](QueryParams.md) |  | [optional] 
+**chat_id** | **str** | Chat identifier that denotes the conversation this is part of. | [optional] 
 
 ## Example
 

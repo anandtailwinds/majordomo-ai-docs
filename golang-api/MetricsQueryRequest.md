@@ -5,10 +5,10 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Workspace** | **string** | The name of the workspace | 
-**MetricsType** | [**MetricType**](MetricType.md) |  | 
+**MetricsType** | [**MetricTypes**](MetricTypes.md) |  | 
 **MetricsFilter** | **map[string]interface{}** | Additional parameters for filtering the specific target resource. | 
-**StartTime** | **time.Time** | Start time of the query range | 
-**EndTime** | **time.Time** | End time of the query range | 
+**StartTime** | **string** | Start time of the query range | 
+**EndTime** | **string** | End time of the query range | 
 **Step** | **string** | Step interval (e.g., 30s, 1m) | 
 **Metrics** | Pointer to **[]string** | List of metrics to query | [optional] 
 
@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 
 ### NewMetricsQueryRequest
 
-`func NewMetricsQueryRequest(workspace string, metricsType MetricType, metricsFilter map[string]interface{}, startTime time.Time, endTime time.Time, step string, ) *MetricsQueryRequest`
+`func NewMetricsQueryRequest(workspace string, metricsType MetricTypes, metricsFilter map[string]interface{}, startTime string, endTime string, step string, ) *MetricsQueryRequest`
 
 NewMetricsQueryRequest instantiates a new MetricsQueryRequest object
 This constructor will assign default values to properties that have it defined,
@@ -53,20 +53,20 @@ SetWorkspace sets Workspace field to given value.
 
 ### GetMetricsType
 
-`func (o *MetricsQueryRequest) GetMetricsType() MetricType`
+`func (o *MetricsQueryRequest) GetMetricsType() MetricTypes`
 
 GetMetricsType returns the MetricsType field if non-nil, zero value otherwise.
 
 ### GetMetricsTypeOk
 
-`func (o *MetricsQueryRequest) GetMetricsTypeOk() (*MetricType, bool)`
+`func (o *MetricsQueryRequest) GetMetricsTypeOk() (*MetricTypes, bool)`
 
 GetMetricsTypeOk returns a tuple with the MetricsType field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMetricsType
 
-`func (o *MetricsQueryRequest) SetMetricsType(v MetricType)`
+`func (o *MetricsQueryRequest) SetMetricsType(v MetricTypes)`
 
 SetMetricsType sets MetricsType field to given value.
 
@@ -93,40 +93,40 @@ SetMetricsFilter sets MetricsFilter field to given value.
 
 ### GetStartTime
 
-`func (o *MetricsQueryRequest) GetStartTime() time.Time`
+`func (o *MetricsQueryRequest) GetStartTime() string`
 
 GetStartTime returns the StartTime field if non-nil, zero value otherwise.
 
 ### GetStartTimeOk
 
-`func (o *MetricsQueryRequest) GetStartTimeOk() (*time.Time, bool)`
+`func (o *MetricsQueryRequest) GetStartTimeOk() (*string, bool)`
 
 GetStartTimeOk returns a tuple with the StartTime field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetStartTime
 
-`func (o *MetricsQueryRequest) SetStartTime(v time.Time)`
+`func (o *MetricsQueryRequest) SetStartTime(v string)`
 
 SetStartTime sets StartTime field to given value.
 
 
 ### GetEndTime
 
-`func (o *MetricsQueryRequest) GetEndTime() time.Time`
+`func (o *MetricsQueryRequest) GetEndTime() string`
 
 GetEndTime returns the EndTime field if non-nil, zero value otherwise.
 
 ### GetEndTimeOk
 
-`func (o *MetricsQueryRequest) GetEndTimeOk() (*time.Time, bool)`
+`func (o *MetricsQueryRequest) GetEndTimeOk() (*string, bool)`
 
 GetEndTimeOk returns a tuple with the EndTime field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetEndTime
 
-`func (o *MetricsQueryRequest) SetEndTime(v time.Time)`
+`func (o *MetricsQueryRequest) SetEndTime(v string)`
 
 SetEndTime sets EndTime field to given value.
 

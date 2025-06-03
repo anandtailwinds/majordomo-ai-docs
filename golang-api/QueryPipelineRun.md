@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **Workspace** | **string** | The workspace this query pipeline belongs to. | 
 **Name** | **string** | Name of the query pipeline. | 
 **QueryString** | **string** | The query user wants to ask based on the Query Pipeline. | 
+**ChatId** | Pointer to **string** | The unique chat-id that denotes this conversation. If the chat_id  overlaps with another conversation, messages will be mixed.  | [optional] 
 
 ## Methods
 
@@ -86,6 +87,31 @@ and a boolean to check if the value has been set.
 
 SetQueryString sets QueryString field to given value.
 
+
+### GetChatId
+
+`func (o *QueryPipelineRun) GetChatId() string`
+
+GetChatId returns the ChatId field if non-nil, zero value otherwise.
+
+### GetChatIdOk
+
+`func (o *QueryPipelineRun) GetChatIdOk() (*string, bool)`
+
+GetChatIdOk returns a tuple with the ChatId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetChatId
+
+`func (o *QueryPipelineRun) SetChatId(v string)`
+
+SetChatId sets ChatId field to given value.
+
+### HasChatId
+
+`func (o *QueryPipelineRun) HasChatId() bool`
+
+HasChatId returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

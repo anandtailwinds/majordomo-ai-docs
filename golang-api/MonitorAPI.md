@@ -452,12 +452,11 @@ import (
 	"context"
 	"fmt"
 	"os"
-    "time"
 	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-	metricsQueryRequest := *openapiclient.NewMetricsQueryRequest("Workspace_example", openapiclient.MetricType("NODE_METRICS"), map[string]interface{}{"key": interface{}(123)}, time.Now(), time.Now(), "Step_example") // MetricsQueryRequest | 
+	metricsQueryRequest := *openapiclient.NewMetricsQueryRequest("Workspace_example", openapiclient.MetricTypes(1), map[string]interface{}{"key": interface{}(123)}, "StartTime_example", "EndTime_example", "Step_example") // MetricsQueryRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)

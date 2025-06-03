@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **llm_model** | **str** | The LLM model to be used. | 
 **var_query_params** | [**QueryParams**](QueryParams.md) |  | [optional] 
 **query_string** | **str** | The actual query string for which the user wants a response to. | 
+**chat_id** | **str** | The unique chat-id that denotes this conversation. If the chat_id overlaps with another conversation, messages will be mixed. | [optional] 
 
 ## Example
 

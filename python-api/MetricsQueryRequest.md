@@ -6,10 +6,10 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **workspace** | **str** | The name of the workspace | 
-**metrics_type** | [**MetricType**](MetricType.md) |  | 
+**metrics_type** | [**MetricTypes**](MetricTypes.md) |  | 
 **metrics_filter** | **Dict[str, object]** | Additional parameters for filtering the specific target resource. | 
-**start_time** | **datetime** | Start time of the query range | 
-**end_time** | **datetime** | End time of the query range | 
+**start_time** | **str** | Start time of the query range | 
+**end_time** | **str** | End time of the query range | 
 **step** | **str** | Step interval (e.g., 30s, 1m) | 
 **metrics** | **List[str]** | List of metrics to query | [optional] 
 

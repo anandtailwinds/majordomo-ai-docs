@@ -1,14 +1,14 @@
 # ChatMessage
 
-The user question and answer.
+An individual chat message.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**timestamp** | **int** | A unique identifier for the question and answer. This is auto-generated. | [optional] 
-**question** | **str** | The user question for which completion or answer is sought. | 
-**answer** | **str** | The answer obtained from Gen AI. | 
+**role** | **str** | The role who initiated this particuar message. | [optional] 
+**content** | **str** | The actual content of the chat message. | [optional] 
+**metadata** | **Dict[str, object]** | The actual content of the chat message. | [optional] 
 
 ## Example
 

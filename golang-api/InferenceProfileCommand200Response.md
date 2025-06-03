@@ -9,12 +9,13 @@ Name | Type | Description | Notes
 **PodList** | **[]map[string]interface{}** | The information about a specific pod. | 
 **Logs** | **[]string** | The current status of inference obtained from Kserve. | 
 **InferenceStatus** | [**[]InferenceStatusInfo**](InferenceStatusInfo.md) | The list of inference status. | 
+**ContainerList** | [**[]ContainerStatusInfo**](ContainerStatusInfo.md) | The list of container status information. | 
 
 ## Methods
 
 ### NewInferenceProfileCommand200Response
 
-`func NewInferenceProfileCommand200Response(status bool, message string, podList []map[string]interface{}, logs []string, inferenceStatus []InferenceStatusInfo, ) *InferenceProfileCommand200Response`
+`func NewInferenceProfileCommand200Response(status bool, message string, podList []map[string]interface{}, logs []string, inferenceStatus []InferenceStatusInfo, containerList []ContainerStatusInfo, ) *InferenceProfileCommand200Response`
 
 NewInferenceProfileCommand200Response instantiates a new InferenceProfileCommand200Response object
 This constructor will assign default values to properties that have it defined,
@@ -127,6 +128,26 @@ and a boolean to check if the value has been set.
 `func (o *InferenceProfileCommand200Response) SetInferenceStatus(v []InferenceStatusInfo)`
 
 SetInferenceStatus sets InferenceStatus field to given value.
+
+
+### GetContainerList
+
+`func (o *InferenceProfileCommand200Response) GetContainerList() []ContainerStatusInfo`
+
+GetContainerList returns the ContainerList field if non-nil, zero value otherwise.
+
+### GetContainerListOk
+
+`func (o *InferenceProfileCommand200Response) GetContainerListOk() (*[]ContainerStatusInfo, bool)`
+
+GetContainerListOk returns a tuple with the ContainerList field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetContainerList
+
+`func (o *InferenceProfileCommand200Response) SetContainerList(v []ContainerStatusInfo)`
+
+SetContainerList sets ContainerList field to given value.
 
 
 

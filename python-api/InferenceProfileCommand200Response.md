@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **pod_list** | **List[Dict[str, object]]** | The information about a specific pod. | 
 **logs** | **List[str]** | The current status of inference obtained from Kserve. | 
 **inference_status** | [**List[InferenceStatusInfo]**](InferenceStatusInfo.md) | The list of inference status. | 
+**container_list** | [**List[ContainerStatusInfo]**](ContainerStatusInfo.md) | The list of container status information. | 
 
 ## Example
 

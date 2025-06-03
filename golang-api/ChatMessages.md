@@ -8,13 +8,13 @@ Name | Type | Description | Notes
 **ChatName** | Pointer to **string** | Name of the chat history. | [optional] 
 **CreatedBy** | **string** | Name of the user who created the chat conversations. | 
 **LastUpdate** | **int64** | Timestamp of the last update to the chat history. | 
-**Messages** | [**[]ChatMessage**](ChatMessage.md) | The list of chat messages in this chat. | 
+**Messages** | [**[]ChatMessage1**](ChatMessage1.md) | The list of chat messages in this chat. | 
 
 ## Methods
 
 ### NewChatMessages
 
-`func NewChatMessages(chatId string, createdBy string, lastUpdate int64, messages []ChatMessage, ) *ChatMessages`
+`func NewChatMessages(chatId string, createdBy string, lastUpdate int64, messages []ChatMessage1, ) *ChatMessages`
 
 NewChatMessages instantiates a new ChatMessages object
 This constructor will assign default values to properties that have it defined,
@@ -116,20 +116,20 @@ SetLastUpdate sets LastUpdate field to given value.
 
 ### GetMessages
 
-`func (o *ChatMessages) GetMessages() []ChatMessage`
+`func (o *ChatMessages) GetMessages() []ChatMessage1`
 
 GetMessages returns the Messages field if non-nil, zero value otherwise.
 
 ### GetMessagesOk
 
-`func (o *ChatMessages) GetMessagesOk() (*[]ChatMessage, bool)`
+`func (o *ChatMessages) GetMessagesOk() (*[]ChatMessage1, bool)`
 
 GetMessagesOk returns a tuple with the Messages field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMessages
 
-`func (o *ChatMessages) SetMessages(v []ChatMessage)`
+`func (o *ChatMessages) SetMessages(v []ChatMessage1)`
 
 SetMessages sets Messages field to given value.
 

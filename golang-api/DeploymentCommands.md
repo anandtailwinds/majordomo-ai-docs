@@ -23,6 +23,10 @@
 
 * `DEPLOYMENT_COMMAND_KSERVE_LOGS` (value: `10`)
 
+* `DEPLOYMENT_COMMAND_CONTAINER_STATUS` (value: `11`)
+
+* `DEPLOYMENT_COMMAND_CONTAINER_LOGS` (value: `12`)
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

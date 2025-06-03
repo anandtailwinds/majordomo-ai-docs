@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Workspace** | **string** | Workspace in which the vector store is present. | 
 **DataStoreName** | **string** | Name of the data store that points to the vector store. | 
+**MatchCondition** | Pointer to [**MetadataMatchConditions**](MetadataMatchConditions.md) |  | [optional] 
 **DeleteMetadata** | [**[]Metadata**](Metadata.md) | Delete the nodes that match one of the metadata specified in this list.  | 
 
 ## Methods
@@ -66,6 +67,31 @@ and a boolean to check if the value has been set.
 
 SetDataStoreName sets DataStoreName field to given value.
 
+
+### GetMatchCondition
+
+`func (o *DeleteVectorStoreContent) GetMatchCondition() MetadataMatchConditions`
+
+GetMatchCondition returns the MatchCondition field if non-nil, zero value otherwise.
+
+### GetMatchConditionOk
+
+`func (o *DeleteVectorStoreContent) GetMatchConditionOk() (*MetadataMatchConditions, bool)`
+
+GetMatchConditionOk returns a tuple with the MatchCondition field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMatchCondition
+
+`func (o *DeleteVectorStoreContent) SetMatchCondition(v MetadataMatchConditions)`
+
+SetMatchCondition sets MatchCondition field to given value.
+
+### HasMatchCondition
+
+`func (o *DeleteVectorStoreContent) HasMatchCondition() bool`
+
+HasMatchCondition returns a boolean if a field has been set.
 
 ### GetDeleteMetadata
 

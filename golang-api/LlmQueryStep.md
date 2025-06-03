@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **LlmModelProfile** | **string** | The name of the LLM model profile to lookup. | 
 **LlmModelName** | **string** | The name of the LLM model to use. | 
 **QueryParams** | Pointer to [**QueryParams**](QueryParams.md) |  | [optional] 
+**ChatId** | Pointer to **string** | Chat identifier that denotes the conversation this is part of. | [optional] 
 
 ## Methods
 
@@ -91,6 +92,31 @@ SetQueryParams sets QueryParams field to given value.
 `func (o *LlmQueryStep) HasQueryParams() bool`
 
 HasQueryParams returns a boolean if a field has been set.
+
+### GetChatId
+
+`func (o *LlmQueryStep) GetChatId() string`
+
+GetChatId returns the ChatId field if non-nil, zero value otherwise.
+
+### GetChatIdOk
+
+`func (o *LlmQueryStep) GetChatIdOk() (*string, bool)`
+
+GetChatIdOk returns a tuple with the ChatId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetChatId
+
+`func (o *LlmQueryStep) SetChatId(v string)`
+
+SetChatId sets ChatId field to given value.
+
+### HasChatId
+
+`func (o *LlmQueryStep) HasChatId() bool`
+
+HasChatId returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

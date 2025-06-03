@@ -4,15 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Timestamp** | Pointer to **int64** | A unique identifier for the question and answer. This is auto-generated. | [optional] 
-**Question** | **string** | The user question for which completion or answer is sought. | 
-**Answer** | **string** | The answer obtained from Gen AI. | 
+**Role** | Pointer to **string** | The role who initiated this particuar message. | [optional] 
+**Content** | Pointer to **string** | The actual content of the chat message. | [optional] 
+**Metadata** | Pointer to **map[string]interface{}** | The actual content of the chat message. | [optional] 
 
 ## Methods
 
 ### NewChatMessage
 
-`func NewChatMessage(question string, answer string, ) *ChatMessage`
+`func NewChatMessage() *ChatMessage`
 
 NewChatMessage instantiates a new ChatMessage object
 This constructor will assign default values to properties that have it defined,
@@ -27,70 +27,80 @@ NewChatMessageWithDefaults instantiates a new ChatMessage object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetTimestamp
+### GetRole
 
-`func (o *ChatMessage) GetTimestamp() int64`
+`func (o *ChatMessage) GetRole() string`
 
-GetTimestamp returns the Timestamp field if non-nil, zero value otherwise.
+GetRole returns the Role field if non-nil, zero value otherwise.
 
-### GetTimestampOk
+### GetRoleOk
 
-`func (o *ChatMessage) GetTimestampOk() (*int64, bool)`
+`func (o *ChatMessage) GetRoleOk() (*string, bool)`
 
-GetTimestampOk returns a tuple with the Timestamp field if it's non-nil, zero value otherwise
+GetRoleOk returns a tuple with the Role field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetTimestamp
+### SetRole
 
-`func (o *ChatMessage) SetTimestamp(v int64)`
+`func (o *ChatMessage) SetRole(v string)`
 
-SetTimestamp sets Timestamp field to given value.
+SetRole sets Role field to given value.
 
-### HasTimestamp
+### HasRole
 
-`func (o *ChatMessage) HasTimestamp() bool`
+`func (o *ChatMessage) HasRole() bool`
 
-HasTimestamp returns a boolean if a field has been set.
+HasRole returns a boolean if a field has been set.
 
-### GetQuestion
+### GetContent
 
-`func (o *ChatMessage) GetQuestion() string`
+`func (o *ChatMessage) GetContent() string`
 
-GetQuestion returns the Question field if non-nil, zero value otherwise.
+GetContent returns the Content field if non-nil, zero value otherwise.
 
-### GetQuestionOk
+### GetContentOk
 
-`func (o *ChatMessage) GetQuestionOk() (*string, bool)`
+`func (o *ChatMessage) GetContentOk() (*string, bool)`
 
-GetQuestionOk returns a tuple with the Question field if it's non-nil, zero value otherwise
+GetContentOk returns a tuple with the Content field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetQuestion
+### SetContent
 
-`func (o *ChatMessage) SetQuestion(v string)`
+`func (o *ChatMessage) SetContent(v string)`
 
-SetQuestion sets Question field to given value.
+SetContent sets Content field to given value.
 
+### HasContent
 
-### GetAnswer
+`func (o *ChatMessage) HasContent() bool`
 
-`func (o *ChatMessage) GetAnswer() string`
+HasContent returns a boolean if a field has been set.
 
-GetAnswer returns the Answer field if non-nil, zero value otherwise.
+### GetMetadata
 
-### GetAnswerOk
+`func (o *ChatMessage) GetMetadata() map[string]interface{}`
 
-`func (o *ChatMessage) GetAnswerOk() (*string, bool)`
+GetMetadata returns the Metadata field if non-nil, zero value otherwise.
 
-GetAnswerOk returns a tuple with the Answer field if it's non-nil, zero value otherwise
+### GetMetadataOk
+
+`func (o *ChatMessage) GetMetadataOk() (*map[string]interface{}, bool)`
+
+GetMetadataOk returns a tuple with the Metadata field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetAnswer
+### SetMetadata
 
-`func (o *ChatMessage) SetAnswer(v string)`
+`func (o *ChatMessage) SetMetadata(v map[string]interface{})`
 
-SetAnswer sets Answer field to given value.
+SetMetadata sets Metadata field to given value.
 
+### HasMetadata
+
+`func (o *ChatMessage) HasMetadata() bool`
+
+HasMetadata returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

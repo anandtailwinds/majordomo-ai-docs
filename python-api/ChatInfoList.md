@@ -6,7 +6,7 @@ List of saved chats of the user.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**chats** | [**List[ChatInfoResponse]**](ChatInfoResponse.md) | The list of chats along with their last updated timestamp. | [optional] 
+**chats** | [**List[ChatInfoResponse]**](ChatInfoResponse.md) | The list of chats along with their last updated timestamp. | 
 
 ## Example
 

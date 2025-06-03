@@ -4,9 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**TopK** | Pointer to **int32** | The number of vector db matches to consider for llm context | [optional] [default to 2]
-**Temperature** | Pointer to **float32** | The temperature of the LLM processing, the higher the more creative the LLM is. | [optional] 
+**TopK** | Pointer to **int32** | The number of vector db matches to consider for llm context. | [optional] [default to 2]
+**Temperature** | Pointer to **float32** | The temperature of the LLM processing, the higher the more creative the LLM is.  | [optional] 
 **DocMetadata** | Pointer to [**[]Metadata**](Metadata.md) | Dictionary of metadata key/value pairs that are to be inserted into the vector  database along with the chunks. This is useful while retrieval to restrict the  relevant chunks.  | [optional] 
+**MatchCondition** | Pointer to [**MetadataMatchConditions**](MetadataMatchConditions.md) |  | [optional] 
 **QueryMode** | Pointer to [**QueryModes**](QueryModes.md) |  | [optional] 
 **DebugMode** | Pointer to **bool** | Query results will include debug information. | [optional] [default to false]
 
@@ -103,6 +104,31 @@ SetDocMetadata sets DocMetadata field to given value.
 `func (o *QueryParams) HasDocMetadata() bool`
 
 HasDocMetadata returns a boolean if a field has been set.
+
+### GetMatchCondition
+
+`func (o *QueryParams) GetMatchCondition() MetadataMatchConditions`
+
+GetMatchCondition returns the MatchCondition field if non-nil, zero value otherwise.
+
+### GetMatchConditionOk
+
+`func (o *QueryParams) GetMatchConditionOk() (*MetadataMatchConditions, bool)`
+
+GetMatchConditionOk returns a tuple with the MatchCondition field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMatchCondition
+
+`func (o *QueryParams) SetMatchCondition(v MetadataMatchConditions)`
+
+SetMatchCondition sets MatchCondition field to given value.
+
+### HasMatchCondition
+
+`func (o *QueryParams) HasMatchCondition() bool`
+
+HasMatchCondition returns a boolean if a field has been set.
 
 ### GetQueryMode
 

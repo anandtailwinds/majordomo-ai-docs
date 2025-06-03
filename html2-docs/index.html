@@ -946,43 +946,9 @@ ul.nav-tabs {
   },
   "description" : "This describes the list of permitted profiles and stores for the user on a workspace basis."
 };
-    defs["ChatEntry"] = {
-  "title" : "ChatEntry",
-  "required" : [ "chat_id", "messages" ],
-  "type" : "object",
-  "properties" : {
-    "chat_id" : {
-      "type" : "string",
-      "description" : "Unique identifier for the chat."
-    },
-    "messages" : {
-      "type" : "array",
-      "description" : "The list of chat messages in this chat.",
-      "items" : {
-        "$ref" : "#/components/schemas/ChatMessage"
-      }
-    }
-  },
-  "description" : "Information about a specific chat."
-};
-    defs["ChatInfo"] = {
-  "title" : "ChatInfo",
-  "required" : [ "chat_id" ],
-  "type" : "object",
-  "properties" : {
-    "chat_id" : {
-      "type" : "string",
-      "description" : "Unique identifier for the chat."
-    },
-    "chat_name" : {
-      "type" : "string",
-      "description" : "Name of the chat history."
-    }
-  },
-  "description" : "Information about the chat information such as name."
-};
     defs["ChatInfoList"] = {
   "title" : "ChatInfoList",
+  "required" : [ "chats" ],
   "type" : "object",
   "properties" : {
     "chats" : {
@@ -994,6 +960,26 @@ ul.nav-tabs {
     }
   },
   "description" : "List of saved chats of the user."
+};
+    defs["ChatInfoRequest"] = {
+  "title" : "ChatInfo",
+  "required" : [ "chat_id", "workspace" ],
+  "type" : "object",
+  "properties" : {
+    "chat_id" : {
+      "type" : "string",
+      "description" : "Unique identifier for the chat."
+    },
+    "chat_name" : {
+      "type" : "string",
+      "description" : "Name of the chat history."
+    },
+    "workspace" : {
+      "type" : "string",
+      "description" : "Name of the workspace for the worker to reach the chat database."
+    }
+  },
+  "description" : "Information about the chat information such as name."
 };
     defs["ChatInfoResponse"] = {
   "title" : "ChatInfoResponse",
@@ -1016,13 +1002,40 @@ ul.nav-tabs {
       "type" : "integer",
       "description" : "Timestamp of the last update to the chat history.",
       "format" : "int64"
+    },
+    "messages" : {
+      "type" : "array",
+      "description" : "The list of messages available in the chat.",
+      "items" : {
+        "$ref" : "#/components/schemas/ChatMessage"
+      }
     }
   },
   "description" : "Information about the chat information such as name."
 };
     defs["ChatMessage"] = {
-  "title" : "ChatEntry",
-  "required" : [ "answer", "question" ],
+  "title" : "ChatMessage",
+  "type" : "object",
+  "properties" : {
+    "role" : {
+      "type" : "string",
+      "description" : "The role who initiated this particuar message."
+    },
+    "content" : {
+      "type" : "string",
+      "description" : "The actual content of the chat message."
+    },
+    "metadata" : {
+      "type" : "object",
+      "additionalProperties" : true,
+      "description" : "The actual content of the chat message."
+    }
+  },
+  "description" : "An individual chat message."
+};
+    defs["ChatMessage_1"] = {
+  "title" : "ChatMessage",
+  "required" : [ "content", "role" ],
   "type" : "object",
   "properties" : {
     "timestamp" : {
@@ -1030,16 +1043,16 @@ ul.nav-tabs {
       "description" : "A unique identifier for the question and answer. This is auto-generated.",
       "format" : "int64"
     },
-    "question" : {
+    "role" : {
       "type" : "string",
       "description" : "The user question for which completion or answer is sought."
     },
-    "answer" : {
+    "content" : {
       "type" : "string",
       "description" : "The answer obtained from Gen AI."
     }
   },
-  "description" : "The user question and answer."
+  "description" : "The query and answer of a particular chat."
 };
     defs["ChatMessages"] = {
   "title" : "ChatMessages",
@@ -1067,7 +1080,7 @@ ul.nav-tabs {
       "type" : "array",
       "description" : "The list of chat messages in this chat.",
       "items" : {
-        "$ref" : "#/components/schemas/ChatMessage"
+        "$ref" : "#/components/schemas/ChatMessage_1"
       }
     }
   },
@@ -1323,6 +1336,10 @@ ul.nav-tabs {
     "query_string" : {
       "type" : "string",
       "description" : "The actual query string for which the user wants a response to."
+    },
+    "chat_id" : {
+      "type" : "string",
+      "description" : "The unique chat-id that denotes this conversation. If the chat_id overlaps with another conversation, messages will be mixed."
     }
   },
   "description" : "Data Store Query",
@@ -1859,6 +1876,10 @@ ul.nav-tabs {
     },
     "query_params" : {
       "$ref" : "#/components/schemas/QueryParams"
+    },
+    "chat_id" : {
+      "type" : "string",
+      "description" : "Chat identifier that denotes the conversation this is part of."
     }
   },
   "description" : "RAG LLM Query Step"
@@ -1936,6 +1957,10 @@ ul.nav-tabs {
     },
     "query_params" : {
       "$ref" : "#/components/schemas/QueryParams"
+    },
+    "chat_id" : {
+      "type" : "string",
+      "description" : "Chat identifier that denotes the conversation this is part of."
     }
   },
   "description" : "RAG Query vectordb lookup step."
@@ -2051,7 +2076,7 @@ ul.nav-tabs {
       "description" : "List of metrics to query",
       "items" : {
         "type" : "string",
-        "enum" : [ "cpu", "memory", "network", "io" ]
+        "enum" : [ "cpu", "memory", "network", "io", "pod_cpu", "pod_memory", "pod_network_io", "pod_disk_io" ]
       }
     }
   }
@@ -2546,6 +2571,10 @@ ul.nav-tabs {
     "query_string" : {
       "type" : "string",
       "description" : "The query user wants to ask based on the Query Pipeline."
+    },
+    "chat_id" : {
+      "type" : "string",
+      "description" : "The unique chat-id that denotes this conversation. If the chat_id \noverlaps with another conversation, messages will be mixed.\n"
     }
   },
   "description" : "Run an query pipeline immediately.",
@@ -3715,9 +3744,6 @@ ul.nav-tabs {
                       <a href="#api-Monitor-updateMonitorProfile">updateMonitorProfile</a>
                     </li>
                   <li class="nav-header" data-group="Query"><a href="#api-Query">API Methods - Query</a></li>
-                    <li data-group="Query" data-name="createChatInfo" class="">
-                      <a href="#api-Query-createChatInfo">createChatInfo</a>
-                    </li>
                     <li data-group="Query" data-name="createChatMessage" class="">
                       <a href="#api-Query-createChatMessage">createChatMessage</a>
                     </li>
@@ -46983,727 +47009,6 @@ $(document).ready(function() {
                   </section>
                 <section id="api-Query">
                   <h1>Query</h1>
-                    <div id="api-Query-createChatInfo">
-                      <article id="api-Query-createChatInfo-0" data-group="User" data-name="createChatInfo" data-version="0">
-                        <div class="pull-left">
-                          <h1>createChatInfo</h1>
-                          <p>Create a chat info entry.</p>
-                        </div>
-                        <div class="pull-right"></div>
-                        <div class="clearfix"></div>
-                        <p></p>
-                        <p class="marked">Create an new chat info entry.</p>
-                        <p></p>
-                        <br />
-                        <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/chat_info</span></code></pre>
-                        <p>
-                          <h3>Usage and SDK Samples</h3>
-                        </p>
-                        <ul class="nav nav-tabs nav-tabs-examples">
-                          <li class="active"><a href="#examples-Query-createChatInfo-0-curl">Curl</a></li>
-                          <li class=""><a href="#examples-Query-createChatInfo-0-java">Java</a></li>
-                          <li class=""><a href="#examples-Query-createChatInfo-0-dart">Dart</a></li>
-                          <li class=""><a href="#examples-Query-createChatInfo-0-android">Android</a></li>
-                          <!--<li class=""><a href="#examples-Query-createChatInfo-0-groovy">Groovy</a></li>-->
-                          <li class=""><a href="#examples-Query-createChatInfo-0-objc">Obj-C</a></li>
-                          <li class=""><a href="#examples-Query-createChatInfo-0-javascript">JavaScript</a></li>
-                          <!--<li class=""><a href="#examples-Query-createChatInfo-0-angular">Angular</a></li>-->
-                          <li class=""><a href="#examples-Query-createChatInfo-0-csharp">C#</a></li>
-                          <li class=""><a href="#examples-Query-createChatInfo-0-php">PHP</a></li>
-                          <li class=""><a href="#examples-Query-createChatInfo-0-perl">Perl</a></li>
-                          <li class=""><a href="#examples-Query-createChatInfo-0-python">Python</a></li>
-                          <li class=""><a href="#examples-Query-createChatInfo-0-rust">Rust</a></li>
-                        </ul>
-
-                        <div class="tab-content">
-                          <div class="tab-pane active" id="examples-Query-createChatInfo-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X POST \
- -H "Authorization: Bearer [[accessToken]]" \
- -H "Accept: application/json" \
- -H "Content-Type: application/json" \
- "http://localhost:/25001/chat_info" \
- -d '{
-  &quot;chat_id&quot; : &quot;chat_id&quot;,
-  &quot;chat_name&quot; : &quot;chat_name&quot;
-}'
-</code></pre>
-                          </div>
-                          <div class="tab-pane" id="examples-Query-createChatInfo-0-java">
-                            <pre class="prettyprint"><code class="language-java">import org.openapitools.client.*;
-import org.openapitools.client.auth.*;
-import org.openapitools.client.model.*;
-import org.openapitools.client.api.QueryApi;
-
-import java.io.File;
-import java.util.*;
-
-public class QueryApiExample {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-
-        // Configure Bearer (JWT) access token for authorization: bearerAuth
-        HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
-        bearerAuth.setBearerToken("BEARER TOKEN");
-
-        // Create an instance of the API class
-        QueryApi apiInstance = new QueryApi();
-        ChatInfo chatInfo = ; // ChatInfo | 
-
-        try {
-            ChatInfoResponse result = apiInstance.createChatInfo(chatInfo);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling QueryApi#createChatInfo");
-            e.printStackTrace();
-        }
-    }
-}
-</code></pre>
-                          </div>
-
-                          <div class="tab-pane" id="examples-Query-createChatInfo-0-dart">
-                            <pre class="prettyprint"><code class="language-dart">import 'package:openapi/api.dart';
-
-final api_instance = DefaultApi();
-
-final ChatInfo chatInfo = new ChatInfo(); // ChatInfo | 
-
-try {
-    final result = await api_instance.createChatInfo(chatInfo);
-    print(result);
-} catch (e) {
-    print('Exception when calling DefaultApi->createChatInfo: $e\n');
-}
-
-</code></pre>
-                          </div>
-
-                          <div class="tab-pane" id="examples-Query-createChatInfo-0-android">
-                            <pre class="prettyprint"><code class="language-java">import org.openapitools.client.api.QueryApi;
-
-public class QueryApiExample {
-    public static void main(String[] args) {
-        QueryApi apiInstance = new QueryApi();
-        ChatInfo chatInfo = ; // ChatInfo | 
-
-        try {
-            ChatInfoResponse result = apiInstance.createChatInfo(chatInfo);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling QueryApi#createChatInfo");
-            e.printStackTrace();
-        }
-    }
-}</code></pre>
-                          </div>
-  <!--
-  <div class="tab-pane" id="examples-Query-createChatInfo-0-groovy">
-  <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
-  </div> -->
-                            <div class="tab-pane" id="examples-Query-createChatInfo-0-objc">
-                              <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
-
-// Configure Bearer (JWT) access token for authorization: bearerAuth
-[apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
-
-// Create an instance of the API class
-QueryApi *apiInstance = [[QueryApi alloc] init];
-ChatInfo *chatInfo = ; // 
-
-// Create a chat info entry.
-[apiInstance createChatInfoWith:chatInfo
-              completionHandler: ^(ChatInfoResponse output, NSError* error) {
-    if (output) {
-        NSLog(@"%@", output);
-    }
-    if (error) {
-        NSLog(@"Error: %@", error);
-    }
-}];
-</code></pre>
-                            </div>
-
-                            <div class="tab-pane" id="examples-Query-createChatInfo-0-javascript">
-                              <pre class="prettyprint"><code class="language-js">var MajordomoAi = require('majordomo_ai');
-var defaultClient = MajordomoAi.ApiClient.instance;
-
-// Configure Bearer (JWT) access token for authorization: bearerAuth
-var bearerAuth = defaultClient.authentications['bearerAuth'];
-bearerAuth.accessToken = "YOUR ACCESS TOKEN";
-
-// Create an instance of the API class
-var api = new MajordomoAi.QueryApi()
-var chatInfo = ; // {ChatInfo} 
-
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-};
-api.createChatInfo(chatInfo, callback);
-</code></pre>
-                            </div>
-
-                            <!--<div class="tab-pane" id="examples-Query-createChatInfo-0-angular">
-              <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
-            </div>-->
-                            <div class="tab-pane" id="examples-Query-createChatInfo-0-csharp">
-                              <pre class="prettyprint"><code class="language-cs">using System;
-using System.Diagnostics;
-using Org.OpenAPITools.Api;
-using Org.OpenAPITools.Client;
-using Org.OpenAPITools.Model;
-
-namespace Example
-{
-    public class createChatInfoExample
-    {
-        public void main()
-        {
-            // Configure Bearer (JWT) access token for authorization: bearerAuth
-            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            // Create an instance of the API class
-            var apiInstance = new QueryApi();
-            var chatInfo = new ChatInfo(); // ChatInfo | 
-
-            try {
-                // Create a chat info entry.
-                ChatInfoResponse result = apiInstance.createChatInfo(chatInfo);
-                Debug.WriteLine(result);
-            } catch (Exception e) {
-                Debug.Print("Exception when calling QueryApi.createChatInfo: " + e.Message );
-            }
-        }
-    }
-}
-</code></pre>
-                            </div>
-
-                            <div class="tab-pane" id="examples-Query-createChatInfo-0-php">
-                              <pre class="prettyprint"><code class="language-php"><&#63;php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-// Configure Bearer (JWT) access token for authorization: bearerAuth
-OpenAPITools\Client\Configuration::getDefaultConfiguration()->setAccessToken('', 'YOUR_ACCESS_TOKEN');
-
-// Create an instance of the API class
-$api_instance = new OpenAPITools\Client\Api\QueryApi();
-$chatInfo = ; // ChatInfo | 
-
-try {
-    $result = $api_instance->createChatInfo($chatInfo);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling QueryApi->createChatInfo: ', $e->getMessage(), PHP_EOL;
-}
-?></code></pre>
-                            </div>
-
-                            <div class="tab-pane" id="examples-Query-createChatInfo-0-perl">
-                              <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
-use WWW::OPenAPIClient::Configuration;
-use WWW::OPenAPIClient::QueryApi;
-
-# Configure Bearer (JWT) access token for authorization: bearerAuth
-$WWW::OPenAPIClient::Configuration::access_token = 'YOUR_ACCESS_TOKEN';
-
-# Create an instance of the API class
-my $api_instance = WWW::OPenAPIClient::QueryApi->new();
-my $chatInfo = WWW::OPenAPIClient::Object::ChatInfo->new(); # ChatInfo | 
-
-eval {
-    my $result = $api_instance->createChatInfo(chatInfo => $chatInfo);
-    print Dumper($result);
-};
-if ($@) {
-    warn "Exception when calling QueryApi->createChatInfo: $@\n";
-}</code></pre>
-                            </div>
-
-                            <div class="tab-pane" id="examples-Query-createChatInfo-0-python">
-                              <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
-import time
-import openapi_client
-from openapi_client.rest import ApiException
-from pprint import pprint
-
-# Configure Bearer (JWT) access token for authorization: bearerAuth
-openapi_client.configuration.access_token = 'YOUR_ACCESS_TOKEN'
-
-# Create an instance of the API class
-api_instance = openapi_client.QueryApi()
-chatInfo =  # ChatInfo | 
-
-try:
-    # Create a chat info entry.
-    api_response = api_instance.create_chat_info(chatInfo)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling QueryApi->createChatInfo: %s\n" % e)</code></pre>
-                            </div>
-
-                            <div class="tab-pane" id="examples-Query-createChatInfo-0-rust">
-                              <pre class="prettyprint"><code class="language-rust">extern crate QueryApi;
-
-pub fn main() {
-    let chatInfo = ; // ChatInfo
-
-    let mut context = QueryApi::Context::default();
-    let result = client.createChatInfo(chatInfo, &context).wait();
-
-    println!("{:?}", result);
-}
-</code></pre>
-                            </div>
-                          </div>
-
-                          <h2>Scopes</h2>
-                          <table>
-                            
-                          </table>
-
-                          <h2>Parameters</h2>
-
-
-
-                            <div class="methodsubtabletitle">Body parameters</div>
-                            <table id="methodsubtable">
-                              <tr>
-                                <th width="150px">Name</th>
-                                <th>Description</th>
-                              </tr>
-                                <tr><td style="width:150px;">chatInfo <span style="color:red;">*</span></td>
-<td>
-<p class="marked"></p>
-<script>
-$(document).ready(function() {
-  var schemaWrapper = {
-  "content" : {
-    "application/json" : {
-      "schema" : {
-        "$ref" : "#/components/schemas/ChatInfo"
-      }
-    }
-  },
-  "required" : true
-};
-
-  var schema = findNode('schema',schemaWrapper).schema;
-  if (!schema) {
-    schema = schemaWrapper.schema;
-  }
-  if (schema.$ref != null) {
-    schema = defsParser.$refs.get(schema.$ref);
-  } else if (schema.items != null && schema.items.$ref != null) {
-    schema.items = defsParser.$refs.get(schema.items.$ref);
-  } else {
-    schemaWrapper.definitions = Object.assign({}, defs);
-    $RefParser.dereference(schemaWrapper).catch(function(err) {
-      console.log(err);
-    });
-  }
-
-  var view = new JSONSchemaView(schema,2,{isBodyParam: true});
-  var result = $('#d2e199_createChatInfo_chatInfo');
-  result.empty();
-  result.append(view.render());
-});
-</script>
-<div id="d2e199_createChatInfo_chatInfo"></div>
-</td>
-</tr>
-
-                            </table>
-
-
-
-                          <h2>Responses</h2>
-                            <h3 id="examples-Query-createChatInfo-title-200"></h3>
-                            <p id="examples-Query-createChatInfo-description-200" class="marked"></p>
-                            <script>
-                              var responseQuery200_description = `successful operation`;
-                              var responseQuery200_description_break = responseQuery200_description.indexOf('\n');
-                              if (responseQuery200_description_break == -1) {
-                                $("#examples-Query-createChatInfo-title-200").text("Status: 200 - " + responseQuery200_description);
-                              } else {
-                                $("#examples-Query-createChatInfo-title-200").text("Status: 200 - " + responseQuery200_description.substring(0, responseQuery200_description_break));
-                                $("#examples-Query-createChatInfo-description-200").html(responseQuery200_description.substring(responseQuery200_description_break));
-                              }
-                            </script>
-
-
-                            <ul id="responses-detail-Query-createChatInfo-200" class="nav nav-tabs nav-tabs-examples" >
-                                <li class="active">
-                                  <a data-toggle="tab" href="#responses-Query-createChatInfo-200-schema">Schema</a>
-                                </li>
-
-
-
-
-                            </ul>
-
-
-                            <div class="tab-content" id="responses-Query-createChatInfo-200-wrapper" style='margin-bottom: 10px;'>
-                              <div class="tab-pane active" id="responses-Query-createChatInfo-200-schema">
-                                <div id="responses-Query-createChatInfo-schema-200" class="exampleStyle">
-                                  <script>
-                                    $(document).ready(function() {
-                                      var schemaWrapper = {
-  "description" : "successful operation",
-  "content" : {
-    "application/json" : {
-      "schema" : {
-        "$ref" : "#/components/schemas/ChatInfoResponse"
-      }
-    }
-  }
-};
-                                      var schema = findNode('schema',schemaWrapper).schema;
-                                      if (!schema) {
-                                        schema = schemaWrapper.schema;
-                                      }
-                                      if (schema == null) {
-                                        return;
-                                      }
-                                      if (schema.$ref != null) {
-                                        schema = defsParser.$refs.get(schema.$ref);
-                                        if (schema.properties != null) {
-                                          Object.keys(schema.properties).forEach( (item) => {
-                                            if (schema.properties[item].$ref != null) {
-                                              schema.properties[item] = defsParser.$refs.get(schema.properties[item].$ref);
-                                            }
-                                          });
-                                        }
-                                      } else if (schema.items != null && schema.items.$ref != null) {
-                                        schema.items = defsParser.$refs.get(schema.items.$ref);
-                                      } else {
-                                        schemaWrapper.definitions = Object.assign({}, defs);
-                                        $RefParser.dereference(schemaWrapper).catch(function(err) {
-                                          console.log(err);
-                                        });
-                                      }
-
-                                      var view = new JSONSchemaView(schema, 3);
-                                      $('#responses-Query-createChatInfo-200-schema-data').val(JSON.stringify(schema));
-                                      var result = $('#responses-Query-createChatInfo-schema-200');
-                                      result.empty();
-                                      result.append(view.render());
-                                    });
-                                  </script>
-                                </div>
-                                <input id='responses-Query-createChatInfo-200-schema-data' type='hidden' value=''></input>
-                              </div>
-                            </div>
-                            <h3 id="examples-Query-createChatInfo-title-422"></h3>
-                            <p id="examples-Query-createChatInfo-description-422" class="marked"></p>
-                            <script>
-                              var responseQuery422_description = `Unprocessable Entry`;
-                              var responseQuery422_description_break = responseQuery422_description.indexOf('\n');
-                              if (responseQuery422_description_break == -1) {
-                                $("#examples-Query-createChatInfo-title-422").text("Status: 422 - " + responseQuery422_description);
-                              } else {
-                                $("#examples-Query-createChatInfo-title-422").text("Status: 422 - " + responseQuery422_description.substring(0, responseQuery422_description_break));
-                                $("#examples-Query-createChatInfo-description-422").html(responseQuery422_description.substring(responseQuery422_description_break));
-                              }
-                            </script>
-
-
-                            <ul id="responses-detail-Query-createChatInfo-422" class="nav nav-tabs nav-tabs-examples" >
-                                <li class="active">
-                                  <a data-toggle="tab" href="#responses-Query-createChatInfo-422-schema">Schema</a>
-                                </li>
-
-
-
-
-                            </ul>
-
-
-                            <div class="tab-content" id="responses-Query-createChatInfo-422-wrapper" style='margin-bottom: 10px;'>
-                              <div class="tab-pane active" id="responses-Query-createChatInfo-422-schema">
-                                <div id="responses-Query-createChatInfo-schema-422" class="exampleStyle">
-                                  <script>
-                                    $(document).ready(function() {
-                                      var schemaWrapper = {
-  "description" : "Unprocessable Entry",
-  "content" : {
-    "application/json" : {
-      "schema" : {
-        "$ref" : "#/components/schemas/ErrorResponse"
-      }
-    }
-  }
-};
-                                      var schema = findNode('schema',schemaWrapper).schema;
-                                      if (!schema) {
-                                        schema = schemaWrapper.schema;
-                                      }
-                                      if (schema == null) {
-                                        return;
-                                      }
-                                      if (schema.$ref != null) {
-                                        schema = defsParser.$refs.get(schema.$ref);
-                                        if (schema.properties != null) {
-                                          Object.keys(schema.properties).forEach( (item) => {
-                                            if (schema.properties[item].$ref != null) {
-                                              schema.properties[item] = defsParser.$refs.get(schema.properties[item].$ref);
-                                            }
-                                          });
-                                        }
-                                      } else if (schema.items != null && schema.items.$ref != null) {
-                                        schema.items = defsParser.$refs.get(schema.items.$ref);
-                                      } else {
-                                        schemaWrapper.definitions = Object.assign({}, defs);
-                                        $RefParser.dereference(schemaWrapper).catch(function(err) {
-                                          console.log(err);
-                                        });
-                                      }
-
-                                      var view = new JSONSchemaView(schema, 3);
-                                      $('#responses-Query-createChatInfo-422-schema-data').val(JSON.stringify(schema));
-                                      var result = $('#responses-Query-createChatInfo-schema-422');
-                                      result.empty();
-                                      result.append(view.render());
-                                    });
-                                  </script>
-                                </div>
-                                <input id='responses-Query-createChatInfo-422-schema-data' type='hidden' value=''></input>
-                              </div>
-                            </div>
-                            <h3 id="examples-Query-createChatInfo-title-401"></h3>
-                            <p id="examples-Query-createChatInfo-description-401" class="marked"></p>
-                            <script>
-                              var responseQuery401_description = `Unauthorized`;
-                              var responseQuery401_description_break = responseQuery401_description.indexOf('\n');
-                              if (responseQuery401_description_break == -1) {
-                                $("#examples-Query-createChatInfo-title-401").text("Status: 401 - " + responseQuery401_description);
-                              } else {
-                                $("#examples-Query-createChatInfo-title-401").text("Status: 401 - " + responseQuery401_description.substring(0, responseQuery401_description_break));
-                                $("#examples-Query-createChatInfo-description-401").html(responseQuery401_description.substring(responseQuery401_description_break));
-                              }
-                            </script>
-
-
-                            <ul id="responses-detail-Query-createChatInfo-401" class="nav nav-tabs nav-tabs-examples" >
-                                <li class="active">
-                                  <a data-toggle="tab" href="#responses-Query-createChatInfo-401-schema">Schema</a>
-                                </li>
-
-
-
-
-                            </ul>
-
-
-                            <div class="tab-content" id="responses-Query-createChatInfo-401-wrapper" style='margin-bottom: 10px;'>
-                              <div class="tab-pane active" id="responses-Query-createChatInfo-401-schema">
-                                <div id="responses-Query-createChatInfo-schema-401" class="exampleStyle">
-                                  <script>
-                                    $(document).ready(function() {
-                                      var schemaWrapper = {
-  "description" : "Unauthorized",
-  "content" : {
-    "application/json" : {
-      "schema" : {
-        "$ref" : "#/components/schemas/ErrorResponse"
-      }
-    }
-  }
-};
-                                      var schema = findNode('schema',schemaWrapper).schema;
-                                      if (!schema) {
-                                        schema = schemaWrapper.schema;
-                                      }
-                                      if (schema == null) {
-                                        return;
-                                      }
-                                      if (schema.$ref != null) {
-                                        schema = defsParser.$refs.get(schema.$ref);
-                                        if (schema.properties != null) {
-                                          Object.keys(schema.properties).forEach( (item) => {
-                                            if (schema.properties[item].$ref != null) {
-                                              schema.properties[item] = defsParser.$refs.get(schema.properties[item].$ref);
-                                            }
-                                          });
-                                        }
-                                      } else if (schema.items != null && schema.items.$ref != null) {
-                                        schema.items = defsParser.$refs.get(schema.items.$ref);
-                                      } else {
-                                        schemaWrapper.definitions = Object.assign({}, defs);
-                                        $RefParser.dereference(schemaWrapper).catch(function(err) {
-                                          console.log(err);
-                                        });
-                                      }
-
-                                      var view = new JSONSchemaView(schema, 3);
-                                      $('#responses-Query-createChatInfo-401-schema-data').val(JSON.stringify(schema));
-                                      var result = $('#responses-Query-createChatInfo-schema-401');
-                                      result.empty();
-                                      result.append(view.render());
-                                    });
-                                  </script>
-                                </div>
-                                <input id='responses-Query-createChatInfo-401-schema-data' type='hidden' value=''></input>
-                              </div>
-                            </div>
-                            <h3 id="examples-Query-createChatInfo-title-400"></h3>
-                            <p id="examples-Query-createChatInfo-description-400" class="marked"></p>
-                            <script>
-                              var responseQuery400_description = `Bad Request`;
-                              var responseQuery400_description_break = responseQuery400_description.indexOf('\n');
-                              if (responseQuery400_description_break == -1) {
-                                $("#examples-Query-createChatInfo-title-400").text("Status: 400 - " + responseQuery400_description);
-                              } else {
-                                $("#examples-Query-createChatInfo-title-400").text("Status: 400 - " + responseQuery400_description.substring(0, responseQuery400_description_break));
-                                $("#examples-Query-createChatInfo-description-400").html(responseQuery400_description.substring(responseQuery400_description_break));
-                              }
-                            </script>
-
-
-                            <ul id="responses-detail-Query-createChatInfo-400" class="nav nav-tabs nav-tabs-examples" >
-                                <li class="active">
-                                  <a data-toggle="tab" href="#responses-Query-createChatInfo-400-schema">Schema</a>
-                                </li>
-
-
-
-
-                            </ul>
-
-
-                            <div class="tab-content" id="responses-Query-createChatInfo-400-wrapper" style='margin-bottom: 10px;'>
-                              <div class="tab-pane active" id="responses-Query-createChatInfo-400-schema">
-                                <div id="responses-Query-createChatInfo-schema-400" class="exampleStyle">
-                                  <script>
-                                    $(document).ready(function() {
-                                      var schemaWrapper = {
-  "description" : "Bad Request",
-  "content" : {
-    "application/json" : {
-      "schema" : {
-        "$ref" : "#/components/schemas/ErrorResponse"
-      }
-    }
-  }
-};
-                                      var schema = findNode('schema',schemaWrapper).schema;
-                                      if (!schema) {
-                                        schema = schemaWrapper.schema;
-                                      }
-                                      if (schema == null) {
-                                        return;
-                                      }
-                                      if (schema.$ref != null) {
-                                        schema = defsParser.$refs.get(schema.$ref);
-                                        if (schema.properties != null) {
-                                          Object.keys(schema.properties).forEach( (item) => {
-                                            if (schema.properties[item].$ref != null) {
-                                              schema.properties[item] = defsParser.$refs.get(schema.properties[item].$ref);
-                                            }
-                                          });
-                                        }
-                                      } else if (schema.items != null && schema.items.$ref != null) {
-                                        schema.items = defsParser.$refs.get(schema.items.$ref);
-                                      } else {
-                                        schemaWrapper.definitions = Object.assign({}, defs);
-                                        $RefParser.dereference(schemaWrapper).catch(function(err) {
-                                          console.log(err);
-                                        });
-                                      }
-
-                                      var view = new JSONSchemaView(schema, 3);
-                                      $('#responses-Query-createChatInfo-400-schema-data').val(JSON.stringify(schema));
-                                      var result = $('#responses-Query-createChatInfo-schema-400');
-                                      result.empty();
-                                      result.append(view.render());
-                                    });
-                                  </script>
-                                </div>
-                                <input id='responses-Query-createChatInfo-400-schema-data' type='hidden' value=''></input>
-                              </div>
-                            </div>
-                            <h3 id="examples-Query-createChatInfo-title-403"></h3>
-                            <p id="examples-Query-createChatInfo-description-403" class="marked"></p>
-                            <script>
-                              var responseQuery403_description = `Forbidden`;
-                              var responseQuery403_description_break = responseQuery403_description.indexOf('\n');
-                              if (responseQuery403_description_break == -1) {
-                                $("#examples-Query-createChatInfo-title-403").text("Status: 403 - " + responseQuery403_description);
-                              } else {
-                                $("#examples-Query-createChatInfo-title-403").text("Status: 403 - " + responseQuery403_description.substring(0, responseQuery403_description_break));
-                                $("#examples-Query-createChatInfo-description-403").html(responseQuery403_description.substring(responseQuery403_description_break));
-                              }
-                            </script>
-
-
-                            <ul id="responses-detail-Query-createChatInfo-403" class="nav nav-tabs nav-tabs-examples" >
-                                <li class="active">
-                                  <a data-toggle="tab" href="#responses-Query-createChatInfo-403-schema">Schema</a>
-                                </li>
-
-
-
-
-                            </ul>
-
-
-                            <div class="tab-content" id="responses-Query-createChatInfo-403-wrapper" style='margin-bottom: 10px;'>
-                              <div class="tab-pane active" id="responses-Query-createChatInfo-403-schema">
-                                <div id="responses-Query-createChatInfo-schema-403" class="exampleStyle">
-                                  <script>
-                                    $(document).ready(function() {
-                                      var schemaWrapper = {
-  "description" : "Forbidden",
-  "content" : {
-    "application/json" : {
-      "schema" : {
-        "$ref" : "#/components/schemas/ErrorResponse"
-      }
-    }
-  }
-};
-                                      var schema = findNode('schema',schemaWrapper).schema;
-                                      if (!schema) {
-                                        schema = schemaWrapper.schema;
-                                      }
-                                      if (schema == null) {
-                                        return;
-                                      }
-                                      if (schema.$ref != null) {
-                                        schema = defsParser.$refs.get(schema.$ref);
-                                        if (schema.properties != null) {
-                                          Object.keys(schema.properties).forEach( (item) => {
-                                            if (schema.properties[item].$ref != null) {
-                                              schema.properties[item] = defsParser.$refs.get(schema.properties[item].$ref);
-                                            }
-                                          });
-                                        }
-                                      } else if (schema.items != null && schema.items.$ref != null) {
-                                        schema.items = defsParser.$refs.get(schema.items.$ref);
-                                      } else {
-                                        schemaWrapper.definitions = Object.assign({}, defs);
-                                        $RefParser.dereference(schemaWrapper).catch(function(err) {
-                                          console.log(err);
-                                        });
-                                      }
-
-                                      var view = new JSONSchemaView(schema, 3);
-                                      $('#responses-Query-createChatInfo-403-schema-data').val(JSON.stringify(schema));
-                                      var result = $('#responses-Query-createChatInfo-schema-403');
-                                      result.empty();
-                                      result.append(view.render());
-                                    });
-                                  </script>
-                                </div>
-                                <input id='responses-Query-createChatInfo-403-schema-data' type='hidden' value=''></input>
-                              </div>
-                            </div>
-                        </article>
-                      </div>
-                      <hr>
                     <div id="api-Query-createChatMessage">
                       <article id="api-Query-createChatMessage-0" data-group="User" data-name="createChatMessage" data-version="0">
                         <div class="pull-left">
@@ -47743,18 +47048,7 @@ $(document).ready(function() {
  -H "Accept: application/json" \
  -H "Content-Type: application/json" \
  "http://localhost:/25001/chat_messages" \
- -d '{
-  &quot;messages&quot; : [ {
-    &quot;question&quot; : &quot;question&quot;,
-    &quot;answer&quot; : &quot;answer&quot;,
-    &quot;timestamp&quot; : 6
-  }, {
-    &quot;question&quot; : &quot;question&quot;,
-    &quot;answer&quot; : &quot;answer&quot;,
-    &quot;timestamp&quot; : 6
-  } ],
-  &quot;chat_id&quot; : &quot;chat_id&quot;
-}'
+ -d ''
 </code></pre>
                           </div>
                           <div class="tab-pane" id="examples-Query-createChatMessage-0-java">
@@ -47776,10 +47070,10 @@ public class QueryApiExample {
 
         // Create an instance of the API class
         QueryApi apiInstance = new QueryApi();
-        ChatEntry chatEntry = ; // ChatEntry | 
+        ChatMessage1 chatMessage1 = ; // ChatMessage1 | 
 
         try {
-            ChatMessage result = apiInstance.createChatMessage(chatEntry);
+            ChatMessage_1 result = apiInstance.createChatMessage(chatMessage1);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling QueryApi#createChatMessage");
@@ -47795,10 +47089,10 @@ public class QueryApiExample {
 
 final api_instance = DefaultApi();
 
-final ChatEntry chatEntry = new ChatEntry(); // ChatEntry | 
+final ChatMessage1 chatMessage1 = new ChatMessage1(); // ChatMessage1 | 
 
 try {
-    final result = await api_instance.createChatMessage(chatEntry);
+    final result = await api_instance.createChatMessage(chatMessage1);
     print(result);
 } catch (e) {
     print('Exception when calling DefaultApi->createChatMessage: $e\n');
@@ -47813,10 +47107,10 @@ try {
 public class QueryApiExample {
     public static void main(String[] args) {
         QueryApi apiInstance = new QueryApi();
-        ChatEntry chatEntry = ; // ChatEntry | 
+        ChatMessage1 chatMessage1 = ; // ChatMessage1 | 
 
         try {
-            ChatMessage result = apiInstance.createChatMessage(chatEntry);
+            ChatMessage_1 result = apiInstance.createChatMessage(chatMessage1);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling QueryApi#createChatMessage");
@@ -47837,11 +47131,11 @@ public class QueryApiExample {
 
 // Create an instance of the API class
 QueryApi *apiInstance = [[QueryApi alloc] init];
-ChatEntry *chatEntry = ; // 
+ChatMessage1 *chatMessage1 = ; // 
 
 // Create a chat message entry.
-[apiInstance createChatMessageWith:chatEntry
-              completionHandler: ^(ChatMessage output, NSError* error) {
+[apiInstance createChatMessageWith:chatMessage1
+              completionHandler: ^(ChatMessage_1 output, NSError* error) {
     if (output) {
         NSLog(@"%@", output);
     }
@@ -47862,7 +47156,7 @@ bearerAuth.accessToken = "YOUR ACCESS TOKEN";
 
 // Create an instance of the API class
 var api = new MajordomoAi.QueryApi()
-var chatEntry = ; // {ChatEntry} 
+var chatMessage1 = ; // {ChatMessage1} 
 
 var callback = function(error, data, response) {
   if (error) {
@@ -47871,7 +47165,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-api.createChatMessage(chatEntry, callback);
+api.createChatMessage(chatMessage1, callback);
 </code></pre>
                             </div>
 
@@ -47896,11 +47190,11 @@ namespace Example
 
             // Create an instance of the API class
             var apiInstance = new QueryApi();
-            var chatEntry = new ChatEntry(); // ChatEntry | 
+            var chatMessage1 = new ChatMessage1(); // ChatMessage1 | 
 
             try {
                 // Create a chat message entry.
-                ChatMessage result = apiInstance.createChatMessage(chatEntry);
+                ChatMessage_1 result = apiInstance.createChatMessage(chatMessage1);
                 Debug.WriteLine(result);
             } catch (Exception e) {
                 Debug.Print("Exception when calling QueryApi.createChatMessage: " + e.Message );
@@ -47920,10 +47214,10 @@ OpenAPITools\Client\Configuration::getDefaultConfiguration()->setAccessToken('',
 
 // Create an instance of the API class
 $api_instance = new OpenAPITools\Client\Api\QueryApi();
-$chatEntry = ; // ChatEntry | 
+$chatMessage1 = ; // ChatMessage1 | 
 
 try {
-    $result = $api_instance->createChatMessage($chatEntry);
+    $result = $api_instance->createChatMessage($chatMessage1);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling QueryApi->createChatMessage: ', $e->getMessage(), PHP_EOL;
@@ -47941,10 +47235,10 @@ $WWW::OPenAPIClient::Configuration::access_token = 'YOUR_ACCESS_TOKEN';
 
 # Create an instance of the API class
 my $api_instance = WWW::OPenAPIClient::QueryApi->new();
-my $chatEntry = WWW::OPenAPIClient::Object::ChatEntry->new(); # ChatEntry | 
+my $chatMessage1 = WWW::OPenAPIClient::Object::ChatMessage1->new(); # ChatMessage1 | 
 
 eval {
-    my $result = $api_instance->createChatMessage(chatEntry => $chatEntry);
+    my $result = $api_instance->createChatMessage(chatMessage1 => $chatMessage1);
     print Dumper($result);
 };
 if ($@) {
@@ -47964,11 +47258,11 @@ openapi_client.configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Create an instance of the API class
 api_instance = openapi_client.QueryApi()
-chatEntry =  # ChatEntry | 
+chatMessage1 =  # ChatMessage1 | 
 
 try:
     # Create a chat message entry.
-    api_response = api_instance.create_chat_message(chatEntry)
+    api_response = api_instance.create_chat_message(chatMessage1)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling QueryApi->createChatMessage: %s\n" % e)</code></pre>
@@ -47978,10 +47272,10 @@ except ApiException as e:
                               <pre class="prettyprint"><code class="language-rust">extern crate QueryApi;
 
 pub fn main() {
-    let chatEntry = ; // ChatEntry
+    let chatMessage1 = ; // ChatMessage1
 
     let mut context = QueryApi::Context::default();
-    let result = client.createChatMessage(chatEntry, &context).wait();
+    let result = client.createChatMessage(chatMessage1, &context).wait();
 
     println!("{:?}", result);
 }
@@ -48004,7 +47298,7 @@ pub fn main() {
                                 <th width="150px">Name</th>
                                 <th>Description</th>
                               </tr>
-                                <tr><td style="width:150px;">chatEntry <span style="color:red;">*</span></td>
+                                <tr><td style="width:150px;">chatMessage1 <span style="color:red;">*</span></td>
 <td>
 <p class="marked"></p>
 <script>
@@ -48013,7 +47307,7 @@ $(document).ready(function() {
   "content" : {
     "application/json" : {
       "schema" : {
-        "$ref" : "#/components/schemas/ChatEntry"
+        "$ref" : "#/components/schemas/ChatMessage_1"
       }
     }
   },
@@ -48036,12 +47330,12 @@ $(document).ready(function() {
   }
 
   var view = new JSONSchemaView(schema,2,{isBodyParam: true});
-  var result = $('#d2e199_createChatMessage_chatEntry');
+  var result = $('#d2e199_createChatMessage_chatMessage1');
   result.empty();
   result.append(view.render());
 });
 </script>
-<div id="d2e199_createChatMessage_chatEntry"></div>
+<div id="d2e199_createChatMessage_chatMessage1"></div>
 </td>
 </tr>
 
@@ -48085,7 +47379,7 @@ $(document).ready(function() {
   "content" : {
     "application/json" : {
       "schema" : {
-        "$ref" : "#/components/schemas/ChatMessage"
+        "$ref" : "#/components/schemas/ChatMessage_1"
       }
     }
   }
@@ -49917,7 +49211,7 @@ $(document).ready(function() {
                             <pre class="prettyprint"><code class="language-bsh">curl -X DELETE \
  -H "Authorization: Bearer [[accessToken]]" \
  -H "Accept: application/json" \
- "http://localhost:/25001/chat_info?chat_id=chatId_example"
+ "http://localhost:/25001/chat_info?workspace=workspace_example&chat_id=chatId_example"
 </code></pre>
                           </div>
                           <div class="tab-pane" id="examples-Query-deleteChatInfo-0-java">
@@ -49939,10 +49233,11 @@ public class QueryApiExample {
 
         // Create an instance of the API class
         QueryApi apiInstance = new QueryApi();
+        String workspace = workspace_example; // String | The workspace to use for accessing the chats.
         String chatId = chatId_example; // String | The unique identifier for the chat info.
 
         try {
-            DeleteResponse result = apiInstance.deleteChatInfo(chatId);
+            DeleteResponse result = apiInstance.deleteChatInfo(workspace, chatId);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling QueryApi#deleteChatInfo");
@@ -49958,10 +49253,11 @@ public class QueryApiExample {
 
 final api_instance = DefaultApi();
 
+final String workspace = new String(); // String | The workspace to use for accessing the chats.
 final String chatId = new String(); // String | The unique identifier for the chat info.
 
 try {
-    final result = await api_instance.deleteChatInfo(chatId);
+    final result = await api_instance.deleteChatInfo(workspace, chatId);
     print(result);
 } catch (e) {
     print('Exception when calling DefaultApi->deleteChatInfo: $e\n');
@@ -49976,10 +49272,11 @@ try {
 public class QueryApiExample {
     public static void main(String[] args) {
         QueryApi apiInstance = new QueryApi();
+        String workspace = workspace_example; // String | The workspace to use for accessing the chats.
         String chatId = chatId_example; // String | The unique identifier for the chat info.
 
         try {
-            DeleteResponse result = apiInstance.deleteChatInfo(chatId);
+            DeleteResponse result = apiInstance.deleteChatInfo(workspace, chatId);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling QueryApi#deleteChatInfo");
@@ -50000,10 +49297,12 @@ public class QueryApiExample {
 
 // Create an instance of the API class
 QueryApi *apiInstance = [[QueryApi alloc] init];
-String *chatId = chatId_example; // The unique identifier for the chat info. (optional) (default to null)
+String *workspace = workspace_example; // The workspace to use for accessing the chats. (default to null)
+String *chatId = chatId_example; // The unique identifier for the chat info. (default to null)
 
 // Delete chat info entry.
-[apiInstance deleteChatInfoWith:chatId
+[apiInstance deleteChatInfoWith:workspace
+    chatId:chatId
               completionHandler: ^(DeleteResponse output, NSError* error) {
     if (output) {
         NSLog(@"%@", output);
@@ -50025,9 +49324,8 @@ bearerAuth.accessToken = "YOUR ACCESS TOKEN";
 
 // Create an instance of the API class
 var api = new MajordomoAi.QueryApi()
-var opts = {
-  'chatId': chatId_example // {String} The unique identifier for the chat info.
-};
+var workspace = workspace_example; // {String} The workspace to use for accessing the chats.
+var chatId = chatId_example; // {String} The unique identifier for the chat info.
 
 var callback = function(error, data, response) {
   if (error) {
@@ -50036,7 +49334,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-api.deleteChatInfo(opts, callback);
+api.deleteChatInfo(workspace, chatId, callback);
 </code></pre>
                             </div>
 
@@ -50061,11 +49359,12 @@ namespace Example
 
             // Create an instance of the API class
             var apiInstance = new QueryApi();
-            var chatId = chatId_example;  // String | The unique identifier for the chat info. (optional)  (default to null)
+            var workspace = workspace_example;  // String | The workspace to use for accessing the chats. (default to null)
+            var chatId = chatId_example;  // String | The unique identifier for the chat info. (default to null)
 
             try {
                 // Delete chat info entry.
-                DeleteResponse result = apiInstance.deleteChatInfo(chatId);
+                DeleteResponse result = apiInstance.deleteChatInfo(workspace, chatId);
                 Debug.WriteLine(result);
             } catch (Exception e) {
                 Debug.Print("Exception when calling QueryApi.deleteChatInfo: " + e.Message );
@@ -50085,10 +49384,11 @@ OpenAPITools\Client\Configuration::getDefaultConfiguration()->setAccessToken('',
 
 // Create an instance of the API class
 $api_instance = new OpenAPITools\Client\Api\QueryApi();
+$workspace = workspace_example; // String | The workspace to use for accessing the chats.
 $chatId = chatId_example; // String | The unique identifier for the chat info.
 
 try {
-    $result = $api_instance->deleteChatInfo($chatId);
+    $result = $api_instance->deleteChatInfo($workspace, $chatId);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling QueryApi->deleteChatInfo: ', $e->getMessage(), PHP_EOL;
@@ -50106,10 +49406,11 @@ $WWW::OPenAPIClient::Configuration::access_token = 'YOUR_ACCESS_TOKEN';
 
 # Create an instance of the API class
 my $api_instance = WWW::OPenAPIClient::QueryApi->new();
+my $workspace = workspace_example; # String | The workspace to use for accessing the chats.
 my $chatId = chatId_example; # String | The unique identifier for the chat info.
 
 eval {
-    my $result = $api_instance->deleteChatInfo(chatId => $chatId);
+    my $result = $api_instance->deleteChatInfo(workspace => $workspace, chatId => $chatId);
     print Dumper($result);
 };
 if ($@) {
@@ -50129,11 +49430,12 @@ openapi_client.configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Create an instance of the API class
 api_instance = openapi_client.QueryApi()
-chatId = chatId_example # String | The unique identifier for the chat info. (optional) (default to null)
+workspace = workspace_example # String | The workspace to use for accessing the chats. (default to null)
+chatId = chatId_example # String | The unique identifier for the chat info. (default to null)
 
 try:
     # Delete chat info entry.
-    api_response = api_instance.delete_chat_info(chatId=chatId)
+    api_response = api_instance.delete_chat_info(workspace, chatId)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling QueryApi->deleteChatInfo: %s\n" % e)</code></pre>
@@ -50143,10 +49445,11 @@ except ApiException as e:
                               <pre class="prettyprint"><code class="language-rust">extern crate QueryApi;
 
 pub fn main() {
+    let workspace = workspace_example; // String
     let chatId = chatId_example; // String
 
     let mut context = QueryApi::Context::default();
-    let result = client.deleteChatInfo(chatId, &context).wait();
+    let result = client.deleteChatInfo(workspace, chatId, &context).wait();
 
     println!("{:?}", result);
 }
@@ -50171,7 +49474,30 @@ pub fn main() {
                                 <th width="150px">Name</th>
                                 <th>Description</th>
                               </tr>
-                                <tr><td style="width:150px;">chat_id</td>
+                                <tr><td style="width:150px;">workspace*</td>
+<td>
+
+
+    <div id="d2e199_deleteChatInfo_workspace">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+The workspace to use for accessing the chats.
+                    </div>
+            </div>
+                <div class="inner required">
+                    Required
+                </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                                <tr><td style="width:150px;">chat_id*</td>
 <td>
 
 
@@ -50186,6 +49512,9 @@ pub fn main() {
 The unique identifier for the chat info.
                     </div>
             </div>
+                <div class="inner required">
+                    Required
+                </div>
         </div>
     </div>
 </td>
@@ -52079,7 +51408,7 @@ The name of the query pipeline to delete. If no name is provided, all query pipe
                             <pre class="prettyprint"><code class="language-bsh">curl -X GET \
  -H "Authorization: Bearer [[accessToken]]" \
  -H "Accept: application/json" \
- "http://localhost:/25001/chat_info?chat_id=chatId_example"
+ "http://localhost:/25001/chat_info?workspace=workspace_example&chat_id=chatId_example"
 </code></pre>
                           </div>
                           <div class="tab-pane" id="examples-Query-getChatInfo-0-java">
@@ -52101,10 +51430,11 @@ public class QueryApiExample {
 
         // Create an instance of the API class
         QueryApi apiInstance = new QueryApi();
+        String workspace = workspace_example; // String | The workspace to use for accessing the chats.
         String chatId = chatId_example; // String | The unique identifier for the chat info.
 
         try {
-            ChatInfoList result = apiInstance.getChatInfo(chatId);
+            ChatInfoList result = apiInstance.getChatInfo(workspace, chatId);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling QueryApi#getChatInfo");
@@ -52120,10 +51450,11 @@ public class QueryApiExample {
 
 final api_instance = DefaultApi();
 
+final String workspace = new String(); // String | The workspace to use for accessing the chats.
 final String chatId = new String(); // String | The unique identifier for the chat info.
 
 try {
-    final result = await api_instance.getChatInfo(chatId);
+    final result = await api_instance.getChatInfo(workspace, chatId);
     print(result);
 } catch (e) {
     print('Exception when calling DefaultApi->getChatInfo: $e\n');
@@ -52138,10 +51469,11 @@ try {
 public class QueryApiExample {
     public static void main(String[] args) {
         QueryApi apiInstance = new QueryApi();
+        String workspace = workspace_example; // String | The workspace to use for accessing the chats.
         String chatId = chatId_example; // String | The unique identifier for the chat info.
 
         try {
-            ChatInfoList result = apiInstance.getChatInfo(chatId);
+            ChatInfoList result = apiInstance.getChatInfo(workspace, chatId);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling QueryApi#getChatInfo");
@@ -52162,10 +51494,12 @@ public class QueryApiExample {
 
 // Create an instance of the API class
 QueryApi *apiInstance = [[QueryApi alloc] init];
+String *workspace = workspace_example; // The workspace to use for accessing the chats. (default to null)
 String *chatId = chatId_example; // The unique identifier for the chat info. (optional) (default to null)
 
 // Chat info information for a user.
-[apiInstance getChatInfoWith:chatId
+[apiInstance getChatInfoWith:workspace
+    chatId:chatId
               completionHandler: ^(ChatInfoList output, NSError* error) {
     if (output) {
         NSLog(@"%@", output);
@@ -52187,6 +51521,7 @@ bearerAuth.accessToken = "YOUR ACCESS TOKEN";
 
 // Create an instance of the API class
 var api = new MajordomoAi.QueryApi()
+var workspace = workspace_example; // {String} The workspace to use for accessing the chats.
 var opts = {
   'chatId': chatId_example // {String} The unique identifier for the chat info.
 };
@@ -52198,7 +51533,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-api.getChatInfo(opts, callback);
+api.getChatInfo(workspace, opts, callback);
 </code></pre>
                             </div>
 
@@ -52223,11 +51558,12 @@ namespace Example
 
             // Create an instance of the API class
             var apiInstance = new QueryApi();
+            var workspace = workspace_example;  // String | The workspace to use for accessing the chats. (default to null)
             var chatId = chatId_example;  // String | The unique identifier for the chat info. (optional)  (default to null)
 
             try {
                 // Chat info information for a user.
-                ChatInfoList result = apiInstance.getChatInfo(chatId);
+                ChatInfoList result = apiInstance.getChatInfo(workspace, chatId);
                 Debug.WriteLine(result);
             } catch (Exception e) {
                 Debug.Print("Exception when calling QueryApi.getChatInfo: " + e.Message );
@@ -52247,10 +51583,11 @@ OpenAPITools\Client\Configuration::getDefaultConfiguration()->setAccessToken('',
 
 // Create an instance of the API class
 $api_instance = new OpenAPITools\Client\Api\QueryApi();
+$workspace = workspace_example; // String | The workspace to use for accessing the chats.
 $chatId = chatId_example; // String | The unique identifier for the chat info.
 
 try {
-    $result = $api_instance->getChatInfo($chatId);
+    $result = $api_instance->getChatInfo($workspace, $chatId);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling QueryApi->getChatInfo: ', $e->getMessage(), PHP_EOL;
@@ -52268,10 +51605,11 @@ $WWW::OPenAPIClient::Configuration::access_token = 'YOUR_ACCESS_TOKEN';
 
 # Create an instance of the API class
 my $api_instance = WWW::OPenAPIClient::QueryApi->new();
+my $workspace = workspace_example; # String | The workspace to use for accessing the chats.
 my $chatId = chatId_example; # String | The unique identifier for the chat info.
 
 eval {
-    my $result = $api_instance->getChatInfo(chatId => $chatId);
+    my $result = $api_instance->getChatInfo(workspace => $workspace, chatId => $chatId);
     print Dumper($result);
 };
 if ($@) {
@@ -52291,11 +51629,12 @@ openapi_client.configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Create an instance of the API class
 api_instance = openapi_client.QueryApi()
+workspace = workspace_example # String | The workspace to use for accessing the chats. (default to null)
 chatId = chatId_example # String | The unique identifier for the chat info. (optional) (default to null)
 
 try:
     # Chat info information for a user.
-    api_response = api_instance.get_chat_info(chatId=chatId)
+    api_response = api_instance.get_chat_info(workspace, chatId=chatId)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling QueryApi->getChatInfo: %s\n" % e)</code></pre>
@@ -52305,10 +51644,11 @@ except ApiException as e:
                               <pre class="prettyprint"><code class="language-rust">extern crate QueryApi;
 
 pub fn main() {
+    let workspace = workspace_example; // String
     let chatId = chatId_example; // String
 
     let mut context = QueryApi::Context::default();
-    let result = client.getChatInfo(chatId, &context).wait();
+    let result = client.getChatInfo(workspace, chatId, &context).wait();
 
     println!("{:?}", result);
 }
@@ -52333,6 +51673,29 @@ pub fn main() {
                                 <th width="150px">Name</th>
                                 <th>Description</th>
                               </tr>
+                                <tr><td style="width:150px;">workspace*</td>
+<td>
+
+
+    <div id="d2e199_getChatInfo_workspace">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+The workspace to use for accessing the chats.
+                    </div>
+            </div>
+                <div class="inner required">
+                    Required
+                </div>
+        </div>
+    </div>
+</td>
+</tr>
+
                                 <tr><td style="width:150px;">chat_id</td>
 <td>
 
@@ -54991,6 +54354,7 @@ $(document).ready(function() {
  -H "Content-Type: application/json" \
  "http://localhost:/25001/chat_info" \
  -d '{
+  &quot;workspace&quot; : &quot;workspace&quot;,
   &quot;chat_id&quot; : &quot;chat_id&quot;,
   &quot;chat_name&quot; : &quot;chat_name&quot;
 }'
@@ -55015,10 +54379,10 @@ public class QueryApiExample {
 
         // Create an instance of the API class
         QueryApi apiInstance = new QueryApi();
-        ChatInfo chatInfo = ; // ChatInfo | 
+        ChatInfoRequest chatInfoRequest = ; // ChatInfoRequest | 
 
         try {
-            ChatInfoResponse result = apiInstance.updateChatInfo(chatInfo);
+            ChatInfoResponse result = apiInstance.updateChatInfo(chatInfoRequest);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling QueryApi#updateChatInfo");
@@ -55034,10 +54398,10 @@ public class QueryApiExample {
 
 final api_instance = DefaultApi();
 
-final ChatInfo chatInfo = new ChatInfo(); // ChatInfo | 
+final ChatInfoRequest chatInfoRequest = new ChatInfoRequest(); // ChatInfoRequest | 
 
 try {
-    final result = await api_instance.updateChatInfo(chatInfo);
+    final result = await api_instance.updateChatInfo(chatInfoRequest);
     print(result);
 } catch (e) {
     print('Exception when calling DefaultApi->updateChatInfo: $e\n');
@@ -55052,10 +54416,10 @@ try {
 public class QueryApiExample {
     public static void main(String[] args) {
         QueryApi apiInstance = new QueryApi();
-        ChatInfo chatInfo = ; // ChatInfo | 
+        ChatInfoRequest chatInfoRequest = ; // ChatInfoRequest | 
 
         try {
-            ChatInfoResponse result = apiInstance.updateChatInfo(chatInfo);
+            ChatInfoResponse result = apiInstance.updateChatInfo(chatInfoRequest);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling QueryApi#updateChatInfo");
@@ -55076,10 +54440,10 @@ public class QueryApiExample {
 
 // Create an instance of the API class
 QueryApi *apiInstance = [[QueryApi alloc] init];
-ChatInfo *chatInfo = ; // 
+ChatInfoRequest *chatInfoRequest = ; // 
 
 // Update chat info parameters such as name or add a bunch of chat messages.
-[apiInstance updateChatInfoWith:chatInfo
+[apiInstance updateChatInfoWith:chatInfoRequest
               completionHandler: ^(ChatInfoResponse output, NSError* error) {
     if (output) {
         NSLog(@"%@", output);
@@ -55101,7 +54465,7 @@ bearerAuth.accessToken = "YOUR ACCESS TOKEN";
 
 // Create an instance of the API class
 var api = new MajordomoAi.QueryApi()
-var chatInfo = ; // {ChatInfo} 
+var chatInfoRequest = ; // {ChatInfoRequest} 
 
 var callback = function(error, data, response) {
   if (error) {
@@ -55110,7 +54474,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-api.updateChatInfo(chatInfo, callback);
+api.updateChatInfo(chatInfoRequest, callback);
 </code></pre>
                             </div>
 
@@ -55135,11 +54499,11 @@ namespace Example
 
             // Create an instance of the API class
             var apiInstance = new QueryApi();
-            var chatInfo = new ChatInfo(); // ChatInfo | 
+            var chatInfoRequest = new ChatInfoRequest(); // ChatInfoRequest | 
 
             try {
                 // Update chat info parameters such as name or add a bunch of chat messages.
-                ChatInfoResponse result = apiInstance.updateChatInfo(chatInfo);
+                ChatInfoResponse result = apiInstance.updateChatInfo(chatInfoRequest);
                 Debug.WriteLine(result);
             } catch (Exception e) {
                 Debug.Print("Exception when calling QueryApi.updateChatInfo: " + e.Message );
@@ -55159,10 +54523,10 @@ OpenAPITools\Client\Configuration::getDefaultConfiguration()->setAccessToken('',
 
 // Create an instance of the API class
 $api_instance = new OpenAPITools\Client\Api\QueryApi();
-$chatInfo = ; // ChatInfo | 
+$chatInfoRequest = ; // ChatInfoRequest | 
 
 try {
-    $result = $api_instance->updateChatInfo($chatInfo);
+    $result = $api_instance->updateChatInfo($chatInfoRequest);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling QueryApi->updateChatInfo: ', $e->getMessage(), PHP_EOL;
@@ -55180,10 +54544,10 @@ $WWW::OPenAPIClient::Configuration::access_token = 'YOUR_ACCESS_TOKEN';
 
 # Create an instance of the API class
 my $api_instance = WWW::OPenAPIClient::QueryApi->new();
-my $chatInfo = WWW::OPenAPIClient::Object::ChatInfo->new(); # ChatInfo | 
+my $chatInfoRequest = WWW::OPenAPIClient::Object::ChatInfoRequest->new(); # ChatInfoRequest | 
 
 eval {
-    my $result = $api_instance->updateChatInfo(chatInfo => $chatInfo);
+    my $result = $api_instance->updateChatInfo(chatInfoRequest => $chatInfoRequest);
     print Dumper($result);
 };
 if ($@) {
@@ -55203,11 +54567,11 @@ openapi_client.configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Create an instance of the API class
 api_instance = openapi_client.QueryApi()
-chatInfo =  # ChatInfo | 
+chatInfoRequest =  # ChatInfoRequest | 
 
 try:
     # Update chat info parameters such as name or add a bunch of chat messages.
-    api_response = api_instance.update_chat_info(chatInfo)
+    api_response = api_instance.update_chat_info(chatInfoRequest)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling QueryApi->updateChatInfo: %s\n" % e)</code></pre>
@@ -55217,10 +54581,10 @@ except ApiException as e:
                               <pre class="prettyprint"><code class="language-rust">extern crate QueryApi;
 
 pub fn main() {
-    let chatInfo = ; // ChatInfo
+    let chatInfoRequest = ; // ChatInfoRequest
 
     let mut context = QueryApi::Context::default();
-    let result = client.updateChatInfo(chatInfo, &context).wait();
+    let result = client.updateChatInfo(chatInfoRequest, &context).wait();
 
     println!("{:?}", result);
 }
@@ -55243,7 +54607,7 @@ pub fn main() {
                                 <th width="150px">Name</th>
                                 <th>Description</th>
                               </tr>
-                                <tr><td style="width:150px;">chatInfo <span style="color:red;">*</span></td>
+                                <tr><td style="width:150px;">chatInfoRequest <span style="color:red;">*</span></td>
 <td>
 <p class="marked"></p>
 <script>
@@ -55252,7 +54616,7 @@ $(document).ready(function() {
   "content" : {
     "application/json" : {
       "schema" : {
-        "$ref" : "#/components/schemas/ChatInfo"
+        "$ref" : "#/components/schemas/ChatInfoRequest"
       }
     }
   },
@@ -55275,12 +54639,12 @@ $(document).ready(function() {
   }
 
   var view = new JSONSchemaView(schema,2,{isBodyParam: true});
-  var result = $('#d2e199_updateChatInfo_chatInfo');
+  var result = $('#d2e199_updateChatInfo_chatInfoRequest');
   result.empty();
   result.append(view.render());
 });
 </script>
-<div id="d2e199_updateChatInfo_chatInfo"></div>
+<div id="d2e199_updateChatInfo_chatInfoRequest"></div>
 </td>
 </tr>
 

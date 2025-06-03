@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **chat_name** | **str** | Name of the chat history. | [optional] 
 **created_by** | **str** | Name of the user who created the chat conversations. | 
 **last_update** | **int** | Timestamp of the last update to the chat history. | 
-**messages** | [**List[ChatMessage]**](ChatMessage.md) | The list of chat messages in this chat. | 
+**messages** | [**List[ChatMessage1]**](ChatMessage1.md) | The list of chat messages in this chat. | 
 
 ## Example
 

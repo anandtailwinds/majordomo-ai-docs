@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **workspace** | **str** | The workspace this query pipeline belongs to. | 
 **name** | **str** | Name of the query pipeline. | 
 **query_string** | **str** | The query user wants to ask based on the Query Pipeline. | 
+**chat_id** | **str** | The unique chat-id that denotes this conversation. If the chat_id  overlaps with another conversation, messages will be mixed.  | [optional] 
 
 ## Example
 

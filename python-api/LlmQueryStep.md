@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **llm_model_profile** | **str** | The name of the LLM model profile to lookup. | 
 **llm_model_name** | **str** | The name of the LLM model to use. | 
 **var_query_params** | [**QueryParams**](QueryParams.md) |  | [optional] 
+**chat_id** | **str** | Chat identifier that denotes the conversation this is part of. | [optional] 
 
 ## Example
 

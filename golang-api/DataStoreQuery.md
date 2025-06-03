@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **LlmModel** | **string** | The LLM model to be used. | 
 **QueryParams** | Pointer to [**QueryParams**](QueryParams.md) |  | [optional] 
 **QueryString** | **string** | The actual query string for which the user wants a response to. | 
+**ChatId** | Pointer to **string** | The unique chat-id that denotes this conversation. If the chat_id overlaps with another conversation, messages will be mixed. | [optional] 
 
 ## Methods
 
@@ -206,6 +207,31 @@ and a boolean to check if the value has been set.
 
 SetQueryString sets QueryString field to given value.
 
+
+### GetChatId
+
+`func (o *DataStoreQuery) GetChatId() string`
+
+GetChatId returns the ChatId field if non-nil, zero value otherwise.
+
+### GetChatIdOk
+
+`func (o *DataStoreQuery) GetChatIdOk() (*string, bool)`
+
+GetChatIdOk returns a tuple with the ChatId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetChatId
+
+`func (o *DataStoreQuery) SetChatId(v string)`
+
+SetChatId sets ChatId field to given value.
+
+### HasChatId
+
+`func (o *DataStoreQuery) HasChatId() bool`
+
+HasChatId returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

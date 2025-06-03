@@ -4,7 +4,6 @@ All URIs are relative to *http://localhost:/25001*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateChatInfo**](QueryAPI.md#CreateChatInfo) | **Post** /chat_info | Create a chat info entry.
 [**CreateChatMessage**](QueryAPI.md#CreateChatMessage) | **Post** /chat_messages | Create a chat message entry.
 [**CreateQueryPipeline**](QueryAPI.md#CreateQueryPipeline) | **Post** /query_pipelines | Create query pipeline.
 [**DataStoreQuery**](QueryAPI.md#DataStoreQuery) | **Post** /data_store_query | Query data store.
@@ -20,75 +19,9 @@ Method | HTTP request | Description
 
 
 
-## CreateChatInfo
-
-> ChatInfoResponse CreateChatInfo(ctx).ChatInfo(chatInfo).Execute()
-
-Create a chat info entry.
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
-)
-
-func main() {
-	chatInfo := *openapiclient.NewChatInfo("ChatId_example") // ChatInfo | 
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.QueryAPI.CreateChatInfo(context.Background()).ChatInfo(chatInfo).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `QueryAPI.CreateChatInfo``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `CreateChatInfo`: ChatInfoResponse
-	fmt.Fprintf(os.Stdout, "Response from `QueryAPI.CreateChatInfo`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiCreateChatInfoRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **chatInfo** | [**ChatInfo**](ChatInfo.md) |  | 
-
-### Return type
-
-[**ChatInfoResponse**](ChatInfoResponse.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
 ## CreateChatMessage
 
-> ChatMessage CreateChatMessage(ctx).ChatEntry(chatEntry).Execute()
+> ChatMessage1 CreateChatMessage(ctx).ChatMessage1(chatMessage1).Execute()
 
 Create a chat message entry.
 
@@ -107,16 +40,16 @@ import (
 )
 
 func main() {
-	chatEntry := *openapiclient.NewChatEntry("ChatId_example", []openapiclient.ChatMessage{*openapiclient.NewChatMessage("Question_example", "Answer_example")}) // ChatEntry | 
+	chatMessage1 := *openapiclient.NewChatMessage1("Role_example", "Content_example") // ChatMessage1 | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.QueryAPI.CreateChatMessage(context.Background()).ChatEntry(chatEntry).Execute()
+	resp, r, err := apiClient.QueryAPI.CreateChatMessage(context.Background()).ChatMessage1(chatMessage1).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `QueryAPI.CreateChatMessage``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `CreateChatMessage`: ChatMessage
+	// response from `CreateChatMessage`: ChatMessage1
 	fmt.Fprintf(os.Stdout, "Response from `QueryAPI.CreateChatMessage`: %v\n", resp)
 }
 ```
@@ -132,11 +65,11 @@ Other parameters are passed through a pointer to a apiCreateChatMessageRequest s
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **chatEntry** | [**ChatEntry**](ChatEntry.md) |  | 
+ **chatMessage1** | [**ChatMessage1**](ChatMessage1.md) |  | 
 
 ### Return type
 
-[**ChatMessage**](ChatMessage.md)
+[**ChatMessage1**](ChatMessage1.md)
 
 ### Authorization
 
@@ -286,7 +219,7 @@ Name | Type | Description  | Notes
 
 ## DeleteChatInfo
 
-> DeleteResponse DeleteChatInfo(ctx).ChatId(chatId).Execute()
+> DeleteResponse DeleteChatInfo(ctx).Workspace(workspace).ChatId(chatId).Execute()
 
 Delete chat info entry.
 
@@ -305,11 +238,12 @@ import (
 )
 
 func main() {
-	chatId := "chatId_example" // string | The unique identifier for the chat info. (optional)
+	workspace := "workspace_example" // string | The workspace to use for accessing the chats.
+	chatId := "chatId_example" // string | The unique identifier for the chat info.
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.QueryAPI.DeleteChatInfo(context.Background()).ChatId(chatId).Execute()
+	resp, r, err := apiClient.QueryAPI.DeleteChatInfo(context.Background()).Workspace(workspace).ChatId(chatId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `QueryAPI.DeleteChatInfo``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -330,6 +264,7 @@ Other parameters are passed through a pointer to a apiDeleteChatInfoRequest stru
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **workspace** | **string** | The workspace to use for accessing the chats. | 
  **chatId** | **string** | The unique identifier for the chat info. | 
 
 ### Return type
@@ -488,7 +423,7 @@ Name | Type | Description  | Notes
 
 ## GetChatInfo
 
-> ChatInfoList GetChatInfo(ctx).ChatId(chatId).Execute()
+> ChatInfoList GetChatInfo(ctx).Workspace(workspace).ChatId(chatId).Execute()
 
 Chat info information for a user.
 
@@ -507,11 +442,12 @@ import (
 )
 
 func main() {
+	workspace := "workspace_example" // string | The workspace to use for accessing the chats.
 	chatId := "chatId_example" // string | The unique identifier for the chat info. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.QueryAPI.GetChatInfo(context.Background()).ChatId(chatId).Execute()
+	resp, r, err := apiClient.QueryAPI.GetChatInfo(context.Background()).Workspace(workspace).ChatId(chatId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `QueryAPI.GetChatInfo``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -532,6 +468,7 @@ Other parameters are passed through a pointer to a apiGetChatInfoRequest struct 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **workspace** | **string** | The workspace to use for accessing the chats. | 
  **chatId** | **string** | The unique identifier for the chat info. | 
 
 ### Return type
@@ -758,7 +695,7 @@ Name | Type | Description  | Notes
 
 ## UpdateChatInfo
 
-> ChatInfoResponse UpdateChatInfo(ctx).ChatInfo(chatInfo).Execute()
+> ChatInfoResponse UpdateChatInfo(ctx).ChatInfoRequest(chatInfoRequest).Execute()
 
 Update chat info parameters such as name or add a bunch of chat messages.
 
@@ -777,11 +714,11 @@ import (
 )
 
 func main() {
-	chatInfo := *openapiclient.NewChatInfo("ChatId_example") // ChatInfo | 
+	chatInfoRequest := *openapiclient.NewChatInfoRequest("ChatId_example", "Workspace_example") // ChatInfoRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.QueryAPI.UpdateChatInfo(context.Background()).ChatInfo(chatInfo).Execute()
+	resp, r, err := apiClient.QueryAPI.UpdateChatInfo(context.Background()).ChatInfoRequest(chatInfoRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `QueryAPI.UpdateChatInfo``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -802,7 +739,7 @@ Other parameters are passed through a pointer to a apiUpdateChatInfoRequest stru
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **chatInfo** | [**ChatInfo**](ChatInfo.md) |  | 
+ **chatInfoRequest** | [**ChatInfoRequest**](ChatInfoRequest.md) |  | 
 
 ### Return type
 

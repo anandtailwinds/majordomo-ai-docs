@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **metric** | **Dict[str, object]** |  | 
-**values** | **List[List[MetricDataValuesInnerInner]]** |  | 
+**values** | [**List[MetricValue]**](MetricValue.md) |  | 
 
 ## Example
 

@@ -9,8 +9,7 @@ Name | Type | Description | Notes
 **RequestUrl** | **string** | The URL to test inference. | 
 **RequestType** | Pointer to **string** | HTTP Request type | [optional] 
 **Payload** | **map[string]interface{}** | The JSON payload to be used for testing. | 
-**QueryParams** | Pointer to **map[string]string** | The JSON payload to be used for testing. | [optional] 
-**PathParams** | Pointer to **map[string]string** | The JSON payload to be used for testing. | [optional] 
+**HeaderOptions** | Pointer to **map[string]string** | The HTTP header options to set. | [optional] 
 **Timeout** | Pointer to **int32** | Timeout in seconds | [optional] [default to 30]
 
 ## Methods
@@ -137,55 +136,30 @@ and a boolean to check if the value has been set.
 SetPayload sets Payload field to given value.
 
 
-### GetQueryParams
+### GetHeaderOptions
 
-`func (o *TestInference) GetQueryParams() map[string]string`
+`func (o *TestInference) GetHeaderOptions() map[string]string`
 
-GetQueryParams returns the QueryParams field if non-nil, zero value otherwise.
+GetHeaderOptions returns the HeaderOptions field if non-nil, zero value otherwise.
 
-### GetQueryParamsOk
+### GetHeaderOptionsOk
 
-`func (o *TestInference) GetQueryParamsOk() (*map[string]string, bool)`
+`func (o *TestInference) GetHeaderOptionsOk() (*map[string]string, bool)`
 
-GetQueryParamsOk returns a tuple with the QueryParams field if it's non-nil, zero value otherwise
+GetHeaderOptionsOk returns a tuple with the HeaderOptions field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetQueryParams
+### SetHeaderOptions
 
-`func (o *TestInference) SetQueryParams(v map[string]string)`
+`func (o *TestInference) SetHeaderOptions(v map[string]string)`
 
-SetQueryParams sets QueryParams field to given value.
+SetHeaderOptions sets HeaderOptions field to given value.
 
-### HasQueryParams
+### HasHeaderOptions
 
-`func (o *TestInference) HasQueryParams() bool`
+`func (o *TestInference) HasHeaderOptions() bool`
 
-HasQueryParams returns a boolean if a field has been set.
-
-### GetPathParams
-
-`func (o *TestInference) GetPathParams() map[string]string`
-
-GetPathParams returns the PathParams field if non-nil, zero value otherwise.
-
-### GetPathParamsOk
-
-`func (o *TestInference) GetPathParamsOk() (*map[string]string, bool)`
-
-GetPathParamsOk returns a tuple with the PathParams field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetPathParams
-
-`func (o *TestInference) SetPathParams(v map[string]string)`
-
-SetPathParams sets PathParams field to given value.
-
-### HasPathParams
-
-`func (o *TestInference) HasPathParams() bool`
-
-HasPathParams returns a boolean if a field has been set.
+HasHeaderOptions returns a boolean if a field has been set.
 
 ### GetTimeout
 

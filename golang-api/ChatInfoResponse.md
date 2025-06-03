@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **ChatName** | **string** | Name of the chat history. | 
 **CreatedBy** | **string** | Name of the user who created the chat conversations. | 
 **LastUpdate** | **int64** | Timestamp of the last update to the chat history. | 
+**Messages** | Pointer to [**[]ChatMessage**](ChatMessage.md) | The list of messages available in the chat. | [optional] 
 
 ## Methods
 
@@ -107,6 +108,31 @@ and a boolean to check if the value has been set.
 
 SetLastUpdate sets LastUpdate field to given value.
 
+
+### GetMessages
+
+`func (o *ChatInfoResponse) GetMessages() []ChatMessage`
+
+GetMessages returns the Messages field if non-nil, zero value otherwise.
+
+### GetMessagesOk
+
+`func (o *ChatInfoResponse) GetMessagesOk() (*[]ChatMessage, bool)`
+
+GetMessagesOk returns a tuple with the Messages field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMessages
+
+`func (o *ChatInfoResponse) SetMessages(v []ChatMessage)`
+
+SetMessages sets Messages field to given value.
+
+### HasMessages
+
+`func (o *ChatInfoResponse) HasMessages() bool`
+
+HasMessages returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

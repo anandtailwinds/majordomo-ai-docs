@@ -10,8 +10,7 @@ Name | Type | Description | Notes
 **request_url** | **str** | The URL to test inference. | 
 **request_type** | **str** | HTTP Request type | [optional] 
 **payload** | **Dict[str, object]** | The JSON payload to be used for testing. | 
-**var_query_params** | **Dict[str, str]** | The JSON payload to be used for testing. | [optional] 
-**var_path_params** | **Dict[str, str]** | The JSON payload to be used for testing. | [optional] 
+**header_options** | **Dict[str, str]** | The HTTP header options to set. | [optional] 
 **timeout** | **int** | Timeout in seconds | [optional] [default to 30]
 
 ## Example

@@ -5,13 +5,13 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Metric** | **map[string]interface{}** |  | 
-**Values** | [**[][]MetricDataValuesInnerInner**]([]MetricDataValuesInnerInner.md) |  | 
+**Values** | [**[]MetricValue**](MetricValue.md) |  | 
 
 ## Methods
 
 ### NewMetricData
 
-`func NewMetricData(metric map[string]interface{}, values [][]MetricDataValuesInnerInner, ) *MetricData`
+`func NewMetricData(metric map[string]interface{}, values []MetricValue, ) *MetricData`
 
 NewMetricData instantiates a new MetricData object
 This constructor will assign default values to properties that have it defined,
@@ -48,20 +48,20 @@ SetMetric sets Metric field to given value.
 
 ### GetValues
 
-`func (o *MetricData) GetValues() [][]MetricDataValuesInnerInner`
+`func (o *MetricData) GetValues() []MetricValue`
 
 GetValues returns the Values field if non-nil, zero value otherwise.
 
 ### GetValuesOk
 
-`func (o *MetricData) GetValuesOk() (*[][]MetricDataValuesInnerInner, bool)`
+`func (o *MetricData) GetValuesOk() (*[]MetricValue, bool)`
 
 GetValuesOk returns a tuple with the Values field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetValues
 
-`func (o *MetricData) SetValues(v [][]MetricDataValuesInnerInner)`
+`func (o *MetricData) SetValues(v []MetricValue)`
 
 SetValues sets Values field to given value.
 
